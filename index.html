@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mac Guttenberg — Digital Transformation for Small Businesses</title>
+<meta name="description" content="Mac Guttenberg helps small businesses in NYC and beyond build the digital infrastructure they need to grow — client portals, automation, sales funnels, and more. Starting at $300.">
+<meta property="og:title" content="Mac Guttenberg — Digital Transformation for Small Businesses">
+<meta property="og:description" content="I audit your business, fix what's broken, and build the systems that let you actually grow.">
+<meta property="og:url" content="https://macguttenberg.com">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --bg2:#DDD9D0;
+  --white:#FAFAF7;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo img{height:26px;width:auto;display:block;opacity:.9;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:rgba(255,255,255,.85);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-li a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;display:flex;align-items:center;}
+.nav-li a:hover{color:rgba(255,255,255,.8);}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.25);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:640px;display:grid;grid-template-columns:1fr 1fr;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:url('mac-photo.png') right center/cover no-repeat;}
+.hero-bg::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23E8E4DC'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23D0CAC0' opacity='0.35'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23D0CAC0' opacity='0.35'/%3E%3C/svg%3E");background-size:4px 4px;}
+.hero-left{position:relative;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:56px 3rem 5rem 4rem;}
+.hero-card{background:var(--card);border-radius:24px;padding:3rem 3rem 2.75rem;border:1px solid var(--border);box-shadow:0 2px 40px rgba(28,26,22,.07);max-width:520px;width:100%;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;opacity:0;transform:translateY(10px);animation:up .5s ease .1s forwards;}
+.hero-eyebrow::before{content:"";width:16px;height:1.5px;background:var(--accent);}
+h1{font-family:"Fraunces",serif;font-size:clamp(2.4rem,4vw,4rem);font-weight:900;line-height:.98;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem;opacity:0;transform:translateY(20px);animation:up .7s ease .2s forwards;}
+h1 em{font-style:italic;color:var(--accent);font-weight:700;}
+.hero-value{font-size:1rem;font-weight:500;color:var(--text-mid);margin-bottom:1rem;line-height:1.5;opacity:0;transform:translateY(12px);animation:up .6s ease .33s forwards;border-left:2px solid var(--accent);padding-left:.75rem;}
+.hero-sub{font-size:.92rem;font-weight:300;line-height:1.75;color:var(--text-muted);margin-bottom:2rem;opacity:0;transform:translateY(12px);animation:up .6s ease .4s forwards;}
+.hero-sub strong{color:var(--text-mid);font-weight:500;}
+.hero-btns{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(12px);animation:up .6s ease .52s forwards;}
+.btn-dark{display:inline-flex;align-items:center;gap:.4rem;background:var(--dark);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;white-space:nowrap;}
+.btn-dark:hover{background:var(--dark2);gap:.65rem;}
+.btn-soft{font-size:.88rem;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .2s;white-space:nowrap;}
+.btn-soft:hover{color:var(--text);}
+.hero-right{position:relative;z-index:1;overflow:visible;opacity:0;animation:fadeIn .9s ease .25s forwards;}
+.hero-photo{position:absolute;bottom:0;right:0;left:0;display:flex;align-items:flex-end;justify-content:center;height:100%;}
+.hero-photo img{height:95%;width:auto;object-fit:contain;object-position:bottom;filter:drop-shadow(-8px 0 40px rgba(28,26,22,.12));}
+.photo-chip{position:absolute;bottom:2.5rem;left:1rem;background:rgba(245,242,236,.96);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:14px;padding:.85rem 1.1rem;box-shadow:0 4px 20px rgba(28,26,22,.08);}
+.chip-val{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.15rem;}
+.chip-lbl{font-size:.67rem;color:var(--text-muted);line-height:1.4;}
+.scroll-hint{display:none;}
+.scroll-hint span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);}
+.scroll-hint svg{animation:bounce 2s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+
+/* STAT BAR */
+.stat-bar{background:var(--dark);padding:3rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;}
+.stat-bar-item{text-align:center;padding:1.5rem 2rem;border-right:1px solid rgba(255,255,255,.06);}
+.stat-bar-item:last-child{border-right:none;}
+.stat-bar-n{font-family:"Fraunces",serif;font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.3rem;}
+.stat-bar-n em{font-style:normal;color:#7EACD4;}
+.stat-bar-l{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5;letter-spacing:.02em;}
+
+/* IS THIS RIGHT */
+.right-sec{padding:5.5rem 4rem;background:var(--white);}
+.right-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;}
+.right-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem;}
+.right-list li{display:flex;align-items:flex-start;gap:.85rem;font-size:.95rem;color:var(--text-mid);line-height:1.6;font-weight:300;padding:.85rem 1rem;background:var(--card);border-radius:10px;border:1px solid var(--border);}
+.right-list li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:.05rem;}
+.right-list li strong{color:var(--text);font-weight:500;}
+.not-right{margin-top:1.5rem;padding:1.25rem 1.5rem;background:rgba(28,26,22,.03);border-radius:10px;border-left:3px solid var(--border);}
+.not-right p{font-size:.85rem;color:var(--text-muted);line-height:1.7;font-weight:300;}
+.not-right strong{color:var(--text-mid);font-weight:500;}
+.right-cta-card{background:var(--dark);border-radius:20px;padding:2.5rem;color:#fff;}
+.right-cta-card h3{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:700;margin-bottom:.75rem;line-height:1.2;}
+.right-cta-card p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.75;font-weight:300;margin-bottom:1.5rem;}
+.btn-accent{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-accent:hover{background:var(--accent2);gap:.65rem;}
+
+/* ABOUT */
+.about-sec{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--bg);}
+.about-img{overflow:hidden;min-height:520px;}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.about-copy{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.sec-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem;}
+.sec-tag::before{content:"";width:14px;height:1.5px;background:var(--accent);}
+.sec-h2{font-family:"Fraunces",serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:1.5rem;}
+.sec-h2 em{font-style:italic;color:var(--accent);}
+.about-p{font-size:.97rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1rem;}
+.about-p strong{color:var(--text);font-weight:500;}
+.about-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem;}
+.pill{font-size:.75rem;font-weight:500;color:var(--accent);background:rgba(43,74,107,.08);border:1px solid rgba(43,74,107,.15);padding:.35rem .8rem;border-radius:100px;}
+.link-arrow{display:inline-flex;align-items:center;gap:.3rem;color:var(--accent);font-size:.9rem;font-weight:500;text-decoration:none;margin-top:1.25rem;border-bottom:1px solid rgba(43,74,107,.25);padding-bottom:1px;transition:border-color .2s,gap .2s;}
+.link-arrow:hover{border-color:var(--accent);gap:.5rem;}
+.link-arrow::after{content:"→";}
+
+/* CASE STUDY */
+.case-sec{background:var(--dark);padding:5.5rem 4rem;}
+.case-inner{max-width:1100px;margin:0 auto;}
+.case-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem;}
+.case-tag::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.case-h{font-family:"Fraunces",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:3rem;}
+.case-h em{font-style:italic;color:#7EACD4;}
+/* Before/After images */
+.case-images{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem;}
+.case-img-wrap{border-radius:16px;overflow:hidden;position:relative;}
+.case-img-wrap img{width:100%;height:280px;object-fit:cover;display:block;}
+.case-img-label{position:absolute;top:1rem;left:1rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(28,26,22,.7);color:#fff;padding:.3rem .75rem;border-radius:100px;backdrop-filter:blur(8px);}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.case-story{color:rgba(255,255,255,.65);font-size:.95rem;line-height:1.85;font-weight:300;}
+.case-story strong{color:#fff;font-weight:500;}
+.case-story p{margin-bottom:1rem;}
+.case-results{display:flex;flex-direction:column;gap:1rem;}
+.result-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.25rem 1.5rem;transition:background .2s;}
+.result-item:hover{background:rgba(255,255,255,.08);}
+.result-n{font-family:"Fraunces",serif;font-size:2.2rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.25rem;}
+.result-n em{font-style:normal;color:#7EACD4;}
+.result-l{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.5;}
+
+/* SERVICES */
+.services-sec{padding:5.5rem 4rem;background:var(--white);}
+/* Featured full-width, then 3 equal below */
+.s-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem;}
+.s-card{background:var(--card);border-radius:16px;padding:2.25rem;border:1px solid var(--border);transition:transform .25s,box-shadow .25s,border-color .25s;}
+.s-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(28,26,22,.07);border-color:rgba(43,74,107,.25);}
+.s-card.featured{background:var(--dark);border-color:transparent;grid-column:1/-1;display:grid;grid-template-columns:1fr;gap:1rem;align-items:start;}
+.s-card.featured .s-badge{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(126,172,212,.15);color:#7EACD4;border:1px solid rgba(126,172,212,.25);padding:.2rem .65rem;border-radius:100px;margin-bottom:.85rem;}
+.s-card .s-badge{display:none;}
+.s-card.featured .s-num{color:#7EACD4;opacity:.7;}
+.s-card.featured .s-title{color:#fff;font-size:1.5rem;}
+.s-card.featured .s-desc{color:rgba(255,255,255,.5);}
+.s-card.featured:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(28,26,22,.25);}
+.s-featured-left{display:flex;flex-direction:column;}
+.s-featured-right{}
+.s-num{font-size:.68rem;font-weight:500;color:var(--accent);letter-spacing:.08em;margin-bottom:.85rem;opacity:.6;}
+.s-title{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.s-desc{font-size:.86rem;color:var(--text-muted);line-height:1.75;font-weight:300;}
+
+/* TOOLS STRIP */
+.tools-strip{background:var(--bg2);padding:2.5rem 4rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.tools-label{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-bottom:1.75rem;}
+.tools-logos{display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;}
+.tool-item{display:flex;align-items:center;gap:.6rem;opacity:.6;transition:opacity .2s;}
+.tool-item:hover{opacity:1;}
+.tool-name{font-size:.82rem;font-weight:500;color:var(--text-mid);}
+.tool-logo{height:22px;width:auto;display:block;}
+.tool-icon-sq{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* PRICING */
+.pricing-sec{padding:5.5rem 4rem;background:var(--bg);}
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch; 
+}
+.price-card{background:var(--card);border-radius:18px;padding:2rem;border:1px solid var(--border);transition:transform .25s,border-color .25s;position:relative;}
+.price-card:hover{transform:translateY(-3px);border-color:rgba(43,74,107,.25);}
+.price-card.popular{background:var(--dark);border-color:transparent;}
+.price-card.popular .price-name,.price-card.popular .price-freq,.price-card.popular .price-desc{color:rgba(255,255,255,.45);}
+.price-card.popular .price-amount{color:#fff;}
+.price-card.popular .price-features li{color:rgba(255,255,255,.6);}
+.price-card.popular .price-features li::before{color:#7EACD4;}
+.price-card.popular .price-desc{border-color:rgba(255,255,255,.08);}
+.popular-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:#fff;padding:.25rem .85rem;border-radius:100px;white-space:nowrap;}
+.start-here{position:absolute;top:-10px;right:1.5rem;font-size:.68rem;font-weight:500;color:var(--accent);display:flex;align-items:center;gap:.25rem;}
+.start-here::before{content:"←";}
+.price-name{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.75rem;}
+.price-amount{font-family:"Fraunces",serif;font-size:2.8rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:.25rem;}
+.price-amount sup{font-size:1.2rem;font-weight:700;vertical-align:super;}
+.price-freq{font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;}
+.price-desc{font-size:.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem;}
+.price-features li{font-size:.84rem;color:var(--text-mid);display:flex;align-items:flex-start;gap:.5rem;line-height:1.5;}
+.price-features li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;}
+.btn-price{display:block;text-align:center;padding:.8rem;border-radius:6px;font-size:.88rem;font-weight:500;text-decoration:none;transition:background .2s;}
+.btn-price-dark{background:var(--dark);color:#fff;}
+.btn-price-dark:hover{background:var(--dark2);}
+.btn-price-light{background:var(--accent);color:#fff;}
+.btn-price-light:hover{background:var(--accent2);}
+.btn-price-outline{background:transparent;color:var(--accent);border:1px solid rgba(43,74,107,.3);}
+.btn-price-outline:hover{background:rgba(43,74,107,.05);}
+.price-note{text-align:center;font-size:.78rem;color:var(--text-muted);margin-top:1.5rem;}
+
+/* PROCESS */
+.process-sec{padding:5.5rem 4rem;background:var(--white);}
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
+.p-card{background:var(--card);border-radius:16px;padding:2rem;border:1px solid var(--border);transition:background .25s,border-color .25s;}
+.p-card:hover{background:var(--bg2);border-color:rgba(43,74,107,.2);}
+.p-n{font-family:"Fraunces",serif;font-size:3rem;font-weight:900;font-style:italic;color:var(--border);line-height:1;margin-bottom:.85rem;transition:color .25s;}
+.p-card:hover .p-n{color:rgba(43,74,107,.2);}
+.p-title{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.p-desc{font-size:.84rem;color:var(--text-muted);line-height:1.75;font-weight:300;}
+.p-out{margin-top:1rem;font-size:.72rem;font-weight:500;color:var(--accent);}
+
+/* TESTIMONIALS */
+.testi-sec{padding:5.5rem 4rem;background:var(--bg);}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem;}
+.testi-card{background:var(--card);border-radius:18px;padding:2.25rem;border:1px solid var(--border);}
+.testi-top{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;}
+.testi-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;}
+.testi-name{font-size:.9rem;font-weight:600;color:var(--text);}
+.testi-role{font-size:.75rem;color:var(--text-muted);}
+.testi-q{font-family:"Fraunces",serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text-mid);line-height:1.7;}
+.testi-q em{font-style:normal;color:var(--accent);font-weight:600;}
+
+/* CONTACT */
+.contact-sec{padding:5.5rem 4rem;background:var(--white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1100px;margin:0 auto;}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:.4rem;}
+.form-group label{font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.form-group input,.form-group textarea,.form-group select{font-family:"DM Sans",sans-serif;font-size:.92rem;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;transition:border-color .2s,box-shadow .2s;outline:none;width:100%;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(43,74,107,.08);}
+.form-group textarea{resize:vertical;min-height:120px;}
+.btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;background:var(--dark);color:#fff;font-size:.92rem;font-weight:500;padding:.9rem 2rem;border-radius:6px;border:none;cursor:pointer;transition:background .2s;font-family:"DM Sans",sans-serif;width:100%;}
+.btn-submit:hover{background:var(--dark2);}
+.contact-info h3{font-family:"Fraunces",serif;font-size:1.8rem;font-weight:700;color:var(--text);margin-bottom:1rem;letter-spacing:-.02em;line-height:1.2;}
+.contact-info h3 em{font-style:italic;color:var(--accent);}
+.contact-info p{font-size:.95rem;color:var(--text-mid);line-height:1.8;font-weight:300;margin-bottom:1.5rem;}
+.contact-detail{display:flex;align-items:center;gap:.75rem;font-size:.88rem;color:var(--text-mid);margin-bottom:.65rem;}
+.contact-detail a{color:var(--accent);text-decoration:none;}
+.contact-detail a:hover{text-decoration:underline;}
+.contact-alt{margin-top:1.75rem;padding-top:1.75rem;border-top:1px solid var(--border);}
+.contact-alt p{font-size:.82rem;color:var(--text-muted);margin-bottom:.75rem;}
+
+/* CTA */
+.cta-sec{background:var(--dark);padding:6rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.cta-sec::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(43,74,107,.25) 0%,transparent 70%);pointer-events:none;}
+.cta-eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.85rem;position:relative;z-index:1;}
+.cta-h{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,4rem);font-weight:700;font-style:italic;color:#fff;line-height:1.05;max-width:620px;margin:0 auto 1rem;position:relative;z-index:1;letter-spacing:-.02em;}
+.cta-sub{font-size:.97rem;color:rgba(255,255,255,.4);max-width:400px;margin:0 auto 2.25rem;line-height:1.75;font-weight:300;position:relative;z-index:1;}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;z-index:1;}
+.btn-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--dark);font-size:.9rem;font-weight:500;padding:.8rem 1.8rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-cta:hover{background:var(--card);gap:.65rem;}
+.btn-cta-ghost{font-size:.9rem;color:rgba(255,255,255,.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:color .2s;}
+.btn-cta-ghost:hover{color:rgba(255,255,255,.75);}
+
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.footer-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:2rem;}
+.footer-logo img{height:22px;width:auto;opacity:.45;}
+.footer-links{display:flex;gap:2rem;list-style:none;}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,.25);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .15s;}
+.footer-links a:hover{color:rgba(255,255,255,.6);}
+.footer-social{display:flex;justify-content:flex-end;gap:1rem;}
+.footer-social a{color:rgba(255,255,255,.25);text-decoration:none;font-size:.8rem;transition:color .15s;display:flex;align-items:center;gap:.3rem;}
+.footer-social a:hover{color:rgba(255,255,255,.6);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.04);}
+.footer-copy{font-size:.7rem;color:rgba(255,255,255,.18);}
+.footer-loc{font-size:.7rem;color:rgba(255,255,255,.18);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;height:auto;min-height:100vh;overflow:hidden;}
+  .hero-left{padding:calc(56px + 1.5rem) 1.5rem 0;}
+  .hero-card{max-width:100%;}
+  .hero-right{height:100vw;min-height:420px;position:relative;margin-top:-60px;margin-bottom:-130px;}
+  .hero-photo img{height:100%;width:100%;object-fit:cover;object-position:center top;}
+  .right-grid,.about-sec,.contact-grid,.case-grid,.testi-grid,.case-images{grid-template-columns:1fr;}
+  .about-img{min-height:55vw;}
+  .pricing-grid,.s-grid,.p-grid{grid-template-columns:1fr;}
+  .s-card.featured{grid-column:span 1;}
+  .form-row{grid-template-columns:1fr;}
+  .stat-bar{grid-template-columns:1fr;padding:2rem 1.5rem;}
+  .stat-bar-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:1rem 0;}
+  .stat-bar-item:last-child{border-bottom:none;}
+  .services-sec,.process-sec,.about-copy,.right-sec,.case-sec,.pricing-sec,.testi-sec,.contact-sec,.cta-sec,.tools-strip{padding:3rem 1.5rem;}
+  footer{padding:2rem 1.5rem;}
+  .footer-top{grid-template-columns:1fr;gap:1.5rem;text-align:center;}
+  .footer-links{justify-content:center;}
+  .footer-social{justify-content:center;}
+  .nav-links{display:none;}
+  nav{padding:0 1.25rem;}
+  .photo-chip{bottom:2.5rem;left:1.5rem;right:auto;transform:none;}
+  .scroll-hint{display:none;}
+  .tools-logos{gap:1.5rem;}
+  .start-here{display:none;}
+}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+@keyframes up{to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{to{opacity:1;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><img src="logo.png" alt="mg">
+    <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-li"><a href="https://www.linkedin.com/in/macguttenberg/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a></span>
+    <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-card">
+      <div class="hero-eyebrow">For Small Businesses</div>
+      <h1>Your business is <em>good.</em> Your systems aren't keeping up.</h1>
+      <p class="hero-value">I audit your business, fix what's broken, and build the systems that let you actually grow.</p>
+      <p class="hero-sub">You've built something real. Now it needs infrastructure to match — so your operations, your sales, and <strong>your sanity</strong> can all keep up.</p>
+      <div class="hero-btns">
+        <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-dark">Book a free call →</a>
+        <a href="#about" class="btn-soft">My story</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo">
+      <img src="mac-photo.png" alt="Mac Guttenberg" loading="eager">
+    </div>
+    <div class="photo-chip">
+      <div class="chip-val">50%</div>
+      <div class="chip-lbl">Admin time saved<br>MG Tax Inc.</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" color="var(--text-muted)"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-bar-item reveal">
+    <div class="stat-bar-n"><em>50</em>%</div>
+    <div class="stat-bar-l">Reduction in admin time after digital transformation</div>
+  </div>
+  <div class="stat-bar-item reveal d1">
+    <div class="stat-bar-n"><em>100</em>%</div>
+    <div class="stat-bar-l">Paper to fully digital in under 30 days</div>
+  </div>
+  <div class="stat-bar-item reveal d2">
+    <div class="stat-bar-n"><em>$500K<sup style="font-size:.45em">+</sup></em></div>
+    <div class="stat-bar-l">Annual revenue — digitized and running smoothly</div>
+  </div>
+</div>
+
+<!-- IS THIS RIGHT -->
+<section class="right-sec" id="about">
+  <div class="right-grid">
+    <div class="reveal">
+      <div class="sec-tag">Is This Right For You</div>
+      <h2 class="sec-h2">Built for businesses that are <em>ready to grow.</em></h2>
+      <ul class="right-list">
+        <li><strong>You run a service-based business</strong> — tax, legal, coaching, e-commerce, creative services, or anything in between.</li>
+        <li><strong>You're doing real revenue</strong> but your systems are the bottleneck holding you back from doing more.</li>
+        <li><strong>You know something needs to change</strong> but don't know where to start or what to build first.</li>
+        <li><strong>You want someone to actually build it</strong> — not just hand you a strategy deck and wish you luck.</li>
+        <li><strong>You're ready to move fast.</strong> MG Tax went fully digital in under 30 days.</li>
+      </ul>
+      <div class="not-right">
+        <p><strong>Not the right fit?</strong> If you're pre-revenue, not ready to invest in systems, or looking for a full-time hire — I'm probably not your person yet. That's okay.</p>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="right-cta-card">
+        <h3>Let's figure out what you actually need.</h3>
+        <p>Book a free 30-minute call. I'll listen to what's going on in your business and come back with a clear picture of what's possible — no pressure, no pitch.</p>
+        <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-accent">Book a free call →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-sec">
+  <div class="about-img reveal">
+    <img src="mac-working.jpg" alt="Mac Guttenberg working with a client" loading="lazy">
+  </div>
+  <div class="about-copy reveal d2">
+    <div class="sec-tag">About Mac</div>
+    <h2 class="sec-h2">I got into this by fixing what <em>wasn't working.</em></h2>
+    <p class="about-p">My first project was a tax practice doing $500K a year — running entirely on paper, cash, and good intentions. No systems, no digital presence, no way to scale. Just decades of doing things the hard way.</p>
+    <p class="about-p">I rebuilt everything from scratch. Digital intake, online payments, a client portal, automated workflows. <strong>The operation ran better within weeks than it had in years.</strong></p>
+    <p class="about-p">Every small business has this gap. The product is real, the work ethic is there, but the infrastructure is always the last thing that gets built. I'm based in New York City and work with businesses remotely across the country. I don't just consult — <strong>I get in, understand your situation, and build something that works.</strong></p>
+    <div class="about-pills">
+      <span class="pill">NYC-Based</span>
+      <span class="pill">Remote-Friendly</span>
+      <span class="pill">Fast Turnaround</span>
+      <span class="pill">Hands-On Builder</span>
+    </div>
+    <a href="https://www.linkedin.com/in/macguttenberg/" target="_blank" class="link-arrow">Connect on LinkedIn</a>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case-sec">
+  <div class="case-inner">
+    <div class="reveal">
+      <div class="case-tag">Case Study</div>
+      <h2 class="case-h">MG Tax Inc. — <em>From paper to fully digital</em> in under 30 days.</h2>
+    </div>
+    <div class="case-images reveal d1">
+      <div class="case-img-wrap">
+        <img src="before.jpg" alt="Before website layout">
+        <span class="case-img-label">Before</span>
+      </div>
+      <div class="case-img-wrap">
+        <img src="after.jpg" alt="After website layout">
+        <span class="case-img-label">After</span>
+      </div>
+    </div>
+    <div class="case-grid reveal d2">
+      <div class="case-story">
+        <p><strong>The situation:</strong> Mark had been running his tax practice since 1994. Every client interaction was paper-based. Payments were cash only. There was no way to work remotely, share documents, or scale without adding more physical space and more people.</p>
+        <p><strong>What I built:</strong> A complete digital infrastructure — cloud-based document management, digital intake forms with e-signatures, online payment processing, a client portal for document uploads and status tracking, and video conferencing for remote meetings.</p>
+        <p><strong>What happened:</strong> The practice went from fully paper-based to 100% digital in weeks. Admin time dropped by 50%. Clients could now onboard, pay, and communicate without ever coming into the office. The business didn't just survive — it grew.</p>
+      </div>
+      <div class="case-results">
+        <div class="result-item"><div class="result-n"><em>100</em>%</div><div class="result-l">Digital operations — paper to platform in under 30 days</div></div>
+        <div class="result-item"><div class="result-n"><em>50</em>%</div><div class="result-l">Reduction in admin time after full transformation</div></div>
+        <div class="result-item"><div class="result-n"><em>$500K<sup style="font-size:.45em">+</sup></em></div><div class="result-l">Annual revenue — fully digitized and running smoothly</div></div>
+        <div class="result-item"><div class="result-n"><em>30</em> days</div><div class="result-l">From kickoff to fully operational digital system</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-sec" id="services">
+  <div class="reveal">
+    <div class="sec-tag">What I Do</div>
+    <h2 class="sec-h2">I build the pieces that are <em>missing.</em></h2>
+  </div>
+  <div class="s-grid reveal d1">
+    <div class="s-card featured">
+      <div class="s-featured-left">
+        <div class="s-badge">Most Requested</div>
+        <div class="s-num">01</div>
+        <div class="s-title">Digital Infrastructure</div>
+      </div>
+      <div class="s-featured-right">
+        <p class="s-desc">The foundation everything else runs on. Websites, client portals, booking systems, document management, and payment processing — built to feel like you and actually convert. This is where most clients start.</p>
+      </div>
+    </div>
+    <div class="s-card"><div class="s-num">02</div><div class="s-title">Sales Funnels</div><p class="s-desc">From your social media all the way to purchase. I connect the dots so your audience stops scrolling and starts buying.</p></div>
+    <div class="s-card"><div class="s-num">03</div><div class="s-title">Automation</div><p class="s-desc">Emails, workflows, and follow-ups that run in the background. Set up once, working forever.</p></div>
+    <div class="s-card"><div class="s-num">04</div><div class="s-title">Brand Consistency</div><p class="s-desc">One cohesive presence everywhere — so wherever someone finds you, they get the same great impression.</p></div>
+  </div>
+</section>
+
+<!-- TOOLS STRIP -->
+<div class="tools-strip">
+  <div class="tools-label">Built with tools you already know</div>
+  <div class="tools-logos">
+    <!-- Calendly -->
+    <div class="tool-item">
+      <svg class="tool-logo" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="15" r="1.5" fill="currentColor"/></svg>
+      <span class="tool-name">Calendly</span>
+    </div>
+    <!-- Stripe -->
+    <div class="tool-item">
+      <svg class="tool-logo" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M7 15h2M13 15h4"/></svg>
+      <span class="tool-name">Stripe</span>
+    </div>
+    <!-- Squarespace -->
+    <div class="tool-item">
+      <svg class="tool-logo" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4-4-4 4-4z"/><path d="M11 9l4 4-4 4-4-4 4-4z"/><path d="M5 15l4 4-4 4-4-4 4-4z"/><path d="M17 15l4 4-4 4-4-4 4-4z"/></svg>
+      <span class="tool-name">Squarespace</span>
+    </div>
+    <!-- Google Workspace -->
+    <div class="tool-item">
+      <svg class="tool-logo" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <span class="tool-name">Google Workspace</span>
+    </div>
+    <!-- JotForm -->
+    <div class="tool-item">
+      <svg class="tool-logo" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>
+      <span class="tool-name">JotForm</span>
+    </div>
+    <!-- PayPal -->
+    <div class="tool-item">
+      <svg class="tool-logo" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11h8a4 4 0 000-8H6L4 21h4l1-6z"/><path d="M11 11l-1 6h3a4 4 0 000-8"/></svg>
+      <span class="tool-name">PayPal</span>
+    </div>
+    <!-- Onehub -->
+    <div class="tool-item">
+      <img src="onehub.png" class="tool-logo" style="height:22px;width:auto;">
+      <span class="tool-name">Onehub</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="pricing-sec" id="pricing">
+  <div class="reveal">
+    <div class="sec-tag">Pricing</div>
+    <h2 class="sec-h2">Simple, transparent <em>pricing.</em></h2>
+  </div>
+  <div class="pricing-grid reveal d1">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-amount"><sup>$</sup>300</div>
+      <div class="price-freq">one-time</div>
+      <div class="price-desc">Fix the most critical leaks. Perfect for businesses that need quick wins before committing to a full build.</div>
+      <ul class="price-features">
+        <li>Full digital audit</li>
+        <li>Priority issue identification</li>
+        <li>Fix 2–3 critical gaps</li>
+        <li>1–2 week turnaround</li>
+        <li>Action plan for next steps</li>
+      </ul>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-price btn-price-outline">Book a call</a>
+    </div>
+    <div class="price-card popular">
+      <div class="popular-badge">Most Popular</div>
+      <div class="price-name">Foundation</div>
+      <div class="price-amount"><sup>$</sup>800</div>
+      <div class="price-freq">one-time</div>
+      <div class="price-desc">Build the full digital foundation your business needs.</div>
+      <ul class="price-features">
+        <li>Everything in Starter</li>
+        <li>Website or storefront build</li>
+        <li>Client portal or booking system</li>
+        <li>Email automation setup</li>
+        <li>Payment processing</li>
+        <li>3–5 week turnaround</li>
+      </ul>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-price btn-price-light">Book a call</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Growth</div>
+      <div class="price-amount"><sup>$</sup>300</div>
+      <div class="price-freq">per month</div>
+      <div class="price-desc">Ongoing support, optimization, and growth after launch.</div>
+      <ul class="price-features">
+        <li>Monthly strategy session</li>
+        <li>Ongoing optimization</li>
+        <li>New features & integrations</li>
+        <li>Priority support</li>
+        <li>Performance reporting</li>
+      </ul>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-price btn-price-dark">Book a call</a>
+    </div>
+  </div>
+  <p class="price-note reveal">All projects start with a free 30-minute discovery call. Custom scopes available for larger projects.</p>
+</section>
+
+<!-- PROCESS -->
+<section class="process-sec" id="process">
+  <div class="reveal">
+    <div class="sec-tag">How It Works</div>
+    <h2 class="sec-h2">From chaos to <em>clarity</em> in three steps.</h2>
+  </div>
+  <div class="p-grid reveal d1">
+    <div class="p-card"><div class="p-n">01</div><div class="p-title">Audit & Strategy</div><p class="p-desc">We start with a deep dive into what's working, what's broken, and where you're losing time and money. I map out exactly what needs to change and in what order.</p><div class="p-out">↗ A clear roadmap</div></div>
+    <div class="p-card"><div class="p-n">02</div><div class="p-title">Design & Build</div><p class="p-desc">I get into your platforms and build. New systems, automations, funnels — whatever your audit revealed. You stay focused on your business while I handle the build.</p><div class="p-out">↗ A fully functional operation</div></div>
+    <div class="p-card"><div class="p-n">03</div><div class="p-title">Launch & Optimize</div><p class="p-desc">We launch, make sure everything sticks, and optimize based on what the first month teaches us. You walk away knowing exactly how to run it.</p><div class="p-out">↗ More time, better results</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec">
+  <div class="reveal">
+    <div class="sec-tag">What Clients Say</div>
+    <h2 class="sec-h2">Real results from <em>real businesses.</em></h2>
+  </div>
+  <div class="testi-grid reveal d1">
+    <div class="testi-card">
+      <div class="testi-top">
+        <img src="marktest.jpg" class="testi-avatar" alt="Mark Guttenberg">
+        <div><div class="testi-name">Mark Guttenberg</div><div class="testi-role">Owner, MG Tax Inc. — founded 1994</div></div>
+      </div>
+      <p class="testi-q">"I thought going digital would be overwhelming, but Mac made it simple. He saved my business and helped me create a <em>better, more efficient way of working.</em> My clients love it, and so do I."</p>
+    </div>
+    <div class="testi-card">
+      <div class="testi-top">
+        <img src="ashtest.jpg" class="testi-avatar" alt="Ashley DeMaria">
+        <div><div class="testi-name">Ashley DeMaria</div><div class="testi-role">Owner, Print-On-Demand Etsy Shop</div></div>
+      </div>
+      <p class="testi-q">"Mac helped me turn my dream of a successful Etsy shop into reality. From brand identity to listing optimization, <em>my shop has grown beyond what I imagined.</em>"</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="sec-tag">Get In Touch</div>
+      <div class="contact-info">
+        <h3>Let's talk about your <em>business.</em></h3>
+        <p>Fill out the form and I'll get back to you within 24 hours. Or book a free 30-minute call directly on my calendar.</p>
+        <div class="contact-detail">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <a href="mailto:Mac@Macguttenberg.com">Mac@Macguttenberg.com</a>
+        </div>
+        <div class="contact-detail">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>New York City — available remotely nationwide</span>
+        </div>
+        <div class="contact-detail">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/in/macguttenberg/" target="_blank">linkedin.com/in/macguttenberg</a>
+        </div>
+        <div class="contact-alt">
+          <p>Prefer to talk now?</p>
+          <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-accent">Book a free 30-min call →</a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" name="fname" placeholder="Elle" required></div>
+          <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" name="lname" placeholder="Ess" required></div>
+        </div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="Elle@littlebookco.com" required></div>
+        <div class="form-group"><label for="biz">Business Name</label><input type="text" id="biz" name="biz" placeholder="Little Book Co."></div>
+        <div class="form-group">
+          <label for="type">What do you need help with?</label>
+          <select id="type" name="type">
+            <option value="">Select one...</option>
+            <option>Digital Infrastructure (website, portal, booking)</option>
+            <option>Sales Funnels & E-Commerce</option>
+            <option>Automation & Workflows</option>
+            <option>Brand Consistency</option>
+            <option>Not sure — I need an audit</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="msg">Tell me about your business</label><textarea id="msg" name="msg" placeholder="What's going on, what's not working, what you're hoping to achieve..." required></textarea></div>
+        <button type="submit" class="btn-submit">Send message →</button>
+        <div id="form-success" style="display:none;text-align:center;padding:1rem;background:rgba(43,74,107,.08);border-radius:8px;color:var(--accent);font-size:.9rem;font-weight:500;">✓ Message sent! I'll get back to you within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="reveal">
+    <div class="cta-eyebrow">Ready when you are</div>
+    <h2 class="cta-h">Let's build something that actually works.</h2>
+    <p class="cta-sub">Free 30-minute call. No pressure, no pitch. Just a clear picture of what's possible for your business.</p>
+    <div class="cta-btns">
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-cta">Book a free call →</a>
+      <a href="mailto:Mac@Macguttenberg.com" class="btn-cta-ghost">Or send an email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo"><img src="logo.png">
+      <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/macguttenberg/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:Mac@Macguttenberg.com">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Guttenberg. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on");}),{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const data=new FormData(form);
+  const subject=encodeURIComponent("New inquiry from macguttenberg.com");
+  const body=encodeURIComponent("Name: "+data.get("fname")+" "+data.get("lname")+"\nEmail: "+data.get("email")+"\nBusiness: "+data.get("biz")+"\nNeed: "+data.get("type")+"\n\nMessage:\n"+data.get("msg"));
+  window.location.href="mailto:Mac@Macguttenberg.com?subject="+subject+"&body="+body;
+  form.style.display="none";
+  document.getElementById("form-success").style.display="block";
+}
+</script>
+</body>
+</html>
