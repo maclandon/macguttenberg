@@ -48,7 +48,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .hero-bg{position:absolute;inset:0;z-index:0;background:url('mac-photo.png') right center/cover no-repeat;}
 .hero-bg::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23E8E4DC'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23D0CAC0' opacity='0.35'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23D0CAC0' opacity='0.35'/%3E%3C/svg%3E");background-size:4px 4px;}
 .hero-left{position:relative;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:56px 3rem 5rem 4rem;}
-.hero-card{background:var(--card);border-radius:24px;padding:3rem 3rem 2.75rem;border:1px solid var(--border);box-shadow:0 2px 40px rgba(28,26,22,.07);max-width:520px;width:100%;}
+.hero-card{background:var(--card);border-radius:24px;padding:3rem 3rem 2.75rem;border:1px solid var(--border);box-shadow:0 2px 40px rgba(28,26,22,.07);max-width:640px;width:100%;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;opacity:0;transform:translateY(10px);animation:up .5s ease .1s forwards;}
 .hero-eyebrow::before{content:"";width:16px;height:1.5px;background:var(--accent);}
 h1{font-family:"Fraunces",serif;font-size:clamp(2.4rem,4vw,4rem);font-weight:900;line-height:.98;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem;opacity:0;transform:translateY(20px);animation:up .7s ease .2s forwards;}
@@ -62,7 +62,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 .btn-soft{font-size:.88rem;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .2s;white-space:nowrap;}
 .btn-soft:hover{color:var(--text);}
 .hero-right{position:relative;z-index:4;overflow:visible;opacity:0;animation:fadeIn .9s ease .25s forwards;}
-.hero-photo{position:absolute;bottom:0;right:0;left:0;display:flex;align-items:flex-end;justify-content:center;height:100%;}
+.hero-photo{position:absolute;bottom:0;right:0;left:0;display:flex;align-items:flex-end;justify-content:center;height:98%;}
 .hero-photo img{height:95%;width:auto;object-fit:contain;object-position:bottom;filter:drop-shadow(-8px 0 40px rgba(28,26,22,.12));}
 .photo-chip{position:absolute;bottom:2.5rem;left:1rem;background:rgba(245,242,236,.96);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:14px;padding:.85rem 1.1rem;box-shadow:0 4px 20px rgba(28,26,22,.08);}
 .chip-val{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.15rem;}
@@ -312,7 +312,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 </head>
 <body>
 
-<div id="preloader"><span class="preloader-logo">mg</span></div>
+<div id="preloader"><img src="logo.png" class="preloader-logo" style="height:62px;width:auto;opacity:.9;"></div>
 
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="mg">
@@ -682,7 +682,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
 <footer>
   <div class="footer-top">
-    <div class="footer-logo"><img src="logo.png">
+    <div class="footer-logo"><img src="logo.png"></div>
       <ul class="footer-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
