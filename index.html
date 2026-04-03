@@ -302,9 +302,17 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
 @keyframes up{to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{to{opacity:1;}}
+
+/* PRELOADER */
+#preloader{position:fixed;inset:0;z-index:9999;background:var(--dark);display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease;}
+#preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.preloader-logo{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:900;color:var(--bg);letter-spacing:-.04em;opacity:0;transform:scale(.9);animation:preloaderIn .5s ease .15s forwards;}
+@keyframes preloaderIn{to{opacity:1;transform:scale(1);}}
 </style>
 </head>
 <body>
+
+<div id="preloader"><span class="preloader-logo">mg</span></div>
 
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="mg">
@@ -616,7 +624,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
         <p>Fill out the form and I'll get back to you within 24 hours. Or book a free 30-minute call directly on my calendar.</p>
         <div class="contact-detail">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-          <a href="mailto:Mac@Macguttenberg.com">Mac@Macguttenberg.com</a>
+          <a href="/cdn-cgi/l/email-protection#8cc1edefccc1edefebf9f8f8e9e2eee9feeba2efe3e1"><span class="__cf_email__" data-cfemail="4a072b290a072b292d3f3e3e2f24282f382d64292527">[email&#160;protected]</span></a>
         </div>
         <div class="contact-detail">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -667,7 +675,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <p class="cta-sub">Free 30-minute call. No pressure, no pitch. Just a clear picture of what's possible for your business.</p>
     <div class="cta-btns">
       <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-cta">Book a free call →</a>
-      <a href="mailto:Mac@Macguttenberg.com" class="btn-cta-ghost">Or send an email</a>
+      <a href="/cdn-cgi/l/email-protection#551834361518343632202121303b373027327b363a38" class="btn-cta-ghost">Or send an email</a>
     </div>
   </div>
 </section>
@@ -687,7 +695,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
-      <a href="mailto:Mac@Macguttenberg.com">
+      <a href="/cdn-cgi/l/email-protection#d994b8ba9994b8babeacadadbcb7bbbcabbef7bab6b4">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
         Email
       </a>
@@ -699,7 +707,23 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Preloader
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('hidden');
+  }, 900);
+});
+
+// Parallax on hero background
+const heroBg = document.querySelector('.hero-bg');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (heroBg && scrollY < window.innerHeight) {
+    heroBg.style.transform = `translateY(${scrollY * 0.2}px)`;
+  }
+}, {passive: true});
+
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on");}),{threshold:.08});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 function handleSubmit(e){
@@ -707,11 +731,4 @@ function handleSubmit(e){
   const form=e.target;
   const data=new FormData(form);
   const subject=encodeURIComponent("New inquiry from macguttenberg.com");
-  const body=encodeURIComponent("Name: "+data.get("fname")+" "+data.get("lname")+"\nEmail: "+data.get("email")+"\nBusiness: "+data.get("biz")+"\nNeed: "+data.get("type")+"\n\nMessage:\n"+data.get("msg"));
-  window.location.href="mailto:Mac@Macguttenberg.com?subject="+subject+"&body="+body;
-  form.style.display="none";
-  document.getElementById("form-success").style.display="block";
-}
-</script>
-</body>
-</html>
+  const body=encodeURIComponent("Name: "+data.get("fname")+" "+data.get("lname
