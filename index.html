@@ -710,6 +710,33 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Preloader — simple timer, works everywhere
 setTimeout(() => {
+// Counter animation
+const counters = document.querySelectorAll('.stat-bar-n');
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const text = el.innerText;
+      const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+      const prefix = text.includes('$') ? '$' : '';
+      const suffix = text.includes('%') ? '%' : '';
+      let start = 0;
+      const duration = 1200;
+      const step = num / (duration / 16);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= num) {
+          el.innerHTML = `<em>${prefix}${text.includes('K') ? '500K<sup style="font-size:.45em">+</sup>' : num}</em>${suffix}`;
+          clearInterval(timer);
+        } else {
+          el.innerHTML = `<em>${prefix}${Math.floor(start)}${suffix}</em>`;
+        }
+      }, 16);
+      countObs.unobserve(el);
+    }
+  });
+}, {threshold: 0.5});
+counters.forEach(el => countObs.observe(el));
   document.getElementById('preloader').classList.add('hidden');
 }, 1000);
 
