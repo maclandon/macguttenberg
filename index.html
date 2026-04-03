@@ -713,15 +713,6 @@ setTimeout(() => {
   document.getElementById('preloader').classList.add('hidden');
 }, 1000);
 
-// Parallax on hero background
-const heroBg = document.querySelector('.hero-bg');
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  if (heroBg && scrollY < window.innerHeight) {
-    heroBg.style.transform = `translateY(${scrollY * 0.2}px)`;
-  }
-}, {passive: true});
-
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on");}),{threshold:.08});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
 function handleSubmit(e){
