@@ -729,4 +729,11 @@ function handleSubmit(e){
   const form=e.target;
   const data=new FormData(form);
   const subject=encodeURIComponent("New inquiry from macguttenberg.com");
-  const body=encodeURIComponent("Name: "+data.get("fname")+" "+data.get("lname
+  const body=encodeURIComponent("Name: "+data.get("fname")+" "+data.get("lname")+"\nEmail: "+data.get("email")+"\nBusiness: "+data.get("biz")+"\nNeed: "+data.get("type")+"\n\nMessage:\n"+data.get("msg"));
+  window.location.href="mailto:Mac@Macguttenberg.com?subject="+subject+"&body="+body;
+  form.style.display="none";
+  document.getElementById("form-success").style.display="block";
+}
+</script>
+</body>
+</html>
