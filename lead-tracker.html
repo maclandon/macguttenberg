@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Tracker — Mac Guttenberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+  --green:#2E7D5E;
+  --red:#C0392B;
+  --yellow:#B8860B;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;}
+
+/* HEADER */
+.header{background:var(--dark);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);}
+.header-left{display:flex;align-items:center;gap:1rem;}
+.logo{font-family:"Fraunces",serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.4);}
+.header h1{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;}
+.btn-add{background:var(--accent);color:#fff;border:none;padding:.55rem 1.1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:.35rem;}
+.btn-add:hover{background:var(--accent2);}
+
+/* STATS BAR */
+.stats-bar{background:var(--dark2);padding:1rem 2rem;display:flex;gap:2rem;border-bottom:1px solid rgba(255,255,255,.04);overflow-x:auto;}
+.stat{text-align:center;flex-shrink:0;}
+.stat-n{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:900;color:#fff;line-height:1;}
+.stat-n em{font-style:normal;color:#7EACD4;}
+.stat-l{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.15rem;white-space:nowrap;}
+
+/* FILTERS */
+.filters{padding:1rem 2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid var(--border);background:var(--card);overflow-x:auto;}
+.filter-btn{font-size:.75rem;font-weight:500;padding:.4rem .9rem;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.filter-btn:hover{border-color:var(--accent);color:var(--accent);}
+.filter-btn.active{background:var(--dark);border-color:var(--dark);color:#fff;}
+
+/* TABLE */
+.table-wrap{padding:1.5rem 2rem;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+thead th{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);text-align:left;padding:.65rem 1rem;border-bottom:1px solid var(--border);}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s;cursor:pointer;}
+tbody tr:hover{background:var(--card);}
+tbody tr:last-child{border-bottom:none;}
+td{padding:.85rem 1rem;font-size:.88rem;color:var(--text-mid);vertical-align:middle;}
+td.name{font-weight:500;color:var(--text);}
+td.email a{color:var(--accent);text-decoration:none;}
+td.email a:hover{text-decoration:underline;}
+
+/* STAGE BADGE */
+.stage{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:.3rem .75rem;border-radius:100px;}
+.stage-new{background:rgba(127,160,195,.12);color:var(--accent);}
+.stage-contacted{background:rgba(184,134,11,.1);color:var(--yellow);}
+.stage-call{background:rgba(127,160,195,.18);color:var(--accent2);}
+.stage-proposal{background:rgba(92,61,46,.1);color:var(--text-mid);}
+.stage-won{background:rgba(46,125,94,.12);color:var(--green);}
+.stage-lost{background:rgba(192,57,43,.1);color:var(--red);}
+
+/* SOURCE BADGE */
+.source{font-size:.72rem;color:var(--text-muted);background:var(--bg);border:1px solid var(--border);padding:.2rem .6rem;border-radius:100px;}
+
+/* SCORE */
+.score-pill{display:inline-block;font-size:.75rem;font-weight:600;padding:.25rem .6rem;border-radius:100px;}
+.score-high{background:rgba(46,125,94,.12);color:var(--green);}
+.score-mid{background:rgba(184,134,11,.1);color:var(--yellow);}
+.score-low{background:rgba(192,57,43,.1);color:var(--red);}
+
+/* EMPTY */
+.empty{text-align:center;padding:4rem 2rem;color:var(--text-muted);}
+.empty p{font-size:.9rem;line-height:1.7;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(28,26,22,.5);z-index:100;display:flex;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px);animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;animation:slideUp .25s ease;}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.modal h2{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
+.m-field{display:flex;flex-direction:column;gap:.35rem;}
+.m-field.full{grid-column:1/-1;}
+.m-field label{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);}
+.m-field input,.m-field select,.m-field textarea{font-family:"DM Sans",sans-serif;font-size:.88rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;outline:none;transition:border-color .2s;}
+.m-field input:focus,.m-field select:focus,.m-field textarea:focus{border-color:var(--accent);}
+.m-field textarea{resize:vertical;min-height:72px;line-height:1.6;}
+.modal-btns{display:flex;gap:.75rem;margin-top:1.5rem;}
+.btn-save{flex:1;background:var(--dark);color:#fff;border:none;padding:12px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:background .2s;}
+.btn-save:hover{background:var(--dark2);}
+.btn-cancel{background:transparent;border:1.5px solid var(--border);color:var(--text-muted);padding:12px 18px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;cursor:pointer;transition:all .2s;}
+.btn-cancel:hover{border-color:var(--text-muted);color:var(--text);}
+.btn-delete{background:transparent;border:1.5px solid rgba(192,57,43,.3);color:var(--red);padding:12px 18px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;cursor:pointer;transition:all .2s;}
+.btn-delete:hover{background:rgba(192,57,43,.05);}
+
+@media(max-width:700px){
+  .header{padding:1rem 1.25rem;}
+  .stats-bar{padding:.75rem 1.25rem;}
+  .filters{padding:.75rem 1.25rem;}
+  .table-wrap{padding:1rem 1.25rem;}
+  .modal-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo">MG</div>
+    <h1>Lead Tracker</h1>
+  </div>
+  <button class="btn-add" onclick="openModal()">+ Add Lead</button>
+</div>
+
+<div class="stats-bar" id="stats-bar"></div>
+
+<div class="filters" id="filters"></div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Business</th>
+        <th>Email</th>
+        <th>Source</th>
+        <th>Score</th>
+        <th>Stage</th>
+        <th>Date Added</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody id="leads-table"></tbody>
+  </table>
+  <div class="empty" id="empty-state" style="display:none;">
+    <p>No leads yet.<br>Hit <strong>+ Add Lead</strong> to add your first one.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal" style="display:none;">
+  <div class="modal">
+    <h2 id="modal-title">Add Lead</h2>
+    <div class="modal-grid">
+      <div class="m-field"><label>First Name</label><input id="m-fname" type="text" placeholder="Sarah"></div>
+      <div class="m-field"><label>Last Name</label><input id="m-lname" type="text" placeholder="Johnson"></div>
+      <div class="m-field full"><label>Business Name</label><input id="m-biz" type="text" placeholder="Johnson Legal Group"></div>
+      <div class="m-field full"><label>Email</label><input id="m-email" type="email" placeholder="sarah@johnsonlegal.com"></div>
+      <div class="m-field">
+        <label>Source</label>
+        <select id="m-source">
+          <option value="Assessment">Assessment</option>
+          <option value="Onboarding Form">Onboarding Form</option>
+          <option value="ROI Calculator">ROI Calculator</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Referral">Referral</option>
+          <option value="Cold Outreach">Cold Outreach</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="m-field">
+        <label>Assessment Score</label>
+        <input id="m-score" type="text" placeholder="e.g. 12/30 or leave blank">
+      </div>
+      <div class="m-field full">
+        <label>Stage</label>
+        <select id="m-stage">
+          <option value="New Lead">New Lead</option>
+          <option value="Contacted">Contacted</option>
+          <option value="Call Booked">Call Booked</option>
+          <option value="Proposal Sent">Proposal Sent</option>
+          <option value="Won">Won</option>
+          <option value="Lost">Lost</option>
+        </select>
+      </div>
+      <div class="m-field full"><label>Notes</label><textarea id="m-notes" placeholder="What they need, what came up on the call, next steps..."></textarea></div>
+    </div>
+    <div class="modal-btns" id="modal-btns"></div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'mg_leads_v1';
+const STAGES = ['All','New Lead','Contacted','Call Booked','Proposal Sent','Won','Lost'];
+const STAGE_CLASS = {
+  'New Lead':'stage-new',
+  'Contacted':'stage-contacted',
+  'Call Booked':'stage-call',
+  'Proposal Sent':'stage-proposal',
+  'Won':'stage-won',
+  'Lost':'stage-lost'
+};
+
+let leads = [];
+let filter = 'All';
+let editingId = null;
+
+function load() {
+  try { leads = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { leads = []; }
+}
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+}
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
+
+function fmt_date(ts) {
+  return new Date(ts).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+}
+
+function scoreClass(score) {
+  if (!score) return '';
+  const match = score.match(/(\d+)/);
+  if (!match) return '';
+  const n = parseInt(match[1]);
+  if (n >= 20) return 'score-high';
+  if (n >= 10) return 'score-mid';
+  return 'score-low';
+}
+
+function renderStats() {
+  const total = leads.length;
+  const won = leads.filter(l => l.stage === 'Won').length;
+  const active = leads.filter(l => !['Won','Lost'].includes(l.stage)).length;
+  const calls = leads.filter(l => l.stage === 'Call Booked').length;
+
+  document.getElementById('stats-bar').innerHTML = `
+    <div class="stat"><div class="stat-n"><em>${total}</em></div><div class="stat-l">Total Leads</div></div>
+    <div class="stat"><div class="stat-n"><em>${active}</em></div><div class="stat-l">Active</div></div>
+    <div class="stat"><div class="stat-n"><em>${calls}</em></div><div class="stat-l">Calls Booked</div></div>
+    <div class="stat"><div class="stat-n"><em>${won}</em></div><div class="stat-l">Won</div></div>
+  `;
+}
+
+function renderFilters() {
+  document.getElementById('filters').innerHTML = STAGES.map(s =>
+    `<button class="filter-btn ${filter === s ? 'active' : ''}" onclick="setFilter('${s}')">${s}${s !== 'All' ? ' ('+leads.filter(l=>l.stage===s).length+')' : ''}</button>`
+  ).join('');
+}
+
+function setFilter(s) {
+  filter = s;
+  render();
+}
+
+function renderTable() {
+  const filtered = filter === 'All' ? leads : leads.filter(l => l.stage === filter);
+  const tbody = document.getElementById('leads-table');
+  const empty = document.getElementById('empty-state');
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = [...filtered].reverse().map(l => `
+    <tr onclick="openModal('${l.id}')">
+      <td class="name">${l.fname} ${l.lname}</td>
+      <td>${l.biz || '—'}</td>
+      <td class="email">${l.email ? `<a href="mailto:${l.email}" onclick="event.stopPropagation()">${l.email}</a>` : '—'}</td>
+      <td><span class="source">${l.source}</span></td>
+      <td>${l.score ? `<span class="score-pill ${scoreClass(l.score)}">${l.score}</span>` : '—'}</td>
+      <td><span class="stage ${STAGE_CLASS[l.stage]}">${l.stage}</span></td>
+      <td>${fmt_date(l.created)}</td>
+      <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-muted);">${l.notes || '—'}</td>
+    </tr>
+  `).join('');
+}
+
+function render() {
+  renderStats();
+  renderFilters();
+  renderTable();
+}
+
+function openModal(id) {
+  editingId = id || null;
+  const modal = document.getElementById('modal');
+  const title = document.getElementById('modal-title');
+  const btns  = document.getElementById('modal-btns');
+
+  if (id) {
+    const l = leads.find(x => x.id === id);
+    if (!l) return;
+    title.textContent = 'Edit Lead';
+    document.getElementById('m-fname').value  = l.fname || '';
+    document.getElementById('m-lname').value  = l.lname || '';
+    document.getElementById('m-biz').value    = l.biz   || '';
+    document.getElementById('m-email').value  = l.email || '';
+    document.getElementById('m-source').value = l.source;
+    document.getElementById('m-score').value  = l.score || '';
+    document.getElementById('m-stage').value  = l.stage;
+    document.getElementById('m-notes').value  = l.notes || '';
+    btns.innerHTML = `
+      <button class="btn-delete" onclick="deleteLead('${id}')">Delete</button>
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveLead()">Save Changes</button>
+    `;
+  } else {
+    title.textContent = 'Add Lead';
+    ['m-fname','m-lname','m-biz','m-email','m-score','m-notes'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('m-source').value = 'Assessment';
+    document.getElementById('m-stage').value  = 'New Lead';
+    btns.innerHTML = `
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveLead()">Add Lead</button>
+    `;
+  }
+
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+  editingId = null;
+}
+
+function saveLead() {
+  const fname = document.getElementById('m-fname').value.trim();
+  if (!fname) { alert('Please enter a first name.'); return; }
+
+  const data = {
+    fname,
+    lname:  document.getElementById('m-lname').value.trim(),
+    biz:    document.getElementById('m-biz').value.trim(),
+    email:  document.getElementById('m-email').value.trim(),
+    source: document.getElementById('m-source').value,
+    score:  document.getElementById('m-score').value.trim(),
+    stage:  document.getElementById('m-stage').value,
+    notes:  document.getElementById('m-notes').value.trim(),
+  };
+
+  if (editingId) {
+    const idx = leads.findIndex(l => l.id === editingId);
+    if (idx !== -1) leads[idx] = { ...leads[idx], ...data };
+  } else {
+    leads.push({ id: uid(), created: Date.now(), ...data });
+  }
+
+  save();
+  closeModal();
+  render();
+}
+
+function deleteLead(id) {
+  if (!confirm('Delete this lead?')) return;
+  leads = leads.filter(l => l.id !== id);
+  save();
+  closeModal();
+  render();
+}
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+load();
+render();
+
+// Seed with example lead if empty
+if (leads.length === 0) {
+  leads.push({
+    id: uid(),
+    created: Date.now(),
+    fname: 'Example',
+    lname: 'Lead',
+    biz: 'Sample Business',
+    email: 'example@email.com',
+    source: 'Assessment',
+    score: '8/30',
+    stage: 'New Lead',
+    notes: 'This is an example lead. Click to edit or delete.'
+  });
+  save();
+  render();
+}
+</script>
+</body>
+</html>
