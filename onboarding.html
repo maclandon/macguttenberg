@@ -183,12 +183,12 @@ const steps = [
       <div class="field">
         <label>What tools are you currently using? (check all that apply)</label>
         <div class="check-group" id="tools-group">
-          <label class="check-item"><input type="checkbox" name="tools" value="Google Workspace"><div class="check-box"></div>Google Workspace</label>
-          <label class="check-item"><input type="checkbox" name="tools" value="QuickBooks / accounting software"><div class="check-box"></div>QuickBooks / accounting software</label>
-          <label class="check-item"><input type="checkbox" name="tools" value="CRM (HubSpot, Salesforce, etc.)"><div class="check-box"></div>CRM (HubSpot, Salesforce, etc.)</label>
-          <label class="check-item"><input type="checkbox" name="tools" value="Project management (Asana, Notion, etc.)"><div class="check-box"></div>Project management (Asana, Notion, etc.)</label>
-          <label class="check-item"><input type="checkbox" name="tools" value="Email marketing (Mailchimp, etc.)"><div class="check-box"></div>Email marketing (Mailchimp, etc.)</label>
-          <label class="check-item"><input type="checkbox" name="tools" value="None of the above"><div class="check-box"></div>None of the above</label>
+          <div class="check-item" data-name="tools" data-value="Google Workspace"><div class="check-box"></div>Google Workspace</div>
+          <div class="check-item" data-name="tools" data-value="QuickBooks / accounting software"><div class="check-box"></div>QuickBooks / accounting software</div>
+          <div class="check-item" data-name="tools" data-value="CRM (HubSpot, Salesforce, etc.)"><div class="check-box"></div>CRM (HubSpot, Salesforce, etc.)</div>
+          <div class="check-item" data-name="tools" data-value="Project management (Asana, Notion, etc.)"><div class="check-box"></div>Project management (Asana, Notion, etc.)</div>
+          <div class="check-item" data-name="tools" data-value="Email marketing (Mailchimp, etc.)"><div class="check-box"></div>Email marketing (Mailchimp, etc.)</div>
+          <div class="check-item" data-name="tools" data-value="None of the above"><div class="check-box"></div>None of the above</div>
         </div>
       </div>
     `
@@ -201,13 +201,13 @@ const steps = [
       <div class="field">
         <label>Biggest pain points (check all that apply)</label>
         <div class="check-group">
-          <label class="check-item"><input type="checkbox" name="pain_points" value="Too much time on admin tasks"><div class="check-box"></div>Too much time on admin tasks</label>
-          <label class="check-item"><input type="checkbox" name="pain_points" value="Chasing payments or invoices"><div class="check-box"></div>Chasing payments or invoices</label>
-          <label class="check-item"><input type="checkbox" name="pain_points" value="Disorganized client communication"><div class="check-box"></div>Disorganized client communication</label>
-          <label class="check-item"><input type="checkbox" name="pain_points" value="No real online presence or website"><div class="check-box"></div>No real online presence or website</label>
-          <label class="check-item"><input type="checkbox" name="pain_points" value="Leads not converting"><div class="check-box"></div>Leads not converting</label>
-          <label class="check-item"><input type="checkbox" name="pain_points" value="Can't scale without hiring more people"><div class="check-box"></div>Can't scale without hiring more people</label>
-          <label class="check-item"><input type="checkbox" name="pain_points" value="Everything depends on me personally"><div class="check-box"></div>Everything depends on me personally</label>
+          <div class="check-item" data-name="pain_points" data-value="Too much time on admin tasks"><div class="check-box"></div>Too much time on admin tasks</div>
+          <div class="check-item" data-name="pain_points" data-value="Chasing payments or invoices"><div class="check-box"></div>Chasing payments or invoices</div>
+          <div class="check-item" data-name="pain_points" data-value="Disorganized client communication"><div class="check-box"></div>Disorganized client communication</div>
+          <div class="check-item" data-name="pain_points" data-value="No real online presence or website"><div class="check-box"></div>No real online presence or website</div>
+          <div class="check-item" data-name="pain_points" data-value="Leads not converting"><div class="check-box"></div>Leads not converting</div>
+          <div class="check-item" data-name="pain_points" data-value="Can't scale without hiring more people"><div class="check-box"></div>Can't scale without hiring more people</div>
+          <div class="check-item" data-name="pain_points" data-value="Everything depends on me personally"><div class="check-box"></div>Everything depends on me personally</div>
         </div>
       </div>
       <div class="field">
@@ -297,13 +297,14 @@ function collectStep() {
   inputs.forEach(input => {
     if (input.value.trim()) data[input.name] = input.value.trim();
   });
-  // checkboxes
+  // checkboxes via data attributes
   const checkGroups = {};
-  card.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-    if (!checkGroups[cb.name]) checkGroups[cb.name] = [];
-    if (cb.closest('.check-item').classList.contains('checked')) {
-      checkGroups[cb.name].push(cb.value);
-    }
+  card.querySelectorAll('.check-item.checked').forEach(item => {
+    const name = item.dataset.name;
+    const value = item.dataset.value;
+    if (!name || !value) return;
+    if (!checkGroups[name]) checkGroups[name] = [];
+    checkGroups[name].push(value);
   });
   Object.assign(data, checkGroups);
 }
