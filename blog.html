@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Mac Guttenberg</title>
+<meta name="description" content="Practical insights on digital systems, automation, and growth for small service businesses.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --bg2:#DDD9D0;
+  --white:#FAFAF7;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo img{height:26px;width:auto;display:block;opacity:.9;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:rgba(255,255,255,.85);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.25);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);}
+
+.blog-hero{padding:7rem 4rem 4rem;background:var(--dark);}
+.blog-hero-inner{max-width:860px;margin:0 auto;}
+.sec-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem;}
+.sec-tag::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.blog-hero h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.025em;margin-bottom:1rem;}
+.blog-hero h1 em{font-style:italic;color:#7EACD4;}
+.blog-hero p{font-size:1rem;color:rgba(255,255,255,.45);line-height:1.75;font-weight:300;max-width:520px;}
+
+.blog-body{padding:4rem;background:var(--bg);}
+.blog-body-inner{max-width:860px;margin:0 auto;}
+
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2rem;}
+
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--text);transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;}
+.post-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(28,26,22,.08);border-color:rgba(43,74,107,.25);}
+.post-card-img{height:200px;background:var(--dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.post-card-img-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%, rgba(127,160,195,0.2) 0%, transparent 70%);}
+.post-card-num{font-family:"Fraunces",serif;font-size:5rem;font-weight:900;color:rgba(255,255,255,.06);position:absolute;bottom:-10px;right:20px;line-height:1;}
+.post-card-tag{position:absolute;top:1rem;left:1rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(127,160,195,.15);color:#7EACD4;border:1px solid rgba(127,160,195,.25);padding:.25rem .7rem;border-radius:100px;}
+.post-card-body{padding:1.75rem;flex:1;display:flex;flex-direction:column;}
+.post-meta{font-size:.72rem;color:var(--text-muted);margin-bottom:.75rem;}
+.post-title{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.75rem;letter-spacing:-.01em;}
+.post-excerpt{font-size:.86rem;color:var(--text-muted);line-height:1.7;font-weight:300;flex:1;}
+.post-read-more{margin-top:1.25rem;font-size:.8rem;font-weight:500;color:var(--accent);display:flex;align-items:center;gap:.3rem;}
+.post-read-more::after{content:"→";transition:transform .2s;}
+.post-card:hover .post-read-more::after{transform:translateX(3px);}
+
+.coming-soon{margin-top:3rem;padding:2.5rem;background:var(--card);border:1px solid var(--border);border-radius:18px;text-align:center;}
+.coming-soon p{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;}
+.btn-accent{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s;}
+.btn-accent:hover{background:var(--accent2);}
+
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:.7rem;color:rgba(255,255,255,.18);}
+.footer-loc{font-size:.7rem;color:rgba(255,255,255,.18);}
+
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .blog-hero,.blog-body{padding:5rem 1.5rem 3rem;}
+  footer{padding:2rem 1.5rem;}
+  .posts-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="mg"></a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog.html" style="color:rgba(255,255,255,.85);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="sec-tag">Insights</div>
+    <h1>Practical thinking on <em>building better businesses.</em></h1>
+    <p>No fluff. Just what's actually working — systems, tools, and lessons from working with small businesses every day.</p>
+  </div>
+</div>
+
+<div class="blog-body">
+  <div class="blog-body-inner">
+    <div class="posts-grid">
+
+      <a href="/blog-systems.html" class="post-card">
+        <div class="post-card-img">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">5</div>
+          <span class="post-card-tag">Systems</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-meta">April 2026 · 5 min read</div>
+          <div class="post-title">5 Signs Your Small Business Is Losing Money to Bad Systems</div>
+          <div class="post-excerpt">Most small business owners don't realize how much revenue slips through the cracks every month — not because of bad products or poor sales, but because the infrastructure holding everything together is quietly failing.</div>
+          <div class="post-read-more">Read article</div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="coming-soon">
+      <p>More articles coming soon. Want to know when new posts go live?</p>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-accent">Or just book a call →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Guttenberg. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+
+</body>
+</html>

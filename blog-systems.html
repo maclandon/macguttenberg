@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Signs Your Small Business Is Losing Money to Bad Systems — Mac Guttenberg</title>
+<meta name="description" content="Most small business owners don't realize how much revenue slips through the cracks every month — not because of bad products, but because the systems are failing.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --bg2:#DDD9D0;
+  --white:#FAFAF7;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo img{height:26px;width:auto;display:block;opacity:.9;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:rgba(255,255,255,.85);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.25);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);}
+
+/* ARTICLE HERO */
+.article-hero{padding:7rem 4rem 4rem;background:var(--dark);}
+.article-hero-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;margin-bottom:2rem;transition:color .2s;}
+.back-link:hover{color:rgba(255,255,255,.7);}
+.back-link::before{content:"←";}
+.article-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.article-tag::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.article-hero h1{font-family:"Fraunces",serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.5rem;}
+.article-hero h1 em{font-style:italic;color:#7EACD4;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;font-size:.78rem;color:rgba(255,255,255,.35);}
+.article-meta span{display:flex;align-items:center;gap:.4rem;}
+
+/* ARTICLE BODY */
+.article-body{padding:4rem;background:var(--bg);}
+.article-body-inner{max-width:760px;margin:0 auto;}
+
+.article-content p{font-size:1.02rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;}
+.article-content p strong{color:var(--text);font-weight:500;}
+.article-content .lead{font-size:1.12rem;line-height:1.85;color:var(--text-mid);font-weight:400;margin-bottom:2rem;padding-left:1.25rem;border-left:2px solid var(--accent);}
+
+.sign-block{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.sign-block:hover{border-color:rgba(43,74,107,.25);}
+.sign-number{font-family:"Fraunces",serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+.sign-title{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.85rem;line-height:1.3;}
+.sign-body{font-size:.95rem;line-height:1.8;color:var(--text-muted);font-weight:300;}
+.sign-body strong{color:var(--text-mid);font-weight:500;}
+.sign-callout{margin-top:1rem;padding:.85rem 1rem;background:rgba(127,160,195,.07);border-radius:8px;border-left:2px solid var(--accent);font-size:.85rem;color:var(--text-mid);line-height:1.6;font-style:italic;}
+
+.article-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+
+/* CTA BLOCK */
+.article-cta{background:var(--dark);border-radius:20px;padding:2.75rem;margin-top:3rem;text-align:center;}
+.article-cta h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.3;}
+.article-cta h3 em{font-style:italic;color:#7EACD4;}
+.article-cta p{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem;font-weight:300;}
+.btn-accent{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-accent:hover{background:var(--accent2);gap:.65rem;}
+.btn-ghost{display:inline-flex;align-items:center;font-size:.85rem;color:rgba(255,255,255,.35);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:1px;margin-left:1.25rem;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.65);}
+
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:.7rem;color:rgba(255,255,255,.18);}
+.footer-loc{font-size:.7rem;color:rgba(255,255,255,.18);}
+
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .article-hero,.article-body{padding:5rem 1.5rem 3rem;}
+  footer{padding:2rem 1.5rem;}
+  .sign-block{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="mg"></a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog.html" style="color:rgba(255,255,255,.85);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/blog.html" class="back-link">Back to Blog</a>
+    <div class="article-tag">Systems</div>
+    <h1>5 Signs Your Small Business Is <em>Losing Money</em> to Bad Systems</h1>
+    <div class="article-meta">
+      <span>Mac Guttenberg</span>
+      <span>April 2026</span>
+      <span>5 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-body-inner">
+    <div class="article-content">
+
+      <p class="lead">Most small business owners don't realize how much revenue slips through the cracks every month — not because of bad products or poor sales, but because the infrastructure holding everything together is quietly failing.</p>
+
+      <p>I've worked with enough small businesses to know that the problem is rarely effort. The owners I talk to are working hard. The issue is that their systems — the way they communicate with clients, collect payments, manage documents, and follow up — are creating friction that costs real money every single day.</p>
+
+      <p>Here are the five signs I see most often. If any of these sound familiar, you're not alone — and the fix is usually simpler than you think.</p>
+
+      <hr class="article-divider">
+
+      <div class="sign-block">
+        <div class="sign-number">Sign 01</div>
+        <div class="sign-title">You're the bottleneck for everything</div>
+        <div class="sign-body">
+          <p>If every client question, every invoice, every document request flows through you personally — your business has a capacity problem. When you're on vacation, sick, or just overwhelmed, things stop moving.</p>
+          <p>This shows up as: clients emailing you directly for things that should be self-serve, no way for clients to check on their own status, and you spending hours every week answering the same questions over and over.</p>
+          <div class="sign-callout">The fix: A simple client portal where clients can upload documents, check status, and get answers without needing you — built once, working forever.</div>
+        </div>
+      </div>
+
+      <div class="sign-block">
+        <div class="sign-number">Sign 02</div>
+        <div class="sign-title">You're still chasing payments manually</div>
+        <div class="sign-body">
+          <p>Sending invoices by email, following up when they haven't been paid, accepting checks — every step of this process costs you time and delays your cash flow. Worse, it creates an awkward dynamic with clients that undermines the professional relationship you've built.</p>
+          <p>I worked with a tax practice that was collecting payments entirely in cash and check. Once we set up online payments with automated reminders, they collected faster, spent less time chasing, and clients actually preferred it.</p>
+          <div class="sign-callout">The fix: Automated invoicing with online payment links. Clients pay in two clicks. You get notified. No follow-up needed.</div>
+        </div>
+      </div>
+
+      <div class="sign-block">
+        <div class="sign-number">Sign 03</div>
+        <div class="sign-title">New clients have a painful onboarding experience</div>
+        <div class="sign-body">
+          <p>The first impression a new client gets of working with you isn't your product — it's your process. If onboarding means emailing PDFs back and forth, leaving voicemails to schedule calls, and manually collecting basic information, you're starting the relationship on the wrong foot.</p>
+          <p>A disorganized onboarding also costs you time. Collecting the same information over email that could have been captured in a structured intake form is hours of your week, multiplied by every new client.</p>
+          <div class="sign-callout">The fix: A digital intake form that collects everything you need upfront, automatically, before the first meeting.</div>
+        </div>
+      </div>
+
+      <div class="sign-block">
+        <div class="sign-number">Sign 04</div>
+        <div class="sign-title">You have no idea where leads are falling off</div>
+        <div class="sign-body">
+          <p>If someone finds you online, visits your website, and doesn't book — do you know why? Do you know how many people visit and leave without taking action? Most small businesses are flying blind here, and it means they're spending time and money on marketing with no way to know what's working.</p>
+          <p>More immediately: if you have no follow-up system for leads who expressed interest but didn't convert, you're leaving money on the table every single month. People need an average of 5–8 touchpoints before they buy. Most small businesses give up after one.</p>
+          <div class="sign-callout">The fix: Simple lead tracking and an automated follow-up sequence that keeps you top of mind without requiring your manual attention.</div>
+        </div>
+      </div>
+
+      <div class="sign-block">
+        <div class="sign-number">Sign 05</div>
+        <div class="sign-title">Your business can't run without you in the room</div>
+        <div class="sign-body">
+          <p>This is the big one. If you doubled your clients tomorrow, could your current systems handle it? If the honest answer is no — or "barely" — then your systems are your ceiling.</p>
+          <p>Scalability isn't just for big companies. It means building processes that work whether you have 10 clients or 50. It means automation handling the repetitive work so your time goes to the high-value stuff. It means a business that doesn't fully depend on your presence to function.</p>
+          <div class="sign-callout">The fix: A full systems audit to identify exactly where the bottlenecks are — and a prioritized build plan to fix them in order of impact.</div>
+        </div>
+      </div>
+
+      <hr class="article-divider">
+
+      <p><strong>The pattern I see over and over:</strong> great businesses held back by systems that were never designed to scale. The product is good. The owner is capable. But the infrastructure was built for a business half the size it's trying to become.</p>
+
+      <p>The good news is that fixing this doesn't require a massive tech investment or months of work. Most of the highest-impact changes can be made in a few weeks — and the ROI shows up immediately in hours saved and revenue that stops leaking.</p>
+
+      <p>If you recognized your business in more than one of these signs, it might be worth spending 30 minutes mapping out exactly what's costing you the most right now.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Want to know exactly where <em>your</em> business is leaking?</h3>
+      <p>Take the free 3-minute Digital Readiness Assessment, or book a call and we'll walk through it together.</p>
+      <a href="/audit.html" class="btn-accent">Take the free assessment →</a>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-ghost">Or book a call</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Guttenberg. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+
+</body>
+</html>
