@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before Our Call — Mac Guttenberg</title>
+<meta name="description" content="Quick intake form before your discovery call with Mac Guttenberg.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --white:#FAFAF7;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;padding:40px 24px 80px;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 80% 10%,rgba(127,160,195,0.1) 0%,transparent 60%);pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;}
+
+/* HEADER */
+.form-header{text-align:center;margin-bottom:2.5rem;}
+.logo-mark{width:48px;height:48px;background:var(--dark);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:"Fraunces",serif;font-size:18px;color:white;font-weight:700;}
+.form-header h1{font-family:"Fraunces",serif;font-size:1.85rem;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.65rem;letter-spacing:-.02em;}
+.form-header h1 em{font-style:italic;color:var(--accent);}
+.form-header p{font-size:.92rem;color:var(--text-muted);line-height:1.7;font-weight:300;max-width:420px;margin:0 auto;}
+
+/* PROGRESS */
+.step-progress{display:flex;align-items:center;gap:8px;margin-bottom:2rem;justify-content:center;}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;}
+.step-dot.active{background:var(--accent);width:24px;border-radius:4px;}
+.step-dot.done{background:var(--accent);opacity:.4;}
+
+/* CARD */
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.25rem;box-shadow:0 4px 32px rgba(28,26,22,.06);animation:fadeUp .4s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+.step-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.step-tag::before{content:"";width:12px;height:1.5px;background:var(--accent);}
+.step-title{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.4rem;line-height:1.3;}
+.step-sub{font-size:.85rem;color:var(--text-muted);margin-bottom:1.75rem;line-height:1.6;font-weight:300;}
+
+/* FIELDS */
+.field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.1rem;}
+.field label{font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.field input,.field textarea,.field select{font-family:"DM Sans",sans-serif;font-size:.93rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,160,195,.1);}
+.field textarea{resize:vertical;min-height:100px;line-height:1.6;}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A7468' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+/* CHECKBOX GROUP */
+.check-group{display:flex;flex-direction:column;gap:.5rem;}
+.check-item{display:flex;align-items:center;gap:.75rem;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;cursor:pointer;transition:all .18s;font-size:.9rem;color:var(--text-mid);}
+.check-item:hover{border-color:var(--accent);background:rgba(127,160,195,.04);}
+.check-item.checked{border-color:var(--accent);background:rgba(127,160,195,.07);color:var(--text);font-weight:500;}
+.check-item input{display:none;}
+.check-box{width:18px;height:18px;border-radius:5px;border:2px solid var(--border);flex-shrink:0;transition:all .18s;display:flex;align-items:center;justify-content:center;}
+.check-item.checked .check-box{border-color:var(--accent);background:var(--accent);}
+.check-item.checked .check-box::after{content:"✓";font-size:11px;color:white;font-weight:700;}
+
+/* NAV */
+.nav-row{display:flex;align-items:center;justify-content:space-between;margin-top:1.75rem;}
+.btn-back{background:none;border:none;color:var(--text-muted);font-family:"DM Sans",sans-serif;font-size:.88rem;cursor:pointer;padding:8px 0;transition:color .2s;}
+.btn-back:hover{color:var(--text);}
+.btn-back:disabled{opacity:.25;cursor:default;}
+.btn-next{background:var(--dark);color:#fff;border:none;padding:12px 28px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.92rem;font-weight:500;cursor:pointer;transition:background .2s,transform .15s;display:flex;align-items:center;gap:.4rem;}
+.btn-next:hover{background:var(--dark2);transform:translateY(-1px);}
+.btn-submit{background:var(--accent);color:#fff;border:none;padding:14px 32px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.95rem;font-weight:500;cursor:pointer;transition:background .2s,transform .15s;width:100%;margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:.4rem;}
+.btn-submit:hover{background:var(--accent2);transform:translateY(-1px);}
+
+/* SUCCESS */
+.success-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem 2.25rem;text-align:center;box-shadow:0 4px 32px rgba(28,26,22,.06);animation:fadeUp .5s ease both;}
+.success-icon{width:56px;height:56px;background:rgba(127,160,195,.12);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.5rem;}
+.success-card h2{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:.75rem;line-height:1.2;}
+.success-card h2 em{font-style:italic;color:var(--accent);}
+.success-card p{font-size:.92rem;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:400px;margin:0 auto 1.5rem;}
+.success-detail{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;font-size:.82rem;color:var(--text-muted);line-height:1.6;text-align:left;}
+.success-detail strong{color:var(--text-mid);font-weight:500;}
+
+@media(max-width:560px){
+  .field-row{grid-template-columns:1fr;}
+  .form-card{padding:1.75rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="form-header">
+    <div class="logo-mark">MG</div>
+    <h1>Before our <em>call.</em></h1>
+    <p>Takes about 3 minutes. Helps me show up prepared — so we spend the call on what actually matters for your business.</p>
+  </div>
+
+  <div class="step-progress" id="step-progress"></div>
+
+  <div id="form-area"></div>
+
+</div>
+
+<script>
+const FORMSPREE = 'https://formspree.io/f/mpqkzqeb';
+
+const steps = [
+  {
+    tag: 'Step 1 of 4 — About You',
+    title: 'Tell me about your business.',
+    sub: 'Basic context so I know who I\'m talking to.',
+    fields: `
+      <div class="field-row">
+        <div class="field"><label>Your Name</label><input type="text" name="name" placeholder="First & last" required></div>
+        <div class="field"><label>Business Name</label><input type="text" name="business_name" placeholder="Acme Co." required></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@yourbusiness.com" required></div>
+      <div class="field">
+        <label>Type of Business</label>
+        <select name="business_type" required>
+          <option value="">Select one...</option>
+          <option>Tax / Accounting</option>
+          <option>Legal Services</option>
+          <option>Coaching / Consulting</option>
+          <option>E-Commerce / Retail</option>
+          <option>Health & Wellness</option>
+          <option>Creative Services</option>
+          <option>Real Estate</option>
+          <option>Home Services</option>
+          <option>Other Service Business</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Approximate Annual Revenue</label>
+        <select name="revenue">
+          <option value="">Prefer not to say</option>
+          <option>Under $50K</option>
+          <option>$50K – $150K</option>
+          <option>$150K – $500K</option>
+          <option>$500K – $1M</option>
+          <option>Over $1M</option>
+        </select>
+      </div>
+    `
+  },
+  {
+    tag: 'Step 2 of 4 — Your Systems',
+    title: 'How are you running things today?',
+    sub: 'Be honest — this is where the opportunities usually are.',
+    fields: `
+      <div class="field">
+        <label>How do clients currently book or reach you?</label>
+        <select name="booking_method">
+          <option value="">Select one...</option>
+          <option>Phone / in-person only</option>
+          <option>Email back-and-forth</option>
+          <option>Contact form on my website</option>
+          <option>Online booking tool (Calendly, etc.)</option>
+          <option>Mix of things</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>How do you collect payments?</label>
+        <select name="payments">
+          <option value="">Select one...</option>
+          <option>Cash or check only</option>
+          <option>Manual invoices by email</option>
+          <option>PayPal / Venmo / Zelle</option>
+          <option>Stripe / Square / online processor</option>
+          <option>Automated invoicing software</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>What tools are you currently using? (check all that apply)</label>
+        <div class="check-group" id="tools-group">
+          <label class="check-item"><input type="checkbox" name="tools" value="Google Workspace"><div class="check-box"></div>Google Workspace</label>
+          <label class="check-item"><input type="checkbox" name="tools" value="QuickBooks / accounting software"><div class="check-box"></div>QuickBooks / accounting software</label>
+          <label class="check-item"><input type="checkbox" name="tools" value="CRM (HubSpot, Salesforce, etc.)"><div class="check-box"></div>CRM (HubSpot, Salesforce, etc.)</label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Project management (Asana, Notion, etc.)"><div class="check-box"></div>Project management (Asana, Notion, etc.)</label>
+          <label class="check-item"><input type="checkbox" name="tools" value="Email marketing (Mailchimp, etc.)"><div class="check-box"></div>Email marketing (Mailchimp, etc.)</label>
+          <label class="check-item"><input type="checkbox" name="tools" value="None of the above"><div class="check-box"></div>None of the above</label>
+        </div>
+      </div>
+    `
+  },
+  {
+    tag: 'Step 3 of 4 — Pain Points',
+    title: 'Where are things breaking down?',
+    sub: 'Pick the areas that are costing you the most time or money right now.',
+    fields: `
+      <div class="field">
+        <label>Biggest pain points (check all that apply)</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="pain_points" value="Too much time on admin tasks"><div class="check-box"></div>Too much time on admin tasks</label>
+          <label class="check-item"><input type="checkbox" name="pain_points" value="Chasing payments or invoices"><div class="check-box"></div>Chasing payments or invoices</label>
+          <label class="check-item"><input type="checkbox" name="pain_points" value="Disorganized client communication"><div class="check-box"></div>Disorganized client communication</label>
+          <label class="check-item"><input type="checkbox" name="pain_points" value="No real online presence or website"><div class="check-box"></div>No real online presence or website</label>
+          <label class="check-item"><input type="checkbox" name="pain_points" value="Leads not converting"><div class="check-box"></div>Leads not converting</label>
+          <label class="check-item"><input type="checkbox" name="pain_points" value="Can't scale without hiring more people"><div class="check-box"></div>Can't scale without hiring more people</label>
+          <label class="check-item"><input type="checkbox" name="pain_points" value="Everything depends on me personally"><div class="check-box"></div>Everything depends on me personally</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>What have you already tried?</label>
+        <textarea name="already_tried" placeholder="Tools you've tested, hires you've made, things that didn't stick..."></textarea>
+      </div>
+    `
+  },
+  {
+    tag: 'Step 4 of 4 — Goals',
+    title: 'What does success look like?',
+    sub: 'Help me understand what you\'re actually trying to build.',
+    fields: `
+      <div class="field">
+        <label>What's the #1 thing you want to fix or build?</label>
+        <textarea name="top_goal" placeholder="e.g. I want clients to be able to onboard without emailing me back and forth..." required></textarea>
+      </div>
+      <div class="field">
+        <label>Where do you want the business to be in 12 months?</label>
+        <textarea name="vision" placeholder="More clients, less admin, specific revenue goal, more time — whatever matters most to you..."></textarea>
+      </div>
+      <div class="field">
+        <label>Anything else I should know before our call?</label>
+        <textarea name="other" placeholder="Open field — anything goes."></textarea>
+      </div>
+    `
+  }
+];
+
+let current = 0;
+const data = {};
+
+function renderProgress() {
+  const el = document.getElementById('step-progress');
+  el.innerHTML = steps.map((_, i) =>
+    `<div class="step-dot ${i === current ? 'active' : i < current ? 'done' : ''}"></div>`
+  ).join('');
+}
+
+function renderStep() {
+  renderProgress();
+  const s = steps[current];
+  const isLast = current === steps.length - 1;
+
+  document.getElementById('form-area').innerHTML = `
+    <div class="form-card">
+      <div class="step-tag">${s.tag}</div>
+      <div class="step-title">${s.title}</div>
+      <div class="step-sub">${s.sub}</div>
+      ${s.fields}
+      ${isLast ? `<button class="btn-submit" onclick="submitForm()">Send to Mac →</button>` : `
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack()" ${current === 0 ? 'disabled' : ''}>← Back</button>
+        <button class="btn-next" onclick="goNext()">Next →</button>
+      </div>`}
+    </div>
+  `;
+
+  // Restore saved data
+  Object.entries(data).forEach(([key, val]) => {
+    const el = document.querySelector(`[name="${key}"]`);
+    if (el) {
+      if (el.tagName === 'SELECT' || el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.value = val;
+      }
+    }
+    // checkboxes
+    const checkboxes = document.querySelectorAll(`[name="${key}"]`);
+    checkboxes.forEach(cb => {
+      if (cb.type === 'checkbox' && Array.isArray(val) && val.includes(cb.value)) {
+        cb.closest('.check-item').classList.add('checked');
+      }
+    });
+  });
+
+  // Checkbox toggle
+  document.querySelectorAll('.check-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('checked');
+    });
+  });
+}
+
+function collectStep() {
+  const card = document.querySelector('.form-card');
+  const inputs = card.querySelectorAll('input[type="text"], input[type="email"], textarea, select');
+  inputs.forEach(input => {
+    if (input.value.trim()) data[input.name] = input.value.trim();
+  });
+  // checkboxes
+  const checkGroups = {};
+  card.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    if (!checkGroups[cb.name]) checkGroups[cb.name] = [];
+    if (cb.closest('.check-item').classList.contains('checked')) {
+      checkGroups[cb.name].push(cb.value);
+    }
+  });
+  Object.assign(data, checkGroups);
+}
+
+function goNext() {
+  collectStep();
+  // Basic validation on step 1
+  if (current === 0) {
+    const name = document.querySelector('[name="name"]').value.trim();
+    const email = document.querySelector('[name="email"]').value.trim();
+    const biz = document.querySelector('[name="business_name"]').value.trim();
+    if (!name || !email || !biz) { alert('Please fill in your name, email, and business name.'); return; }
+  }
+  current++;
+  renderStep();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function goBack() {
+  collectStep();
+  current--;
+  renderStep();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+async function submitForm() {
+  collectStep();
+
+  // Format payload
+  const toolsList = Array.isArray(data.tools) ? data.tools.join(', ') : data.tools || 'None selected';
+  const painList = Array.isArray(data.pain_points) ? data.pain_points.join(', ') : data.pain_points || 'None selected';
+
+  const payload = {
+    ...data,
+    tools: toolsList,
+    pain_points: painList,
+    _subject: `New intake: ${data.name || 'New client'} — ${data.business_name || ''}`
+  };
+
+  try {
+    const res = await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error();
+  } catch(e) {}
+
+  // Show success
+  document.getElementById('step-progress').style.display = 'none';
+  document.getElementById('form-area').innerHTML = `
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h2>You're all set, <em>${data.name ? data.name.split(' ')[0] : 'thanks'}.</em></h2>
+      <p>I'll review everything before our call so we can skip the basics and get straight to what matters for your business.</p>
+      <div class="success-detail">
+        <strong>What happens next:</strong><br>
+        I'll read through your answers, do a quick look at your current digital presence, and come to the call with specific observations and ideas for your situation.
+      </div>
+    </div>
+  `;
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+renderStep();
+</script>
+</body>
+</html>
