@@ -3,871 +3,414 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Readiness Assessment — MacGuttenberg.com</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Free Digital Audit — Mac Guttenberg</title>
+<meta name="description" content="60-second self-assessment for small business owners. Find out where your digital systems are leaking time and money — and what to fix first.">
+<meta property="og:title" content="Free Digital Audit — Mac Guttenberg">
+<meta property="og:description" content="60-second self-assessment. See exactly where your business is losing time to manual systems.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;--bg2:#DDD9D0;--white:#FAFAF7;--card:#F5F2EC;
+  --border:#D0CAC0;--text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;
+  --accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
+  --good:#5e9e5e;--warn:#c97c4a;--bad:#c25656;
+}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
 
-  :root {
-    --cream: #E8E4DC;
-    --warm-white: #F5F2EC;
-    --sand: #D0CAC0;
-    --terracotta: #7fa0c3;
-    --terracotta-light: #9ab8d4;
-    --brown: #1C1A16;
-    --brown-light: #48443C;
-    --text: #1C1A16;
-    --text-soft: #7A7468;
-    --green: #4A7C59;
-    --yellow: #C49A3C;
-    --radius: 16px;
-  }
+nav{position:sticky;top:0;z-index:50;height:56px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;color:#fff;text-decoration:none;font-family:"Fraunces",serif;font-weight:900;font-size:1.05rem;}
+.nav-logo span{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);font-family:"DM Sans",sans-serif;border-left:1px solid rgba(255,255,255,.15);padding-left:.75rem;}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.25);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
+.wrap{max-width:680px;margin:0 auto;padding:3.5rem 2rem 5rem;}
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 40% at 10% 20%, rgba(127,160,195,0.1) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 60% at 90% 80%, rgba(127,160,195,0.07) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
+/* INTRO */
+.intro{text-align:center;margin-bottom:2.5rem;}
+.eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:inline-flex;align-items:center;gap:.5rem;}
+.eyebrow::before,.eyebrow::after{content:"";width:14px;height:1.5px;background:var(--accent);}
+h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;}
+h1 em{font-style:italic;color:var(--accent);font-weight:700;}
+.sub{font-size:1rem;color:var(--text-muted);font-weight:300;line-height:1.65;max-width:520px;margin:0 auto;}
 
-  .container {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 680px;
-  }
+/* PROGRESS */
+.progress{display:flex;gap:.35rem;margin-bottom:2rem;padding:0 .25rem;}
+.progress-dot{flex:1;height:4px;background:var(--border);border-radius:2px;transition:background .25s;}
+.progress-dot.done{background:var(--accent);}
+.progress-dot.current{background:var(--text);}
 
-  /* INTRO SCREEN */
-  .screen { display: none; }
-  .screen.active { display: block; animation: fadeUp 0.5s ease both; }
+/* QUESTION CARD */
+.q-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2.25rem;box-shadow:0 4px 30px rgba(28,26,22,.05);}
+.q-num{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.85rem;}
+.q-text{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;line-height:1.3;margin-bottom:1.5rem;}
+.options{display:flex;flex-direction:column;gap:.65rem;}
+.opt{display:flex;align-items:flex-start;gap:.85rem;padding:1rem 1.15rem;background:var(--card);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all .15s;font-size:.92rem;color:var(--text-mid);text-align:left;}
+.opt:hover{border-color:var(--accent);background:var(--white);transform:translateX(2px);}
+.opt.selected{border-color:var(--accent);background:rgba(127,160,195,.08);color:var(--text);}
+.opt-radio{flex-shrink:0;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);margin-top:.1rem;display:flex;align-items:center;justify-content:center;transition:border-color .15s;}
+.opt.selected .opt-radio{border-color:var(--accent);}
+.opt.selected .opt-radio::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+.nav-btns{display:flex;justify-content:space-between;margin-top:1.5rem;}
+.btn{font-family:"DM Sans",sans-serif;font-size:.88rem;font-weight:500;padding:.75rem 1.6rem;border-radius:6px;border:none;cursor:pointer;transition:background .15s,opacity .15s;}
+.btn-primary{background:var(--dark);color:#fff;}
+.btn-primary:hover{background:var(--dark2);}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;}
+.btn-back{background:transparent;color:var(--text-muted);}
+.btn-back:hover{color:var(--text);}
 
-  .intro-card {
-    background: var(--warm-white);
-    border: 1px solid var(--sand);
-    border-radius: 24px;
-    padding: 52px 48px;
-    text-align: center;
-    box-shadow: 0 4px 40px rgba(92,61,46,0.08);
-  }
+/* EMAIL CAPTURE */
+.capture{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:2.5rem;text-align:center;}
+.capture h2{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:700;margin-bottom:.6rem;line-height:1.2;}
+.capture h2 em{font-style:italic;color:var(--accent);}
+.capture p{font-size:.95rem;color:var(--text-muted);font-weight:300;margin-bottom:1.75rem;line-height:1.6;}
+.fields{display:flex;flex-direction:column;gap:.75rem;text-align:left;max-width:380px;margin:0 auto;}
+.field{display:flex;flex-direction:column;gap:.35rem;}
+.field label{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.field input{font-family:"DM Sans",sans-serif;font-size:.92rem;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;outline:none;transition:border-color .15s,box-shadow .15s;}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,160,195,.15);}
+.honeypot{position:absolute;left:-9999px;}
+.btn-submit{margin-top:.75rem;width:100%;background:var(--accent);color:#fff;font-size:.95rem;font-weight:500;padding:.85rem;border-radius:6px;border:none;cursor:pointer;transition:background .15s;}
+.btn-submit:hover{background:var(--accent2);}
+.btn-submit:disabled{background:var(--text-muted);cursor:wait;}
 
-  .logo-mark {
-    width: 56px;
-    height: 56px;
-    background: #1C1A16;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 28px;
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    color: white;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-  }
+/* RESULTS */
+.results{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+.score-band{padding:2.5rem 2rem;text-align:center;color:#fff;}
+.score-band.zone-good{background:linear-gradient(135deg,#5e9e5e 0%,#4a8a4a 100%);}
+.score-band.zone-warn{background:linear-gradient(135deg,#c97c4a 0%,#a86438 100%);}
+.score-band.zone-bad{background:linear-gradient(135deg,#c25656 0%,#a14040 100%);}
+.score-num{font-family:"Fraunces",serif;font-size:4.5rem;font-weight:900;line-height:1;margin-bottom:.25rem;}
+.score-num span{font-size:1.6rem;opacity:.6;font-weight:700;}
+.score-label{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-bottom:.5rem;}
+.score-headline{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;font-style:italic;}
+.results-body{padding:2rem 2.25rem;}
+.results-body h3{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:700;margin-bottom:.6rem;}
+.results-body p{font-size:.93rem;color:var(--text-mid);line-height:1.7;font-weight:300;margin-bottom:1rem;}
+.fix-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:1rem 0 1.5rem;}
+.fix-list li{display:flex;align-items:flex-start;gap:.7rem;padding:.85rem 1rem;background:var(--card);border-radius:10px;font-size:.9rem;color:var(--text-mid);font-weight:300;line-height:1.55;}
+.fix-list li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0;}
+.cta-band{background:var(--dark);padding:2rem 2.25rem;text-align:center;color:#fff;}
+.cta-band h3{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:700;font-style:italic;margin-bottom:.6rem;}
+.cta-band p{font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:1.25rem;font-weight:300;}
+.btn-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.9rem;font-weight:500;padding:.8rem 1.7rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-cta:hover{background:var(--accent2);gap:.6rem;}
 
-  .intro-card h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--brown);
-    margin-bottom: 16px;
-  }
+.err{background:rgba(200,100,100,.12);color:#8a3030;padding:.7rem .9rem;border-radius:7px;font-size:.82rem;margin-bottom:1rem;display:none;}
+.err.show{display:block;}
 
-  .intro-card p {
-    font-size: 1rem;
-    color: var(--text-soft);
-    line-height: 1.7;
-    max-width: 460px;
-    margin: 0 auto 32px;
-  }
-
-  .meta-pills {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 36px;
-  }
-
-  .pill {
-    background: var(--sand);
-    color: var(--brown-light);
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-  }
-
-  .btn-primary {
-    background: var(--terracotta);
-    color: white;
-    border: none;
-    padding: 16px 40px;
-    border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    letter-spacing: 0.01em;
-  }
-
-  .btn-primary:hover {
-    background: var(--terracotta-light);
-    transform: translateY(-1px);
-  }
-
-  /* QUESTION SCREEN */
-  .question-card {
-    background: var(--warm-white);
-    border: 1px solid var(--sand);
-    border-radius: 24px;
-    padding: 44px 48px;
-    box-shadow: 0 4px 40px rgba(92,61,46,0.08);
-  }
-
-  .progress-bar-wrap {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 36px;
-  }
-
-  .progress-bar {
-    flex: 1;
-    height: 4px;
-    background: var(--sand);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--terracotta);
-    border-radius: 4px;
-    transition: width 0.4s ease;
-  }
-
-  .progress-label {
-    font-size: 0.8rem;
-    color: var(--text-soft);
-    white-space: nowrap;
-    font-weight: 500;
-  }
-
-  .category-tag {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 12px;
-  }
-
-  .question-text {
-    font-family: 'Fraunces', serif;
-    font-size: 1.35rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--brown);
-    margin-bottom: 28px;
-  }
-
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .option {
-    background: var(--cream);
-    border: 1.5px solid var(--sand);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    cursor: pointer;
-    transition: all 0.18s;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 0.95rem;
-    color: var(--text);
-    text-align: left;
-  }
-
-  .option:hover {
-    border-color: var(--terracotta-light);
-    background: rgba(196,113,74,0.04);
-  }
-
-  .option.selected {
-    border-color: var(--terracotta);
-    background: rgba(196,113,74,0.07);
-    color: var(--brown);
-    font-weight: 500;
-  }
-
-  .option-dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid var(--sand);
-    flex-shrink: 0;
-    transition: all 0.18s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .option.selected .option-dot {
-    border-color: var(--terracotta);
-    background: var(--terracotta);
-  }
-
-  .option.selected .option-dot::after {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
-  }
-
-  .nav-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 32px;
-  }
-
-  .btn-back {
-    background: none;
-    border: none;
-    color: var(--text-soft);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    cursor: pointer;
-    padding: 8px 0;
-    transition: color 0.2s;
-  }
-
-  .btn-back:hover { color: var(--brown); }
-  .btn-back:disabled { opacity: 0.3; cursor: default; }
-
-  .btn-next {
-    background: var(--terracotta);
-    color: white;
-    border: none;
-    padding: 13px 32px;
-    border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .btn-next.enabled {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .btn-next.enabled:hover {
-    background: var(--terracotta-light);
-    transform: translateY(-1px);
-  }
-
-  /* RESULTS SCREEN */
-  .results-card {
-    background: var(--warm-white);
-    border: 1px solid var(--sand);
-    border-radius: 24px;
-    padding: 52px 48px;
-    box-shadow: 0 4px 40px rgba(92,61,46,0.08);
-  }
-
-  .score-ring-wrap {
-    text-align: center;
-    margin-bottom: 36px;
-  }
-
-  .score-ring {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 20px;
-    position: relative;
-  }
-
-  .score-ring svg {
-    transform: rotate(-90deg);
-    width: 140px;
-    height: 140px;
-  }
-
-  .score-ring-track { fill: none; stroke: var(--sand); stroke-width: 8; }
-  .score-ring-fill {
-    fill: none;
-    stroke-width: 8;
-    stroke-linecap: round;
-    stroke-dasharray: 345;
-    stroke-dashoffset: 345;
-    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .score-center {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .score-number {
-    font-family: 'Fraunces', serif;
-    font-size: 2.4rem;
-    font-weight: 600;
-    color: var(--brown);
-    line-height: 1;
-  }
-
-  .score-max {
-    font-size: 0.75rem;
-    color: var(--text-soft);
-    margin-top: 2px;
-  }
-
-  .score-label {
-    font-family: 'Fraunces', serif;
-    font-size: 1.5rem;
-    color: var(--brown);
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  .score-sublabel {
-    font-size: 0.9rem;
-    color: var(--text-soft);
-  }
-
-  .result-body {
-    background: var(--cream);
-    border: 1px solid var(--sand);
-    border-radius: var(--radius);
-    padding: 28px;
-    margin-bottom: 28px;
-  }
-
-  .result-body p {
-    font-size: 0.95rem;
-    color: var(--text-soft);
-    line-height: 1.75;
-  }
-
-  .breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 32px;
-  }
-
-  .breakdown-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .breakdown-label {
-    font-size: 0.85rem;
-    color: var(--text-soft);
-    width: 160px;
-    flex-shrink: 0;
-  }
-
-  .breakdown-bar {
-    flex: 1;
-    height: 6px;
-    background: var(--sand);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .breakdown-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 1s ease 0.4s;
-  }
-
-  .breakdown-pct {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--brown-light);
-    width: 36px;
-    text-align: right;
-  }
-
-  .cta-section {
-    text-align: center;
-    padding-top: 8px;
-  }
-
-  .cta-section p {
-    font-size: 0.9rem;
-    color: var(--text-soft);
-    margin-bottom: 18px;
-    line-height: 1.6;
-  }
-
-  .btn-restart {
-    background: none;
-    border: 1.5px solid var(--sand);
-    color: var(--text-soft);
-    padding: 11px 24px;
-    border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 14px;
-  }
-
-  .btn-restart:hover {
-    border-color: var(--brown-light);
-    color: var(--brown);
-  }
-
-  @media (max-width: 560px) {
-    .intro-card, .question-card, .results-card { padding: 32px 24px; }
-    .intro-card h1 { font-size: 1.6rem; }
-    .question-text { font-size: 1.15rem; }
-    .breakdown-label { width: 120px; font-size: 0.78rem; }
-  }
+@media(max-width:600px){
+  .wrap{padding:2rem 1.25rem 3rem;}
+  .q-card,.capture{padding:1.5rem;}
+  .results-body,.cta-band,.score-band{padding:1.5rem;}
+  .score-num{font-size:3.5rem;}
+}
 </style>
 </head>
 <body>
 
-<div class="container">
+<nav>
+  <a href="/" class="nav-logo">mg<span>Free Audit</span></a>
+  <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="nav-cta">Book a Call</a>
+</nav>
 
-  <!-- INTRO -->
-  <div class="screen active" id="screen-intro">
-    <div class="intro-card">
-      <div class="logo-mark">MG</div>
-      <h1>How digitally ready is your business?</h1>
-      <p>10 questions. 3 minutes. Walk away knowing exactly where you stand — and what to do next.</p>
-      <div class="meta-pills">
-        <span class="pill">10 questions</span>
-        <span class="pill">~3 minutes</span>
-        <span class="pill">Free</span>
-      </div>
-      <button class="btn-primary" onclick="startQuiz()">Start Assessment →</button>
-    </div>
+<div class="wrap">
+
+  <!-- INTRO (shown first) -->
+  <div id="intro" class="intro">
+    <div class="eyebrow">60-Second Self-Audit</div>
+    <h1>Where is your business <em>leaking time?</em></h1>
+    <p class="sub">8 quick questions. Get an instant score on how much of your operation is held together with tape — and exactly what to fix first.</p>
+    <button class="btn btn-primary" style="margin-top:1.75rem;font-size:.95rem;padding:.85rem 1.8rem;" onclick="startQuiz()">Start the audit →</button>
   </div>
 
-  <!-- QUESTION -->
-  <div class="screen" id="screen-question">
-    <div class="question-card">
-      <div class="progress-bar-wrap">
-        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-        <span class="progress-label" id="progress-label">1 of 10</span>
-      </div>
-      <div class="category-tag" id="q-category"></div>
-      <div class="question-text" id="q-text"></div>
-      <div class="options" id="q-options"></div>
-      <div class="nav-row">
-        <button class="btn-back" id="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="btn-next" onclick="goNext()">Next →</button>
+  <!-- QUIZ (hidden until start) -->
+  <div id="quiz" style="display:none;">
+    <div class="progress" id="progress"></div>
+    <div class="q-card">
+      <div class="q-num" id="q-num">Question 1 of 8</div>
+      <div class="q-text" id="q-text">—</div>
+      <div class="options" id="options"></div>
+      <div class="nav-btns">
+        <button class="btn btn-back" id="back-btn" onclick="prev()" style="visibility:hidden;">← Back</button>
+        <button class="btn btn-primary" id="next-btn" onclick="next()" disabled>Next →</button>
       </div>
     </div>
   </div>
 
-  <!-- EMAIL CAPTURE -->
-  <div class="screen" id="screen-email">
-    <div class="question-card" style="text-align:center;">
-      <div class="logo-mark" style="margin:0 auto 24px;">MG</div>
-      <h2 style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--brown);margin-bottom:12px;line-height:1.3;">Where should I send your results?</h2>
-      <p style="font-size:0.9rem;color:var(--text-soft);margin-bottom:28px;line-height:1.6;">I'll also include a personal note on what I'd focus on first for your specific situation.</p>
-      <div style="display:flex;flex-direction:column;gap:12px;text-align:left;">
-        <div>
-          <label style="font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-soft);display:block;margin-bottom:6px;">Your Name</label>
-          <input type="text" id="capture-name" placeholder="First name" style="width:100%;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--text);background:var(--cream);border:1.5px solid var(--sand);border-radius:10px;padding:12px 16px;outline:none;transition:border-color 0.2s;">
-        </div>
-        <div>
-          <label style="font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-soft);display:block;margin-bottom:6px;">Email Address</label>
-          <input type="email" id="capture-email" placeholder="you@yourbusiness.com" style="width:100%;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--text);background:var(--cream);border:1.5px solid var(--sand);border-radius:10px;padding:12px 16px;outline:none;transition:border-color 0.2s;">
-        </div>
-      </div>
-      <div id="capture-error" style="display:none;color:#c0392b;font-size:0.82rem;margin-top:10px;"></div>
-      <button class="btn-primary" onclick="submitCapture()" style="margin-top:24px;width:100%;border-radius:10px;padding:15px;">See My Results →</button>
-      <p style="font-size:0.75rem;color:var(--text-soft);margin-top:14px;opacity:0.7;">No spam. Unsubscribe anytime.</p>
+  <!-- EMAIL CAPTURE (after last question) -->
+  <div id="capture" class="capture" style="display:none;">
+    <h2>Where should I send your <em>results?</em></h2>
+    <p>Your score, your priority fixes, and a 1-page diagnosis. No spam, no list, no follow-up unless you want one.</p>
+    <div class="err" id="err"></div>
+    <div class="fields">
+      <div class="field"><label>Name</label><input id="f-name" type="text" autofocus></div>
+      <div class="field"><label>Email</label><input id="f-email" type="email"></div>
+      <div class="field"><label>Business name (optional)</label><input id="f-biz" type="text"></div>
+      <div class="honeypot" aria-hidden="true"><label>Website</label><input id="f-website" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="btn-submit" id="submit-btn" onclick="submit()">Show me my results →</button>
     </div>
   </div>
 
-  <!-- RESULTS -->
-  <div class="screen" id="screen-results">
-    <div class="results-card">
-      <div class="score-ring-wrap">
-        <div class="score-ring">
-          <svg viewBox="0 0 120 120">
-            <circle class="score-ring-track" cx="60" cy="60" r="55"/>
-            <circle class="score-ring-fill" id="ring-fill" cx="60" cy="60" r="55"/>
-          </svg>
-          <div class="score-center">
-            <div class="score-number" id="result-score">0</div>
-            <div class="score-max">out of 30</div>
-          </div>
-        </div>
-        <div class="score-label" id="result-label"></div>
-        <div class="score-sublabel" id="result-sublabel"></div>
-      </div>
-
-      <div class="result-body">
-        <p id="result-description"></p>
-      </div>
-
-      <div class="breakdown" id="breakdown"></div>
-
-      <div class="cta-section">
-        <p id="result-cta-text"></p>
-        <button class="btn-primary" onclick="window.open('https://macguttenberg.com', '_blank')">Talk to Mac →</button>
-        <br>
-        <button class="btn-restart" onclick="restartQuiz()">Retake Assessment</button>
-      </div>
+  <!-- RESULTS (after submit) -->
+  <div id="results" class="results" style="display:none;">
+    <div class="score-band" id="score-band">
+      <div class="score-label">Your Score</div>
+      <div class="score-num"><span id="r-score">—</span><span>/30</span></div>
+      <div class="score-headline" id="r-headline">—</div>
+    </div>
+    <div class="results-body">
+      <h3>What this means</h3>
+      <p id="r-summary">—</p>
+      <h3>Top 3 things to fix first</h3>
+      <ul class="fix-list" id="r-fixes"></ul>
+    </div>
+    <div class="cta-band">
+      <h3 id="cta-h">Want me to actually build these for you?</h3>
+      <p id="cta-p">Free 30-min call. I'll walk through your specific gaps and show you what's possible.</p>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-cta">Book a free call →</a>
     </div>
   </div>
 
 </div>
 
 <script>
-const questions = [
+const QUESTIONS = [
   {
-    category: "Operations",
-    text: "How do you currently manage client documents and files?",
+    text: "How do you currently take payments from clients?",
     options: [
-      { label: "Paper or physical files", score: 0 },
-      { label: "Email attachments / local folders", score: 1 },
-      { label: "Cloud storage (Google Drive, Dropbox, etc.)", score: 2 },
-      { label: "Dedicated client management software", score: 3 }
-    ]
+      { label: "Mostly cash, checks, or Venmo/Zelle to my personal account", points: 4 },
+      { label: "I send invoices manually (Word, Google Docs, etc.)", points: 3 },
+      { label: "I use a basic invoicing tool (PayPal, Square, etc.)", points: 1 },
+      { label: "Stripe or similar, with auto-recurring where it makes sense", points: 0 },
+    ],
+    fix: "Set up Stripe-based invoicing with auto-pay options so money lands faster and reconciliation isn't a Sunday-night chore."
   },
   {
-    category: "Client Communication",
-    text: "How do new clients typically reach you or book time with you?",
+    text: "How do new clients book or intake with you?",
     options: [
-      { label: "Phone call or in-person only", score: 0 },
-      { label: "Email back-and-forth", score: 1 },
-      { label: "A contact form on my website", score: 2 },
-      { label: "Online booking or intake system", score: 3 }
-    ]
+      { label: "They text/call/DM me and we go back and forth", points: 4 },
+      { label: "Email back-and-forth to find a time", points: 3 },
+      { label: "I have a Calendly link but no intake form", points: 2 },
+      { label: "Calendly + intake form that captures what I need", points: 0 },
+    ],
+    fix: "Connect a real intake form to your booking tool so every call lands with the info you need to actually be useful."
   },
   {
-    category: "Payments",
-    text: "How do you handle invoicing and getting paid?",
+    text: "Where do client documents and files live?",
     options: [
-      { label: "Cash or checks", score: 0 },
-      { label: "Manual invoices by email", score: 1 },
-      { label: "Digital invoicing (PayPal, Venmo, etc.)", score: 2 },
-      { label: "Automated invoicing software", score: 3 }
-    ]
+      { label: "My inbox, my computer, sometimes paper", points: 4 },
+      { label: "Scattered Google Drive folders", points: 3 },
+      { label: "Organized Drive/Dropbox but no client access", points: 2 },
+      { label: "Each client has their own portal or shared folder", points: 0 },
+    ],
+    fix: "Build a simple client portal (or even structured Dropbox folders) so you stop being the bottleneck for 'can you resend that?'"
   },
   {
-    category: "Marketing",
-    text: "How do most new clients find out about your business?",
+    text: "How do you track leads and deals?",
     options: [
-      { label: "Word of mouth only", score: 0 },
-      { label: "Social media (no real strategy)", score: 1 },
-      { label: "Active online presence or content", score: 2 },
-      { label: "Systematic marketing with measurable results", score: 3 }
-    ]
+      { label: "In my head + scattered notes", points: 4 },
+      { label: "A spreadsheet I update sometimes", points: 3 },
+      { label: "Notion or similar with stages", points: 2 },
+      { label: "A real CRM with stages, follow-up reminders, and notes", points: 0 },
+    ],
+    fix: "Move your pipeline out of your inbox. Even a simple Airtable-based CRM stops deals from falling through the cracks."
   },
   {
-    category: "Admin & Workflow",
-    text: "How much time do you spend on repetitive admin tasks each week?",
+    text: "How do you collect reviews or testimonials?",
     options: [
-      { label: "10+ hours — it's constant", score: 0 },
-      { label: "5–10 hours — significant", score: 1 },
-      { label: "2–5 hours — manageable", score: 2 },
-      { label: "Under 2 hours — mostly automated", score: 3 }
-    ]
+      { label: "I don't, really", points: 4 },
+      { label: "I ask occasionally, when I remember", points: 3 },
+      { label: "I have a form but rarely send it", points: 2 },
+      { label: "Automated request after every project", points: 0 },
+    ],
+    fix: "Automate the review ask so social proof builds itself instead of being something you keep meaning to do."
   },
   {
-    category: "Data & Tracking",
-    text: "How do you track your business performance (revenue, clients, growth)?",
+    text: "What does your website do for your business?",
     options: [
-      { label: "I don't really track it", score: 0 },
-      { label: "Spreadsheets I update manually", score: 1 },
-      { label: "A mix of tools and dashboards", score: 2 },
-      { label: "Real-time reporting I actually use", score: 3 }
-    ]
+      { label: "I don't have one — just social media", points: 4 },
+      { label: "I have a Linktree or a dated Wix/Squarespace page", points: 3 },
+      { label: "Functional site but no clear conversion path", points: 2 },
+      { label: "Real site with clear CTAs that drive bookings", points: 0 },
+    ],
+    fix: "A site is a salesperson, not a brochure. Even a one-pager with a clear CTA outperforms a beautiful site that doesn't convert."
   },
   {
-    category: "Online Presence",
-    text: "What does your current website or online presence look like?",
+    text: "How are you currently following up with prospects who don't book?",
     options: [
-      { label: "No website", score: 0 },
-      { label: "A basic site I rarely update", score: 1 },
-      { label: "A decent site that represents me well", score: 2 },
-      { label: "A site that actively converts visitors", score: 3 }
-    ]
+      { label: "I'm not — I forget about them", points: 4 },
+      { label: "Manually, when I think about it", points: 3 },
+      { label: "I have email templates but send them by hand", points: 2 },
+      { label: "Sequences that fire automatically", points: 0 },
+    ],
+    fix: "Set up a simple 3-touch follow-up sequence. 80% of deals close after the 4th contact — most people give up at 1."
   },
   {
-    category: "Tools & Tech",
-    text: "How comfortable is your team (or you) with adopting new digital tools?",
+    text: "Roughly how many hours a week do you spend on admin (invoicing, scheduling, chasing files, follow-up)?",
     options: [
-      { label: "Very resistant — change is hard", score: 0 },
-      { label: "Willing but need a lot of hand-holding", score: 1 },
-      { label: "Generally open with some friction", score: 2 },
-      { label: "Eager — we adopt and adapt quickly", score: 3 }
-    ]
+      { label: "10+ hours — it's eating me alive", points: 4 },
+      { label: "5-10 hours", points: 3 },
+      { label: "2-5 hours", points: 1 },
+      { label: "Less than 2 — most of it's automated", points: 0 },
+    ],
+    fix: "Audit one week of your admin time and pick the single biggest leak. Fixing one workflow can save 5+ hours/week."
   },
-  {
-    category: "Client Experience",
-    text: "How would your clients describe the process of working with you?",
-    options: [
-      { label: "Unclear — there's no real process", score: 0 },
-      { label: "It works, but it feels disorganized", score: 1 },
-      { label: "Mostly smooth with a few rough edges", score: 2 },
-      { label: "Seamless and professional end-to-end", score: 3 }
-    ]
-  },
-  {
-    category: "Growth Readiness",
-    text: "If your client volume doubled tomorrow, could your business handle it?",
-    options: [
-      { label: "No — it would break everything", score: 0 },
-      { label: "Barely — I'd be overwhelmed", score: 1 },
-      { label: "Probably, with some scrambling", score: 2 },
-      { label: "Yes — systems are built to scale", score: 3 }
-    ]
-  }
 ];
 
-const categories = ["Operations","Client Communication","Payments","Marketing","Admin & Workflow","Data & Tracking","Online Presence","Tools & Tech","Client Experience","Growth Readiness"];
-
 let current = 0;
-let answers = new Array(questions.length).fill(null);
+let answers = new Array(QUESTIONS.length).fill(null);
+
+const $ = id => document.getElementById(id);
 
 function startQuiz() {
-  showScreen('screen-question');
+  $('intro').style.display = 'none';
+  $('quiz').style.display = 'block';
+  renderProgress();
   renderQuestion();
 }
 
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById(id);
-  el.classList.add('active');
+function renderProgress() {
+  $('progress').innerHTML = QUESTIONS.map((_, i) => {
+    let cls = 'progress-dot';
+    if (i < current) cls += ' done';
+    if (i === current) cls += ' current';
+    return `<div class="${cls}"></div>`;
+  }).join('');
 }
 
 function renderQuestion() {
-  const q = questions[current];
-  document.getElementById('q-category').textContent = q.category;
-  document.getElementById('q-text').textContent = q.text;
-  document.getElementById('progress-label').textContent = `${current + 1} of ${questions.length}`;
-  document.getElementById('progress-fill').style.width = `${((current + 1) / questions.length) * 100}%`;
-  document.getElementById('btn-back').disabled = current === 0;
-
-  const nextBtn = document.getElementById('btn-next');
-  nextBtn.textContent = current === questions.length - 1 ? 'See Results →' : 'Next →';
-
-  const optionsEl = document.getElementById('q-options');
-  optionsEl.innerHTML = '';
-  q.options.forEach((opt, i) => {
-    const div = document.createElement('div');
-    div.className = 'option' + (answers[current] === i ? ' selected' : '');
-    div.innerHTML = `<div class="option-dot"></div><span>${opt.label}</span>`;
-    div.onclick = () => selectOption(i);
-    optionsEl.appendChild(div);
-  });
-
-  updateNextBtn();
+  const q = QUESTIONS[current];
+  $('q-num').textContent = `Question ${current + 1} of ${QUESTIONS.length}`;
+  $('q-text').textContent = q.text;
+  $('options').innerHTML = q.options.map((opt, i) => `
+    <div class="opt ${answers[current] === i ? 'selected' : ''}" onclick="select(${i})">
+      <div class="opt-radio"></div>
+      <div>${opt.label}</div>
+    </div>
+  `).join('');
+  $('back-btn').style.visibility = current === 0 ? 'hidden' : 'visible';
+  $('next-btn').textContent = current === QUESTIONS.length - 1 ? 'See my results →' : 'Next →';
+  $('next-btn').disabled = answers[current] === null;
+  renderProgress();
 }
 
-function selectOption(i) {
+function select(i) {
   answers[current] = i;
-  document.querySelectorAll('.option').forEach((el, idx) => {
-    el.classList.toggle('selected', idx === i);
-  });
-  updateNextBtn();
+  renderQuestion();
 }
 
-function updateNextBtn() {
-  const btn = document.getElementById('btn-next');
-  btn.classList.toggle('enabled', answers[current] !== null);
-}
-
-function goNext() {
+function next() {
   if (answers[current] === null) return;
-  if (current < questions.length - 1) {
+  if (current < QUESTIONS.length - 1) {
     current++;
     renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
-    showScreen('screen-email');
+    showCapture();
   }
 }
 
-function goBack() {
-  if (current > 0) { current--; renderQuestion(); }
-}
-
-function showResults() {
-  showScreen('screen-results');
-
-  const total = answers.reduce((sum, ans, i) => sum + questions[i].options[ans].score, 0);
-  const max = questions.length * 3;
-  const pct = total / max;
-
-  let label, sublabel, description, ctaText, color;
-
-  if (pct < 0.33) {
-    label = "Early Stage";
-    sublabel = "Significant room to grow";
-    color = "#C4714A";
-    description = "Your business is running mostly on manual effort and personal hustle. That's common — and fixable. The gap between where you are and where you could be is real, but it's also a major opportunity. The right digital foundation can dramatically reduce your workload and unlock growth you can't currently access.";
-    ctaText = "You're at the starting line of a meaningful transformation. Let's map out what that looks like for your business.";
-  } else if (pct < 0.66) {
-    label = "In Transition";
-    sublabel = "You've started — but there are gaps";
-    color = "#C49A3C";
-    description = "You have some digital tools in place, but they're probably disconnected — and you're still spending more time on operations than you should be. This is the stage where the right strategy creates the biggest ROI. Closing the gaps now will compound for years.";
-    ctaText = "You're closer than you think. A focused strategy could unlock a much smoother operation.";
-  } else {
-    label = "Digitally Ready";
-    sublabel = "Strong foundation — time to scale";
-    color = "#4A7C59";
-    description = "You've built solid digital infrastructure. Systems are in place, clients experience professionalism, and you're positioned to grow. The next frontier is optimization and scaling — making what works work even better, with less friction and more leverage.";
-    ctaText = "You're in a great position. Let's talk about what's next for growth and scaling.";
+function prev() {
+  if (current > 0) {
+    current--;
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  // Animate score
-  animateNumber('result-score', 0, total, 800);
-  document.getElementById('result-label').textContent = label;
-  document.getElementById('result-sublabel').textContent = sublabel;
-  document.getElementById('result-description').textContent = description;
-  document.getElementById('result-cta-text').textContent = ctaText;
-
-  // Ring
-  const ring = document.getElementById('ring-fill');
-  ring.style.stroke = color;
-  setTimeout(() => {
-    ring.style.strokeDashoffset = 345 - (345 * pct);
-  }, 100);
-
-  // Breakdown by category group
-  const groups = [
-    { label: "Operations & Admin", indices: [0, 4] },
-    { label: "Client Experience", indices: [1, 8] },
-    { label: "Money & Tracking", indices: [2, 5] },
-    { label: "Marketing & Growth", indices: [3, 6, 9] },
-    { label: "Tools & Tech", indices: [7] }
-  ];
-
-  const breakdownEl = document.getElementById('breakdown');
-  breakdownEl.innerHTML = '';
-  groups.forEach(g => {
-    const groupMax = g.indices.length * 3;
-    const groupScore = g.indices.reduce((sum, i) => sum + questions[i].options[answers[i]].score, 0);
-    const groupPct = Math.round((groupScore / groupMax) * 100);
-
-    const barColor = groupPct < 33 ? '#C4714A' : groupPct < 66 ? '#C49A3C' : '#4A7C59';
-
-    const div = document.createElement('div');
-    div.className = 'breakdown-item';
-    div.innerHTML = `
-      <div class="breakdown-label">${g.label}</div>
-      <div class="breakdown-bar"><div class="breakdown-fill" style="width:0%;background:${barColor}" data-pct="${groupPct}"></div></div>
-      <div class="breakdown-pct">${groupPct}%</div>
-    `;
-    breakdownEl.appendChild(div);
-  });
-
-  setTimeout(() => {
-    document.querySelectorAll('.breakdown-fill').forEach(el => {
-      el.style.width = el.dataset.pct + '%';
-    });
-  }, 200);
 }
 
-function animateNumber(id, from, to, duration) {
-  const el = document.getElementById(id);
-  const start = performance.now();
-  function update(now) {
-    const t = Math.min((now - start) / duration, 1);
-    el.textContent = Math.round(from + (to - from) * t);
-    if (t < 1) requestAnimationFrame(update);
-  }
-  requestAnimationFrame(update);
+function showCapture() {
+  $('quiz').style.display = 'none';
+  $('capture').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => $('f-name').focus(), 100);
 }
 
-async function submitCapture() {
-  const name = document.getElementById('capture-name').value.trim();
-  const email = document.getElementById('capture-email').value.trim();
-  const errEl = document.getElementById('capture-error');
+function calcScore() {
+  return answers.reduce((sum, a, i) => sum + (a !== null ? QUESTIONS[i].options[a].points : 0), 0);
+}
 
+function getZone(score) {
+  if (score >= 20) return { zone: 'bad', headline: 'Your systems are the bottleneck.', summary: 'You\'re running a real business on infrastructure that wasn\'t designed for the volume you\'re doing. Every week you wait, you\'re losing time, leads, and money to broken processes. The good news: most of these are fixable in days, not months.' };
+  if (score >= 10) return { zone: 'warn', headline: 'You\'re leaving money on the table.', summary: 'You\'ve got the basics, but there are real gaps that are costing you. The bigger you get, the more these gaps will hurt — better to close them now than scramble later.' };
+  return { zone: 'good', headline: 'You\'re ahead of most.', summary: 'Your foundation is solid. The gaps you have are smaller and more about optimization than survival. A focused 1-week project could push you from "fine" to "really dialed in."' };
+}
+
+function getTopFixes() {
+  // Sort questions by points scored, return top 3
+  const scored = QUESTIONS.map((q, i) => ({
+    fix: q.fix,
+    points: answers[i] !== null ? q.options[answers[i]].points : 0,
+  }));
+  scored.sort((a, b) => b.points - a.points);
+  return scored.filter(s => s.points >= 2).slice(0, 3).map(s => s.fix);
+}
+
+async function submit() {
+  const name = $('f-name').value.trim();
+  const email = $('f-email').value.trim();
   if (!name || !email) {
-    errEl.textContent = 'Please enter your name and email.';
-    errEl.style.display = 'block';
+    showErr('Name and email are required.');
     return;
   }
-  if (!/\S+@\S+\.\S+/.test(email)) {
-    errEl.textContent = 'Please enter a valid email address.';
-    errEl.style.display = 'block';
-    return;
-  }
+  $('submit-btn').disabled = true;
+  $('submit-btn').textContent = 'Calculating…';
 
-  errEl.style.display = 'none';
-
-  const total = answers.reduce((sum, ans, i) => sum + questions[i].options[ans].score, 0);
-  const max = questions.length * 3;
-  const pct = total / max;
-  const tier = pct < 0.33 ? 'Early Stage' : pct < 0.66 ? 'In Transition' : 'Digitally Ready';
-
-  const answerSummary = questions.map((q, i) => `${q.category}: ${q.options[answers[i]].label}`).join('\n');
+  const score = calcScore();
+  const zone = getZone(score);
+  const fixes = getTopFixes();
+  const answersText = QUESTIONS.map((q, i) => {
+    const a = answers[i];
+    return `${i+1}. ${q.text}\n   → ${a !== null ? q.options[a].label : '(skipped)'} [+${a !== null ? q.options[a].points : 0}]`;
+  }).join('\n\n');
 
   try {
-    await fetch('https://formspree.io/f/mpqkzqeb', {
+    const r = await fetch('/api/assessment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name,
-        email,
-        score: `${total} / ${max}`,
-        tier,
-        answers: answerSummary
+        name, email,
+        business: $('f-biz').value.trim(),
+        score: score + '/30',
+        summary: zone.headline + ' ' + zone.summary,
+        answers: answersText,
+        website: $('f-website').value,
       })
     });
-  } catch(e) {}
-
-  showResults();
+    if (!r.ok) throw new Error(await r.text());
+    showResults(score, zone, fixes);
+  } catch (e) {
+    showErr('Could not save: ' + e.message);
+    $('submit-btn').disabled = false;
+    $('submit-btn').textContent = 'Show me my results →';
+  }
 }
 
-function restartQuiz() {
-  current = 0;
-  answers = new Array(questions.length).fill(null);
-  document.getElementById('ring-fill').style.strokeDashoffset = 345;
-  showScreen('screen-intro');
+function showErr(msg) {
+  $('err').textContent = msg;
+  $('err').className = 'err show';
+}
+
+function showResults(score, zone, fixes) {
+  $('capture').style.display = 'none';
+  $('results').style.display = 'block';
+  $('score-band').className = 'score-band zone-' + zone.zone;
+  $('r-score').textContent = score;
+  $('r-headline').textContent = zone.headline;
+  $('r-summary').textContent = zone.summary;
+  $('r-fixes').innerHTML = fixes.length
+    ? fixes.map(f => `<li>${f}</li>`).join('')
+    : '<li>You\'re in great shape. Maybe a tune-up rather than a build.</li>';
+  // Tailor CTA to score
+  if (zone.zone === 'bad') {
+    $('cta-h').textContent = 'You need this fixed yesterday.';
+    $('cta-p').textContent = "Free 30-min call. I'll show you exactly which of these to fix first and what it would take.";
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 </body>
