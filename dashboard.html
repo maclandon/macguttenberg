@@ -162,7 +162,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
       Cloudflare
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
-    <a href="mailto:Mac@Macguttenberg.com" class="link">
+    <a href="/cdn-cgi/l/email-protection#430e2220030e222024363737262d212631246d202c2e" class="link">
       Email Inbox
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
@@ -173,21 +173,21 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
   </div>
 </div>
 
-<script>
-// Pull live stats from lead tracker localStorage
-try {
-  const leads = JSON.parse(localStorage.getItem('mg_leads_v1') || '[]');
-  const total = leads.length;
-  const active = leads.filter(l => !['Won','Lost'].includes(l.stage)).length;
-  const calls = leads.filter(l => l.stage === 'Call Booked').length;
-  const won = leads.filter(l => l.stage === 'Won').length;
-  document.getElementById('stat-total').textContent = total;
-  document.getElementById('stat-active').textContent = active;
-  document.getElementById('stat-calls').textContent = calls;
-  document.getElementById('stat-won').textContent = won;
-} catch(e) {
-  ['stat-total','stat-active','stat-calls','stat-won'].forEach(id => document.getElementById(id).textContent = '0');
-}
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Pull live stats from Airtable via /api/leads
+(async () => {
+  try {
+    const r = await fetch('/api/leads');
+    if (!r.ok) throw new Error(r.status);
+    const leads = await r.json();
+    document.getElementById('stat-total').textContent = leads.length;
+    document.getElementById('stat-active').textContent = leads.filter(l => !['Won','Lost'].includes(l.stage)).length;
+    document.getElementById('stat-calls').textContent = leads.filter(l => l.stage === 'Call Booked').length;
+    document.getElementById('stat-won').textContent = leads.filter(l => l.stage === 'Won').length;
+  } catch(e) {
+    ['stat-total','stat-active','stat-calls','stat-won'].forEach(id => document.getElementById(id).textContent = '–');
+  }
+})();
 </script>
 </body>
 </html>
