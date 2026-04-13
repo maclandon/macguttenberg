@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Project Portal — Mac Guttenberg</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+  --green:#2E7D5E;
+  --green-bg:rgba(46,125,94,.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;padding:0 0 80px;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 80% 0%,rgba(127,160,195,0.1) 0%,transparent 60%);pointer-events:none;z-index:0;}
+
+/* HEADER */
+.portal-header{background:var(--dark);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
+.portal-header-left{display:flex;align-items:center;gap:1rem;}
+.logo-mark{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:13px;color:rgba(255,255,255,.6);font-weight:700;}
+.portal-brand{font-size:.78rem;color:rgba(255,255,255,.35);font-weight:400;}
+.portal-client-name{font-family:"Fraunces",serif;font-size:1rem;font-weight:700;color:#fff;}
+.btn-message{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:500;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);padding:.45rem 1rem;border-radius:6px;text-decoration:none;transition:all .2s;}
+.btn-message:hover{color:#fff;border-color:rgba(255,255,255,.35);}
+
+/* HERO STRIP */
+.hero-strip{background:var(--dark2);padding:2rem 3rem;border-bottom:1px solid rgba(255,255,255,.04);position:relative;z-index:1;}
+.hero-strip-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;}
+.project-title{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:.4rem;}
+.project-title em{font-style:italic;color:#7EACD4;}
+.project-meta{font-size:.8rem;color:rgba(255,255,255,.3);}
+.progress-wrap{text-align:right;}
+.progress-label{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
+.progress-bar{width:160px;height:6px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin-left:auto;}
+.progress-fill{height:100%;background:var(--accent);border-radius:4px;transition:width .8s ease;}
+.progress-pct{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;margin-top:.35rem;text-align:right;}
+
+/* BODY */
+.portal-body{max-width:900px;margin:0 auto;padding:2.5rem 3rem;position:relative;z-index:1;}
+.section-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem;}
+
+/* CARDS */
+.p-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;}
+.p-card.full{grid-column:1/-1;}
+.p-card.dark{background:var(--dark);border-color:transparent;}
+.card-tag{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem;}
+.card-tag::before{content:"";width:10px;height:1.5px;background:var(--accent);}
+.card-tag.light{color:#7EACD4;}
+.card-tag.light::before{background:#7EACD4;}
+.card-h{font-family:"Fraunces",serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1rem;}
+.card-h.light{color:#fff;}
+
+/* MILESTONES */
+.milestones{display:flex;flex-direction:column;gap:.5rem;}
+.milestone{display:flex;align-items:center;gap:.85rem;padding:.75rem 1rem;border-radius:10px;border:1.5px solid var(--border);transition:all .2s;}
+.milestone.done{background:var(--green-bg);border-color:rgba(46,125,94,.2);}
+.milestone.active{border-color:var(--accent);background:rgba(127,160,195,.06);}
+.milestone.pending{opacity:.55;}
+.m-icon{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;}
+.milestone.done .m-icon{background:var(--green);color:#fff;}
+.milestone.active .m-icon{background:var(--accent);color:#fff;}
+.milestone.pending .m-icon{background:var(--border);color:var(--text-muted);}
+.m-text{font-size:.86rem;font-weight:400;color:var(--text-mid);flex:1;}
+.milestone.done .m-text{color:var(--text);font-weight:500;}
+.milestone.active .m-text{color:var(--text);font-weight:500;}
+.m-date{font-size:.72rem;color:var(--text-muted);}
+
+/* NEXT STEPS */
+.next-steps{display:flex;flex-direction:column;gap:.5rem;}
+.next-step{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;background:var(--bg);border-radius:10px;border:1px solid var(--border);}
+.ns-num{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
+.ns-content{}
+.ns-title{font-size:.88rem;font-weight:500;color:var(--text);margin-bottom:.15rem;}
+.ns-desc{font-size:.78rem;color:var(--text-muted);line-height:1.5;}
+.ns-owner{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem;}
+.ns-owner.you{color:var(--accent);}
+.ns-owner.client{color:var(--green);}
+
+/* LINKS */
+.links-list{display:flex;flex-direction:column;gap:.5rem;}
+.portal-link{display:flex;align-items:center;gap:.85rem;padding:.85rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;text-decoration:none;transition:all .2s;}
+.portal-link:hover{background:rgba(255,255,255,.08);border-color:rgba(127,160,195,.3);}
+.link-icon{width:32px;height:32px;border-radius:8px;background:rgba(127,160,195,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;}
+.link-text{}
+.link-name{font-size:.86rem;font-weight:500;color:#fff;margin-bottom:.1rem;}
+.link-url{font-size:.72rem;color:rgba(255,255,255,.3);}
+.link-arrow{margin-left:auto;color:rgba(255,255,255,.2);font-size:.85rem;}
+
+/* MESSAGE CARD */
+.message-card{text-align:center;}
+.message-card p{font-size:.88rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;font-weight:300;}
+.btn-email{display:inline-flex;align-items:center;gap:.4rem;background:var(--dark);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s;}
+.btn-email:hover{background:var(--dark2);}
+
+/* EDIT MODE */
+.edit-bar{position:fixed;bottom:0;left:0;right:0;background:var(--dark);border-top:1px solid rgba(255,255,255,.08);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;z-index:50;}
+.edit-bar p{font-size:.78rem;color:rgba(255,255,255,.35);}
+.edit-btns{display:flex;gap:.5rem;}
+.btn-edit{background:var(--accent);color:#fff;border:none;padding:.5rem 1.1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.8rem;font-weight:500;cursor:pointer;transition:background .2s;}
+.btn-edit:hover{background:var(--accent2);}
+.btn-edit-secondary{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1);padding:.5rem 1.1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.8rem;cursor:pointer;transition:all .2s;}
+.btn-edit-secondary:hover{color:#fff;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(28,26,22,.6);z-index:100;display:flex;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px);}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;width:100%;max-width:560px;max-height:85vh;overflow-y:auto;}
+.modal h2{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;}
+.m-field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem;}
+.m-field label{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);}
+.m-field input,.m-field select,.m-field textarea{font-family:"DM Sans",sans-serif;font-size:.88rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;outline:none;transition:border-color .2s;width:100%;}
+.m-field input:focus,.m-field select:focus,.m-field textarea:focus{border-color:var(--accent);}
+.m-field textarea{resize:vertical;min-height:60px;line-height:1.6;}
+.modal-btns{display:flex;gap:.75rem;margin-top:1.5rem;}
+.btn-save{flex:1;background:var(--dark);color:#fff;border:none;padding:12px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;}
+.btn-cancel{background:transparent;border:1.5px solid var(--border);color:var(--text-muted);padding:12px 18px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;cursor:pointer;}
+.section-mini-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:1.25rem 0 .65rem;border-top:1px solid var(--border);padding-top:1.25rem;}
+.milestone-edit-row{display:grid;grid-template-columns:1fr auto auto;gap:.5rem;margin-bottom:.5rem;align-items:center;}
+.milestone-edit-row input{font-family:"DM Sans",sans-serif;font-size:.85rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;outline:none;}
+.milestone-edit-row input:focus{border-color:var(--accent);}
+.status-select{font-family:"DM Sans",sans-serif;font-size:.78rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;outline:none;cursor:pointer;}
+.btn-rm{background:none;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:4px 8px;transition:color .15s;}
+.btn-rm:hover{color:var(--red, #c0392b);}
+.btn-add-row{background:none;border:1.5px dashed var(--border);color:var(--text-muted);font-size:.8rem;padding:.5rem;border-radius:8px;cursor:pointer;width:100%;transition:all .2s;font-family:"DM Sans",sans-serif;margin-top:.25rem;}
+.btn-add-row:hover{border-color:var(--accent);color:var(--accent);}
+
+@media(max-width:700px){
+  .portal-header{padding:1rem 1.25rem;}
+  .hero-strip{padding:1.5rem 1.25rem;}
+  .hero-strip-inner{grid-template-columns:1fr;}
+  .progress-wrap{text-align:left;}
+  .progress-bar{margin-left:0;}
+  .progress-pct{text-align:left;}
+  .portal-body{padding:1.5rem 1.25rem;}
+  .section-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="portal-header">
+  <div class="portal-header-left">
+    <div class="logo-mark">MG</div>
+    <div>
+      <div class="portal-brand">Mac Guttenberg · Project Portal</div>
+      <div class="portal-client-name" id="h-client-name">Client Name</div>
+    </div>
+  </div>
+  <a href="mailto:mac@macguttenberg.com" class="btn-message" id="h-message-btn">✉ Message Mac</a>
+</div>
+
+<!-- HERO STRIP -->
+<div class="hero-strip">
+  <div class="hero-strip-inner">
+    <div>
+      <div class="project-title" id="h-project-title">Project <em>Title</em></div>
+      <div class="project-meta" id="h-project-meta">Started — · Est. completion —</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label">Overall Progress</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="progress-pct" id="progress-pct">0%</div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="portal-body">
+  <div class="section-grid">
+
+    <!-- MILESTONES -->
+    <div class="p-card full">
+      <div class="card-tag">Project Milestones</div>
+      <div class="milestones" id="milestones-list"></div>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="p-card">
+      <div class="card-tag">Next Steps</div>
+      <div class="next-steps" id="nextsteps-list"></div>
+    </div>
+
+    <!-- LINKS -->
+    <div class="p-card dark">
+      <div class="card-tag light">Your Resources</div>
+      <div class="links-list" id="links-list"></div>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="p-card full message-card">
+      <div class="card-tag">Questions?</div>
+      <p id="message-text">Have a question or need to share something? Reach out directly and I'll get back to you within 24 hours.</p>
+      <a href="mailto:mac@macguttenberg.com" class="btn-email" id="message-link">✉ Email Mac →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- EDIT BAR -->
+<div class="edit-bar" id="edit-bar">
+  <p>🔒 Customize this portal before sharing with your client.</p>
+  <div class="edit-btns">
+    <button class="btn-edit-secondary" onclick="copyPortalLink()">Copy Link</button>
+    <button class="btn-edit" onclick="openEditor()">Edit Portal</button>
+  </div>
+</div>
+
+<!-- EDITOR MODAL -->
+<div class="modal-overlay" id="editor-modal" style="display:none;">
+  <div class="modal">
+    <h2>Edit Portal</h2>
+
+    <div class="m-field"><label>Client / Business Name</label><input id="e-client" type="text" placeholder="Sarah Johnson — Johnson Legal"></div>
+    <div class="m-field"><label>Project Title</label><input id="e-title" type="text" placeholder="Digital Infrastructure Build"></div>
+    <div class="m-field"><label>Start Date</label><input id="e-start" type="text" placeholder="April 14, 2026"></div>
+    <div class="m-field"><label>Est. Completion</label><input id="e-end" type="text" placeholder="May 19, 2026"></div>
+    <div class="m-field"><label>Overall Progress %</label><input id="e-progress" type="number" min="0" max="100" placeholder="35"></div>
+
+    <div class="section-mini-label">Milestones</div>
+    <div id="e-milestones"></div>
+    <button class="btn-add-row" onclick="addMilestone()">+ Add Milestone</button>
+
+    <div class="section-mini-label">Next Steps</div>
+    <div id="e-nextsteps"></div>
+    <button class="btn-add-row" onclick="addNextStep()">+ Add Next Step</button>
+
+    <div class="section-mini-label">Resource Links</div>
+    <div id="e-links"></div>
+    <button class="btn-add-row" onclick="addLink()">+ Add Link</button>
+
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeEditor()">Cancel</button>
+      <button class="btn-save" onclick="saveEditor()">Save & Preview</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let portal = {
+  client: 'Sarah Johnson — Johnson Legal',
+  title: 'Digital Infrastructure Build',
+  start: 'April 14, 2026',
+  end: 'May 19, 2026',
+  progress: 35,
+  milestones: [
+    { text: 'Kickoff call & audit', status: 'done', date: 'Apr 14' },
+    { text: 'Strategy & scope confirmed', status: 'done', date: 'Apr 16' },
+    { text: 'Website build', status: 'active', date: 'In progress' },
+    { text: 'Client portal setup', status: 'pending', date: 'Week 3' },
+    { text: 'Payment processing', status: 'pending', date: 'Week 3' },
+    { text: 'Launch & handoff', status: 'pending', date: 'May 19' }
+  ],
+  nextSteps: [
+    { title: 'Review homepage draft', desc: 'I\'ll send a preview link by end of day tomorrow.', owner: 'you' },
+    { title: 'Send logo files', desc: 'PNG with transparent background works best.', owner: 'client' },
+    { title: 'Confirm payment provider', desc: 'Stripe or PayPal — let me know which you prefer.', owner: 'client' }
+  ],
+  links: [
+    { name: 'Shared Google Drive', url: 'drive.google.com', icon: '📁' },
+    { name: 'Project Notes Doc', url: 'docs.google.com', icon: '📝' },
+    { name: 'Book a Check-In Call', url: 'calendly.com/macguttenberg/30min', icon: '📅' }
+  ]
+};
+
+const STATUS_ICONS = { done: '✓', active: '→', pending: '○' };
+
+function renderPortal() {
+  document.getElementById('h-client-name').textContent = portal.client;
+  document.getElementById('h-project-title').innerHTML = portal.title.replace(/(\w+)$/, '<em>$1</em>');
+  document.getElementById('h-project-meta').textContent = `Started ${portal.start} · Est. completion ${portal.end}`;
+  document.getElementById('progress-fill').style.width = portal.progress + '%';
+  document.getElementById('progress-pct').textContent = portal.progress + '%';
+
+  // Milestones
+  document.getElementById('milestones-list').innerHTML = portal.milestones.map(m => `
+    <div class="milestone ${m.status}">
+      <div class="m-icon">${STATUS_ICONS[m.status]}</div>
+      <div class="m-text">${m.text}</div>
+      <div class="m-date">${m.date}</div>
+    </div>
+  `).join('');
+
+  // Next steps
+  document.getElementById('nextsteps-list').innerHTML = portal.nextSteps.map((s, i) => `
+    <div class="next-step">
+      <div class="ns-num">${i+1}</div>
+      <div class="ns-content">
+        <div class="ns-title">${s.title}</div>
+        <div class="ns-desc">${s.desc}</div>
+        <div class="ns-owner ${s.owner}">${s.owner === 'you' ? '↑ Mac' : '↑ You'}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Links
+  document.getElementById('links-list').innerHTML = portal.links.map(l => `
+    <a href="https://${l.url}" target="_blank" class="portal-link">
+      <div class="link-icon">${l.icon}</div>
+      <div class="link-text">
+        <div class="link-name">${l.name}</div>
+        <div class="link-url">${l.url}</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  `).join('');
+}
+
+function openEditor() {
+  document.getElementById('e-client').value   = portal.client;
+  document.getElementById('e-title').value    = portal.title;
+  document.getElementById('e-start').value    = portal.start;
+  document.getElementById('e-end').value      = portal.end;
+  document.getElementById('e-progress').value = portal.progress;
+
+  // Milestones
+  renderMilestoneEditor();
+  renderNextStepEditor();
+  renderLinkEditor();
+
+  document.getElementById('editor-modal').style.display = 'flex';
+}
+
+function renderMilestoneEditor() {
+  document.getElementById('e-milestones').innerHTML = portal.milestones.map((m, i) => `
+    <div class="milestone-edit-row">
+      <input type="text" value="${m.text}" oninput="portal.milestones[${i}].text=this.value" placeholder="Milestone name">
+      <input type="text" value="${m.date}" oninput="portal.milestones[${i}].date=this.value" placeholder="Date" style="width:90px;">
+      <select class="status-select" onchange="portal.milestones[${i}].status=this.value">
+        <option value="done" ${m.status==='done'?'selected':''}>Done</option>
+        <option value="active" ${m.status==='active'?'selected':''}>Active</option>
+        <option value="pending" ${m.status==='pending'?'selected':''}>Pending</option>
+      </select>
+      <button class="btn-rm" onclick="portal.milestones.splice(${i},1);renderMilestoneEditor()">×</button>
+    </div>
+  `).join('');
+}
+
+function addMilestone() {
+  portal.milestones.push({ text: '', status: 'pending', date: '' });
+  renderMilestoneEditor();
+}
+
+function renderNextStepEditor() {
+  document.getElementById('e-nextsteps').innerHTML = portal.nextSteps.map((s, i) => `
+    <div class="milestone-edit-row" style="grid-template-columns:1fr 1fr auto auto;">
+      <input type="text" value="${s.title}" oninput="portal.nextSteps[${i}].title=this.value" placeholder="Action item">
+      <input type="text" value="${s.desc}" oninput="portal.nextSteps[${i}].desc=this.value" placeholder="Details">
+      <select class="status-select" onchange="portal.nextSteps[${i}].owner=this.value">
+        <option value="you" ${s.owner==='you'?'selected':''}>Mac</option>
+        <option value="client" ${s.owner==='client'?'selected':''}>Client</option>
+      </select>
+      <button class="btn-rm" onclick="portal.nextSteps.splice(${i},1);renderNextStepEditor()">×</button>
+    </div>
+  `).join('');
+}
+
+function addNextStep() {
+  portal.nextSteps.push({ title: '', desc: '', owner: 'you' });
+  renderNextStepEditor();
+}
+
+function renderLinkEditor() {
+  document.getElementById('e-links').innerHTML = portal.links.map((l, i) => `
+    <div class="milestone-edit-row" style="grid-template-columns:2rem 1fr 1fr auto;">
+      <input type="text" value="${l.icon}" oninput="portal.links[${i}].icon=this.value" placeholder="📁" style="width:40px;text-align:center;">
+      <input type="text" value="${l.name}" oninput="portal.links[${i}].name=this.value" placeholder="Link name">
+      <input type="text" value="${l.url}" oninput="portal.links[${i}].url=this.value" placeholder="URL">
+      <button class="btn-rm" onclick="portal.links.splice(${i},1);renderLinkEditor()">×</button>
+    </div>
+  `).join('');
+}
+
+function addLink() {
+  portal.links.push({ icon: '🔗', name: '', url: '' });
+  renderLinkEditor();
+}
+
+function closeEditor() {
+  document.getElementById('editor-modal').style.display = 'none';
+}
+
+function saveEditor() {
+  portal.client   = document.getElementById('e-client').value.trim();
+  portal.title    = document.getElementById('e-title').value.trim();
+  portal.start    = document.getElementById('e-start').value.trim();
+  portal.end      = document.getElementById('e-end').value.trim();
+  portal.progress = parseInt(document.getElementById('e-progress').value) || 0;
+  closeEditor();
+  renderPortal();
+}
+
+function copyPortalLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = document.querySelector('.btn-edit-secondary');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy Link', 2000);
+  });
+}
+
+renderPortal();
+</script>
+</body>
+</html>
