@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Project Portal — Mac Guttenberg</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#E8E4DC;--card:#F5F2EC;--border:#D0CAC0;--text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;--accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;--green:#2E7D5E;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 80% 0%,rgba(127,160,195,0.1) 0%,transparent 60%);pointer-events:none;z-index:0;}
+
+.portal-header{background:var(--dark);padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
+.ph-left{display:flex;align-items:center;gap:.85rem;}
+.logo-mark{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-size:12px;color:rgba(255,255,255,.5);font-weight:700;}
+.portal-brand{font-size:.72rem;color:rgba(255,255,255,.3);}
+.portal-client{font-family:"Fraunces",serif;font-size:.95rem;font-weight:700;color:#fff;}
+.btn-msg{font-size:.75rem;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.12);padding:.4rem .85rem;border-radius:5px;text-decoration:none;transition:all .2s;}
+.btn-msg:hover{color:#fff;border-color:rgba(255,255,255,.3);}
+
+.hero-strip{background:var(--dark2);padding:2rem 2.5rem;border-bottom:1px solid rgba(255,255,255,.04);position:relative;z-index:1;}
+.hero-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;max-width:880px;margin:0 auto;}
+.proj-title{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:.35rem;}
+.proj-title em{font-style:italic;color:#7EACD4;}
+.proj-meta{font-size:.78rem;color:rgba(255,255,255,.3);}
+.prog-wrap{text-align:right;}
+.prog-label{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.4rem;}
+.prog-bar{width:140px;height:5px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin-left:auto;}
+.prog-fill{height:100%;background:var(--accent);border-radius:4px;transition:width 1s ease;}
+.prog-pct{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;margin-top:.35rem;text-align:right;}
+
+.pbody{max-width:880px;margin:0 auto;padding:2rem 2.5rem 4rem;position:relative;z-index:1;}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;animation:fadeUp .5s ease both;}
+.pcard.full{grid-column:1/-1;}
+.pcard.dark{background:var(--dark);border-color:transparent;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.pcard:nth-child(2){animation-delay:.1s;}
+.pcard:nth-child(3){animation-delay:.15s;}
+.pcard:nth-child(4){animation-delay:.2s;}
+
+.ctag{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem;}
+.ctag::before{content:"";width:10px;height:1.5px;background:var(--accent);}
+.ctag.light{color:#7EACD4;}
+.ctag.light::before{background:#7EACD4;}
+
+.milestones{display:flex;flex-direction:column;gap:.5rem;}
+.ms{display:flex;align-items:center;gap:.75rem;padding:.7rem .9rem;border-radius:10px;border:1.5px solid var(--border);}
+.ms.done{background:rgba(46,125,94,.07);border-color:rgba(46,125,94,.2);}
+.ms.active{border-color:var(--accent);background:rgba(127,160,195,.06);}
+.ms.pending{opacity:.5;}
+.ms-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0;}
+.ms.done .ms-icon{background:var(--green);color:#fff;}
+.ms.active .ms-icon{background:var(--accent);color:#fff;}
+.ms.pending .ms-icon{background:var(--border);color:var(--text-muted);}
+.ms-text{font-size:.86rem;flex:1;color:var(--text-mid);}
+.ms.done .ms-text,.ms.active .ms-text{color:var(--text);font-weight:500;}
+.ms-date{font-size:.72rem;color:var(--text-muted);}
+
+.nsteps{display:flex;flex-direction:column;gap:.5rem;}
+.ns{display:flex;align-items:flex-start;gap:.7rem;padding:.8rem .9rem;background:var(--bg);border-radius:10px;border:1px solid var(--border);}
+.ns-n{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
+.ns-title{font-size:.86rem;font-weight:500;color:var(--text);margin-bottom:.1rem;}
+.ns-desc{font-size:.78rem;color:var(--text-muted);line-height:1.5;}
+.ns-owner{font-size:.67rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:.25rem;color:var(--accent);}
+.ns-owner.client{color:var(--green);}
+
+.links{display:flex;flex-direction:column;gap:.5rem;}
+.plink{display:flex;align-items:center;gap:.8rem;padding:.8rem .9rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;text-decoration:none;transition:all .2s;}
+.plink:hover{background:rgba(255,255,255,.09);border-color:rgba(127,160,195,.3);}
+.plink-icon{width:30px;height:30px;border-radius:8px;background:rgba(127,160,195,.15);display:flex;align-items:center;justify-content:center;font-size:.88rem;flex-shrink:0;}
+.plink-name{font-size:.85rem;font-weight:500;color:#fff;margin-bottom:.1rem;}
+.plink-url{font-size:.7rem;color:rgba(255,255,255,.3);}
+.plink-arr{margin-left:auto;color:rgba(255,255,255,.2);font-size:.85rem;}
+
+.msg-card{text-align:center;}
+.msg-card p{font-size:.9rem;color:var(--text-muted);line-height:1.75;margin-bottom:1.25rem;font-weight:300;}
+.btn-email{display:inline-flex;align-items:center;gap:.4rem;background:var(--dark);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s;}
+.btn-email:hover{background:var(--dark2);}
+
+.loading{display:flex;align-items:center;justify-content:center;min-height:60vh;flex-direction:column;gap:1rem;color:var(--text-muted);}
+.loading-spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.not-found{display:flex;align-items:center;justify-content:center;min-height:60vh;flex-direction:column;gap:.75rem;text-align:center;padding:2rem;}
+.not-found h2{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:var(--text);}
+.not-found p{font-size:.9rem;color:var(--text-muted);line-height:1.7;}
+
+@media(max-width:700px){
+  .portal-header{padding:1rem 1.25rem;}
+  .hero-strip{padding:1.5rem 1.25rem;}
+  .hero-inner{grid-template-columns:1fr;}
+  .prog-wrap{text-align:left;}
+  .prog-bar{margin-left:0;}
+  .prog-pct{text-align:left;}
+  .pbody{padding:1.5rem 1.25rem 3rem;}
+  .pgrid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="loading"><div class="loading-spinner"></div><span>Loading your portal...</span></div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://jtytcagjnbdchzcabrdv.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_PyZv3aPmcDqpW82vT7rkPw__GZh4u_r';
+
+const SI = { done:'✓', active:'→', pending:'○' };
+
+async function loadPortal() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('id');
+
+  if (!slug) { showNotFound('No portal ID provided.'); return; }
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/portals?slug=eq.${slug}&select=data`, {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+    });
+    const data = await res.json();
+    if (!data || data.length === 0) { showNotFound('Portal not found.'); return; }
+    renderPortal(data[0].data);
+  } catch(e) {
+    showNotFound('Could not load portal.');
+  }
+}
+
+function renderPortal(d) {
+  document.title = `${d.client || 'Your Project'} — Mac Guttenberg`;
+
+  document.getElementById('app').innerHTML = `
+    <div class="portal-header">
+      <div class="ph-left">
+        <div class="logo-mark">MG</div>
+        <div>
+          <div class="portal-brand">Mac Guttenberg · Project Portal</div>
+          <div class="portal-client">${d.client || 'Your Project'}</div>
+        </div>
+      </div>
+      <a href="mailto:mac@macguttenberg.com" class="btn-msg">✉ Message Mac</a>
+    </div>
+
+    <div class="hero-strip">
+      <div class="hero-inner">
+        <div>
+          <div class="proj-title">${d.title || 'Your Project'}</div>
+          <div class="proj-meta">Started ${d.start || '—'} · Est. completion ${d.end || '—'}</div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-label">Overall Progress</div>
+          <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+          <div class="prog-pct">${d.progress || 0}%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pbody">
+      <div class="pgrid">
+
+        <div class="pcard full">
+          <div class="ctag">Project Milestones</div>
+          <div class="milestones">
+            ${(d.milestones||[]).map(m=>`
+              <div class="ms ${m.status}">
+                <div class="ms-icon">${SI[m.status]||'○'}</div>
+                <div class="ms-text">${m.text}</div>
+                <div class="ms-date">${m.date||''}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <div class="pcard">
+          <div class="ctag">Next Steps</div>
+          <div class="nsteps">
+            ${(d.nextSteps||[]).map((s,i)=>`
+              <div class="ns">
+                <div class="ns-n">${i+1}</div>
+                <div>
+                  <div class="ns-title">${s.title}</div>
+                  ${s.desc ? `<div class="ns-desc">${s.desc}</div>` : ''}
+                  <div class="ns-owner ${s.owner}">${s.owner==='you'?'↑ Mac':'↑ You'}</div>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <div class="pcard dark">
+          <div class="ctag light">Your Resources</div>
+          <div class="links">
+            ${(d.links||[]).map(l=>`
+              <a href="https://${l.url}" target="_blank" class="plink">
+                <div class="plink-icon">${l.icon}</div>
+                <div>
+                  <div class="plink-name">${l.name}</div>
+                  <div class="plink-url">${l.url}</div>
+                </div>
+                <div class="plink-arr">→</div>
+              </a>`).join('')}
+          </div>
+        </div>
+
+        <div class="pcard full msg-card">
+          <div class="ctag">Questions?</div>
+          <p>Have a question or need to share something? Reach out directly and I'll get back to you within 24 hours.</p>
+          <a href="mailto:mac@macguttenberg.com" class="btn-email">✉ Email Mac →</a>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  // Animate progress bar
+  setTimeout(() => {
+    const fill = document.getElementById('prog-fill');
+    if (fill) fill.style.width = (d.progress || 0) + '%';
+  }, 100);
+}
+
+function showNotFound(msg) {
+  document.getElementById('app').innerHTML = `
+    <div class="not-found">
+      <h2>Portal not found</h2>
+      <p>${msg}<br>Please check the link you were sent.</p>
+    </div>
+  `;
+}
+
+loadPortal();
+</script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Builder — Mac Guttenberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;--card:#F5F2EC;--border:#D0CAC0;--text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;--accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
+}
+body{font-family:"DM Sans",sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased;min-height:100vh;display:grid;grid-template-columns:400px 1fr;}
+
+/* LEFT */
+.left{background:var(--dark2);border-right:1px solid rgba(255,255,255,.06);padding:1.75rem;overflow-y:auto;height:100vh;position:sticky;top:0;}
+.left-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.left-header h1{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;}
+.left-header p{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:.15rem;}
+
+.s-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.6rem;display:block;margin-top:1.25rem;}
+.s-label:first-of-type{margin-top:0;}
+.b-input{width:100%;font-family:"DM Sans",sans-serif;font-size:.88rem;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:9px 12px;outline:none;transition:border-color .2s;}
+.b-input:focus{border-color:var(--accent);}
+.b-input::placeholder{color:rgba(255,255,255,.2);}
+textarea.b-input{resize:vertical;min-height:60px;line-height:1.6;}
+
+.row-edit{display:grid;gap:.4rem;margin-bottom:.4rem;}
+.row-edit.three{grid-template-columns:1fr 80px 90px auto;}
+.row-edit.two{grid-template-columns:1fr 1fr auto;}
+.row-edit.four{grid-template-columns:30px 1fr 1fr auto;}
+.row-edit input,.row-edit select{font-family:"DM Sans",sans-serif;font-size:.82rem;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:7px 9px;outline:none;width:100%;}
+.row-edit input:focus,.row-edit select:focus{border-color:var(--accent);}
+.row-edit input::placeholder{color:rgba(255,255,255,.2);}
+.btn-rm{background:none;border:none;color:rgba(255,255,255,.2);font-size:1rem;cursor:pointer;padding:4px 6px;transition:color .15s;flex-shrink:0;}
+.btn-rm:hover{color:#e74c3c;}
+.btn-add-row{background:none;border:1px dashed rgba(255,255,255,.12);color:rgba(255,255,255,.3);font-size:.78rem;padding:.45rem;border-radius:7px;cursor:pointer;width:100%;transition:all .2s;font-family:"DM Sans",sans-serif;margin-top:.25rem;}
+.btn-add-row:hover{border-color:var(--accent);color:var(--accent);}
+
+.divider{border:none;border-top:1px solid rgba(255,255,255,.06);margin:1.25rem 0;}
+
+.btn-generate{width:100%;background:var(--accent);color:#fff;border:none;padding:13px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.92rem;font-weight:500;cursor:pointer;transition:background .2s;margin-bottom:.5rem;}
+.btn-generate:hover{background:var(--accent2);}
+.btn-copy-link{width:100%;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1);padding:11px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.85rem;cursor:pointer;transition:all .2s;display:none;}
+.btn-copy-link:hover{background:rgba(255,255,255,.1);color:#fff;}
+
+.portals-list{display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem;}
+.portal-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.65rem 1rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .2s;}
+.portal-item:hover{background:rgba(255,255,255,.08);}
+.pi-name{font-size:.85rem;font-weight:500;color:#fff;}
+.pi-slug{font-size:.72rem;color:rgba(255,255,255,.3);}
+.pi-actions{display:flex;gap:.4rem;}
+.pi-btn{font-size:.72rem;color:rgba(255,255,255,.35);background:none;border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:.25rem .6rem;cursor:pointer;transition:all .15s;font-family:"DM Sans",sans-serif;}
+.pi-btn:hover{color:#fff;border-color:rgba(255,255,255,.3);}
+.pi-btn.danger:hover{color:#e74c3c;border-color:rgba(231,76,60,.3);}
+
+.status{font-size:.75rem;color:rgba(255,255,255,.3);text-align:center;padding:.5rem;min-height:24px;}
+.status.success{color:#2ecc71;}
+.status.error{color:#e74c3c;}
+
+/* RIGHT - preview */
+.right{overflow-y:auto;height:100vh;background:var(--bg);}
+.preview-label{text-align:center;padding:.75rem;background:rgba(28,26,22,.8);font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.06);}
+
+/* PORTAL PREVIEW STYLES */
+.portal-header{background:var(--dark);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.portal-brand{font-size:.72rem;color:rgba(255,255,255,.3);}
+.portal-client{font-family:"Fraunces",serif;font-size:.95rem;font-weight:700;color:#fff;}
+.btn-msg{font-size:.75rem;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.12);padding:.4rem .85rem;border-radius:5px;text-decoration:none;transition:all .2s;}
+.btn-msg:hover{color:#fff;}
+.hero-strip{background:var(--dark2);padding:1.5rem 2rem;border-bottom:1px solid rgba(255,255,255,.04);}
+.hero-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;}
+.proj-title{font-family:"Fraunces",serif;font-size:1.35rem;font-weight:700;color:#fff;line-height:1.2;}
+.proj-title em{font-style:italic;color:#7EACD4;}
+.proj-meta{font-size:.75rem;color:rgba(255,255,255,.3);margin-top:.3rem;}
+.prog-wrap{text-align:right;}
+.prog-label{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.4rem;}
+.prog-bar{width:120px;height:5px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin-left:auto;}
+.prog-fill{height:100%;background:var(--accent);border-radius:4px;}
+.prog-pct{font-family:"Fraunces",serif;font-size:1rem;font-weight:700;color:#fff;margin-top:.3rem;text-align:right;}
+.pbody{padding:1.5rem 2rem;max-width:860px;margin:0 auto;}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;}
+.pcard.full{grid-column:1/-1;}
+.pcard.dark{background:var(--dark);border-color:transparent;}
+.ctag{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.35rem;}
+.ctag::before{content:"";width:8px;height:1.5px;background:var(--accent);}
+.ctag.light{color:#7EACD4;}
+.ctag.light::before{background:#7EACD4;}
+.milestones{display:flex;flex-direction:column;gap:.4rem;}
+.ms{display:flex;align-items:center;gap:.75rem;padding:.65rem .85rem;border-radius:8px;border:1.5px solid var(--border);}
+.ms.done{background:rgba(46,125,94,.07);border-color:rgba(46,125,94,.2);}
+.ms.active{border-color:var(--accent);background:rgba(127,160,195,.05);}
+.ms.pending{opacity:.5;}
+.ms-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;}
+.ms.done .ms-icon{background:#2E7D5E;color:#fff;}
+.ms.active .ms-icon{background:var(--accent);color:#fff;}
+.ms.pending .ms-icon{background:var(--border);color:var(--text-muted);}
+.ms-text{font-size:.83rem;color:var(--text-mid);flex:1;}
+.ms.done .ms-text,.ms.active .ms-text{color:var(--text);font-weight:500;}
+.ms-date{font-size:.7rem;color:var(--text-muted);}
+.nsteps{display:flex;flex-direction:column;gap:.4rem;}
+.ns{display:flex;align-items:flex-start;gap:.65rem;padding:.75rem .85rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);}
+.ns-n{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
+.ns-title{font-size:.83rem;font-weight:500;color:var(--text);}
+.ns-desc{font-size:.75rem;color:var(--text-muted);margin-top:.1rem;line-height:1.5;}
+.ns-owner{font-size:.65rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:.25rem;color:var(--accent);}
+.ns-owner.client{color:#2E7D5E;}
+.links{display:flex;flex-direction:column;gap:.4rem;}
+.plink{display:flex;align-items:center;gap:.75rem;padding:.75rem .85rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;text-decoration:none;transition:all .2s;}
+.plink:hover{background:rgba(255,255,255,.08);}
+.plink-icon{width:28px;height:28px;border-radius:7px;background:rgba(127,160,195,.15);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.plink-name{font-size:.82rem;font-weight:500;color:#fff;}
+.plink-url{font-size:.68rem;color:rgba(255,255,255,.3);}
+.plink-arr{margin-left:auto;color:rgba(255,255,255,.2);}
+.msg-card{text-align:center;}
+.msg-card p{font-size:.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:1rem;font-weight:300;}
+.btn-email{display:inline-flex;align-items:center;gap:.35rem;background:var(--dark);color:#fff;font-size:.83rem;font-weight:500;padding:.7rem 1.4rem;border-radius:6px;text-decoration:none;}
+
+@media(max-width:900px){body{grid-template-columns:1fr;}.left{height:auto;position:relative;}.right{height:auto;}}
+</style>
+</head>
+<body>
+
+<div class="left">
+  <div class="left-header">
+    <div>
+      <h1>Portal Builder</h1>
+      <p>Internal — Mac Guttenberg</p>
+    </div>
+  </div>
+
+  <!-- SAVED PORTALS -->
+  <span class="s-label">Saved Portals</span>
+  <div class="portals-list" id="portals-list"><div class="status" id="portals-status">Loading...</div></div>
+
+  <div class="divider"></div>
+
+  <!-- BUILD NEW -->
+  <span class="s-label">Client</span>
+  <input class="b-input" id="b-client" type="text" placeholder="Sarah Johnson — Johnson Legal" oninput="preview()">
+
+  <span class="s-label">Portal Slug (URL)</span>
+  <input class="b-input" id="b-slug" type="text" placeholder="sarah-johnson" oninput="preview()">
+  <div style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:.3rem;">macguttenberg.com/portal?id=<span id="slug-preview">sarah-johnson</span></div>
+
+  <span class="s-label">Project Title</span>
+  <input class="b-input" id="b-title" type="text" placeholder="Digital Infrastructure Build" oninput="preview()">
+
+  <span class="s-label">Start Date</span>
+  <input class="b-input" id="b-start" type="text" placeholder="April 14, 2026" oninput="preview()">
+
+  <span class="s-label">Est. Completion</span>
+  <input class="b-input" id="b-end" type="text" placeholder="May 19, 2026" oninput="preview()">
+
+  <span class="s-label">Overall Progress %</span>
+  <input class="b-input" id="b-progress" type="number" min="0" max="100" placeholder="35" oninput="preview()">
+
+  <span class="s-label">Milestones</span>
+  <div id="e-milestones"></div>
+  <button class="btn-add-row" onclick="addMilestone()">+ Add Milestone</button>
+
+  <span class="s-label">Next Steps</span>
+  <div id="e-nextsteps"></div>
+  <button class="btn-add-row" onclick="addNextStep()">+ Add Next Step</button>
+
+  <span class="s-label">Resource Links</span>
+  <div id="e-links"></div>
+  <button class="btn-add-row" onclick="addLink()">+ Add Link</button>
+
+  <div class="divider"></div>
+
+  <div class="status" id="save-status"></div>
+  <button class="btn-generate" onclick="savePortal()">Save & Generate Portal →</button>
+  <button class="btn-copy-link" id="copy-link-btn" onclick="copyPortalLink()">Copy Client Link</button>
+</div>
+
+<div class="right">
+  <div class="preview-label">Live Preview</div>
+  <div id="preview-area"></div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://jtytcagjnbdchzcabrdv.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_PyZv3aPmcDqpW82vT7rkPw__GZh4u_r';
+
+let milestones = [
+  { text: 'Kickoff call & audit', date: '', status: 'done' },
+  { text: 'Strategy confirmed', date: '', status: 'active' },
+  { text: 'Build phase', date: '', status: 'pending' },
+  { text: 'Launch & handoff', date: '', status: 'pending' }
+];
+let nextSteps = [
+  { title: 'Review homepage draft', desc: '', owner: 'you' },
+  { title: 'Send logo files', desc: '', owner: 'client' }
+];
+let links = [
+  { icon: '📁', name: 'Shared Google Drive', url: 'drive.google.com' },
+  { icon: '📅', name: 'Book a Check-In', url: 'calendly.com/macguttenberg/30min' }
+];
+let lastSlug = '';
+
+// ── SUPABASE HELPERS ──
+async function sbFetch(method, path, body) {
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    method,
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': method === 'POST' ? 'return=representation' : ''
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json().catch(() => null);
+}
+
+async function loadPortals() {
+  try {
+    const data = await sbFetch('GET', 'portals?select=id,slug,data&order=created_at.desc');
+    const el = document.getElementById('portals-list');
+    if (!data || data.length === 0) {
+      el.innerHTML = '<div class="status">No portals yet.</div>';
+      return;
+    }
+    el.innerHTML = data.map(p => `
+      <div class="portal-item">
+        <div>
+          <div class="pi-name">${p.data?.client || p.slug}</div>
+          <div class="pi-slug">?id=${p.slug}</div>
+        </div>
+        <div class="pi-actions">
+          <button class="pi-btn" onclick="loadIntoEditor(${JSON.stringify(JSON.stringify(p))})">Edit</button>
+          <button class="pi-btn" onclick="copyLink('${p.slug}')">Copy Link</button>
+          <button class="pi-btn danger" onclick="deletePortal(${p.id},'${p.slug}')">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    document.getElementById('portals-list').innerHTML = '<div class="status error">Could not load portals.</div>';
+  }
+}
+
+function loadIntoEditor(pJson) {
+  const p = JSON.parse(pJson);
+  const d = p.data;
+  document.getElementById('b-client').value   = d.client || '';
+  document.getElementById('b-slug').value     = p.slug || '';
+  document.getElementById('b-title').value    = d.title || '';
+  document.getElementById('b-start').value    = d.start || '';
+  document.getElementById('b-end').value      = d.end || '';
+  document.getElementById('b-progress').value = d.progress || 0;
+  milestones = d.milestones || [];
+  nextSteps  = d.nextSteps  || [];
+  links      = d.links      || [];
+  lastSlug   = p.slug;
+  renderEditors();
+  preview();
+  document.getElementById('copy-link-btn').style.display = 'block';
+  document.getElementById('slug-preview').textContent = p.slug;
+}
+
+async function savePortal() {
+  const slug = document.getElementById('b-slug').value.trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  if (!slug) { setStatus('Please enter a slug (URL name).', 'error'); return; }
+
+  const data = getPortalData();
+  setStatus('Saving...', '');
+
+  try {
+    // Check if slug exists
+    const existing = await sbFetch('GET', `portals?slug=eq.${slug}&select=id`);
+    if (existing && existing.length > 0) {
+      await sbFetch('PATCH', `portals?slug=eq.${slug}`, { data });
+    } else {
+      await sbFetch('POST', 'portals', { slug, data });
+    }
+    lastSlug = slug;
+    setStatus('✓ Saved!', 'success');
+    document.getElementById('copy-link-btn').style.display = 'block';
+    loadPortals();
+  } catch(e) {
+    setStatus('Error saving. Check console.', 'error');
+    console.error(e);
+  }
+}
+
+async function deletePortal(id, slug) {
+  if (!confirm(`Delete portal for "${slug}"?`)) return;
+  try {
+    await sbFetch('DELETE', `portals?id=eq.${id}`);
+    loadPortals();
+  } catch(e) { alert('Error deleting.'); }
+}
+
+function getPortalData() {
+  return {
+    client:     document.getElementById('b-client').value.trim(),
+    title:      document.getElementById('b-title').value.trim(),
+    start:      document.getElementById('b-start').value.trim(),
+    end:        document.getElementById('b-end').value.trim(),
+    progress:   parseInt(document.getElementById('b-progress').value) || 0,
+    milestones: [...milestones],
+    nextSteps:  [...nextSteps],
+    links:      [...links]
+  };
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('save-status');
+  el.textContent = msg;
+  el.className = 'status ' + type;
+}
+
+function copyLink(slug) {
+  const s = slug || lastSlug;
+  if (!s) return;
+  navigator.clipboard.writeText(`https://macguttenberg.com/portal.html?id=${s}`).then(() => {
+    setStatus('✓ Link copied!', 'success');
+    setTimeout(() => setStatus('', ''), 2000);
+  });
+}
+
+function copyPortalLink() { copyLink(lastSlug); }
+
+// ── EDITORS ──
+function renderEditors() {
+  document.getElementById('e-milestones').innerHTML = milestones.map((m, i) => `
+    <div class="row-edit three">
+      <input type="text" value="${m.text}" placeholder="Milestone" oninput="milestones[${i}].text=this.value;preview()">
+      <input type="text" value="${m.date}" placeholder="Date" oninput="milestones[${i}].date=this.value;preview()">
+      <select oninput="milestones[${i}].status=this.value;preview()">
+        <option value="done" ${m.status==='done'?'selected':''}>Done</option>
+        <option value="active" ${m.status==='active'?'selected':''}>Active</option>
+        <option value="pending" ${m.status==='pending'?'selected':''}>Pending</option>
+      </select>
+      <button class="btn-rm" onclick="milestones.splice(${i},1);renderEditors();preview()">×</button>
+    </div>
+  `).join('');
+
+  document.getElementById('e-nextsteps').innerHTML = nextSteps.map((s, i) => `
+    <div class="row-edit two">
+      <input type="text" value="${s.title}" placeholder="Action item" oninput="nextSteps[${i}].title=this.value;preview()">
+      <input type="text" value="${s.desc}" placeholder="Details" oninput="nextSteps[${i}].desc=this.value;preview()">
+      <select oninput="nextSteps[${i}].owner=this.value;preview()">
+        <option value="you" ${s.owner==='you'?'selected':''}>Mac</option>
+        <option value="client" ${s.owner==='client'?'selected':''}>Client</option>
+      </select>
+      <button class="btn-rm" onclick="nextSteps.splice(${i},1);renderEditors();preview()">×</button>
+    </div>
+  `).join('');
+
+  document.getElementById('e-links').innerHTML = links.map((l, i) => `
+    <div class="row-edit four">
+      <input type="text" value="${l.icon}" placeholder="📁" oninput="links[${i}].icon=this.value;preview()" style="text-align:center;">
+      <input type="text" value="${l.name}" placeholder="Link name" oninput="links[${i}].name=this.value;preview()">
+      <input type="text" value="${l.url}" placeholder="URL" oninput="links[${i}].url=this.value;preview()">
+      <button class="btn-rm" onclick="links.splice(${i},1);renderEditors();preview()">×</button>
+    </div>
+  `).join('');
+}
+
+function addMilestone() { milestones.push({text:'',date:'',status:'pending'}); renderEditors(); }
+function addNextStep()  { nextSteps.push({title:'',desc:'',owner:'you'}); renderEditors(); }
+function addLink()      { links.push({icon:'🔗',name:'',url:''}); renderEditors(); }
+
+// ── PREVIEW ──
+function preview() {
+  const d = getPortalData();
+  const slug = document.getElementById('b-slug').value.trim();
+  document.getElementById('slug-preview').textContent = slug || 'your-slug';
+
+  const SI = { done:'✓', active:'→', pending:'○' };
+
+  document.getElementById('preview-area').innerHTML = `
+    <div class="portal-header">
+      <div><div class="portal-brand">Mac Guttenberg · Project Portal</div><div class="portal-client">${d.client || 'Client Name'}</div></div>
+      <a href="mailto:mac@macguttenberg.com" class="btn-msg">✉ Message Mac</a>
+    </div>
+    <div class="hero-strip">
+      <div class="hero-inner">
+        <div>
+          <div class="proj-title">${d.title || 'Project Title'}</div>
+          <div class="proj-meta">Started ${d.start || '—'} · Est. ${d.end || '—'}</div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-label">Progress</div>
+          <div class="prog-bar"><div class="prog-fill" style="width:${d.progress}%"></div></div>
+          <div class="prog-pct">${d.progress}%</div>
+        </div>
+      </div>
+    </div>
+    <div class="pbody">
+      <div class="pgrid">
+        <div class="pcard full">
+          <div class="ctag">Milestones</div>
+          <div class="milestones">${d.milestones.map(m=>`
+            <div class="ms ${m.status}">
+              <div class="ms-icon">${SI[m.status]}</div>
+              <div class="ms-text">${m.text||'—'}</div>
+              <div class="ms-date">${m.date}</div>
+            </div>`).join('')}</div>
+        </div>
+        <div class="pcard">
+          <div class="ctag">Next Steps</div>
+          <div class="nsteps">${d.nextSteps.map((s,i)=>`
+            <div class="ns">
+              <div class="ns-n">${i+1}</div>
+              <div><div class="ns-title">${s.title||'—'}</div><div class="ns-desc">${s.desc}</div><div class="ns-owner ${s.owner}">${s.owner==='you'?'↑ Mac':'↑ You'}</div></div>
+            </div>`).join('')}</div>
+        </div>
+        <div class="pcard dark">
+          <div class="ctag light">Resources</div>
+          <div class="links">${d.links.map(l=>`
+            <a href="https://${l.url}" target="_blank" class="plink">
+              <div class="plink-icon">${l.icon}</div>
+              <div><div class="plink-name">${l.name}</div><div class="plink-url">${l.url}</div></div>
+              <div class="plink-arr">→</div>
+            </a>`).join('')}</div>
+        </div>
+        <div class="pcard full msg-card">
+          <div class="ctag">Questions?</div>
+          <p>Reach out directly and I'll get back to you within 24 hours.</p>
+          <a href="mailto:mac@macguttenberg.com" class="btn-email">✉ Email Mac →</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── SLUG INPUT ──
+document.getElementById('b-client').addEventListener('input', function() {
+  const slug = this.value.trim().toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,'-');
+  document.getElementById('b-slug').value = slug;
+  document.getElementById('slug-preview').textContent = slug || 'your-slug';
+});
+
+renderEditors();
+preview();
+loadPortals();
+</script>
+</body>
+</html>
