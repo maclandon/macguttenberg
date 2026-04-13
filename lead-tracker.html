@@ -4,230 +4,207 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lead Tracker — Mac Guttenberg</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#E8E4DC;
-  --card:#F5F2EC;
-  --border:#D0CAC0;
-  --text:#1C1A16;
-  --text-mid:#48443C;
-  --text-muted:#7A7468;
-  --accent:#7fa0c3;
-  --accent2:#3D6B9A;
-  --dark:#1C1A16;
-  --dark2:#2A2720;
-  --green:#2E7D5E;
-  --red:#C0392B;
-  --yellow:#B8860B;
+  --bg:#E8E4DC;--bg2:#DDD9D0;--white:#FAFAF7;--card:#F5F2EC;
+  --border:#D0CAC0;--text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;
+  --accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
 }
-html{scroll-behavior:smooth;}
-body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
 
-/* HEADER */
-.header{background:var(--dark);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);}
-.header-left{display:flex;align-items:center;gap:1rem;}
-.logo{font-family:"Fraunces",serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.4);}
-.header h1{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;}
-.btn-add{background:var(--accent);color:#fff;border:none;padding:.55rem 1.1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:.35rem;}
+/* NAV */
+nav{position:sticky;top:0;z-index:50;height:56px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;color:#fff;text-decoration:none;font-family:"Fraunces",serif;font-weight:900;font-size:1.05rem;}
+.nav-logo span{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);font-family:"DM Sans",sans-serif;border-left:1px solid rgba(255,255,255,.15);padding-left:.75rem;}
+.btn-add{background:var(--accent);color:#fff;border:none;font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;padding:.55rem 1.1rem;border-radius:6px;cursor:pointer;transition:background .2s;letter-spacing:.02em;}
 .btn-add:hover{background:var(--accent2);}
 
-/* STATS BAR */
-.stats-bar{background:var(--dark2);padding:1rem 2rem;display:flex;gap:2rem;border-bottom:1px solid rgba(255,255,255,.04);overflow-x:auto;}
-.stat{text-align:center;flex-shrink:0;}
-.stat-n{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:900;color:#fff;line-height:1;}
-.stat-n em{font-style:normal;color:#7EACD4;}
-.stat-l{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.15rem;white-space:nowrap;}
+/* STATS */
+.stats{background:var(--dark2);padding:1.5rem 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid rgba(255,255,255,.04);}
+.stat{text-align:left;padding:0 1.5rem;border-right:1px solid rgba(255,255,255,.06);}
+.stat:first-child{padding-left:0;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:"Fraunces",serif;font-size:1.8rem;font-weight:900;color:#7EACD4;line-height:1;margin-bottom:.2rem;}
+.stat-l{font-size:.7rem;color:rgba(255,255,255,.4);letter-spacing:.04em;text-transform:uppercase;}
 
 /* FILTERS */
-.filters{padding:1rem 2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid var(--border);background:var(--card);overflow-x:auto;}
-.filter-btn{font-size:.75rem;font-weight:500;padding:.4rem .9rem;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .15s;white-space:nowrap;}
-.filter-btn:hover{border-color:var(--accent);color:var(--accent);}
-.filter-btn.active{background:var(--dark);border-color:var(--dark);color:#fff;}
+.filters{padding:1rem 2rem;display:flex;gap:.5rem;flex-wrap:wrap;background:var(--white);border-bottom:1px solid var(--border);}
+.filter-btn{background:var(--card);color:var(--text-mid);border:1px solid var(--border);font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;padding:.4rem 1rem;border-radius:100px;cursor:pointer;transition:all .15s;}
+.filter-btn:hover{border-color:var(--accent);}
+.filter-btn.active{background:var(--dark);color:#fff;border-color:var(--dark);}
 
 /* TABLE */
-.table-wrap{padding:1.5rem 2rem;overflow-x:auto;}
-table{width:100%;border-collapse:collapse;}
-thead th{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);text-align:left;padding:.65rem 1rem;border-bottom:1px solid var(--border);}
-tbody tr{border-bottom:1px solid var(--border);transition:background .15s;cursor:pointer;}
+.table-wrap{padding:0 2rem 4rem;background:var(--bg);min-height:60vh;}
+table{width:100%;border-collapse:collapse;background:var(--white);border-radius:0 0 12px 12px;overflow:hidden;}
+thead{background:var(--white);}
+th{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);text-align:left;padding:1rem 1.25rem;border-bottom:1px solid var(--border);}
+td{font-size:.85rem;color:var(--text-mid);padding:1.1rem 1.25rem;border-bottom:1px solid var(--border);}
+tr{cursor:pointer;transition:background .12s;}
 tbody tr:hover{background:var(--card);}
-tbody tr:last-child{border-bottom:none;}
-td{padding:.85rem 1rem;font-size:.88rem;color:var(--text-mid);vertical-align:middle;}
-td.name{font-weight:500;color:var(--text);}
+td.name{font-weight:600;color:var(--text);}
 td.email a{color:var(--accent);text-decoration:none;}
 td.email a:hover{text-decoration:underline;}
+.source,.stage{display:inline-block;font-size:.72rem;font-weight:500;padding:.25rem .65rem;border-radius:100px;border:1px solid var(--border);background:var(--card);color:var(--text-mid);}
+.stage-new{background:rgba(127,160,195,.12);color:var(--accent2);border-color:rgba(127,160,195,.3);}
+.stage-contacted{background:rgba(245,200,80,.15);color:#9a7016;border-color:rgba(245,200,80,.35);}
+.stage-call{background:rgba(180,130,220,.15);color:#7140a0;border-color:rgba(180,130,220,.35);}
+.stage-proposal{background:rgba(80,180,200,.15);color:#1a6e7a;border-color:rgba(80,180,200,.35);}
+.stage-won{background:rgba(120,180,120,.18);color:#2f6b2f;border-color:rgba(120,180,120,.4);font-weight:600;}
+.stage-lost{background:rgba(200,100,100,.12);color:#8a3030;border-color:rgba(200,100,100,.3);}
+.score-pill{display:inline-block;font-size:.72rem;font-weight:600;padding:.2rem .55rem;border-radius:100px;}
+.score-high{background:rgba(120,180,120,.2);color:#2f6b2f;}
+.score-mid{background:rgba(245,200,80,.25);color:#8a6010;}
+.score-low{background:rgba(200,100,100,.15);color:#8a3030;}
+td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-muted);font-size:.8rem;}
 
-/* STAGE BADGE */
-.stage{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:.3rem .75rem;border-radius:100px;}
-.stage-new{background:rgba(127,160,195,.12);color:var(--accent);}
-.stage-contacted{background:rgba(184,134,11,.1);color:var(--yellow);}
-.stage-call{background:rgba(127,160,195,.18);color:var(--accent2);}
-.stage-proposal{background:rgba(92,61,46,.1);color:var(--text-mid);}
-.stage-won{background:rgba(46,125,94,.12);color:var(--green);}
-.stage-lost{background:rgba(192,57,43,.1);color:var(--red);}
-
-/* SOURCE BADGE */
-.source{font-size:.72rem;color:var(--text-muted);background:var(--bg);border:1px solid var(--border);padding:.2rem .6rem;border-radius:100px;}
-
-/* SCORE */
-.score-pill{display:inline-block;font-size:.75rem;font-weight:600;padding:.25rem .6rem;border-radius:100px;}
-.score-high{background:rgba(46,125,94,.12);color:var(--green);}
-.score-mid{background:rgba(184,134,11,.1);color:var(--yellow);}
-.score-low{background:rgba(192,57,43,.1);color:var(--red);}
-
-/* EMPTY */
-.empty{text-align:center;padding:4rem 2rem;color:var(--text-muted);}
-.empty p{font-size:.9rem;line-height:1.7;}
+.empty,.loading{padding:4rem 2rem;text-align:center;color:var(--text-muted);font-size:.95rem;}
 
 /* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(28,26,22,.5);z-index:100;display:flex;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px);animation:fadeIn .2s ease;}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.modal{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;animation:slideUp .25s ease;}
-@keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.modal h2{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
-.m-field{display:flex;flex-direction:column;gap:.35rem;}
-.m-field.full{grid-column:1/-1;}
-.m-field label{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);}
-.m-field input,.m-field select,.m-field textarea{font-family:"DM Sans",sans-serif;font-size:.88rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;outline:none;transition:border-color .2s;}
-.m-field input:focus,.m-field select:focus,.m-field textarea:focus{border-color:var(--accent);}
-.m-field textarea{resize:vertical;min-height:72px;line-height:1.6;}
-.modal-btns{display:flex;gap:.75rem;margin-top:1.5rem;}
-.btn-save{flex:1;background:var(--dark);color:#fff;border:none;padding:12px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:background .2s;}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(28,26,22,.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1.5rem;}
+.modal.show{display:flex;}
+.modal-card{background:var(--white);border-radius:16px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:2rem;box-shadow:0 20px 60px rgba(28,26,22,.3);}
+.modal-title{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.modal-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;}
+.modal-group label{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.modal-group input,.modal-group textarea,.modal-group select{font-family:"DM Sans",sans-serif;font-size:.92rem;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem;outline:none;width:100%;transition:border-color .15s,box-shadow .15s;}
+.modal-group input:focus,.modal-group textarea:focus,.modal-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,160,195,.15);}
+.modal-group textarea{resize:vertical;min-height:90px;}
+.modal-btns{display:flex;justify-content:flex-end;gap:.6rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+.btn{font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:500;padding:.65rem 1.25rem;border-radius:6px;border:none;cursor:pointer;transition:background .15s,color .15s;}
+.btn-cancel{background:transparent;color:var(--text-muted);}
+.btn-cancel:hover{color:var(--text);}
+.btn-save{background:var(--dark);color:#fff;}
 .btn-save:hover{background:var(--dark2);}
-.btn-cancel{background:transparent;border:1.5px solid var(--border);color:var(--text-muted);padding:12px 18px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;cursor:pointer;transition:all .2s;}
-.btn-cancel:hover{border-color:var(--text-muted);color:var(--text);}
-.btn-delete{background:transparent;border:1.5px solid rgba(192,57,43,.3);color:var(--red);padding:12px 18px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.9rem;cursor:pointer;transition:all .2s;}
-.btn-delete:hover{background:rgba(192,57,43,.05);}
+.btn-delete{background:transparent;color:#8a3030;margin-right:auto;}
+.btn-delete:hover{background:rgba(200,100,100,.1);}
+.modal-btns .right{display:flex;gap:.6rem;margin-left:auto;}
 
-@media(max-width:700px){
-  .header{padding:1rem 1.25rem;}
-  .stats-bar{padding:.75rem 1.25rem;}
-  .filters{padding:.75rem 1.25rem;}
-  .table-wrap{padding:1rem 1.25rem;}
-  .modal-grid{grid-template-columns:1fr;}
+/* TOAST */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:.8rem 1.4rem;border-radius:8px;font-size:.85rem;opacity:0;transition:opacity .2s,transform .2s;z-index:200;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.error{background:#8a3030;}
+
+@media(max-width:800px){
+  nav,.stats,.filters,.table-wrap{padding-left:1rem;padding-right:1rem;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:1rem;}
+  .stat{border-right:none;padding:0;}
+  table{font-size:.8rem;}
+  th,td{padding:.7rem .6rem;}
+  .modal-row{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-left">
-    <div class="logo">MG</div>
-    <h1>Lead Tracker</h1>
-  </div>
+<nav>
+  <a href="/dashboard" class="nav-logo">mg<span>Lead Tracker</span></a>
   <button class="btn-add" onclick="openModal()">+ Add Lead</button>
-</div>
+</nav>
 
-<div class="stats-bar" id="stats-bar"></div>
+<div class="stats" id="stats">
+  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Total Leads</div></div>
+  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Active</div></div>
+  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Calls Booked</div></div>
+  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Won</div></div>
+</div>
 
 <div class="filters" id="filters"></div>
 
 <div class="table-wrap">
-  <table>
+  <div id="loading" class="loading">Loading leads…</div>
+  <table id="table" style="display:none;">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Business</th>
-        <th>Email</th>
-        <th>Source</th>
-        <th>Score</th>
-        <th>Stage</th>
-        <th>Date Added</th>
-        <th>Notes</th>
+        <th>Name</th><th>Business</th><th>Email</th><th>Source</th><th>Score</th><th>Stage</th><th>Date Added</th><th>Notes</th>
       </tr>
     </thead>
-    <tbody id="leads-table"></tbody>
+    <tbody id="tbody"></tbody>
   </table>
-  <div class="empty" id="empty-state" style="display:none;">
-    <p>No leads yet.<br>Hit <strong>+ Add Lead</strong> to add your first one.</p>
-  </div>
+  <div id="empty" class="empty" style="display:none;">No leads in this view. Hit <strong>+ Add Lead</strong> to add one.</div>
 </div>
 
-<div class="modal-overlay" id="modal" style="display:none;">
-  <div class="modal">
-    <h2 id="modal-title">Add Lead</h2>
-    <div class="modal-grid">
-      <div class="m-field"><label>First Name</label><input id="m-fname" type="text" placeholder="Sarah"></div>
-      <div class="m-field"><label>Last Name</label><input id="m-lname" type="text" placeholder="Johnson"></div>
-      <div class="m-field full"><label>Business Name</label><input id="m-biz" type="text" placeholder="Johnson Legal Group"></div>
-      <div class="m-field full"><label>Email</label><input id="m-email" type="email" placeholder="sarah@johnsonlegal.com"></div>
-      <div class="m-field">
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <div class="modal-title" id="modal-title">Add Lead</div>
+    <div class="modal-row">
+      <div class="modal-group"><label>Name</label><input id="m-name" type="text" placeholder="Jane Doe"></div>
+      <div class="modal-group"><label>Business</label><input id="m-biz" type="text" placeholder="Acme Co."></div>
+    </div>
+    <div class="modal-group"><label>Email</label><input id="m-email" type="email" placeholder="jane@acme.com"></div>
+    <div class="modal-row">
+      <div class="modal-group">
         <label>Source</label>
         <select id="m-source">
-          <option value="Assessment">Assessment</option>
-          <option value="Onboarding Form">Onboarding Form</option>
-          <option value="ROI Calculator">ROI Calculator</option>
-          <option value="LinkedIn">LinkedIn</option>
-          <option value="Referral">Referral</option>
-          <option value="Cold Outreach">Cold Outreach</option>
-          <option value="Other">Other</option>
+          <option>Assessment</option><option>Onboarding Form</option><option>ROI Calculator</option>
+          <option>LinkedIn</option><option>Referral</option><option>Cold Outreach</option>
+          <option>Instagram</option><option>Other</option>
         </select>
       </div>
-      <div class="m-field">
-        <label>Assessment Score</label>
-        <input id="m-score" type="text" placeholder="e.g. 12/30 or leave blank">
-      </div>
-      <div class="m-field full">
-        <label>Stage</label>
-        <select id="m-stage">
-          <option value="New Lead">New Lead</option>
-          <option value="Contacted">Contacted</option>
-          <option value="Call Booked">Call Booked</option>
-          <option value="Proposal Sent">Proposal Sent</option>
-          <option value="Won">Won</option>
-          <option value="Lost">Lost</option>
-        </select>
-      </div>
-      <div class="m-field full"><label>Notes</label><textarea id="m-notes" placeholder="What they need, what came up on the call, next steps..."></textarea></div>
+      <div class="modal-group"><label>Score</label><input id="m-score" type="text" placeholder="8/30"></div>
     </div>
+    <div class="modal-group">
+      <label>Stage</label>
+      <select id="m-stage">
+        <option>New Lead</option><option>Contacted</option><option>Call Booked</option>
+        <option>Proposal Sent</option><option>Won</option><option>Lost</option>
+      </select>
+    </div>
+    <div class="modal-group"><label>Notes</label><textarea id="m-notes" placeholder="Anything important to remember…"></textarea></div>
     <div class="modal-btns" id="modal-btns"></div>
   </div>
 </div>
 
-<script>
-const STORAGE_KEY = 'mg_leads_v1';
-const STAGES = ['All','New Lead','Contacted','Call Booked','Proposal Sent','Won','Lost'];
-const STAGE_CLASS = {
-  'New Lead':'stage-new',
-  'Contacted':'stage-contacted',
-  'Call Booked':'stage-call',
-  'Proposal Sent':'stage-proposal',
-  'Won':'stage-won',
-  'Lost':'stage-lost'
-};
+<div class="toast" id="toast"></div>
 
+<script>
+const STAGES = ['All','New Lead','Contacted','Call Booked','Proposal Sent','Won','Lost'];
+const STAGE_CLASS = { 'New Lead':'stage-new','Contacted':'stage-contacted','Call Booked':'stage-call','Proposal Sent':'stage-proposal','Won':'stage-won','Lost':'stage-lost' };
 let leads = [];
 let filter = 'All';
 let editingId = null;
 
-function load() {
-  try { leads = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { leads = []; }
-}
+const $ = id => document.getElementById(id);
 
-function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
-}
+const toast = (msg, isError) => {
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(() => t.className = 'toast' + (isError ? ' error' : ''), 2500);
+};
 
-function uid() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2);
-}
+const fmtDate = ts => new Date(ts).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
 
-function fmt_date(ts) {
-  return new Date(ts).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
-}
-
-function scoreClass(score) {
-  if (!score) return '';
-  const match = score.match(/(\d+)/);
-  if (!match) return '';
-  const n = parseInt(match[1]);
+const scoreClass = s => {
+  if (!s) return '';
+  const n = parseInt((s.match(/\d+/) || [0])[0]);
   if (n >= 20) return 'score-high';
   if (n >= 10) return 'score-mid';
   return 'score-low';
+};
+
+async function loadLeads() {
+  $('loading').style.display = 'block';
+  $('table').style.display = 'none';
+  $('empty').style.display = 'none';
+  try {
+    const r = await fetch('/api/leads');
+    if (!r.ok) throw new Error(await r.text());
+    leads = await r.json();
+    leads.sort((a,b) => new Date(b.created) - new Date(a.created));
+  } catch (e) {
+    toast('Failed to load leads: ' + e.message, true);
+    leads = [];
+  }
+  $('loading').style.display = 'none';
+  render();
 }
 
 function renderStats() {
@@ -235,160 +212,133 @@ function renderStats() {
   const won = leads.filter(l => l.stage === 'Won').length;
   const active = leads.filter(l => !['Won','Lost'].includes(l.stage)).length;
   const calls = leads.filter(l => l.stage === 'Call Booked').length;
-
-  document.getElementById('stats-bar').innerHTML = `
-    <div class="stat"><div class="stat-n"><em>${total}</em></div><div class="stat-l">Total Leads</div></div>
-    <div class="stat"><div class="stat-n"><em>${active}</em></div><div class="stat-l">Active</div></div>
-    <div class="stat"><div class="stat-n"><em>${calls}</em></div><div class="stat-l">Calls Booked</div></div>
-    <div class="stat"><div class="stat-n"><em>${won}</em></div><div class="stat-l">Won</div></div>
+  $('stats').innerHTML = `
+    <div class="stat"><div class="stat-n">${total}</div><div class="stat-l">Total Leads</div></div>
+    <div class="stat"><div class="stat-n">${active}</div><div class="stat-l">Active</div></div>
+    <div class="stat"><div class="stat-n">${calls}</div><div class="stat-l">Calls Booked</div></div>
+    <div class="stat"><div class="stat-n">${won}</div><div class="stat-l">Won</div></div>
   `;
 }
 
 function renderFilters() {
-  document.getElementById('filters').innerHTML = STAGES.map(s =>
-    `<button class="filter-btn ${filter === s ? 'active' : ''}" onclick="setFilter('${s}')">${s}${s !== 'All' ? ' ('+leads.filter(l=>l.stage===s).length+')' : ''}</button>`
-  ).join('');
+  $('filters').innerHTML = STAGES.map(s => {
+    const count = s === 'All' ? '' : ' (' + leads.filter(l => l.stage === s).length + ')';
+    return `<button class="filter-btn ${filter === s ? 'active' : ''}" onclick="setFilter('${s}')">${s}${count}</button>`;
+  }).join('');
 }
 
-function setFilter(s) {
-  filter = s;
-  render();
-}
+function setFilter(s) { filter = s; render(); }
 
 function renderTable() {
   const filtered = filter === 'All' ? leads : leads.filter(l => l.stage === filter);
-  const tbody = document.getElementById('leads-table');
-  const empty = document.getElementById('empty-state');
-
-  if (filtered.length === 0) {
-    tbody.innerHTML = '';
-    empty.style.display = 'block';
+  if (!filtered.length) {
+    $('table').style.display = 'none';
+    $('empty').style.display = 'block';
     return;
   }
-  empty.style.display = 'none';
-
-  tbody.innerHTML = [...filtered].reverse().map(l => `
+  $('empty').style.display = 'none';
+  $('table').style.display = 'table';
+  $('tbody').innerHTML = filtered.map(l => `
     <tr onclick="openModal('${l.id}')">
-      <td class="name">${l.fname} ${l.lname}</td>
-      <td>${l.biz || '—'}</td>
-      <td class="email">${l.email ? `<a href="mailto:${l.email}" onclick="event.stopPropagation()">${l.email}</a>` : '—'}</td>
-      <td><span class="source">${l.source}</span></td>
-      <td>${l.score ? `<span class="score-pill ${scoreClass(l.score)}">${l.score}</span>` : '—'}</td>
-      <td><span class="stage ${STAGE_CLASS[l.stage]}">${l.stage}</span></td>
-      <td>${fmt_date(l.created)}</td>
-      <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-muted);">${l.notes || '—'}</td>
+      <td class="name">${escapeHtml(l.name)}</td>
+      <td>${escapeHtml(l.business) || '—'}</td>
+      <td class="email">${l.email ? `<a href="mailto:${l.email}" onclick="event.stopPropagation()">${escapeHtml(l.email)}</a>` : '—'}</td>
+      <td><span class="source">${escapeHtml(l.source)}</span></td>
+      <td>${l.score ? `<span class="score-pill ${scoreClass(l.score)}">${escapeHtml(l.score)}</span>` : '—'}</td>
+      <td><span class="stage ${STAGE_CLASS[l.stage] || ''}">${escapeHtml(l.stage)}</span></td>
+      <td>${l.created ? fmtDate(l.created) : '—'}</td>
+      <td class="notes-cell">${escapeHtml(l.notes) || '—'}</td>
     </tr>
   `).join('');
 }
 
-function render() {
-  renderStats();
-  renderFilters();
-  renderTable();
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
+
+function render() { renderStats(); renderFilters(); renderTable(); }
 
 function openModal(id) {
   editingId = id || null;
-  const modal = document.getElementById('modal');
-  const title = document.getElementById('modal-title');
-  const btns  = document.getElementById('modal-btns');
-
   if (id) {
     const l = leads.find(x => x.id === id);
     if (!l) return;
-    title.textContent = 'Edit Lead';
-    document.getElementById('m-fname').value  = l.fname || '';
-    document.getElementById('m-lname').value  = l.lname || '';
-    document.getElementById('m-biz').value    = l.biz   || '';
-    document.getElementById('m-email').value  = l.email || '';
-    document.getElementById('m-source').value = l.source;
-    document.getElementById('m-score').value  = l.score || '';
-    document.getElementById('m-stage').value  = l.stage;
-    document.getElementById('m-notes').value  = l.notes || '';
-    btns.innerHTML = `
-      <button class="btn-delete" onclick="deleteLead('${id}')">Delete</button>
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-save" onclick="saveLead()">Save Changes</button>
-    `;
+    $('modal-title').textContent = 'Edit Lead';
+    $('m-name').value = l.name || '';
+    $('m-biz').value = l.business || '';
+    $('m-email').value = l.email || '';
+    $('m-source').value = l.source || 'Other';
+    $('m-score').value = l.score || '';
+    $('m-stage').value = l.stage || 'New Lead';
+    $('m-notes').value = l.notes || '';
+    $('modal-btns').innerHTML = `
+      <button class="btn btn-delete" onclick="deleteLead()">Delete</button>
+      <div class="right">
+        <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-save" onclick="saveLead()">Save Changes</button>
+      </div>`;
   } else {
-    title.textContent = 'Add Lead';
-    ['m-fname','m-lname','m-biz','m-email','m-score','m-notes'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('m-source').value = 'Assessment';
-    document.getElementById('m-stage').value  = 'New Lead';
-    btns.innerHTML = `
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-save" onclick="saveLead()">Add Lead</button>
-    `;
+    $('modal-title').textContent = 'Add Lead';
+    ['m-name','m-biz','m-email','m-score','m-notes'].forEach(i => $(i).value = '');
+    $('m-source').value = 'Cold Outreach';
+    $('m-stage').value = 'New Lead';
+    $('modal-btns').innerHTML = `
+      <div class="right">
+        <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-save" onclick="saveLead()">Add Lead</button>
+      </div>`;
   }
-
-  modal.style.display = 'flex';
+  $('modal').classList.add('show');
 }
 
 function closeModal() {
-  document.getElementById('modal').style.display = 'none';
+  $('modal').classList.remove('show');
   editingId = null;
 }
 
-function saveLead() {
-  const fname = document.getElementById('m-fname').value.trim();
-  if (!fname) { alert('Please enter a first name.'); return; }
-
+async function saveLead() {
+  const name = $('m-name').value.trim();
+  if (!name) { toast('Please enter a name.', true); return; }
   const data = {
-    fname,
-    lname:  document.getElementById('m-lname').value.trim(),
-    biz:    document.getElementById('m-biz').value.trim(),
-    email:  document.getElementById('m-email').value.trim(),
-    source: document.getElementById('m-source').value,
-    score:  document.getElementById('m-score').value.trim(),
-    stage:  document.getElementById('m-stage').value,
-    notes:  document.getElementById('m-notes').value.trim(),
+    name,
+    business: $('m-biz').value.trim(),
+    email: $('m-email').value.trim(),
+    source: $('m-source').value,
+    score: $('m-score').value.trim(),
+    stage: $('m-stage').value,
+    notes: $('m-notes').value.trim(),
   };
-
-  if (editingId) {
-    const idx = leads.findIndex(l => l.id === editingId);
-    if (idx !== -1) leads[idx] = { ...leads[idx], ...data };
-  } else {
-    leads.push({ id: uid(), created: Date.now(), ...data });
+  try {
+    const url = editingId ? '/api/leads/' + editingId : '/api/leads';
+    const method = editingId ? 'PATCH' : 'POST';
+    const r = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    if (!r.ok) throw new Error(await r.text());
+    closeModal();
+    toast(editingId ? 'Lead updated.' : 'Lead added.');
+    await loadLeads();
+  } catch (e) {
+    toast('Save failed: ' + e.message, true);
   }
-
-  save();
-  closeModal();
-  render();
 }
 
-function deleteLead(id) {
-  if (!confirm('Delete this lead?')) return;
-  leads = leads.filter(l => l.id !== id);
-  save();
-  closeModal();
-  render();
+async function deleteLead() {
+  if (!editingId) return;
+  if (!confirm('Delete this lead? This cannot be undone.')) return;
+  try {
+    const r = await fetch('/api/leads/' + editingId, { method: 'DELETE' });
+    if (!r.ok) throw new Error(await r.text());
+    closeModal();
+    toast('Lead deleted.');
+    await loadLeads();
+  } catch (e) {
+    toast('Delete failed: ' + e.message, true);
+  }
 }
 
-// Close modal on overlay click
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
+$('modal').addEventListener('click', e => { if (e.target === $('modal')) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-load();
-render();
-
-// Seed with example lead if empty
-if (leads.length === 0) {
-  leads.push({
-    id: uid(),
-    created: Date.now(),
-    fname: 'Example',
-    lname: 'Lead',
-    biz: 'Sample Business',
-    email: 'example@email.com',
-    source: 'Assessment',
-    score: '8/30',
-    stage: 'New Lead',
-    notes: 'This is an example lead. Click to edit or delete.'
-  });
-  save();
-  render();
-}
+loadLeads();
 </script>
 </body>
 </html>
