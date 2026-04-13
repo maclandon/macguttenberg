@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal Generator — Mac Guttenberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;}
+
+/* ── BUILDER (left panel) ── */
+#builder{position:fixed;top:0;left:0;width:380px;height:100vh;background:var(--dark);overflow-y:auto;padding:2rem 1.75rem;border-right:1px solid rgba(255,255,255,.06);z-index:10;}
+#builder h2{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.25rem;}
+#builder .sub{font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:1.75rem;line-height:1.5;}
+
+.b-section{margin-bottom:1.5rem;}
+.b-label{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.6rem;display:block;}
+.b-input{width:100%;font-family:"DM Sans",sans-serif;font-size:.88rem;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s;}
+.b-input:focus{border-color:var(--accent);}
+.b-input::placeholder{color:rgba(255,255,255,.2);}
+textarea.b-input{resize:vertical;min-height:80px;line-height:1.6;}
+select.b-input{appearance:none;cursor:pointer;}
+
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.pkg-btn{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:8px;padding:.65rem .75rem;cursor:pointer;transition:all .18s;text-align:left;}
+.pkg-btn:hover{border-color:rgba(127,160,195,.4);}
+.pkg-btn.active{border-color:var(--accent);background:rgba(127,160,195,.12);}
+.pkg-btn .pkg-name{font-size:.8rem;font-weight:500;color:#fff;display:block;}
+.pkg-btn .pkg-price{font-size:.72rem;color:rgba(255,255,255,.35);}
+
+.btn-generate{width:100%;background:var(--accent);color:#fff;border:none;padding:13px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.92rem;font-weight:500;cursor:pointer;transition:background .2s;margin-top:.5rem;}
+.btn-generate:hover{background:var(--accent2);}
+
+.btn-copy{width:100%;background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);padding:11px;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:.85rem;cursor:pointer;transition:all .2s;margin-top:.5rem;}
+.btn-copy:hover{background:rgba(255,255,255,.1);color:#fff;}
+
+.divider{border:none;border-top:1px solid rgba(255,255,255,.06);margin:1.25rem 0;}
+
+/* ── PROPOSAL (right panel) ── */
+#proposal-wrap{margin-left:380px;min-height:100vh;background:var(--bg);padding:3rem 4rem;}
+
+/* PROPOSAL STYLES */
+.proposal{max-width:720px;margin:0 auto;display:none;}
+.proposal.visible{display:block;animation:fadeUp .5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+.p-header{background:var(--dark);border-radius:20px;padding:2.75rem 3rem;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.p-header::before{content:"";position:absolute;top:-30%;right:-10%;width:400px;height:300px;background:radial-gradient(ellipse,rgba(127,160,195,.15) 0%,transparent 70%);pointer-events:none;}
+.p-logo{font-family:"Fraunces",serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;margin-bottom:2rem;}
+.p-to{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.4rem;}
+.p-client{font-family:"Fraunces",serif;font-size:2rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:.5rem;}
+.p-biz{font-size:.9rem;color:rgba(255,255,255,.4);}
+.p-date{position:absolute;top:2.75rem;right:3rem;font-size:.75rem;color:rgba(255,255,255,.25);}
+
+.p-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem 2.25rem;margin-bottom:1.25rem;}
+.p-section-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem;}
+.p-section-tag::before{content:"";width:10px;height:1.5px;background:var(--accent);}
+.p-section h3{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.75rem;}
+.p-section p{font-size:.9rem;color:var(--text-muted);line-height:1.75;font-weight:300;}
+.p-section p strong{color:var(--text-mid);font-weight:500;}
+
+.deliverables{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:.75rem;}
+.deliverables li{display:flex;align-items:flex-start;gap:.75rem;font-size:.88rem;color:var(--text-mid);line-height:1.5;padding:.65rem .85rem;background:var(--bg);border-radius:8px;border:1px solid var(--border);}
+.deliverables li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:.05rem;}
+
+.price-block{background:var(--dark);border-radius:16px;padding:2rem 2.25rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;}
+.price-left .price-label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.4rem;}
+.price-left .price-package{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;}
+.price-right .price-amount{font-family:"Fraunces",serif;font-size:2.8rem;font-weight:900;color:#fff;line-height:1;}
+.price-right .price-freq{font-size:.78rem;color:rgba(255,255,255,.3);text-align:right;margin-top:.2rem;}
+
+.p-cta{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem 2.25rem;text-align:center;margin-bottom:1.25rem;}
+.p-cta p{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;font-weight:300;}
+.btn-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--dark);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.75rem;border-radius:6px;text-decoration:none;transition:background .2s;}
+.btn-cta:hover{background:var(--dark2);}
+.p-footer{text-align:center;font-size:.75rem;color:var(--text-muted);padding:1rem 0 2rem;}
+
+/* EMPTY STATE */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:60vh;text-align:center;opacity:.4;}
+.empty-state .em-icon{font-size:2.5rem;margin-bottom:1rem;}
+.empty-state p{font-size:.9rem;color:var(--text-muted);line-height:1.6;}
+
+@media(max-width:900px){
+  #builder{position:relative;width:100%;height:auto;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}
+  #proposal-wrap{margin-left:0;padding:2rem 1.25rem;}
+}
+@media print{
+  #builder{display:none;}
+  #proposal-wrap{margin-left:0;padding:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- BUILDER PANEL -->
+<div id="builder">
+  <h2>Proposal Generator</h2>
+  <div class="sub">Fill in the details, generate the proposal. Internal use only.</div>
+
+  <div class="b-section">
+    <label class="b-label">Client Name</label>
+    <input class="b-input" id="b-name" type="text" placeholder="e.g. Sarah Johnson">
+  </div>
+
+  <div class="b-section">
+    <label class="b-label">Business Name</label>
+    <input class="b-input" id="b-biz" type="text" placeholder="e.g. Johnson Legal Group">
+  </div>
+
+  <div class="b-section">
+    <label class="b-label">Industry / Business Type</label>
+    <input class="b-input" id="b-industry" type="text" placeholder="e.g. Tax Practice, E-Commerce, Coaching">
+  </div>
+
+  <div class="b-section">
+    <label class="b-label">Their Main Problem</label>
+    <textarea class="b-input" id="b-problem" placeholder="e.g. Running on paper, no online booking, clients can't pay digitally..."></textarea>
+  </div>
+
+  <div class="b-section">
+    <label class="b-label">What I'll Build</label>
+    <textarea class="b-input" id="b-scope" placeholder="e.g. Client portal, online payments, digital intake forms, booking system..."></textarea>
+  </div>
+
+  <div class="b-section">
+    <label class="b-label">Package</label>
+    <div class="pkg-grid">
+      <div class="pkg-btn active" data-pkg="starter" onclick="selectPkg(this)">
+        <span class="pkg-name">Starter</span>
+        <span class="pkg-price">$300 one-time</span>
+      </div>
+      <div class="pkg-btn" data-pkg="foundation" onclick="selectPkg(this)">
+        <span class="pkg-name">Foundation</span>
+        <span class="pkg-price">$800 one-time</span>
+      </div>
+      <div class="pkg-btn" data-pkg="growth" onclick="selectPkg(this)">
+        <span class="pkg-name">Growth</span>
+        <span class="pkg-price">$300/month</span>
+      </div>
+      <div class="pkg-btn" data-pkg="custom" onclick="selectPkg(this)">
+        <span class="pkg-name">Custom</span>
+        <span class="pkg-price">Set below</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="b-section" id="custom-price-wrap" style="display:none;">
+    <label class="b-label">Custom Price</label>
+    <input class="b-input" id="b-custom-price" type="text" placeholder="e.g. $1,500 one-time">
+  </div>
+
+  <div class="b-section">
+    <label class="b-label">Timeline</label>
+    <select class="b-input" id="b-timeline">
+      <option value="1–2 weeks">1–2 weeks</option>
+      <option value="2–3 weeks">2–3 weeks</option>
+      <option value="3–5 weeks" selected>3–5 weeks</option>
+      <option value="4–6 weeks">4–6 weeks</option>
+      <option value="6–8 weeks">6–8 weeks</option>
+    </select>
+  </div>
+
+  <hr class="divider">
+
+  <button class="btn-generate" onclick="generate()">Generate Proposal →</button>
+  <button class="btn-copy" onclick="copyLink()" id="copy-btn" style="display:none;">Copy proposal URL</button>
+</div>
+
+<!-- PROPOSAL PANEL -->
+<div id="proposal-wrap">
+  <div class="empty-state" id="empty-state">
+    <div class="em-icon">📋</div>
+    <p>Fill in the details on the left<br>and hit Generate to build your proposal.</p>
+  </div>
+
+  <div class="proposal" id="proposal">
+    <div class="p-header">
+      <div class="p-logo">Mac Guttenberg</div>
+      <div class="p-to">Proposal prepared for</div>
+      <div class="p-client" id="p-client">—</div>
+      <div class="p-biz" id="p-biz">—</div>
+      <div class="p-date" id="p-date">—</div>
+    </div>
+
+    <div class="p-section">
+      <div class="p-section-tag">The Situation</div>
+      <h3 id="p-situation-h">What's holding you back</h3>
+      <p id="p-situation-body">—</p>
+    </div>
+
+    <div class="p-section">
+      <div class="p-section-tag">What I'll Build</div>
+      <h3>Your deliverables</h3>
+      <ul class="deliverables" id="p-deliverables"></ul>
+    </div>
+
+    <div class="p-section">
+      <div class="p-section-tag">How It Works</div>
+      <h3>Three steps, start to finish</h3>
+      <ul class="deliverables">
+        <li><strong>Week 1 — Audit & Strategy:</strong> I dig into your current setup, identify the gaps, and map out exactly what we're building and in what order.</li>
+        <li><strong>Weeks 2–3 — Build:</strong> I get into your platforms and build. You focus on running your business while I handle everything technical.</li>
+        <li><strong>Final Week — Launch & Handoff:</strong> We go live, make sure everything works, and I walk you through how to use what I built.</li>
+      </ul>
+    </div>
+
+    <div class="price-block">
+      <div class="price-left">
+        <div class="price-label">Investment</div>
+        <div class="price-package" id="p-pkg-name">—</div>
+      </div>
+      <div class="price-right">
+        <div class="price-amount" id="p-price">—</div>
+        <div class="price-freq" id="p-freq">—</div>
+      </div>
+    </div>
+
+    <div class="p-section">
+      <div class="p-section-tag">Timeline</div>
+      <h3 id="p-timeline-h">—</h3>
+      <p>All projects start with a free 30-minute discovery call to confirm scope and make sure we're the right fit. Once we kick off, I move fast — most clients see results within the first two weeks.</p>
+    </div>
+
+    <div class="p-cta">
+      <p>Ready to move forward? Book a 30-minute call and we'll confirm the details, answer any questions, and get started.</p>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-cta">Book a call to get started →</a>
+    </div>
+
+    <div class="p-footer">
+      Mac Guttenberg · mac@macguttenberg.com · macguttenberg.com
+    </div>
+  </div>
+</div>
+
+<script>
+const packages = {
+  starter:    { name: 'Starter',    price: '$300',  freq: 'one-time payment', deliverables: ['Full digital audit of your current setup','Priority issue identification — what to fix first','Fix 2–3 critical gaps holding you back','1–2 week turnaround','Clear action plan for next steps'] },
+  foundation: { name: 'Foundation', price: '$800',  freq: 'one-time payment', deliverables: ['Everything in Starter','Website or storefront build','Client portal or online booking system','Email automation setup','Payment processing integration','3–5 week turnaround'] },
+  growth:     { name: 'Growth',     price: '$300',  freq: 'per month',        deliverables: ['Monthly strategy session','Ongoing optimization and improvements','New features and integrations as needed','Priority support','Monthly performance reporting'] },
+  custom:     { name: 'Custom',     price: '',      freq: '',                  deliverables: [] }
+};
+
+let selectedPkg = 'starter';
+
+function selectPkg(el) {
+  document.querySelectorAll('.pkg-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedPkg = el.dataset.pkg;
+  document.getElementById('custom-price-wrap').style.display = selectedPkg === 'custom' ? 'block' : 'none';
+}
+
+function generate() {
+  const name     = document.getElementById('b-name').value.trim() || 'Your Client';
+  const biz      = document.getElementById('b-biz').value.trim() || '';
+  const industry = document.getElementById('b-industry').value.trim() || 'your business';
+  const problem  = document.getElementById('b-problem').value.trim() || 'Your current systems are creating friction that\'s costing you time and revenue every day.';
+  const scope    = document.getElementById('b-scope').value.trim();
+  const timeline = document.getElementById('b-timeline').value;
+  const pkg      = packages[selectedPkg];
+
+  // Price
+  let price = pkg.price;
+  let freq  = pkg.freq;
+  let pkgName = pkg.name;
+  if (selectedPkg === 'custom') {
+    price = document.getElementById('b-custom-price').value.trim() || 'Custom';
+    freq  = '';
+    pkgName = 'Custom Scope';
+  }
+
+  // Date
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+  // Deliverables
+  let deliverables = [...pkg.deliverables];
+  if (scope) {
+    deliverables = scope.split('\n').filter(l => l.trim()).map(l => l.replace(/^[-•]\s*/, '').trim());
+  }
+
+  // Populate
+  document.getElementById('p-client').textContent = name;
+  document.getElementById('p-biz').textContent = biz || industry;
+  document.getElementById('p-date').textContent = dateStr;
+  document.getElementById('p-situation-h').textContent = `What's holding ${name.split(' ')[0]} back`;
+  document.getElementById('p-situation-body').innerHTML = `<strong>${biz || industry}</strong> has the product and the work ethic. The gap is in the digital infrastructure — ${problem}`;
+
+  const dlEl = document.getElementById('p-deliverables');
+  dlEl.innerHTML = deliverables.map(d => `<li>${d}</li>`).join('');
+
+  document.getElementById('p-pkg-name').textContent = pkgName;
+  document.getElementById('p-price').textContent = price;
+  document.getElementById('p-freq').textContent = freq;
+  document.getElementById('p-timeline-h').textContent = `Completed in ${timeline}`;
+
+  // Show proposal
+  document.getElementById('empty-state').style.display = 'none';
+  const p = document.getElementById('proposal');
+  p.classList.remove('visible');
+  void p.offsetWidth;
+  p.classList.add('visible');
+  document.getElementById('copy-btn').style.display = 'block';
+
+  // Scroll to top of proposal
+  document.getElementById('proposal-wrap').scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function copyLink() {
+  const btn = document.getElementById('copy-btn');
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy proposal URL', 2000);
+  });
+}
+</script>
+</body>
+</html>
