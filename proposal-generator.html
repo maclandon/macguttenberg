@@ -179,7 +179,7 @@ select.b-input{appearance:none;cursor:pointer;}
   <hr class="divider">
 
   <button class="btn-generate" onclick="generate()">Generate Proposal →</button>
-  <button class="btn-copy" onclick="copyLink()" id="copy-btn" style="display:none;">Copy proposal URL</button>
+  <button class="btn-copy" onclick="copyLink()" id="copy-btn" style="display:none;">Print / Save as PDF →</button>
 </div>
 
 <!-- PROPOSAL PANEL -->
@@ -322,11 +322,7 @@ function generate() {
 }
 
 function copyLink() {
-  const btn = document.getElementById('copy-btn');
-  navigator.clipboard.writeText(window.location.href).then(() => {
-    btn.textContent = '✓ Copied!';
-    setTimeout(() => btn.textContent = 'Copy proposal URL', 2000);
-  });
+  window.print();
 }
 </script>
 </body>
