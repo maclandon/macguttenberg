@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Are Bad Systems Costing You? — Mac Guttenberg</title>
+<meta name="description" content="Find out how much time and money bad systems are costing your business every year.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+  --red:#C0392B;
+  --green:#2E7D5E;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;padding:48px 24px 80px;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 90% 0%,rgba(127,160,195,0.12) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 10% 100%,rgba(28,26,22,0.04) 0%,transparent 60%);pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+
+.header{text-align:center;margin-bottom:2.5rem;}
+.logo-mark{width:48px;height:48px;background:var(--dark);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:"Fraunces",serif;font-size:18px;color:white;font-weight:700;}
+.header h1{font-family:"Fraunces",serif;font-size:clamp(1.7rem,4vw,2.2rem);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.65rem;letter-spacing:-.025em;}
+.header h1 em{font-style:italic;color:var(--accent);}
+.header p{font-size:.92rem;color:var(--text-muted);line-height:1.7;font-weight:300;max-width:440px;margin:0 auto;}
+
+/* CALCULATOR CARD */
+.calc-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.25rem;box-shadow:0 4px 32px rgba(28,26,22,.06);margin-bottom:1.5rem;}
+
+.section-label{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;}
+.section-label::before{content:"";width:12px;height:1.5px;background:var(--accent);}
+
+.input-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;margin-bottom:1.25rem;}
+.input-row:last-child{margin-bottom:0;}
+.input-label{font-size:.9rem;color:var(--text-mid);line-height:1.4;font-weight:400;}
+.input-label span{display:block;font-size:.75rem;color:var(--text-muted);font-weight:300;margin-top:.15rem;}
+.input-control{display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.input-prefix{font-size:.85rem;color:var(--text-muted);font-weight:500;}
+
+input[type="range"]{display:none;}
+
+.stepper{display:flex;align-items:center;gap:.5rem;}
+.stepper-btn{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);color:var(--text-mid);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;line-height:1;}
+.stepper-btn:hover{border-color:var(--accent);color:var(--accent);}
+.stepper-val{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:var(--text);min-width:52px;text-align:center;}
+
+/* RESULTS */
+.results-card{background:var(--dark);border-radius:20px;padding:2.25rem;box-shadow:0 8px 40px rgba(28,26,22,.2);animation:fadeUp .5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+.results-top{text-align:center;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08);}
+.results-eyebrow{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem;}
+.total-label{font-size:.9rem;color:rgba(255,255,255,.45);margin-bottom:.5rem;}
+.total-amount{font-family:"Fraunces",serif;font-size:clamp(3rem,8vw,4.5rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em;transition:all .3s;}
+.total-amount.animating{transform:scale(1.04);}
+.total-sub{font-size:.82rem;color:rgba(255,255,255,.3);margin-top:.5rem;}
+
+.breakdown-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
+.breakdown-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.1rem;text-align:center;}
+.breakdown-n{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.3rem;}
+.breakdown-n em{font-style:normal;color:#7EACD4;}
+.breakdown-l{font-size:.72rem;color:rgba(255,255,255,.35);line-height:1.4;}
+
+.insight{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;}
+.insight p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.75;font-weight:300;}
+.insight strong{color:rgba(255,255,255,.85);font-weight:500;}
+
+.results-cta{text-align:center;}
+.results-cta p{font-size:.85rem;color:rgba(255,255,255,.35);margin-bottom:1.25rem;line-height:1.6;}
+.btn-primary{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.92rem;font-weight:500;padding:.85rem 2rem;border-radius:8px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-primary:hover{background:var(--accent2);gap:.65rem;}
+.btn-ghost{display:inline-flex;align-items:center;font-size:.82rem;color:rgba(255,255,255,.3);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:1px;margin-left:1.25rem;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.6);}
+
+.disclaimer{text-align:center;font-size:.72rem;color:var(--text-muted);margin-top:1.5rem;line-height:1.6;}
+
+@media(max-width:560px){
+  .breakdown-grid{grid-template-columns:1fr;}
+  .calc-card,.results-card{padding:1.5rem 1.25rem;}
+  .input-row{grid-template-columns:1fr;gap:.5rem;}
+  .input-control{justify-content:flex-start;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo-mark">MG</div>
+    <h1>What are bad systems <em>costing you?</em></h1>
+    <p>Adjust the sliders to match your situation. See the real annual cost in seconds.</p>
+  </div>
+
+  <!-- SECTION 1: ADMIN TIME -->
+  <div class="calc-card">
+    <div class="section-label">Admin & Operations</div>
+
+    <div class="input-row">
+      <div class="input-label">Hours spent on manual admin per week
+        <span>Scheduling, chasing paperwork, answering repetitive questions</span>
+      </div>
+      <div class="input-control">
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('admin_hours', -1)">−</button>
+          <div class="stepper-val" id="val-admin_hours">10 hrs</div>
+          <button class="stepper-btn" onclick="adjust('admin_hours', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-label">Your effective hourly rate
+        <span>What your time is worth — or what you'd pay someone to do this</span>
+      </div>
+      <div class="input-control">
+        <span class="input-prefix">$</span>
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('hourly_rate', -10)">−</button>
+          <div class="stepper-val" id="val-hourly_rate">75</div>
+          <button class="stepper-btn" onclick="adjust('hourly_rate', 10)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: LOST LEADS -->
+  <div class="calc-card">
+    <div class="section-label">Lost Leads</div>
+
+    <div class="input-row">
+      <div class="input-label">New leads or inquiries per month
+        <span>People who reach out but don't always book</span>
+      </div>
+      <div class="input-control">
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('leads_month', -1)">−</button>
+          <div class="stepper-val" id="val-leads_month">8</div>
+          <button class="stepper-btn" onclick="adjust('leads_month', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-label">Leads lost due to slow follow-up or friction
+        <span>Rough % who don't convert because of process issues, not product</span>
+      </div>
+      <div class="input-control">
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('lead_loss_pct', -5)">−</button>
+          <div class="stepper-val" id="val-lead_loss_pct">30%</div>
+          <button class="stepper-btn" onclick="adjust('lead_loss_pct', 5)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-label">Average value of a new client
+        <span>What a typical client pays you</span>
+      </div>
+      <div class="input-control">
+        <span class="input-prefix">$</span>
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('client_value', -100)">−</button>
+          <div class="stepper-val" id="val-client_value">1,200</div>
+          <button class="stepper-btn" onclick="adjust('client_value', 100)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: PAYMENT DELAYS -->
+  <div class="calc-card">
+    <div class="section-label">Payment Delays</div>
+
+    <div class="input-row">
+      <div class="input-label">Invoices outstanding at any time
+        <span>Unpaid invoices you're waiting on</span>
+      </div>
+      <div class="input-control">
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('outstanding_invoices', -1)">−</button>
+          <div class="stepper-val" id="val-outstanding_invoices">5</div>
+          <button class="stepper-btn" onclick="adjust('outstanding_invoices', 1)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-label">Average invoice amount
+        <span></span>
+      </div>
+      <div class="input-control">
+        <span class="input-prefix">$</span>
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('invoice_amount', -50)">−</button>
+          <div class="stepper-val" id="val-invoice_amount">500</div>
+          <button class="stepper-btn" onclick="adjust('invoice_amount', 50)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-label">Average days late on payment
+        <span>How long past due before you get paid</span>
+      </div>
+      <div class="input-control">
+        <div class="stepper">
+          <button class="stepper-btn" onclick="adjust('days_late', -5)">−</button>
+          <div class="stepper-val" id="val-days_late">21 days</div>
+          <button class="stepper-btn" onclick="adjust('days_late', 5)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-card" id="results">
+    <div class="results-top">
+      <div class="results-eyebrow">Estimated annual cost of bad systems</div>
+      <div class="total-amount" id="total-amount">$0</div>
+      <div class="total-sub">per year in lost time, revenue, and cash flow</div>
+    </div>
+
+    <div class="breakdown-grid">
+      <div class="breakdown-item">
+        <div class="breakdown-n" id="bd-admin"><em>$0</em></div>
+        <div class="breakdown-l">Admin time wasted annually</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-n" id="bd-leads"><em>$0</em></div>
+        <div class="breakdown-l">Revenue lost to bad follow-up</div>
+      </div>
+      <div class="breakdown-item">
+        <div class="breakdown-n" id="bd-payments"><em>$0</em></div>
+        <div class="breakdown-l">Cash tied up in late payments</div>
+      </div>
+    </div>
+
+    <div class="insight" id="insight">
+      <p id="insight-text"></p>
+    </div>
+
+    <div class="results-cta">
+      <p>Most of this is fixable in 30 days or less.</p>
+      <a href="https://calendly.com/macguttenberg/30min" target="_blank" class="btn-primary">Book a free call →</a>
+      <a href="/audit.html" class="btn-ghost">Or take the assessment</a>
+    </div>
+  </div>
+
+  <div class="disclaimer">Numbers are estimates based on your inputs. Actual results vary by business.</div>
+
+</div>
+
+<script>
+const state = {
+  admin_hours: 10,
+  hourly_rate: 75,
+  leads_month: 8,
+  lead_loss_pct: 30,
+  client_value: 1200,
+  outstanding_invoices: 5,
+  invoice_amount: 500,
+  days_late: 21
+};
+
+const limits = {
+  admin_hours:         { min: 1,   max: 60,   suffix: ' hrs' },
+  hourly_rate:         { min: 10,  max: 500,  suffix: '',    comma: false },
+  leads_month:         { min: 1,   max: 100,  suffix: '' },
+  lead_loss_pct:       { min: 5,   max: 80,   suffix: '%' },
+  client_value:        { min: 100, max: 20000,suffix: '',    comma: true },
+  outstanding_invoices:{ min: 0,   max: 50,   suffix: '' },
+  invoice_amount:      { min: 50,  max: 10000,suffix: '',    comma: true },
+  days_late:           { min: 0,   max: 120,  suffix: ' days' }
+};
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function fmtVal(key, val) {
+  const l = limits[key];
+  let s = l.comma ? val.toLocaleString() : val.toString();
+  return s + l.suffix;
+}
+
+function adjust(key, delta) {
+  const l = limits[key];
+  state[key] = Math.min(l.max, Math.max(l.min, state[key] + delta));
+  document.getElementById('val-' + key).textContent = fmtVal(key, state[key]);
+  calculate();
+}
+
+function calculate() {
+  // Admin cost
+  const adminAnnual = state.admin_hours * state.hourly_rate * 52;
+
+  // Lost leads
+  const leadsLostPerMonth = state.leads_month * (state.lead_loss_pct / 100);
+  const leadsLostAnnual = leadsLostPerMonth * 12 * state.client_value;
+
+  // Payment delays — opportunity cost: money tied up x days / 365 x 20% annual cost of capital
+  const cashTiedUp = state.outstanding_invoices * state.invoice_amount;
+  const paymentCost = cashTiedUp * (state.days_late / 365) * 0.20 * 52; // annualized
+  // More intuitive: just show cash flow impact = total delayed per year
+  const paymentAnnual = state.outstanding_invoices * state.invoice_amount * (365 / Math.max(state.days_late, 1)) * (state.days_late / 365) * 2;
+
+  const total = adminAnnual + leadsLostAnnual + cashTiedUp;
+
+  // Animate total
+  const totalEl = document.getElementById('total-amount');
+  totalEl.classList.add('animating');
+  setTimeout(() => totalEl.classList.remove('animating'), 300);
+  totalEl.textContent = fmt(total);
+
+  document.getElementById('bd-admin').innerHTML = `<em>${fmt(adminAnnual)}</em>`;
+  document.getElementById('bd-leads').innerHTML = `<em>${fmt(leadsLostAnnual)}</em>`;
+  document.getElementById('bd-payments').innerHTML = `<em>${fmt(cashTiedUp)}</em>`;
+
+  // Dynamic insight
+  let insight = '';
+  const biggest = Math.max(adminAnnual, leadsLostAnnual, cashTiedUp);
+  if (biggest === adminAnnual) {
+    const hrs = state.admin_hours * 52;
+    insight = `<strong>Admin time is your biggest drain.</strong> You're spending roughly ${hrs.toLocaleString()} hours a year on tasks that could be automated or eliminated. That's ${Math.round(hrs/40)} weeks of your life — time that should be going toward clients and growth.`;
+  } else if (biggest === leadsLostAnnual) {
+    const lost = Math.round(state.leads_month * (state.lead_loss_pct / 100) * 12);
+    insight = `<strong>Lost leads are costing you the most.</strong> You're losing approximately ${lost} potential clients per year — not because your offer is wrong, but because the follow-up process has too much friction. A simple automated sequence would recover most of this.`;
+  } else {
+    insight = `<strong>Cash flow is your biggest issue.</strong> You have ${fmt(cashTiedUp)} sitting in unpaid invoices at any given time. Automated payment reminders and online payment links typically cut collection time by 60% or more.`;
+  }
+  document.getElementById('insight-text').innerHTML = insight;
+}
+
+// Init display
+Object.keys(state).forEach(key => {
+  const el = document.getElementById('val-' + key);
+  if (el) el.textContent = fmtVal(key, state[key]);
+});
+calculate();
+</script>
+</body>
+</html>
