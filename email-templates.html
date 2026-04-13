@@ -4,317 +4,385 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Email Templates — Mac Guttenberg</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#E8E4DC;
-  --card:#F5F2EC;
-  --border:#D0CAC0;
-  --text:#1C1A16;
-  --text-mid:#48443C;
-  --text-muted:#7A7468;
-  --accent:#7fa0c3;
-  --accent2:#3D6B9A;
-  --dark:#1C1A16;
-  --dark2:#2A2720;
+  --bg:#E8E4DC;--bg2:#DDD9D0;--white:#FAFAF7;--card:#F5F2EC;
+  --border:#D0CAC0;--text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;
+  --accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
 }
-html{scroll-behavior:smooth;}
-body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;display:grid;grid-template-columns:320px 1fr;grid-template-rows:auto 1fr;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
 
-/* HEADER */
-.header{grid-column:1/-1;background:var(--dark);padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);}
-.header-left{display:flex;align-items:center;gap:1rem;}
-.logo{font-family:"Fraunces",serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.4);}
-.header h1{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;}
-.header-sub{font-size:.75rem;color:rgba(255,255,255,.3);margin-left:.5rem;}
+nav{position:sticky;top:0;z-index:50;height:56px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;color:#fff;text-decoration:none;font-family:"Fraunces",serif;font-weight:900;font-size:1.05rem;}
+.nav-logo span{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);font-family:"DM Sans",sans-serif;border-left:1px solid rgba(255,255,255,.15);padding-left:.75rem;}
+.nav-back{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;}
+.nav-back:hover{color:#fff;}
 
-/* LEFT PANEL */
-.left{background:var(--card);border-right:1px solid var(--border);padding:1.5rem;overflow-y:auto;}
-.panel-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.85rem;display:block;}
+.wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem 5rem;}
+.eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem;}
+.eyebrow::before{content:"";width:14px;height:1.5px;background:var(--accent);}
+h1{font-family:"Fraunces",serif;font-size:clamp(2rem,3.4vw,3rem);font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:.6rem;}
+h1 em{font-style:italic;color:var(--accent);font-weight:700;}
+.sub{font-size:.95rem;color:var(--text-muted);font-weight:300;margin-bottom:2.5rem;max-width:560px;line-height:1.5;}
 
-.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem;}
-.field label{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);}
-.field input,.field select,.field textarea{font-family:"DM Sans",sans-serif;font-size:.88rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;outline:none;transition:border-color .2s;width:100%;}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);}
-.field textarea{resize:vertical;min-height:72px;line-height:1.6;}
+/* CONTROLS */
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2rem;}
+.ctrl{display:flex;flex-direction:column;gap:.4rem;}
+.ctrl label{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.ctrl select,.ctrl input{font-family:"DM Sans",sans-serif;font-size:.92rem;color:var(--text);background:var(--white);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem;outline:none;width:100%;transition:border-color .15s,box-shadow .15s;}
+.ctrl select:focus,.ctrl input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,160,195,.15);}
 
-.divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
+/* PREVIEW */
+.preview-wrap{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.preview-head{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--border);background:var(--card);}
+.preview-title{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;}
+.preview-tag{font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.preview-body{padding:1.5rem 1.75rem;}
+.preview-subject{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem;}
+.preview-subject-val{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px dashed var(--border);}
+.preview-msg{white-space:pre-wrap;font-size:.95rem;line-height:1.65;color:var(--text);font-family:"DM Sans",sans-serif;min-height:200px;}
+.preview-msg .var-empty{background:rgba(200,100,100,.15);color:#8a3030;padding:1px 6px;border-radius:3px;font-weight:500;}
+.preview-actions{display:flex;gap:.6rem;padding:1.25rem 1.5rem;border-top:1px solid var(--border);background:var(--card);}
+.btn{font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:500;padding:.7rem 1.3rem;border-radius:6px;border:none;cursor:pointer;transition:background .15s,color .15s;display:inline-flex;align-items:center;gap:.4rem;}
+.btn-primary{background:var(--dark);color:#fff;}
+.btn-primary:hover{background:var(--dark2);}
+.btn-secondary{background:transparent;color:var(--text-mid);border:1px solid var(--border);}
+.btn-secondary:hover{background:var(--white);color:var(--text);}
+.btn-mark{background:var(--accent);color:#fff;margin-left:auto;}
+.btn-mark:hover{background:var(--accent2);}
 
-.scenario-list{display:flex;flex-direction:column;gap:.5rem;}
-.scenario-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;cursor:pointer;transition:all .18s;text-align:left;width:100%;}
-.scenario-btn:hover{border-color:var(--accent);background:rgba(127,160,195,.04);}
-.scenario-btn.active{border-color:var(--accent);background:rgba(127,160,195,.08);}
-.scenario-btn .s-name{font-size:.85rem;font-weight:500;color:var(--text);display:block;margin-bottom:.15rem;}
-.scenario-btn .s-desc{font-size:.72rem;color:var(--text-muted);line-height:1.4;}
+/* TOAST */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:.8rem 1.4rem;border-radius:8px;font-size:.85rem;opacity:0;transition:opacity .2s,transform .2s;z-index:200;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.error{background:#8a3030;}
 
-/* RIGHT PANEL */
-.right{padding:2rem;overflow-y:auto;background:var(--bg);}
+.empty-leads{text-align:center;padding:2rem;color:var(--text-muted);font-size:.9rem;}
 
-.email-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 20px rgba(28,26,22,.05);animation:fadeUp .35s ease both;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-
-.email-toolbar{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);}
-.email-scenario-tag{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
-.toolbar-btns{display:flex;gap:.5rem;}
-.btn-copy-email{background:var(--dark);color:#fff;border:none;padding:.45rem 1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:background .2s;}
-.btn-copy-email:hover{background:var(--dark2);}
-.btn-open-mail{background:var(--accent);color:#fff;border:none;padding:.45rem 1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;}
-.btn-open-mail:hover{background:var(--accent2);}
-
-.email-meta{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:.5rem;}
-.meta-row{display:flex;align-items:baseline;gap:.75rem;}
-.meta-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);width:48px;flex-shrink:0;}
-.meta-val{font-size:.88rem;color:var(--text-mid);}
-.meta-val.subject{font-weight:500;color:var(--text);}
-
-.email-body{padding:1.75rem 1.5rem;}
-.email-body p{font-size:.92rem;line-height:1.85;color:var(--text-mid);margin-bottom:1rem;font-weight:300;}
-.email-body p:last-child{margin-bottom:0;}
-.email-body strong{color:var(--text);font-weight:500;}
-
-.empty-right{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;opacity:.4;padding:2rem;}
-.empty-right p{font-size:.9rem;color:var(--text-muted);line-height:1.7;}
-
-@media(max-width:800px){
-  body{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;}
-  .left{border-right:none;border-bottom:1px solid var(--border);}
-  .right{padding:1.25rem;}
+@media(max-width:700px){
+  .controls{grid-template-columns:1fr;}
+  .wrap,nav{padding-left:1rem;padding-right:1rem;}
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-left">
-    <div class="logo">MG</div>
-    <h1>Email Templates</h1>
-    <span class="header-sub">Internal use only</span>
+<nav>
+  <a href="/dashboard" class="nav-logo">mg<span>Email Templates</span></a>
+  <a href="/dashboard" class="nav-back">← Dashboard</a>
+</nav>
+
+<div class="wrap">
+  <div class="eyebrow">Outreach Library</div>
+  <h1>Pick a lead, pick a <em>template,</em> send.</h1>
+  <p class="sub">Templates auto-fill with lead info from your tracker. Edit before sending if needed. One click to copy or open in email.</p>
+
+  <div class="controls">
+    <div class="ctrl">
+      <label for="lead">Lead</label>
+      <select id="lead"><option value="">Loading leads…</option></select>
+    </div>
+    <div class="ctrl">
+      <label for="template">Template</label>
+      <select id="template"></select>
+    </div>
+  </div>
+
+  <div class="preview-wrap">
+    <div class="preview-head">
+      <div class="preview-title" id="t-name">—</div>
+      <div class="preview-tag" id="t-channel">—</div>
+    </div>
+    <div class="preview-body">
+      <div class="preview-subject">Subject</div>
+      <div class="preview-subject-val" id="t-subject" contenteditable="true">—</div>
+      <div class="preview-msg" id="t-body" contenteditable="true">—</div>
+    </div>
+    <div class="preview-actions">
+      <button class="btn btn-primary" onclick="copyMsg()">📋 Copy message</button>
+      <button class="btn btn-secondary" onclick="openEmail()">✉️ Open in email</button>
+      <button class="btn btn-mark" onclick="markContacted()" id="markBtn">Mark as Contacted →</button>
+    </div>
   </div>
 </div>
 
-<!-- LEFT -->
-<div class="left">
-  <span class="panel-label">Client Details</span>
-
-  <div class="field">
-    <label>First Name</label>
-    <input type="text" id="f-name" placeholder="Sarah" oninput="refreshEmail()">
-  </div>
-  <div class="field">
-    <label>Business Name</label>
-    <input type="text" id="f-biz" placeholder="Johnson Legal Group" oninput="refreshEmail()">
-  </div>
-  <div class="field">
-    <label>Their Main Problem</label>
-    <textarea id="f-problem" placeholder="e.g. running on paper, no booking system..." oninput="refreshEmail()"></textarea>
-  </div>
-  <div class="field">
-    <label>Assessment Score (optional)</label>
-    <input type="text" id="f-score" placeholder="e.g. 8/30" oninput="refreshEmail()">
-  </div>
-  <div class="field">
-    <label>Recommended Package</label>
-    <select id="f-package" onchange="refreshEmail()">
-      <option value="Starter ($300)">Starter ($300)</option>
-      <option value="Foundation ($800)" selected>Foundation ($800)</option>
-      <option value="Growth ($300/mo)">Growth ($300/mo)</option>
-      <option value="a custom package">Custom</option>
-    </select>
-  </div>
-
-  <div class="divider"></div>
-
-  <span class="panel-label">Scenario</span>
-  <div class="scenario-list" id="scenario-list"></div>
-</div>
-
-<!-- RIGHT -->
-<div class="right" id="right-panel">
-  <div class="empty-right">
-    <p>Fill in the details on the left<br>and select a scenario to generate your email.</p>
-  </div>
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
-const scenarios = [
+// ============ TEMPLATES ============
+// Variables: {name} {firstName} {business} {biz} {customAngle}
+const TEMPLATES = [
   {
-    id: 'assessment',
-    name: 'After Assessment',
-    desc: 'They completed the digital readiness quiz',
-    subject: (d) => `Your Digital Readiness Results — ${d.biz || d.name}`,
-    body: (d) => `Hi ${d.name},
+    id: 'cold-ig',
+    name: 'Cold outreach (Instagram DM)',
+    channel: 'Instagram DM',
+    subject: '(no subject — DM)',
+    body: `Hey {firstName} — your work at {biz} is genuinely beautiful. {customAngle}
 
-Thanks for taking the Digital Readiness Assessment${d.biz ? ' for ' + d.biz : ''}.
+I help small Etsy/service businesses build the systems that match their growth — custom order intake, getting Instagram actually working, that kind of thing.
 
-${d.score ? `Your score came in at ${d.score} — ` : ''}Based on your results, ${d.problem ? `the biggest opportunity I see is around ${d.problem}. ` : 'there are a few clear areas where the right systems could make a real difference. '}
+Would you be open to a free 30-min audit? No pitch, just a clear picture of what's possible. Calendly: calendly.com/macguttenberg/30min`
+  },
+  {
+    id: 'cold-email',
+    name: 'Cold outreach (Email)',
+    channel: 'Email',
+    subject: 'Quick idea for {biz}',
+    body: `Hi {firstName},
 
-This is exactly the kind of situation I work with. Most of the gaps I see in your results are fixable in a few weeks — and the impact on your day-to-day is usually immediate.
+I came across {biz} and was really impressed by what you've built. {customAngle}
 
-I'd love to spend 30 minutes walking through what that could look like for ${d.biz || 'your business'}. No pitch, just a clear picture of what's possible.
+I work with small service-based businesses to build the digital systems that match their growth — client portals, automation, custom order intake, that kind of thing. Most of my clients are doing real revenue but their operations are the bottleneck.
 
-Here's my calendar if you'd like to book a time: calendly.com/macguttenberg/30min
+Would you be open to a free 30-minute audit? I'll come back with a clear picture of what's possible — no pressure, no pitch.
+
+Calendly: calendly.com/macguttenberg/30min
+
+Best,
+Mac`
+  },
+  {
+    id: 'followup-1',
+    name: 'Follow-up #1 (3-4 days after first message)',
+    channel: 'Email or DM',
+    subject: 'Following up — {biz}',
+    body: `Hey {firstName},
+
+Just floating this back up in case it got buried. Totally fine if now's not the right time — wanted to make sure you saw it.
+
+The free audit offer still stands: calendly.com/macguttenberg/30min
 
 — Mac`
   },
   {
-    id: 'post-call',
-    name: 'After Discovery Call',
-    desc: 'Follow up after your first conversation',
-    subject: (d) => `Great talking — next steps for ${d.biz || d.name}`,
-    body: (d) => `Hi ${d.name},
+    id: 'followup-2',
+    name: 'Follow-up #2 (final nudge, 1 week later)',
+    channel: 'Email or DM',
+    subject: 'Last note from me — {biz}',
+    body: `Hi {firstName},
 
-Really enjoyed our conversation today. ${d.biz ? d.biz + ' has' : 'You have'} a strong foundation — ${d.problem ? 'the ' + d.problem + ' piece is exactly what I\'d focus on first.' : 'and I can see a clear path to getting your systems where they need to be.'}
+Last note from me, promise. I'll stop pestering after this.
 
-Based on what we discussed, I'd recommend the **${d.package}** to start. It covers everything we talked about and gives us a defined scope to work within.
+If a 30-min audit isn't useful right now, no worries at all. I'll leave my Calendly here in case it's helpful down the line: calendly.com/macguttenberg/30min
 
-I'll put together a full proposal for you — should have it to you within 24 hours. In the meantime, feel free to reply here with any questions that came up after we hung up.
+Wishing you the best with {biz}.
 
-Looking forward to working together.
-
-— Mac
-Mac Guttenberg · macguttenberg.com`
+— Mac`
   },
   {
-    id: 'cold',
-    name: 'Cold Outreach',
-    desc: 'First touch with a prospect',
-    subject: (d) => `Quick thought on ${d.biz || 'your business'}`,
-    body: (d) => `Hi ${d.name},
+    id: 'call-confirm',
+    name: 'Call booked — confirmation',
+    channel: 'Email',
+    subject: 'Looking forward to our call',
+    body: `Hi {firstName},
 
-I came across ${d.biz || 'your business'} and wanted to reach out directly.
+Thanks for booking — looking forward to chatting about {biz}.
 
-I work with established service businesses to build the digital infrastructure they need to grow — things like client portals, online booking, payment automation, and workflows that run in the background.
+Before our call it'd help if you could send over:
+1. Your website / Etsy / IG link (whatever I should look at)
+2. The one or two things that feel most broken right now
+3. What "fixing it" would unlock for you
 
-${d.problem ? `I noticed ${d.problem} — that's something I've fixed for a few businesses similar to yours, with pretty significant results.` : 'Most of the businesses I work with are doing real revenue but still running on systems that were never built to scale.'}
+No prep needed beyond that. See you then.
 
-I put together a free Digital Readiness Assessment that takes 3 minutes and shows exactly where the gaps are: macguttenberg.com/audit.html
-
-Worth a look — no strings attached. If anything resonates, I'm happy to jump on a quick call.
-
-— Mac
-Mac Guttenberg · macguttenberg.com`
+— Mac`
   },
   {
-    id: 'proposal',
-    name: 'Sending a Proposal',
-    desc: 'Intro email when delivering the proposal',
-    subject: (d) => `Your proposal — ${d.biz || d.name}`,
-    body: (d) => `Hi ${d.name},
+    id: 'no-show',
+    name: 'Call no-show — soft re-engage',
+    channel: 'Email',
+    subject: 'Missed you — want to reschedule?',
+    body: `Hey {firstName},
 
-Here's the proposal we discussed for ${d.biz || 'your business'}: macguttenberg.com/proposal-generator.html
+No worries about missing our call earlier — life happens. Want to grab a new time?
 
-A quick summary of what's included:
+calendly.com/macguttenberg/30min
 
-- ${d.problem ? 'Direct solution to ' + d.problem : 'Full digital audit and priority fixes'}
-- Everything outlined in the **${d.package}**
-- Clear timeline and defined deliverables from day one
-
-I kept it straightforward — no fluff, just exactly what we talked about.
-
-If you have questions or want to adjust the scope, just reply here. If you're ready to move forward, the fastest way is to book a kickoff call: calendly.com/macguttenberg/30min
-
-— Mac
-Mac Guttenberg · macguttenberg.com`
+— Mac`
   },
   {
-    id: 'followup',
-    name: 'No Response Follow-Up',
-    desc: 'They went quiet after showing interest',
-    subject: (d) => `Still thinking it over? — ${d.biz || d.name}`,
-    body: (d) => `Hi ${d.name},
+    id: 'proposal-intro',
+    name: 'Proposal — intro email',
+    channel: 'Email',
+    subject: 'Your proposal — {biz}',
+    body: `Hi {firstName},
 
-Just wanted to follow up in case my last message got buried.
+Great talking earlier. As promised, I put together a proposal based on what we discussed. You'll find the scope, timeline, and pricing inside.
 
-I know timing isn't always right — totally understand if things have shifted on your end.
+[ATTACH PROPOSAL OR LINK]
 
-That said, if ${d.problem ? d.problem + ' is still on your mind' : 'the conversation we had is still relevant'}, I'm still here and happy to pick up where we left off.
+Take your time reading through it — happy to jump on another quick call if you have questions.
 
-Even if now's not the right time, I'm happy to answer any questions you have before you're ready to move forward.
+— Mac`
+  },
+  {
+    id: 'thank-you',
+    name: 'Thank you — closed won',
+    channel: 'Email',
+    subject: 'Welcome aboard 🎉',
+    body: `{firstName},
 
-— Mac
-Mac Guttenberg · macguttenberg.com`
+Officially excited to be working with {biz}. Onboarding link is below — fill that out when you get a moment and I'll have everything I need to kick off.
+
+[ONBOARDING LINK]
+
+Talk soon,
+Mac`
   }
 ];
 
-let activeScenario = null;
+// ============ STATE ============
+let leads = [];
+let currentLead = null;
+let currentTemplate = TEMPLATES[0];
 
-function getDetails() {
-  return {
-    name:    document.getElementById('f-name').value.trim() || '[First Name]',
-    biz:     document.getElementById('f-biz').value.trim(),
-    problem: document.getElementById('f-problem').value.trim(),
-    score:   document.getElementById('f-score').value.trim(),
-    package: document.getElementById('f-package').value
+const $ = id => document.getElementById(id);
+
+const toast = (msg, isError) => {
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(() => t.className = 'toast' + (isError ? ' error' : ''), 2500);
+};
+
+// ============ FILL TEMPLATES ============
+const firstName = (name) => (name || '').split(' ')[0] || '';
+
+function fill(text) {
+  if (!currentLead) return text;
+  const vars = {
+    '{name}': currentLead.name || '',
+    '{firstName}': firstName(currentLead.name),
+    '{business}': currentLead.business || currentLead.name,
+    '{biz}': currentLead.business || currentLead.name,
+    '{customAngle}': customAngle(currentLead),
   };
+  return text.replace(/\{(name|firstName|business|biz|customAngle)\}/g, m => vars[m] || m);
 }
 
-function renderScenarios() {
-  document.getElementById('scenario-list').innerHTML = scenarios.map(s => `
-    <button class="scenario-btn ${activeScenario === s.id ? 'active' : ''}" onclick="selectScenario('${s.id}')">
-      <span class="s-name">${s.name}</span>
-      <span class="s-desc">${s.desc}</span>
-    </button>
-  `).join('');
+// Try to extract a custom angle from the notes; otherwise generic
+function customAngle(lead) {
+  const notes = lead.notes || '';
+  // Look for first sentence mentioning their work
+  const m = notes.match(/[A-Z][^.!?]*(custom|handmade|hand[- ]embroidered|personalized|laser|engraved|wedding|baby|charm|jewelry|bow|sticker)[^.!?]*[.!?]/);
+  if (m) return m[0].trim();
+  return `Real volume on ${lead.business || 'your shop'} — clearly something working.`;
 }
 
-function selectScenario(id) {
-  activeScenario = id;
-  renderScenarios();
-  renderEmail();
+// ============ RENDER ============
+function renderTemplateOptions() {
+  $('template').innerHTML = TEMPLATES.map(t =>
+    `<option value="${t.id}">${t.name}</option>`
+  ).join('');
 }
 
-function refreshEmail() {
-  if (activeScenario) renderEmail();
+function renderLeadOptions() {
+  if (!leads.length) {
+    $('lead').innerHTML = '<option value="">No leads yet — add some in Lead Tracker</option>';
+    return;
+  }
+  // Group by stage so most-relevant are at top
+  const order = ['Contacted','New Lead','Call Booked','Proposal Sent','Won','Lost'];
+  const sorted = [...leads].sort((a,b) => (order.indexOf(a.stage) - order.indexOf(b.stage)) || a.name.localeCompare(b.name));
+  $('lead').innerHTML =
+    '<option value="">— Generic (no lead) —</option>' +
+    sorted.map(l => `<option value="${l.id}">${escapeHtml(l.name)}${l.business ? ' · ' + escapeHtml(l.business.split(' — ')[0]) : ''} · ${escapeHtml(l.stage)}</option>`).join('');
 }
 
-function renderEmail() {
-  const s = scenarios.find(x => x.id === activeScenario);
-  if (!s) return;
-  const d = getDetails();
-  const subject = s.subject(d);
-  const body = s.body(d);
-  const bodyHtml = body
-    .split('\n\n')
-    .map(p => `<p>${p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</p>`)
-    .join('');
-
-  const mailtoBody = encodeURIComponent(body);
-  const mailtoSubject = encodeURIComponent(subject);
-  const mailtoTo = encodeURIComponent(document.getElementById('f-name').value.trim() ? '' : '');
-
-  document.getElementById('right-panel').innerHTML = `
-    <div class="email-card">
-      <div class="email-toolbar">
-        <span class="email-scenario-tag">${s.name}</span>
-        <div class="toolbar-btns">
-          <button class="btn-copy-email" onclick="copyEmail()">Copy Email</button>
-          <a class="btn-open-mail" href="mailto:?subject=${mailtoSubject}&body=${mailtoBody}" target="_blank">Open in Mail →</a>
-        </div>
-      </div>
-      <div class="email-meta">
-        <div class="meta-row"><span class="meta-label">To</span><span class="meta-val">${d.name}${d.biz ? ' — ' + d.biz : ''}</span></div>
-        <div class="meta-row"><span class="meta-label">Subject</span><span class="meta-val subject" id="email-subject">${subject}</span></div>
-      </div>
-      <div class="email-body" id="email-body-html">${bodyHtml}</div>
-    </div>
-  `;
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-function copyEmail() {
-  const s = scenarios.find(x => x.id === activeScenario);
-  if (!s) return;
-  const d = getDetails();
-  const text = 'Subject: ' + s.subject(d) + '\n\n' + s.body(d);
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.btn-copy-email');
-    if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => btn.textContent = 'Copy Email', 2000); }
-  });
+function renderPreview() {
+  $('t-name').textContent = currentTemplate.name;
+  $('t-channel').textContent = currentTemplate.channel;
+  $('t-subject').textContent = fill(currentTemplate.subject);
+  $('t-body').textContent = fill(currentTemplate.body);
+  // Highlight unfilled vars
+  highlightUnfilled('t-subject');
+  highlightUnfilled('t-body');
+  // Toggle "mark as contacted" — only show when a real lead is selected and stage is "New Lead"
+  const showMark = currentLead && currentLead.stage === 'New Lead';
+  $('markBtn').style.display = showMark ? 'inline-flex' : 'none';
 }
 
-renderScenarios();
+function highlightUnfilled(id) {
+  const el = $(id);
+  el.innerHTML = el.textContent.replace(/\{[a-zA-Z]+\}/g, m => `<span class="var-empty">${m}</span>`);
+}
+
+// ============ ACTIONS ============
+function copyMsg() {
+  const subject = $('t-subject').textContent;
+  const body = $('t-body').textContent;
+  const full = currentTemplate.channel === 'Email' || currentTemplate.channel === 'Email or DM'
+    ? `Subject: ${subject}\n\n${body}`
+    : body;
+  navigator.clipboard.writeText(full).then(() => toast('Copied to clipboard.'));
+}
+
+function openEmail() {
+  if (!currentLead || !currentLead.email) {
+    toast('No email on this lead. Try Copy instead.', true);
+    return;
+  }
+  const subject = encodeURIComponent($('t-subject').textContent);
+  const body = encodeURIComponent($('t-body').textContent);
+  window.location.href = `mailto:${currentLead.email}?subject=${subject}&body=${body}`;
+}
+
+async function markContacted() {
+  if (!currentLead) return;
+  try {
+    const r = await fetch('/api/leads/' + currentLead.id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ stage: 'Contacted' })
+    });
+    if (!r.ok) throw new Error(await r.text());
+    currentLead.stage = 'Contacted';
+    const lead = leads.find(l => l.id === currentLead.id);
+    if (lead) lead.stage = 'Contacted';
+    renderLeadOptions();
+    $('lead').value = currentLead.id;
+    renderPreview();
+    toast('Marked as Contacted ✓');
+  } catch (e) {
+    toast('Update failed: ' + e.message, true);
+  }
+}
+
+// ============ EVENTS ============
+$('lead').addEventListener('change', e => {
+  currentLead = leads.find(l => l.id === e.target.value) || null;
+  renderPreview();
+});
+
+$('template').addEventListener('change', e => {
+  currentTemplate = TEMPLATES.find(t => t.id === e.target.value) || TEMPLATES[0];
+  renderPreview();
+});
+
+// ============ INIT ============
+async function init() {
+  renderTemplateOptions();
+  try {
+    const r = await fetch('/api/leads');
+    if (!r.ok) throw new Error(r.status);
+    leads = await r.json();
+    leads.sort((a,b) => new Date(b.created) - new Date(a.created));
+  } catch (e) {
+    toast('Could not load leads: ' + e.message, true);
+  }
+  renderLeadOptions();
+  renderPreview();
+}
+init();
 </script>
 </body>
 </html>
