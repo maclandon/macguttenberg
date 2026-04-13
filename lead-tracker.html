@@ -15,31 +15,32 @@
   --bg:#E8E4DC;--bg2:#DDD9D0;--white:#FAFAF7;--card:#F5F2EC;
   --border:#D0CAC0;--text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;
   --accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
+  --warn:#c97c4a;
 }
 body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
 
-/* NAV */
 nav{position:sticky;top:0;z-index:50;height:56px;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.06);}
 .nav-logo{display:flex;align-items:center;gap:.75rem;color:#fff;text-decoration:none;font-family:"Fraunces",serif;font-weight:900;font-size:1.05rem;}
 .nav-logo span{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);font-family:"DM Sans",sans-serif;border-left:1px solid rgba(255,255,255,.15);padding-left:.75rem;}
 .btn-add{background:var(--accent);color:#fff;border:none;font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;padding:.55rem 1.1rem;border-radius:6px;cursor:pointer;transition:background .2s;letter-spacing:.02em;}
 .btn-add:hover{background:var(--accent2);}
 
-/* STATS */
-.stats{background:var(--dark2);padding:1.5rem 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid rgba(255,255,255,.04);}
-.stat{text-align:left;padding:0 1.5rem;border-right:1px solid rgba(255,255,255,.06);}
+.stats{background:var(--dark2);padding:1.5rem 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-bottom:1px solid rgba(255,255,255,.04);}
+.stat{text-align:left;padding:0 1.5rem;border-right:1px solid rgba(255,255,255,.06);cursor:pointer;transition:opacity .15s;}
+.stat:hover{opacity:.8;}
 .stat:first-child{padding-left:0;}
 .stat:last-child{border-right:none;}
 .stat-n{font-family:"Fraunces",serif;font-size:1.8rem;font-weight:900;color:#7EACD4;line-height:1;margin-bottom:.2rem;}
+.stat.warn .stat-n{color:#e89868;}
 .stat-l{font-size:.7rem;color:rgba(255,255,255,.4);letter-spacing:.04em;text-transform:uppercase;}
 
-/* FILTERS */
 .filters{padding:1rem 2rem;display:flex;gap:.5rem;flex-wrap:wrap;background:var(--white);border-bottom:1px solid var(--border);}
 .filter-btn{background:var(--card);color:var(--text-mid);border:1px solid var(--border);font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;padding:.4rem 1rem;border-radius:100px;cursor:pointer;transition:all .15s;}
 .filter-btn:hover{border-color:var(--accent);}
 .filter-btn.active{background:var(--dark);color:#fff;border-color:var(--dark);}
+.filter-btn.warn{background:rgba(232,152,104,.12);color:var(--warn);border-color:rgba(232,152,104,.4);}
+.filter-btn.warn.active{background:var(--warn);color:#fff;border-color:var(--warn);}
 
-/* TABLE */
 .table-wrap{padding:0 2rem 4rem;background:var(--bg);min-height:60vh;}
 table{width:100%;border-collapse:collapse;background:var(--white);border-radius:0 0 12px 12px;overflow:hidden;}
 thead{background:var(--white);}
@@ -47,6 +48,8 @@ th{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase
 td{font-size:.85rem;color:var(--text-mid);padding:1.1rem 1.25rem;border-bottom:1px solid var(--border);}
 tr{cursor:pointer;transition:background .12s;}
 tbody tr:hover{background:var(--card);}
+tbody tr.stale{background:rgba(232,152,104,.06);}
+tbody tr.stale:hover{background:rgba(232,152,104,.12);}
 td.name{font-weight:600;color:var(--text);}
 td.email a{color:var(--accent);text-decoration:none;}
 td.email a:hover{text-decoration:underline;}
@@ -61,11 +64,14 @@ td.email a:hover{text-decoration:underline;}
 .score-high{background:rgba(120,180,120,.2);color:#2f6b2f;}
 .score-mid{background:rgba(245,200,80,.25);color:#8a6010;}
 .score-low{background:rgba(200,100,100,.15);color:#8a3030;}
+.last-cell{font-size:.8rem;}
+.last-cell.warn{color:var(--warn);font-weight:600;}
+.last-cell .days{font-size:.7rem;color:var(--text-muted);font-weight:400;display:block;}
+.last-cell.warn .days{color:var(--warn);}
 td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-muted);font-size:.8rem;}
 
 .empty,.loading{padding:4rem 2rem;text-align:center;color:var(--text-muted);font-size:.95rem;}
 
-/* MODAL */
 .modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(28,26,22,.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1.5rem;}
 .modal.show{display:flex;}
 .modal-card{background:var(--white);border-radius:16px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:2rem;box-shadow:0 20px 60px rgba(28,26,22,.3);}
@@ -76,6 +82,10 @@ td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space
 .modal-group input,.modal-group textarea,.modal-group select{font-family:"DM Sans",sans-serif;font-size:.92rem;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem;outline:none;width:100%;transition:border-color .15s,box-shadow .15s;}
 .modal-group input:focus,.modal-group textarea:focus,.modal-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,160,195,.15);}
 .modal-group textarea{resize:vertical;min-height:90px;}
+.date-row{display:flex;gap:.5rem;align-items:center;}
+.date-row input{flex:1;}
+.date-quick{font-family:"DM Sans",sans-serif;font-size:.75rem;font-weight:500;color:var(--accent);background:transparent;border:1px solid rgba(127,160,195,.3);padding:.5rem .75rem;border-radius:6px;cursor:pointer;white-space:nowrap;transition:background .15s;}
+.date-quick:hover{background:rgba(127,160,195,.1);}
 .modal-btns{display:flex;justify-content:flex-end;gap:.6rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);}
 .btn{font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:500;padding:.65rem 1.25rem;border-radius:6px;border:none;cursor:pointer;transition:background .15s,color .15s;}
 .btn-cancel{background:transparent;color:var(--text-muted);}
@@ -86,7 +96,6 @@ td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space
 .btn-delete:hover{background:rgba(200,100,100,.1);}
 .modal-btns .right{display:flex;gap:.6rem;margin-left:auto;}
 
-/* TOAST */
 .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:.8rem 1.4rem;border-radius:8px;font-size:.85rem;opacity:0;transition:opacity .2s,transform .2s;z-index:200;pointer-events:none;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast.error{background:#8a3030;}
@@ -108,12 +117,7 @@ td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space
   <button class="btn-add" onclick="openModal()">+ Add Lead</button>
 </nav>
 
-<div class="stats" id="stats">
-  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Total Leads</div></div>
-  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Active</div></div>
-  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Calls Booked</div></div>
-  <div class="stat"><div class="stat-n">—</div><div class="stat-l">Won</div></div>
-</div>
+<div class="stats" id="stats"></div>
 
 <div class="filters" id="filters"></div>
 
@@ -122,7 +126,7 @@ td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space
   <table id="table" style="display:none;">
     <thead>
       <tr>
-        <th>Name</th><th>Business</th><th>Email</th><th>Source</th><th>Score</th><th>Stage</th><th>Date Added</th><th>Notes</th>
+        <th>Name</th><th>Business</th><th>Email</th><th>Source</th><th>Score</th><th>Stage</th><th>Last Contact</th><th>Date Added</th><th>Notes</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
@@ -130,7 +134,6 @@ td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space
   <div id="empty" class="empty" style="display:none;">No leads in this view. Hit <strong>+ Add Lead</strong> to add one.</div>
 </div>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-card">
     <div class="modal-title" id="modal-title">Add Lead</div>
@@ -150,12 +153,21 @@ td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space
       </div>
       <div class="modal-group"><label>Score</label><input id="m-score" type="text" placeholder="8/30"></div>
     </div>
-    <div class="modal-group">
-      <label>Stage</label>
-      <select id="m-stage">
-        <option>New Lead</option><option>Contacted</option><option>Call Booked</option>
-        <option>Proposal Sent</option><option>Won</option><option>Lost</option>
-      </select>
+    <div class="modal-row">
+      <div class="modal-group">
+        <label>Stage</label>
+        <select id="m-stage">
+          <option>New Lead</option><option>Contacted</option><option>Call Booked</option>
+          <option>Proposal Sent</option><option>Won</option><option>Lost</option>
+        </select>
+      </div>
+      <div class="modal-group">
+        <label>Last Contact</label>
+        <div class="date-row">
+          <input id="m-last" type="date">
+          <button type="button" class="date-quick" onclick="setLastToday()">Today</button>
+        </div>
+      </div>
     </div>
     <div class="modal-group"><label>Notes</label><textarea id="m-notes" placeholder="Anything important to remember…"></textarea></div>
     <div class="modal-btns" id="modal-btns"></div>
@@ -167,6 +179,9 @@ td.notes-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space
 <script>
 const STAGES = ['All','New Lead','Contacted','Call Booked','Proposal Sent','Won','Lost'];
 const STAGE_CLASS = { 'New Lead':'stage-new','Contacted':'stage-contacted','Call Booked':'stage-call','Proposal Sent':'stage-proposal','Won':'stage-won','Lost':'stage-lost' };
+const STALE_DAYS = 4;
+const FOLLOWUP_STAGES = ['Contacted','Call Booked','Proposal Sent'];
+
 let leads = [];
 let filter = 'All';
 let editingId = null;
@@ -181,6 +196,20 @@ const toast = (msg, isError) => {
 };
 
 const fmtDate = ts => new Date(ts).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+
+const daysAgo = dateStr => {
+  if (!dateStr) return null;
+  const ms = Date.now() - new Date(dateStr).getTime();
+  return Math.floor(ms / (1000 * 60 * 60 * 24));
+};
+
+const todayISO = () => new Date().toISOString().slice(0, 10);
+
+const isStale = lead => {
+  if (!FOLLOWUP_STAGES.includes(lead.stage)) return false;
+  if (!lead.lastContact) return true; // never contacted but in active stage = needs attention
+  return daysAgo(lead.lastContact) >= STALE_DAYS;
+};
 
 const scoreClass = s => {
   if (!s) return '';
@@ -212,25 +241,34 @@ function renderStats() {
   const won = leads.filter(l => l.stage === 'Won').length;
   const active = leads.filter(l => !['Won','Lost'].includes(l.stage)).length;
   const calls = leads.filter(l => l.stage === 'Call Booked').length;
+  const followup = leads.filter(isStale).length;
   $('stats').innerHTML = `
-    <div class="stat"><div class="stat-n">${total}</div><div class="stat-l">Total Leads</div></div>
-    <div class="stat"><div class="stat-n">${active}</div><div class="stat-l">Active</div></div>
-    <div class="stat"><div class="stat-n">${calls}</div><div class="stat-l">Calls Booked</div></div>
-    <div class="stat"><div class="stat-n">${won}</div><div class="stat-l">Won</div></div>
+    <div class="stat" onclick="setFilter('All')"><div class="stat-n">${total}</div><div class="stat-l">Total Leads</div></div>
+    <div class="stat" onclick="setFilter('All')"><div class="stat-n">${active}</div><div class="stat-l">Active</div></div>
+    <div class="stat warn" onclick="setFilter('Needs Follow-up')"><div class="stat-n">${followup}</div><div class="stat-l">Needs Follow-up</div></div>
+    <div class="stat" onclick="setFilter('Call Booked')"><div class="stat-n">${calls}</div><div class="stat-l">Calls Booked</div></div>
+    <div class="stat" onclick="setFilter('Won')"><div class="stat-n">${won}</div><div class="stat-l">Won</div></div>
   `;
 }
 
 function renderFilters() {
-  $('filters').innerHTML = STAGES.map(s => {
+  const followupCount = leads.filter(isStale).length;
+  const followupBtn = `<button class="filter-btn warn ${filter === 'Needs Follow-up' ? 'active' : ''}" onclick="setFilter('Needs Follow-up')">⚠ Needs Follow-up (${followupCount})</button>`;
+  const stageBtns = STAGES.map(s => {
     const count = s === 'All' ? '' : ' (' + leads.filter(l => l.stage === s).length + ')';
     return `<button class="filter-btn ${filter === s ? 'active' : ''}" onclick="setFilter('${s}')">${s}${count}</button>`;
   }).join('');
+  $('filters').innerHTML = stageBtns + followupBtn;
 }
 
 function setFilter(s) { filter = s; render(); }
 
 function renderTable() {
-  const filtered = filter === 'All' ? leads : leads.filter(l => l.stage === filter);
+  let filtered;
+  if (filter === 'Needs Follow-up') filtered = leads.filter(isStale);
+  else if (filter === 'All') filtered = leads;
+  else filtered = leads.filter(l => l.stage === filter);
+
   if (!filtered.length) {
     $('table').style.display = 'none';
     $('empty').style.display = 'block';
@@ -238,18 +276,32 @@ function renderTable() {
   }
   $('empty').style.display = 'none';
   $('table').style.display = 'table';
-  $('tbody').innerHTML = filtered.map(l => `
-    <tr onclick="openModal('${l.id}')">
-      <td class="name">${escapeHtml(l.name)}</td>
-      <td>${escapeHtml(l.business) || '—'}</td>
-      <td class="email">${l.email ? `<a href="mailto:${l.email}" onclick="event.stopPropagation()">${escapeHtml(l.email)}</a>` : '—'}</td>
-      <td><span class="source">${escapeHtml(l.source)}</span></td>
-      <td>${l.score ? `<span class="score-pill ${scoreClass(l.score)}">${escapeHtml(l.score)}</span>` : '—'}</td>
-      <td><span class="stage ${STAGE_CLASS[l.stage] || ''}">${escapeHtml(l.stage)}</span></td>
-      <td>${l.created ? fmtDate(l.created) : '—'}</td>
-      <td class="notes-cell">${escapeHtml(l.notes) || '—'}</td>
-    </tr>
-  `).join('');
+  $('tbody').innerHTML = filtered.map(l => {
+    const stale = isStale(l);
+    let lastCell = '—';
+    let lastClass = 'last-cell';
+    if (l.lastContact) {
+      const d = daysAgo(l.lastContact);
+      lastCell = `${fmtDate(l.lastContact)}<span class="days">${d === 0 ? 'today' : d + ' day' + (d===1?'':'s') + ' ago'}</span>`;
+      if (stale) lastClass += ' warn';
+    } else if (FOLLOWUP_STAGES.includes(l.stage)) {
+      lastCell = `<span style="color:var(--warn);font-weight:600;">never set</span>`;
+      lastClass += ' warn';
+    }
+    return `
+      <tr class="${stale ? 'stale' : ''}" onclick="openModal('${l.id}')">
+        <td class="name">${escapeHtml(l.name)}</td>
+        <td>${escapeHtml(l.business) || '—'}</td>
+        <td class="email">${l.email ? `<a href="mailto:${l.email}" onclick="event.stopPropagation()">${escapeHtml(l.email)}</a>` : '—'}</td>
+        <td><span class="source">${escapeHtml(l.source)}</span></td>
+        <td>${l.score ? `<span class="score-pill ${scoreClass(l.score)}">${escapeHtml(l.score)}</span>` : '—'}</td>
+        <td><span class="stage ${STAGE_CLASS[l.stage] || ''}">${escapeHtml(l.stage)}</span></td>
+        <td class="${lastClass}">${lastCell}</td>
+        <td>${l.created ? fmtDate(l.created) : '—'}</td>
+        <td class="notes-cell">${escapeHtml(l.notes) || '—'}</td>
+      </tr>
+    `;
+  }).join('');
 }
 
 function escapeHtml(s) {
@@ -257,6 +309,8 @@ function escapeHtml(s) {
 }
 
 function render() { renderStats(); renderFilters(); renderTable(); }
+
+function setLastToday() { $('m-last').value = todayISO(); }
 
 function openModal(id) {
   editingId = id || null;
@@ -271,6 +325,7 @@ function openModal(id) {
     $('m-score').value = l.score || '';
     $('m-stage').value = l.stage || 'New Lead';
     $('m-notes').value = l.notes || '';
+    $('m-last').value = l.lastContact ? l.lastContact.slice(0, 10) : '';
     $('modal-btns').innerHTML = `
       <button class="btn btn-delete" onclick="deleteLead()">Delete</button>
       <div class="right">
@@ -279,7 +334,7 @@ function openModal(id) {
       </div>`;
   } else {
     $('modal-title').textContent = 'Add Lead';
-    ['m-name','m-biz','m-email','m-score','m-notes'].forEach(i => $(i).value = '');
+    ['m-name','m-biz','m-email','m-score','m-notes','m-last'].forEach(i => $(i).value = '');
     $('m-source').value = 'Cold Outreach';
     $('m-stage').value = 'New Lead';
     $('modal-btns').innerHTML = `
@@ -307,6 +362,7 @@ async function saveLead() {
     score: $('m-score').value.trim(),
     stage: $('m-stage').value,
     notes: $('m-notes').value.trim(),
+    lastContact: $('m-last').value || '',
   };
   try {
     const url = editingId ? '/api/leads/' + editingId : '/api/leads';

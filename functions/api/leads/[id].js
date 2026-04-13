@@ -17,6 +17,7 @@ const flatten = (r) => ({
   stage: r.fields.Stage || 'New Lead',
   notes: r.fields.Notes || '',
   created: r.fields.Created || r.createdTime,
+  lastContact: r.fields['Last Contact'] || '',
 });
 
 export async function onRequestPatch({ request, env, params }) {
@@ -29,6 +30,7 @@ export async function onRequestPatch({ request, env, params }) {
   if ('score' in body) fields.Score = body.score;
   if ('stage' in body) fields.Stage = body.stage;
   if ('notes' in body) fields.Notes = body.notes;
+  if ('lastContact' in body) fields['Last Contact'] = body.lastContact || null;
 
   const r = await fetch(AT(env, params.id), {
     method: 'PATCH',

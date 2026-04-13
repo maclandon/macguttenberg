@@ -31,14 +31,12 @@ h1{font-family:"Fraunces",serif;font-size:clamp(2rem,3.4vw,3rem);font-weight:900
 h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 .sub{font-size:.95rem;color:var(--text-muted);font-weight:300;margin-bottom:2.5rem;max-width:560px;line-height:1.5;}
 
-/* CONTROLS */
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2rem;}
 .ctrl{display:flex;flex-direction:column;gap:.4rem;}
 .ctrl label{font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
 .ctrl select,.ctrl input{font-family:"DM Sans",sans-serif;font-size:.92rem;color:var(--text);background:var(--white);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem;outline:none;width:100%;transition:border-color .15s,box-shadow .15s;}
 .ctrl select:focus,.ctrl input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,160,195,.15);}
 
-/* PREVIEW */
 .preview-wrap{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
 .preview-head{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--border);background:var(--card);}
 .preview-title{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;}
@@ -48,7 +46,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 .preview-subject-val{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px dashed var(--border);}
 .preview-msg{white-space:pre-wrap;font-size:.95rem;line-height:1.65;color:var(--text);font-family:"DM Sans",sans-serif;min-height:200px;}
 .preview-msg .var-empty{background:rgba(200,100,100,.15);color:#8a3030;padding:1px 6px;border-radius:3px;font-weight:500;}
-.preview-actions{display:flex;gap:.6rem;padding:1.25rem 1.5rem;border-top:1px solid var(--border);background:var(--card);}
+.preview-actions{display:flex;gap:.6rem;padding:1.25rem 1.5rem;border-top:1px solid var(--border);background:var(--card);flex-wrap:wrap;}
 .btn{font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:500;padding:.7rem 1.3rem;border-radius:6px;border:none;cursor:pointer;transition:background .15s,color .15s;display:inline-flex;align-items:center;gap:.4rem;}
 .btn-primary{background:var(--dark);color:#fff;}
 .btn-primary:hover{background:var(--dark2);}
@@ -57,16 +55,14 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 .btn-mark{background:var(--accent);color:#fff;margin-left:auto;}
 .btn-mark:hover{background:var(--accent2);}
 
-/* TOAST */
 .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:.8rem 1.4rem;border-radius:8px;font-size:.85rem;opacity:0;transition:opacity .2s,transform .2s;z-index:200;pointer-events:none;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast.error{background:#8a3030;}
 
-.empty-leads{text-align:center;padding:2rem;color:var(--text-muted);font-size:.9rem;}
-
 @media(max-width:700px){
   .controls{grid-template-columns:1fr;}
   .wrap,nav{padding-left:1rem;padding-right:1rem;}
+  .btn-mark{margin-left:0;}
 }
 </style>
 </head>
@@ -80,7 +76,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 <div class="wrap">
   <div class="eyebrow">Outreach Library</div>
   <h1>Pick a lead, pick a <em>template,</em> send.</h1>
-  <p class="sub">Templates auto-fill with lead info from your tracker. Edit before sending if needed. One click to copy or open in email.</p>
+  <p class="sub">Templates auto-fill with lead info. Hitting "Mark contacted" updates Last Contact in your tracker too.</p>
 
   <div class="controls">
     <div class="ctrl">
@@ -106,7 +102,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     <div class="preview-actions">
       <button class="btn btn-primary" onclick="copyMsg()">📋 Copy message</button>
       <button class="btn btn-secondary" onclick="openEmail()">✉️ Open in email</button>
-      <button class="btn btn-mark" onclick="markContacted()" id="markBtn">Mark as Contacted →</button>
+      <button class="btn btn-mark" onclick="markContacted()" id="markBtn">Mark contacted (today) →</button>
     </div>
   </div>
 </div>
@@ -114,8 +110,6 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 <div class="toast" id="toast"></div>
 
 <script>
-// ============ TEMPLATES ============
-// Variables: {name} {firstName} {business} {biz} {customAngle}
 const TEMPLATES = [
   {
     id: 'cold-ig',
@@ -236,7 +230,6 @@ Mac`
   }
 ];
 
-// ============ STATE ============
 let leads = [];
 let currentLead = null;
 let currentTemplate = TEMPLATES[0];
@@ -250,7 +243,6 @@ const toast = (msg, isError) => {
   setTimeout(() => t.className = 'toast' + (isError ? ' error' : ''), 2500);
 };
 
-// ============ FILL TEMPLATES ============
 const firstName = (name) => (name || '').split(' ')[0] || '';
 
 function fill(text) {
@@ -265,20 +257,15 @@ function fill(text) {
   return text.replace(/\{(name|firstName|business|biz|customAngle)\}/g, m => vars[m] || m);
 }
 
-// Try to extract a custom angle from the notes; otherwise generic
 function customAngle(lead) {
   const notes = lead.notes || '';
-  // Look for first sentence mentioning their work
   const m = notes.match(/[A-Z][^.!?]*(custom|handmade|hand[- ]embroidered|personalized|laser|engraved|wedding|baby|charm|jewelry|bow|sticker)[^.!?]*[.!?]/);
   if (m) return m[0].trim();
   return `Real volume on ${lead.business || 'your shop'} — clearly something working.`;
 }
 
-// ============ RENDER ============
 function renderTemplateOptions() {
-  $('template').innerHTML = TEMPLATES.map(t =>
-    `<option value="${t.id}">${t.name}</option>`
-  ).join('');
+  $('template').innerHTML = TEMPLATES.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
 }
 
 function renderLeadOptions() {
@@ -286,7 +273,6 @@ function renderLeadOptions() {
     $('lead').innerHTML = '<option value="">No leads yet — add some in Lead Tracker</option>';
     return;
   }
-  // Group by stage so most-relevant are at top
   const order = ['Contacted','New Lead','Call Booked','Proposal Sent','Won','Lost'];
   const sorted = [...leads].sort((a,b) => (order.indexOf(a.stage) - order.indexOf(b.stage)) || a.name.localeCompare(b.name));
   $('lead').innerHTML =
@@ -303,12 +289,9 @@ function renderPreview() {
   $('t-channel').textContent = currentTemplate.channel;
   $('t-subject').textContent = fill(currentTemplate.subject);
   $('t-body').textContent = fill(currentTemplate.body);
-  // Highlight unfilled vars
   highlightUnfilled('t-subject');
   highlightUnfilled('t-body');
-  // Toggle "mark as contacted" — only show when a real lead is selected and stage is "New Lead"
-  const showMark = currentLead && currentLead.stage === 'New Lead';
-  $('markBtn').style.display = showMark ? 'inline-flex' : 'none';
+  $('markBtn').style.display = currentLead ? 'inline-flex' : 'none';
 }
 
 function highlightUnfilled(id) {
@@ -316,7 +299,6 @@ function highlightUnfilled(id) {
   el.innerHTML = el.textContent.replace(/\{[a-zA-Z]+\}/g, m => `<span class="var-empty">${m}</span>`);
 }
 
-// ============ ACTIONS ============
 function copyMsg() {
   const subject = $('t-subject').textContent;
   const body = $('t-body').textContent;
@@ -339,25 +321,29 @@ function openEmail() {
 async function markContacted() {
   if (!currentLead) return;
   try {
+    const todayISO = new Date().toISOString().slice(0, 10);
+    const updates = { lastContact: todayISO };
+    // Only bump stage if it's still "New Lead"
+    if (currentLead.stage === 'New Lead') updates.stage = 'Contacted';
+
     const r = await fetch('/api/leads/' + currentLead.id, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ stage: 'Contacted' })
+      body: JSON.stringify(updates)
     });
     if (!r.ok) throw new Error(await r.text());
-    currentLead.stage = 'Contacted';
+    Object.assign(currentLead, updates);
     const lead = leads.find(l => l.id === currentLead.id);
-    if (lead) lead.stage = 'Contacted';
+    if (lead) Object.assign(lead, updates);
     renderLeadOptions();
     $('lead').value = currentLead.id;
     renderPreview();
-    toast('Marked as Contacted ✓');
+    toast('Marked contacted ✓ Last Contact = today');
   } catch (e) {
     toast('Update failed: ' + e.message, true);
   }
 }
 
-// ============ EVENTS ============
 $('lead').addEventListener('change', e => {
   currentLead = leads.find(l => l.id === e.target.value) || null;
   renderPreview();
@@ -368,7 +354,6 @@ $('template').addEventListener('change', e => {
   renderPreview();
 });
 
-// ============ INIT ============
 async function init() {
   renderTemplateOptions();
   try {

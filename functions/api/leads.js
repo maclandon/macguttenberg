@@ -1,7 +1,4 @@
 // /api/leads  — list all + create new
-// Env vars required (set in Cloudflare Pages → Settings → Environment variables):
-//   AIRTABLE_TOKEN, AIRTABLE_BASE, AIRTABLE_TABLE
-
 const AT = (env, path = '') =>
   `https://api.airtable.com/v0/${env.AIRTABLE_BASE}/${env.AIRTABLE_TABLE}${path}`;
 
@@ -10,7 +7,6 @@ const headers = (env) => ({
   'Content-Type': 'application/json',
 });
 
-// Convert Airtable record → flat lead object the frontend expects
 const flatten = (r) => ({
   id: r.id,
   name: r.fields.Name || '',
@@ -21,6 +17,7 @@ const flatten = (r) => ({
   stage: r.fields.Stage || 'New Lead',
   notes: r.fields.Notes || '',
   created: r.fields.Created || r.createdTime,
+  lastContact: r.fields['Last Contact'] || '',
 });
 
 export async function onRequestGet({ env }) {
@@ -41,24 +38,23 @@ export async function onRequestGet({ env }) {
 
 export async function onRequestPost({ request, env }) {
   const body = await request.json();
+  const fields = {
+    Name: body.name || '',
+    Business: body.business || '',
+    Email: body.email || '',
+    Source: body.source || 'Other',
+    Score: body.score || '',
+    Stage: body.stage || 'New Lead',
+    Notes: body.notes || '',
+    Created: new Date().toISOString(),
+  };
+  if (body.lastContact) fields['Last Contact'] = body.lastContact;
+
   const r = await fetch(AT(env), {
     method: 'POST',
     headers: headers(env),
-    body: JSON.stringify({
-      typecast: true,
-      fields: {
-        Name: body.name || '',
-        Business: body.business || '',
-        Email: body.email || '',
-        Source: body.source || 'Other',
-        Score: body.score || '',
-        Stage: body.stage || 'New Lead',
-        Notes: body.notes || '',
-        Created: new Date().toISOString(),
-      },
-    }),
+    body: JSON.stringify({ typecast: true, fields }),
   });
   if (!r.ok) return new Response(await r.text(), { status: r.status });
-  const j = await r.json();
-  return Response.json(flatten(j));
+  return Response.json(flatten(await r.json()));
 }
