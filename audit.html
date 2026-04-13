@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Readiness Assessment — MacGuttenberg.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #E8E4DC;
+    --warm-white: #F5F2EC;
+    --sand: #D0CAC0;
+    --terracotta: #7fa0c3;
+    --terracotta-light: #9ab8d4;
+    --brown: #1C1A16;
+    --brown-light: #48443C;
+    --text: #1C1A16;
+    --text-soft: #7A7468;
+    --green: #4A7C59;
+    --yellow: #C49A3C;
+    --radius: 16px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 10% 20%, rgba(127,160,195,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 90% 80%, rgba(127,160,195,0.07) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  /* INTRO SCREEN */
+  .screen { display: none; }
+  .screen.active { display: block; animation: fadeUp 0.5s ease both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .intro-card {
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    border-radius: 24px;
+    padding: 52px 48px;
+    text-align: center;
+    box-shadow: 0 4px 40px rgba(92,61,46,0.08);
+  }
+
+  .logo-mark {
+    width: 56px;
+    height: 56px;
+    background: #1C1A16;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  .intro-card h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--brown);
+    margin-bottom: 16px;
+  }
+
+  .intro-card p {
+    font-size: 1rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+    max-width: 460px;
+    margin: 0 auto 32px;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+
+  .pill {
+    background: var(--sand);
+    color: var(--brown-light);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover {
+    background: var(--terracotta-light);
+    transform: translateY(-1px);
+  }
+
+  /* QUESTION SCREEN */
+  .question-card {
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    border-radius: 24px;
+    padding: 44px 48px;
+    box-shadow: 0 4px 40px rgba(92,61,46,0.08);
+  }
+
+  .progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--sand);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--terracotta);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+
+  .progress-label {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .category-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+  }
+
+  .question-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--brown);
+    margin-bottom: 28px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    background: var(--cream);
+    border: 1.5px solid var(--sand);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.95rem;
+    color: var(--text);
+    text-align: left;
+  }
+
+  .option:hover {
+    border-color: var(--terracotta-light);
+    background: rgba(196,113,74,0.04);
+  }
+
+  .option.selected {
+    border-color: var(--terracotta);
+    background: rgba(196,113,74,0.07);
+    color: var(--brown);
+    font-weight: 500;
+  }
+
+  .option-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--sand);
+    flex-shrink: 0;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .option.selected .option-dot {
+    border-color: var(--terracotta);
+    background: var(--terracotta);
+  }
+
+  .option.selected .option-dot::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+
+  .btn-back {
+    background: none;
+    border: none;
+    color: var(--text-soft);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.2s;
+  }
+
+  .btn-back:hover { color: var(--brown); }
+  .btn-back:disabled { opacity: 0.3; cursor: default; }
+
+  .btn-next {
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    padding: 13px 32px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .btn-next.enabled {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .btn-next.enabled:hover {
+    background: var(--terracotta-light);
+    transform: translateY(-1px);
+  }
+
+  /* RESULTS SCREEN */
+  .results-card {
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    border-radius: 24px;
+    padding: 52px 48px;
+    box-shadow: 0 4px 40px rgba(92,61,46,0.08);
+  }
+
+  .score-ring-wrap {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .score-ring {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+
+  .score-ring svg {
+    transform: rotate(-90deg);
+    width: 140px;
+    height: 140px;
+  }
+
+  .score-ring-track { fill: none; stroke: var(--sand); stroke-width: 8; }
+  .score-ring-fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 345;
+    stroke-dashoffset: 345;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .score-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .score-number {
+    font-family: 'Fraunces', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--brown);
+    line-height: 1;
+  }
+
+  .score-max {
+    font-size: 0.75rem;
+    color: var(--text-soft);
+    margin-top: 2px;
+  }
+
+  .score-label {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--brown);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .score-sublabel {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+  }
+
+  .result-body {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+
+  .result-body p {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    line-height: 1.75;
+  }
+
+  .breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .breakdown-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .breakdown-label {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .breakdown-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--sand);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .breakdown-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease 0.4s;
+  }
+
+  .breakdown-pct {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--brown-light);
+    width: 36px;
+    text-align: right;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding-top: 8px;
+  }
+
+  .cta-section p {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  .btn-restart {
+    background: none;
+    border: 1.5px solid var(--sand);
+    color: var(--text-soft);
+    padding: 11px 24px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 14px;
+  }
+
+  .btn-restart:hover {
+    border-color: var(--brown-light);
+    color: var(--brown);
+  }
+
+  @media (max-width: 560px) {
+    .intro-card, .question-card, .results-card { padding: 32px 24px; }
+    .intro-card h1 { font-size: 1.6rem; }
+    .question-text { font-size: 1.15rem; }
+    .breakdown-label { width: 120px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-card">
+      <div class="logo-mark">MG</div>
+      <h1>How digitally ready is your business?</h1>
+      <p>10 questions. 3 minutes. Walk away knowing exactly where you stand — and what to do next.</p>
+      <div class="meta-pills">
+        <span class="pill">10 questions</span>
+        <span class="pill">~3 minutes</span>
+        <span class="pill">Free</span>
+      </div>
+      <button class="btn-primary" onclick="startQuiz()">Start Assessment →</button>
+    </div>
+  </div>
+
+  <!-- QUESTION -->
+  <div class="screen" id="screen-question">
+    <div class="question-card">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <span class="progress-label" id="progress-label">1 of 10</span>
+      </div>
+      <div class="category-tag" id="q-category"></div>
+      <div class="question-text" id="q-text"></div>
+      <div class="options" id="q-options"></div>
+      <div class="nav-row">
+        <button class="btn-back" id="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="btn-next" onclick="goNext()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="screen" id="screen-results">
+    <div class="results-card">
+      <div class="score-ring-wrap">
+        <div class="score-ring">
+          <svg viewBox="0 0 120 120">
+            <circle class="score-ring-track" cx="60" cy="60" r="55"/>
+            <circle class="score-ring-fill" id="ring-fill" cx="60" cy="60" r="55"/>
+          </svg>
+          <div class="score-center">
+            <div class="score-number" id="result-score">0</div>
+            <div class="score-max">out of 30</div>
+          </div>
+        </div>
+        <div class="score-label" id="result-label"></div>
+        <div class="score-sublabel" id="result-sublabel"></div>
+      </div>
+
+      <div class="result-body">
+        <p id="result-description"></p>
+      </div>
+
+      <div class="breakdown" id="breakdown"></div>
+
+      <div class="cta-section">
+        <p id="result-cta-text"></p>
+        <button class="btn-primary" onclick="window.open('https://macguttenberg.com', '_blank')">Talk to Mac →</button>
+        <br>
+        <button class="btn-restart" onclick="restartQuiz()">Retake Assessment</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    category: "Operations",
+    text: "How do you currently manage client documents and files?",
+    options: [
+      { label: "Paper or physical files", score: 0 },
+      { label: "Email attachments / local folders", score: 1 },
+      { label: "Cloud storage (Google Drive, Dropbox, etc.)", score: 2 },
+      { label: "Dedicated client management software", score: 3 }
+    ]
+  },
+  {
+    category: "Client Communication",
+    text: "How do new clients typically reach you or book time with you?",
+    options: [
+      { label: "Phone call or in-person only", score: 0 },
+      { label: "Email back-and-forth", score: 1 },
+      { label: "A contact form on my website", score: 2 },
+      { label: "Online booking or intake system", score: 3 }
+    ]
+  },
+  {
+    category: "Payments",
+    text: "How do you handle invoicing and getting paid?",
+    options: [
+      { label: "Cash or checks", score: 0 },
+      { label: "Manual invoices by email", score: 1 },
+      { label: "Digital invoicing (PayPal, Venmo, etc.)", score: 2 },
+      { label: "Automated invoicing software", score: 3 }
+    ]
+  },
+  {
+    category: "Marketing",
+    text: "How do most new clients find out about your business?",
+    options: [
+      { label: "Word of mouth only", score: 0 },
+      { label: "Social media (no real strategy)", score: 1 },
+      { label: "Active online presence or content", score: 2 },
+      { label: "Systematic marketing with measurable results", score: 3 }
+    ]
+  },
+  {
+    category: "Admin & Workflow",
+    text: "How much time do you spend on repetitive admin tasks each week?",
+    options: [
+      { label: "10+ hours — it's constant", score: 0 },
+      { label: "5–10 hours — significant", score: 1 },
+      { label: "2–5 hours — manageable", score: 2 },
+      { label: "Under 2 hours — mostly automated", score: 3 }
+    ]
+  },
+  {
+    category: "Data & Tracking",
+    text: "How do you track your business performance (revenue, clients, growth)?",
+    options: [
+      { label: "I don't really track it", score: 0 },
+      { label: "Spreadsheets I update manually", score: 1 },
+      { label: "A mix of tools and dashboards", score: 2 },
+      { label: "Real-time reporting I actually use", score: 3 }
+    ]
+  },
+  {
+    category: "Online Presence",
+    text: "What does your current website or online presence look like?",
+    options: [
+      { label: "No website", score: 0 },
+      { label: "A basic site I rarely update", score: 1 },
+      { label: "A decent site that represents me well", score: 2 },
+      { label: "A site that actively converts visitors", score: 3 }
+    ]
+  },
+  {
+    category: "Tools & Tech",
+    text: "How comfortable is your team (or you) with adopting new digital tools?",
+    options: [
+      { label: "Very resistant — change is hard", score: 0 },
+      { label: "Willing but need a lot of hand-holding", score: 1 },
+      { label: "Generally open with some friction", score: 2 },
+      { label: "Eager — we adopt and adapt quickly", score: 3 }
+    ]
+  },
+  {
+    category: "Client Experience",
+    text: "How would your clients describe the process of working with you?",
+    options: [
+      { label: "Unclear — there's no real process", score: 0 },
+      { label: "It works, but it feels disorganized", score: 1 },
+      { label: "Mostly smooth with a few rough edges", score: 2 },
+      { label: "Seamless and professional end-to-end", score: 3 }
+    ]
+  },
+  {
+    category: "Growth Readiness",
+    text: "If your client volume doubled tomorrow, could your business handle it?",
+    options: [
+      { label: "No — it would break everything", score: 0 },
+      { label: "Barely — I'd be overwhelmed", score: 1 },
+      { label: "Probably, with some scrambling", score: 2 },
+      { label: "Yes — systems are built to scale", score: 3 }
+    ]
+  }
+];
+
+const categories = ["Operations","Client Communication","Payments","Marketing","Admin & Workflow","Data & Tracking","Online Presence","Tools & Tech","Client Experience","Growth Readiness"];
+
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+
+function startQuiz() {
+  showScreen('screen-question');
+  renderQuestion();
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  el.classList.add('active');
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  document.getElementById('q-category').textContent = q.category;
+  document.getElementById('q-text').textContent = q.text;
+  document.getElementById('progress-label').textContent = `${current + 1} of ${questions.length}`;
+  document.getElementById('progress-fill').style.width = `${((current + 1) / questions.length) * 100}%`;
+  document.getElementById('btn-back').disabled = current === 0;
+
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.textContent = current === questions.length - 1 ? 'See Results →' : 'Next →';
+
+  const optionsEl = document.getElementById('q-options');
+  optionsEl.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[current] === i ? ' selected' : '');
+    div.innerHTML = `<div class="option-dot"></div><span>${opt.label}</span>`;
+    div.onclick = () => selectOption(i);
+    optionsEl.appendChild(div);
+  });
+
+  updateNextBtn();
+}
+
+function selectOption(i) {
+  answers[current] = i;
+  document.querySelectorAll('.option').forEach((el, idx) => {
+    el.classList.toggle('selected', idx === i);
+  });
+  updateNextBtn();
+}
+
+function updateNextBtn() {
+  const btn = document.getElementById('btn-next');
+  btn.classList.toggle('enabled', answers[current] !== null);
+}
+
+function goNext() {
+  if (answers[current] === null) return;
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function goBack() {
+  if (current > 0) { current--; renderQuestion(); }
+}
+
+function showResults() {
+  showScreen('screen-results');
+
+  const total = answers.reduce((sum, ans, i) => sum + questions[i].options[ans].score, 0);
+  const max = questions.length * 3;
+  const pct = total / max;
+
+  let label, sublabel, description, ctaText, color;
+
+  if (pct < 0.33) {
+    label = "Early Stage";
+    sublabel = "Significant room to grow";
+    color = "#C4714A";
+    description = "Your business is running mostly on manual effort and personal hustle. That's common — and fixable. The gap between where you are and where you could be is real, but it's also a major opportunity. The right digital foundation can dramatically reduce your workload and unlock growth you can't currently access.";
+    ctaText = "You're at the starting line of a meaningful transformation. Let's map out what that looks like for your business.";
+  } else if (pct < 0.66) {
+    label = "In Transition";
+    sublabel = "You've started — but there are gaps";
+    color = "#C49A3C";
+    description = "You have some digital tools in place, but they're probably disconnected — and you're still spending more time on operations than you should be. This is the stage where the right strategy creates the biggest ROI. Closing the gaps now will compound for years.";
+    ctaText = "You're closer than you think. A focused strategy could unlock a much smoother operation.";
+  } else {
+    label = "Digitally Ready";
+    sublabel = "Strong foundation — time to scale";
+    color = "#4A7C59";
+    description = "You've built solid digital infrastructure. Systems are in place, clients experience professionalism, and you're positioned to grow. The next frontier is optimization and scaling — making what works work even better, with less friction and more leverage.";
+    ctaText = "You're in a great position. Let's talk about what's next for growth and scaling.";
+  }
+
+  // Animate score
+  animateNumber('result-score', 0, total, 800);
+  document.getElementById('result-label').textContent = label;
+  document.getElementById('result-sublabel').textContent = sublabel;
+  document.getElementById('result-description').textContent = description;
+  document.getElementById('result-cta-text').textContent = ctaText;
+
+  // Ring
+  const ring = document.getElementById('ring-fill');
+  ring.style.stroke = color;
+  setTimeout(() => {
+    ring.style.strokeDashoffset = 345 - (345 * pct);
+  }, 100);
+
+  // Breakdown by category group
+  const groups = [
+    { label: "Operations & Admin", indices: [0, 4] },
+    { label: "Client Experience", indices: [1, 8] },
+    { label: "Money & Tracking", indices: [2, 5] },
+    { label: "Marketing & Growth", indices: [3, 6, 9] },
+    { label: "Tools & Tech", indices: [7] }
+  ];
+
+  const breakdownEl = document.getElementById('breakdown');
+  breakdownEl.innerHTML = '';
+  groups.forEach(g => {
+    const groupMax = g.indices.length * 3;
+    const groupScore = g.indices.reduce((sum, i) => sum + questions[i].options[answers[i]].score, 0);
+    const groupPct = Math.round((groupScore / groupMax) * 100);
+
+    const barColor = groupPct < 33 ? '#C4714A' : groupPct < 66 ? '#C49A3C' : '#4A7C59';
+
+    const div = document.createElement('div');
+    div.className = 'breakdown-item';
+    div.innerHTML = `
+      <div class="breakdown-label">${g.label}</div>
+      <div class="breakdown-bar"><div class="breakdown-fill" style="width:0%;background:${barColor}" data-pct="${groupPct}"></div></div>
+      <div class="breakdown-pct">${groupPct}%</div>
+    `;
+    breakdownEl.appendChild(div);
+  });
+
+  setTimeout(() => {
+    document.querySelectorAll('.breakdown-fill').forEach(el => {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }, 200);
+}
+
+function animateNumber(id, from, to, duration) {
+  const el = document.getElementById(id);
+  const start = performance.now();
+  function update(now) {
+    const t = Math.min((now - start) / duration, 1);
+    el.textContent = Math.round(from + (to - from) * t);
+    if (t < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+function restartQuiz() {
+  current = 0;
+  answers = new Array(questions.length).fill(null);
+  document.getElementById('ring-fill').style.strokeDashoffset = 345;
+  showScreen('screen-intro');
+}
+</script>
+</body>
+</html>
