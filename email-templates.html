@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Templates — Mac Guttenberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;display:grid;grid-template-columns:320px 1fr;grid-template-rows:auto 1fr;}
+
+/* HEADER */
+.header{grid-column:1/-1;background:var(--dark);padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);}
+.header-left{display:flex;align-items:center;gap:1rem;}
+.logo{font-family:"Fraunces",serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.4);}
+.header h1{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;}
+.header-sub{font-size:.75rem;color:rgba(255,255,255,.3);margin-left:.5rem;}
+
+/* LEFT PANEL */
+.left{background:var(--card);border-right:1px solid var(--border);padding:1.5rem;overflow-y:auto;}
+.panel-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.85rem;display:block;}
+
+.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem;}
+.field label{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);}
+.field input,.field select,.field textarea{font-family:"DM Sans",sans-serif;font-size:.88rem;color:var(--text);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;outline:none;transition:border-color .2s;width:100%;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);}
+.field textarea{resize:vertical;min-height:72px;line-height:1.6;}
+
+.divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
+
+.scenario-list{display:flex;flex-direction:column;gap:.5rem;}
+.scenario-btn{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;cursor:pointer;transition:all .18s;text-align:left;width:100%;}
+.scenario-btn:hover{border-color:var(--accent);background:rgba(127,160,195,.04);}
+.scenario-btn.active{border-color:var(--accent);background:rgba(127,160,195,.08);}
+.scenario-btn .s-name{font-size:.85rem;font-weight:500;color:var(--text);display:block;margin-bottom:.15rem;}
+.scenario-btn .s-desc{font-size:.72rem;color:var(--text-muted);line-height:1.4;}
+
+/* RIGHT PANEL */
+.right{padding:2rem;overflow-y:auto;background:var(--bg);}
+
+.email-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 20px rgba(28,26,22,.05);animation:fadeUp .35s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.email-toolbar{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);}
+.email-scenario-tag{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+.toolbar-btns{display:flex;gap:.5rem;}
+.btn-copy-email{background:var(--dark);color:#fff;border:none;padding:.45rem 1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:background .2s;}
+.btn-copy-email:hover{background:var(--dark2);}
+.btn-open-mail{background:var(--accent);color:#fff;border:none;padding:.45rem 1rem;border-radius:6px;font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;}
+.btn-open-mail:hover{background:var(--accent2);}
+
+.email-meta{padding:1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:.5rem;}
+.meta-row{display:flex;align-items:baseline;gap:.75rem;}
+.meta-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);width:48px;flex-shrink:0;}
+.meta-val{font-size:.88rem;color:var(--text-mid);}
+.meta-val.subject{font-weight:500;color:var(--text);}
+
+.email-body{padding:1.75rem 1.5rem;}
+.email-body p{font-size:.92rem;line-height:1.85;color:var(--text-mid);margin-bottom:1rem;font-weight:300;}
+.email-body p:last-child{margin-bottom:0;}
+.email-body strong{color:var(--text);font-weight:500;}
+
+.empty-right{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;opacity:.4;padding:2rem;}
+.empty-right p{font-size:.9rem;color:var(--text-muted);line-height:1.7;}
+
+@media(max-width:800px){
+  body{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;}
+  .left{border-right:none;border-bottom:1px solid var(--border);}
+  .right{padding:1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo">MG</div>
+    <h1>Email Templates</h1>
+    <span class="header-sub">Internal use only</span>
+  </div>
+</div>
+
+<!-- LEFT -->
+<div class="left">
+  <span class="panel-label">Client Details</span>
+
+  <div class="field">
+    <label>First Name</label>
+    <input type="text" id="f-name" placeholder="Sarah" oninput="refreshEmail()">
+  </div>
+  <div class="field">
+    <label>Business Name</label>
+    <input type="text" id="f-biz" placeholder="Johnson Legal Group" oninput="refreshEmail()">
+  </div>
+  <div class="field">
+    <label>Their Main Problem</label>
+    <textarea id="f-problem" placeholder="e.g. running on paper, no booking system..." oninput="refreshEmail()"></textarea>
+  </div>
+  <div class="field">
+    <label>Assessment Score (optional)</label>
+    <input type="text" id="f-score" placeholder="e.g. 8/30" oninput="refreshEmail()">
+  </div>
+  <div class="field">
+    <label>Recommended Package</label>
+    <select id="f-package" onchange="refreshEmail()">
+      <option value="Starter ($300)">Starter ($300)</option>
+      <option value="Foundation ($800)" selected>Foundation ($800)</option>
+      <option value="Growth ($300/mo)">Growth ($300/mo)</option>
+      <option value="a custom package">Custom</option>
+    </select>
+  </div>
+
+  <div class="divider"></div>
+
+  <span class="panel-label">Scenario</span>
+  <div class="scenario-list" id="scenario-list"></div>
+</div>
+
+<!-- RIGHT -->
+<div class="right" id="right-panel">
+  <div class="empty-right">
+    <p>Fill in the details on the left<br>and select a scenario to generate your email.</p>
+  </div>
+</div>
+
+<script>
+const scenarios = [
+  {
+    id: 'assessment',
+    name: 'After Assessment',
+    desc: 'They completed the digital readiness quiz',
+    subject: (d) => `Your Digital Readiness Results — ${d.biz || d.name}`,
+    body: (d) => `Hi ${d.name},
+
+Thanks for taking the Digital Readiness Assessment${d.biz ? ' for ' + d.biz : ''}.
+
+${d.score ? `Your score came in at ${d.score} — ` : ''}Based on your results, ${d.problem ? `the biggest opportunity I see is around ${d.problem}. ` : 'there are a few clear areas where the right systems could make a real difference. '}
+
+This is exactly the kind of situation I work with. Most of the gaps I see in your results are fixable in a few weeks — and the impact on your day-to-day is usually immediate.
+
+I'd love to spend 30 minutes walking through what that could look like for ${d.biz || 'your business'}. No pitch, just a clear picture of what's possible.
+
+Here's my calendar if you'd like to book a time: calendly.com/macguttenberg/30min
+
+— Mac`
+  },
+  {
+    id: 'post-call',
+    name: 'After Discovery Call',
+    desc: 'Follow up after your first conversation',
+    subject: (d) => `Great talking — next steps for ${d.biz || d.name}`,
+    body: (d) => `Hi ${d.name},
+
+Really enjoyed our conversation today. ${d.biz ? d.biz + ' has' : 'You have'} a strong foundation — ${d.problem ? 'the ' + d.problem + ' piece is exactly what I\'d focus on first.' : 'and I can see a clear path to getting your systems where they need to be.'}
+
+Based on what we discussed, I'd recommend the **${d.package}** to start. It covers everything we talked about and gives us a defined scope to work within.
+
+I'll put together a full proposal for you — should have it to you within 24 hours. In the meantime, feel free to reply here with any questions that came up after we hung up.
+
+Looking forward to working together.
+
+— Mac
+Mac Guttenberg · macguttenberg.com`
+  },
+  {
+    id: 'cold',
+    name: 'Cold Outreach',
+    desc: 'First touch with a prospect',
+    subject: (d) => `Quick thought on ${d.biz || 'your business'}`,
+    body: (d) => `Hi ${d.name},
+
+I came across ${d.biz || 'your business'} and wanted to reach out directly.
+
+I work with established service businesses to build the digital infrastructure they need to grow — things like client portals, online booking, payment automation, and workflows that run in the background.
+
+${d.problem ? `I noticed ${d.problem} — that's something I've fixed for a few businesses similar to yours, with pretty significant results.` : 'Most of the businesses I work with are doing real revenue but still running on systems that were never built to scale.'}
+
+I put together a free Digital Readiness Assessment that takes 3 minutes and shows exactly where the gaps are: macguttenberg.com/audit.html
+
+Worth a look — no strings attached. If anything resonates, I'm happy to jump on a quick call.
+
+— Mac
+Mac Guttenberg · macguttenberg.com`
+  },
+  {
+    id: 'proposal',
+    name: 'Sending a Proposal',
+    desc: 'Intro email when delivering the proposal',
+    subject: (d) => `Your proposal — ${d.biz || d.name}`,
+    body: (d) => `Hi ${d.name},
+
+Here's the proposal we discussed for ${d.biz || 'your business'}: macguttenberg.com/proposal-generator.html
+
+A quick summary of what's included:
+
+- ${d.problem ? 'Direct solution to ' + d.problem : 'Full digital audit and priority fixes'}
+- Everything outlined in the **${d.package}**
+- Clear timeline and defined deliverables from day one
+
+I kept it straightforward — no fluff, just exactly what we talked about.
+
+If you have questions or want to adjust the scope, just reply here. If you're ready to move forward, the fastest way is to book a kickoff call: calendly.com/macguttenberg/30min
+
+— Mac
+Mac Guttenberg · macguttenberg.com`
+  },
+  {
+    id: 'followup',
+    name: 'No Response Follow-Up',
+    desc: 'They went quiet after showing interest',
+    subject: (d) => `Still thinking it over? — ${d.biz || d.name}`,
+    body: (d) => `Hi ${d.name},
+
+Just wanted to follow up in case my last message got buried.
+
+I know timing isn't always right — totally understand if things have shifted on your end.
+
+That said, if ${d.problem ? d.problem + ' is still on your mind' : 'the conversation we had is still relevant'}, I'm still here and happy to pick up where we left off.
+
+Even if now's not the right time, I'm happy to answer any questions you have before you're ready to move forward.
+
+— Mac
+Mac Guttenberg · macguttenberg.com`
+  }
+];
+
+let activeScenario = null;
+
+function getDetails() {
+  return {
+    name:    document.getElementById('f-name').value.trim() || '[First Name]',
+    biz:     document.getElementById('f-biz').value.trim(),
+    problem: document.getElementById('f-problem').value.trim(),
+    score:   document.getElementById('f-score').value.trim(),
+    package: document.getElementById('f-package').value
+  };
+}
+
+function renderScenarios() {
+  document.getElementById('scenario-list').innerHTML = scenarios.map(s => `
+    <button class="scenario-btn ${activeScenario === s.id ? 'active' : ''}" onclick="selectScenario('${s.id}')">
+      <span class="s-name">${s.name}</span>
+      <span class="s-desc">${s.desc}</span>
+    </button>
+  `).join('');
+}
+
+function selectScenario(id) {
+  activeScenario = id;
+  renderScenarios();
+  renderEmail();
+}
+
+function refreshEmail() {
+  if (activeScenario) renderEmail();
+}
+
+function renderEmail() {
+  const s = scenarios.find(x => x.id === activeScenario);
+  if (!s) return;
+  const d = getDetails();
+  const subject = s.subject(d);
+  const body = s.body(d);
+  const bodyHtml = body
+    .split('\n\n')
+    .map(p => `<p>${p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</p>`)
+    .join('');
+
+  const mailtoBody = encodeURIComponent(body);
+  const mailtoSubject = encodeURIComponent(subject);
+  const mailtoTo = encodeURIComponent(document.getElementById('f-name').value.trim() ? '' : '');
+
+  document.getElementById('right-panel').innerHTML = `
+    <div class="email-card">
+      <div class="email-toolbar">
+        <span class="email-scenario-tag">${s.name}</span>
+        <div class="toolbar-btns">
+          <button class="btn-copy-email" onclick="copyEmail()">Copy Email</button>
+          <a class="btn-open-mail" href="mailto:?subject=${mailtoSubject}&body=${mailtoBody}" target="_blank">Open in Mail →</a>
+        </div>
+      </div>
+      <div class="email-meta">
+        <div class="meta-row"><span class="meta-label">To</span><span class="meta-val">${d.name}${d.biz ? ' — ' + d.biz : ''}</span></div>
+        <div class="meta-row"><span class="meta-label">Subject</span><span class="meta-val subject" id="email-subject">${subject}</span></div>
+      </div>
+      <div class="email-body" id="email-body-html">${bodyHtml}</div>
+    </div>
+  `;
+}
+
+function copyEmail() {
+  const s = scenarios.find(x => x.id === activeScenario);
+  if (!s) return;
+  const d = getDetails();
+  const text = 'Subject: ' + s.subject(d) + '\n\n' + s.body(d);
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.btn-copy-email');
+    if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => btn.textContent = 'Copy Email', 2000); }
+  });
+}
+
+renderScenarios();
+</script>
+</body>
+</html>
