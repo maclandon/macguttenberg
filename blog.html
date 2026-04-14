@@ -55,7 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .post-card-img{height:200px;background:var(--dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .post-card-img-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%, rgba(127,160,195,0.2) 0%, transparent 70%);}
 .post-card-num{font-family:"Fraunces",serif;font-size:5rem;font-weight:900;color:rgba(255,255,255,.06);position:absolute;bottom:-10px;right:20px;line-height:1;}
-.post-card-tag{position:absolute;top:1rem;left:1rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(28,26,22,.75);color:#fff;border:none;padding:.25rem .7rem;border-radius:100px;}
+.post-card-tag{position:absolute;top:1rem;left:1rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(127,160,195,.15);color:#7EACD4;border:1px solid rgba(127,160,195,.25);padding:.25rem .7rem;border-radius:100px;}
 .post-card-body{padding:1.75rem;flex:1;display:flex;flex-direction:column;}
 .post-meta{font-size:.72rem;color:var(--text-muted);margin-bottom:.75rem;}
 .post-title{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.75rem;letter-spacing:-.01em;}
@@ -82,15 +82,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .posts-grid{grid-template-columns:1fr;}
 }
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RQSZMG06BY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RQSZMG06BY');
-</script>
 </head>
 <body>
 
@@ -120,9 +111,52 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <div class="blog-body-inner">
     <div class="posts-grid">
 
+      <a href="/blog-website-conversion.html" class="post-card">
+        <div class="post-card-img">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">5</div>
+          <span class="post-card-tag">Websites</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-meta">April 2026 · 6 min read</div>
+          <div class="post-title">Why Most Small Business Websites Don't Convert (And How to Fix Yours)</div>
+          <div class="post-excerpt">Most small business websites look fine but do absolutely nothing. Here's why they fail to turn visitors into clients — and the exact fixes that actually work.</div>
+          <div class="post-read-more">Read article</div>
+        </div>
+      </a>
+
+      <a href="/blog-free-stack.html" class="post-card">
+        <div class="post-card-img">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">$0</div>
+          <span class="post-card-tag">Tools & Software</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-meta">April 2026 · 5 min read</div>
+          <div class="post-title">The $0 Tech Stack That Can Run a Small Service Business</div>
+          <div class="post-excerpt">You don't need to spend money on software to run a professional small business. Here's the complete free tech stack — scheduling, payments, intake, and more.</div>
+          <div class="post-read-more">Read article</div>
+        </div>
+      </a>
+
+      <a href="/blog-hire-vs-automate.html" class="post-card">
+        <div class="post-card-img">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">?</div>
+          <span class="post-card-tag">Business Operations</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-meta">April 2026 · 6 min read</div>
+          <div class="post-title">How to Know If You're Ready to Hire vs. Ready to Automate</div>
+          <div class="post-excerpt">Feeling overwhelmed and thinking about hiring? Before you do, read this. The answer might be automation — and it's faster and cheaper than you think.</div>
+          <div class="post-read-more">Read article</div>
+        </div>
+      </a>
+
       <a href="/blog-admin-cost.html" class="post-card">
         <div class="post-card-img">
-          <img src="blog-admin-cost.jpg" alt="Admin cost" style="width:100%;height:100%;object-fit:cover;">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">$</div>
           <span class="post-card-tag">Business Operations</span>
         </div>
         <div class="post-card-body">
@@ -135,7 +169,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
       <a href="/blog-booking.html" class="post-card">
         <div class="post-card-img">
-          <img src="blog-booking.jpg" alt="Booking system" style="width:100%;height:100%;object-fit:cover;">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">3</div>
           <span class="post-card-tag">Tools & Software</span>
         </div>
         <div class="post-card-body">
@@ -148,7 +183,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
       <a href="/blog-mgtax.html" class="post-card">
         <div class="post-card-img">
-          <img src="blog-mgtax.jpg" alt="MG Tax case study" style="width:100%;height:100%;object-fit:cover;">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">30</div>
           <span class="post-card-tag">Case Study</span>
         </div>
         <div class="post-card-body">
@@ -161,7 +197,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
       <a href="/blog-systems.html" class="post-card">
         <div class="post-card-img">
-          <img src="blog-systems.jpg" alt="Small business systems" style="width:100%;height:100%;object-fit:cover;">
+          <div class="post-card-img-bg"></div>
+          <div class="post-card-num">5</div>
           <span class="post-card-tag">Systems</span>
         </div>
         <div class="post-card-body">
