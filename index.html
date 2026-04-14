@@ -52,7 +52,7 @@
 }
 </script>
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231C1A16'/%3E%3Ctext x='50%25' y='72%25' text-anchor='middle' font-size='14' font-family='Georgia,serif' fill='%23E8E4DC' font-weight='bold'%3EML%3C/text%3E%3C/svg%3E">
 <meta http-equiv="x-dns-prefetch-control" content="on">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//calendly.com">
@@ -445,6 +445,15 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;font-size:.9rem;color:var(--text-muted);line-height:1.75;font-weight:300;padding:0 1.5rem;}
 .faq-a.open{max-height:200px;padding:.25rem 1.5rem 1.25rem;}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RQSZMG06BY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RQSZMG06BY');
+</script>
 </head>
 <body>
 <div class="progress-bar" id="progress"></div>
@@ -1037,8 +1046,8 @@ async function handleSubmit(e){
       })
     });
     if(!r.ok)throw new Error(await r.text());
-    form.style.display="none";
-    document.getElementById("form-success").style.display="block";
+    confetti();
+    window.location.href='/thankyou.html';
   }catch(err){
     btn.disabled=false; btn.textContent="Send message →";
     alert("Couldn't send right now. Please email mac@maclandon.com directly.");
