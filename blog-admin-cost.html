@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Much Is Admin Work Actually Costing You? (The Real Math) — Mac Landon</title>
+<meta name="description" content="Most small business owners vastly underestimate what manual admin tasks actually cost them. Here's how to calculate the real number — and what to do about it.">
+<link rel="canonical" href="https://maclandon.com/blog-admin-cost.html">
+<meta property="og:title" content="How Much Is Admin Work Actually Costing You? (The Real Math)">
+<meta property="og:description" content="Most small business owners vastly underestimate what manual admin tasks actually cost them. Here's how to calculate the real number.">
+<meta property="og:url" content="https://maclandon.com/blog-admin-cost.html">
+<meta property="og:image" content="https://maclandon.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;--bg2:#DDD9D0;--white:#FAFAF7;--card:#F5F2EC;--border:#D0CAC0;
+  --text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;
+  --accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo img{height:26px;width:auto;display:block;opacity:.9;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:rgba(255,255,255,.85);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.25);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);}
+.article-hero{padding:7rem 4rem 4rem;background:var(--dark);}
+.article-hero-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;margin-bottom:2rem;transition:color .2s;}
+.back-link:hover{color:rgba(255,255,255,.7);}
+.back-link::before{content:"←";}
+.article-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.article-tag::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.article-hero h1{font-family:"Fraunces",serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.5rem;}
+.article-hero h1 em{font-style:italic;color:#7EACD4;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;font-size:.78rem;color:rgba(255,255,255,.35);}
+.article-body{padding:4rem;background:var(--bg);}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.article-content p{font-size:1.02rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;}
+.article-content p strong{color:var(--text);font-weight:500;}
+.article-content .lead{font-size:1.12rem;line-height:1.85;color:var(--text-mid);font-weight:400;margin-bottom:2rem;padding-left:1.25rem;border-left:2px solid var(--accent);}
+.article-content h2{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:var(--text);margin:2.5rem 0 1rem;line-height:1.2;}
+.article-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.math-block{background:var(--dark);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.math-block h3{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:1.25rem;}
+.math-row{display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.06);}
+.math-row:last-of-type{border-bottom:none;}
+.math-label{font-size:.88rem;color:rgba(255,255,255,.5);}
+.math-value{font-size:.88rem;color:rgba(255,255,255,.85);font-weight:500;}
+.math-total{display:flex;justify-content:space-between;align-items:center;padding:1rem 0 0;margin-top:.5rem;border-top:1px solid rgba(255,255,255,.15);}
+.math-total-label{font-size:.95rem;color:#fff;font-weight:500;}
+.math-total-value{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:var(--accent);}
+.task-block{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.task-block:hover{border-color:rgba(43,74,107,.25);}
+.task-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.85rem;flex-wrap:wrap;gap:.5rem;}
+.task-name{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--text);}
+.task-time{font-size:.78rem;color:var(--text-muted);background:var(--bg);padding:.25rem .65rem;border-radius:100px;border:1px solid var(--border);}
+.task-body{font-size:.95rem;line-height:1.8;color:var(--text-muted);font-weight:300;}
+.task-body strong{color:var(--text-mid);font-weight:500;}
+.task-fix{margin-top:1rem;padding:.85rem 1rem;background:rgba(127,160,195,.07);border-radius:8px;border-left:2px solid var(--accent);font-size:.85rem;color:var(--text-mid);line-height:1.6;}
+.task-fix strong{color:var(--accent2);}
+.callout-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:2rem 0;font-size:.95rem;color:var(--text-mid);line-height:1.7;}
+.callout-box strong{color:var(--text);}
+.article-cta{background:var(--dark);border-radius:20px;padding:2.75rem;margin-top:3rem;text-align:center;}
+.article-cta h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.3;}
+.article-cta h3 em{font-style:italic;color:#7EACD4;}
+.article-cta p{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem;font-weight:300;}
+.btn-accent{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-accent:hover{background:var(--accent2);gap:.65rem;}
+.btn-ghost{display:inline-flex;align-items:center;font-size:.85rem;color:rgba(255,255,255,.35);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:1px;margin-left:1.25rem;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.65);}
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;}
+.footer-copy,.footer-loc{font-size:.7rem;color:rgba(255,255,255,.18);}
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .article-hero,.article-body{padding:5rem 1.5rem 3rem;}
+  footer{padding:2rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog.html" style="color:rgba(255,255,255,.85);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/blog.html" class="back-link">Back to Blog</a>
+    <div class="article-tag">Business Operations</div>
+    <h1>How Much Is Admin Work <em>Actually</em> Costing You?</h1>
+    <div class="article-meta">
+      <span>Mac Landon</span>
+      <span>April 2026</span>
+      <span>6 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-body-inner">
+    <div class="article-content">
+
+      <img src="blog-admin-cost.jpg" alt="" style="width:100%;border-radius:12px;margin-bottom:2.5rem;max-height:420px;object-fit:cover;">
+      <p class="lead">Most small business owners know their admin work takes too long. Very few of them have actually done the math on what it costs. When I walk clients through the calculation, the number almost always surprises them — and it almost always makes the investment in fixing it feel obvious.</p>
+
+      <p>Here's the framework I use, and the math that makes the case.</p>
+
+      <hr class="article-divider">
+
+      <h2>Step 1: Calculate your effective hourly rate</h2>
+
+      <p>This is the foundation. Take your annual revenue and divide it by the number of hours you actually work. Not the hours you're open. The hours you personally spend working.</p>
+
+      <div class="math-block">
+        <h3>Example calculation</h3>
+        <div class="math-row">
+          <div class="math-label">Annual revenue</div>
+          <div class="math-value">$120,000</div>
+        </div>
+        <div class="math-row">
+          <div class="math-label">Hours worked per week</div>
+          <div class="math-value">50 hours</div>
+        </div>
+        <div class="math-row">
+          <div class="math-label">Weeks worked per year</div>
+          <div class="math-value">48 weeks</div>
+        </div>
+        <div class="math-row">
+          <div class="math-label">Total hours worked per year</div>
+          <div class="math-value">2,400 hours</div>
+        </div>
+        <div class="math-total">
+          <div class="math-total-label">Your effective hourly rate</div>
+          <div class="math-total-value">$50/hr</div>
+        </div>
+      </div>
+
+      <p>This number is important because it's the true cost of every hour you spend on admin. Every hour you spend chasing an invoice, answering a scheduling email, or manually entering data is an hour you're not spending on billable work — or on actually growing the business.</p>
+
+      <hr class="article-divider">
+
+      <h2>Step 2: Add up your weekly admin hours</h2>
+
+      <p>Most business owners I talk to are shocked when they actually track this for a week. Here are the five biggest time sinks I see across almost every small service business:</p>
+
+      <div class="task-block">
+        <div class="task-header">
+          <div class="task-name">Scheduling back-and-forth</div>
+          <div class="task-time">3–5 hrs/week</div>
+        </div>
+        <div class="task-body">
+          <p>"Does Tuesday work?" "Actually Wednesday is better." "What time?" "Can we do 2pm?" "I have a conflict at 2, what about 3?" This exchange, repeated across every client and every meeting, adds up to hours every week. It's also one of the easiest things to eliminate.</p>
+          <div class="task-fix"><strong>Fix:</strong> Calendly or Acuity. Clients pick a time from your availability. Zero back-and-forth. Setup time: under an hour.</div>
+        </div>
+      </div>
+
+      <div class="task-block">
+        <div class="task-header">
+          <div class="task-name">Chasing unpaid invoices</div>
+          <div class="task-time">2–4 hrs/week</div>
+        </div>
+        <div class="task-body">
+          <p>Writing reminder emails, following up by phone, keeping track of who's paid and who hasn't — for businesses with more than a handful of clients, this is a significant time sink. Beyond the time, there's the mental load of tracking it and the awkwardness of the follow-up conversations.</p>
+          <div class="task-fix"><strong>Fix:</strong> Online invoicing with automated payment reminders (Square, Wave, or QuickBooks). Most clients pay within 24 hours of receiving an online invoice. Setup time: 2–3 hours.</div>
+        </div>
+      </div>
+
+      <div class="task-block">
+        <div class="task-header">
+          <div class="task-name">Answering repetitive client questions</div>
+          <div class="task-time">2–3 hrs/week</div>
+        </div>
+        <div class="task-body">
+          <p>"What documents do I need to bring?" "Where are we with my project?" "How do I access the file you sent?" These questions aren't complicated. They're just recurring, and each one requires you to stop what you're doing and respond. If you're answering the same five questions every week, you have a systems problem, not a client problem.</p>
+          <div class="task-fix"><strong>Fix:</strong> A client portal with status visibility and a simple FAQ page eliminates most of these. Clients answer their own questions. Setup time: 1 day.</div>
+        </div>
+      </div>
+
+      <div class="task-block">
+        <div class="task-header">
+          <div class="task-name">Manual onboarding and intake</div>
+          <div class="task-time">1–2 hrs per new client</div>
+        </div>
+        <div class="task-body">
+          <p>Collecting basic information, sending intake forms by email, waiting for them to come back, following up when they don't — onboarding a new client manually can easily take 2–3 hours of your time spread across multiple touchpoints. Multiply that by every new client you bring on and it becomes significant fast.</p>
+          <div class="task-fix"><strong>Fix:</strong> A digital intake form that runs automatically after booking. Client fills it out before the first meeting. You have everything you need before the call even starts. Setup time: 2–3 hours.</div>
+        </div>
+      </div>
+
+      <div class="task-block">
+        <div class="task-header">
+          <div class="task-name">Document hunting and file management</div>
+          <div class="task-time">1–3 hrs/week</div>
+        </div>
+        <div class="task-body">
+          <p>"Where did I put that file?" "Which version is the latest?" "Did they email it or drop it off?" Disorganized document management doesn't just cost time — it creates errors, miscommunications, and the low-grade stress of never being sure you have the right version of something.</p>
+          <div class="task-fix"><strong>Fix:</strong> A structured Google Drive system with consistent naming conventions and client folders. Everything in one place, accessible from anywhere. Setup time: half a day to migrate and organize.</div>
+        </div>
+      </div>
+
+      <hr class="article-divider">
+
+      <h2>Step 3: Do the math</h2>
+
+      <div class="math-block">
+        <h3>What admin is actually costing you</h3>
+        <div class="math-row">
+          <div class="math-label">Your effective hourly rate</div>
+          <div class="math-value">$50/hr</div>
+        </div>
+        <div class="math-row">
+          <div class="math-label">Conservative weekly admin hours</div>
+          <div class="math-value">10 hrs/week</div>
+        </div>
+        <div class="math-row">
+          <div class="math-label">Weekly cost of admin</div>
+          <div class="math-value">$500/week</div>
+        </div>
+        <div class="math-row">
+          <div class="math-label">Annual cost of admin</div>
+          <div class="math-value">$26,000/year</div>
+        </div>
+        <div class="math-total">
+          <div class="math-total-label">% of revenue lost to admin</div>
+          <div class="math-total-value">21.7%</div>
+        </div>
+      </div>
+
+      <p>Ten hours a week is conservative. I've worked with business owners who were spending 15–20 hours a week on admin tasks — nearly half their working time — while wondering why they couldn't seem to grow.</p>
+
+      <div class="callout-box">
+        <strong>The insight that changes things:</strong> Admin work doesn't just cost you time. It costs you the revenue you could have generated with that time. Fixing 10 hours of weekly admin doesn't just save you 10 hours — at $50/hour, it's potentially $500/week in recaptured productive capacity.
+      </div>
+
+      <h2>What to do with this</h2>
+
+      <p>The goal isn't to eliminate admin entirely — some of it is just part of running a business. The goal is to eliminate the admin that doesn't require your specific judgment or expertise. Scheduling, payment collection, intake, document management, status updates — none of these require you. They just require a system.</p>
+
+      <p>Most of the fixes I've described above cost under $50/month to run. The setup investment is typically a few hundred dollars at most. The ROI on that investment, measured in hours recaptured, pays back in weeks not months.</p>
+
+      <p>If you want to know exactly where your business is losing the most time — and what it would actually take to fix it — that's exactly what a systems audit is for.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Ready to find out what admin is <em>costing your business?</em></h3>
+      <p>Book a free 30-minute call. I'll walk through your current systems, identify the biggest time sinks, and give you a clear picture of what's fixable and what it would cost.</p>
+      <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-accent">Book a free call →</a>
+      <a href="/audit.html" class="btn-ghost">Or take the free audit</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Landon. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What I Learned Digitizing a 30-Year-Old Tax Practice in 30 Days — Mac Landon</title>
+<meta name="description" content="The full story of how MG Tax Inc. went from entirely paper-based to 100% digital in under a month — what worked, what didn't, and what I'd do differently.">
+<link rel="canonical" href="https://maclandon.com/blog-mgtax.html">
+<meta property="og:title" content="What I Learned Digitizing a 30-Year-Old Tax Practice in 30 Days">
+<meta property="og:description" content="The full story of how MG Tax Inc. went from entirely paper-based to 100% digital in under a month.">
+<meta property="og:url" content="https://maclandon.com/blog-mgtax.html">
+<meta property="og:image" content="https://maclandon.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMUMxQTE2Ii8+PHRleHQgeD0iNTAlIiB5PSI3MiUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmaWxsPSIjRThFNERDIiBmb250LXdlaWdodD0iYm9sZCI+bWc8L3RleHQ+PC9zdmc+">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;--bg2:#DDD9D0;--white:#FAFAF7;--card:#F5F2EC;--border:#D0CAC0;
+  --text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;
+  --accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
+}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo img{height:26px;width:auto;display:block;opacity:.9;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:rgba(255,255,255,.85);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.25);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);}
+.article-hero{padding:7rem 4rem 4rem;background:var(--dark);}
+.article-hero-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;margin-bottom:2rem;transition:color .2s;}
+.back-link:hover{color:rgba(255,255,255,.7);}
+.back-link::before{content:"←";}
+.article-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.article-tag::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.article-hero h1{font-family:"Fraunces",serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.5rem;}
+.article-hero h1 em{font-style:italic;color:#7EACD4;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;font-size:.78rem;color:rgba(255,255,255,.35);}
+.article-body{padding:4rem;background:var(--bg);}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.article-content p{font-size:1.02rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;}
+.article-content p strong{color:var(--text);font-weight:500;}
+.article-content .lead{font-size:1.12rem;line-height:1.85;color:var(--text-mid);font-weight:400;margin-bottom:2rem;padding-left:1.25rem;border-left:2px solid var(--accent);}
+.article-content h2{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:var(--text);margin:2.5rem 0 1rem;line-height:1.2;}
+.article-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.lesson-block{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.lesson-block:hover{border-color:rgba(43,74,107,.25);}
+.lesson-number{font-family:"Fraunces",serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+.lesson-title{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.85rem;line-height:1.3;}
+.lesson-body{font-size:.95rem;line-height:1.8;color:var(--text-muted);font-weight:300;}
+.lesson-body strong{color:var(--text-mid);font-weight:500;}
+.lesson-callout{margin-top:1rem;padding:.85rem 1rem;background:rgba(127,160,195,.07);border-radius:8px;border-left:2px solid var(--accent);font-size:.85rem;color:var(--text-mid);line-height:1.6;font-style:italic;}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
+.stat-item{background:var(--dark);border-radius:14px;padding:1.5rem;text-align:center;}
+.stat-n{font-family:"Fraunces",serif;font-size:2rem;font-weight:700;color:var(--accent);margin-bottom:.25rem;}
+.stat-l{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.4;}
+.article-cta{background:var(--dark);border-radius:20px;padding:2.75rem;margin-top:3rem;text-align:center;}
+.article-cta h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.3;}
+.article-cta h3 em{font-style:italic;color:#7EACD4;}
+.article-cta p{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem;font-weight:300;}
+.btn-accent{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-accent:hover{background:var(--accent2);gap:.65rem;}
+.btn-ghost{display:inline-flex;align-items:center;font-size:.85rem;color:rgba(255,255,255,.35);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:1px;margin-left:1.25rem;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.65);}
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;}
+.footer-copy,.footer-loc{font-size:.7rem;color:rgba(255,255,255,.18);}
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  .article-hero,.article-body{padding:5rem 1.5rem 3rem;}
+  .stat-row{grid-template-columns:1fr;}
+  footer{padding:2rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog.html" style="color:rgba(255,255,255,.85);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/blog.html" class="back-link">Back to Blog</a>
+    <div class="article-tag">Case Study</div>
+    <h1>What I Learned Digitizing a <em>30-Year-Old Tax Practice</em> in 30 Days</h1>
+    <div class="article-meta">
+      <span>Mac Landon</span>
+      <span>April 2026</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-body-inner">
+    <div class="article-content">
+
+      <img src="blog-mgtax.jpg" alt="" style="width:100%;border-radius:12px;margin-bottom:2.5rem;max-height:420px;object-fit:cover;">
+      <p class="lead">When I first spoke with Mark, his tax practice had been running the same way since 1994. Every client interaction was in person. Every document was paper. Payments were cash or check only. He had clients who'd been with him for 20 years and had never once sent him an email.</p>
+
+      <p>He wasn't resistant to technology — he just hadn't had a reason to change. The business worked. Clients were loyal. Revenue was strong. But he was starting to see the limits of the model: he couldn't work remotely, couldn't scale without more physical space, and was spending enormous time on admin tasks that he knew, somewhere in the back of his mind, didn't need to be that way.</p>
+
+      <p>Thirty days later, MG Tax was fully digital. Here's what I learned from doing it.</p>
+
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-n">50%</div>
+          <div class="stat-l">Reduction in admin time after transformation</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n">30 days</div>
+          <div class="stat-l">From kickoff to fully operational digital system</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n">$500K+</div>
+          <div class="stat-l">Annual revenue now running fully digitally</div>
+        </div>
+      </div>
+
+      <hr class="article-divider">
+
+      <h2>What we actually built</h2>
+
+      <p>Before getting into the lessons, it helps to understand what "fully digital" actually meant in this context. This wasn't just putting up a website. We built:</p>
+
+      <p><strong>Cloud document management</strong> — every client file migrated to a structured Google Drive system with consistent naming, folder structure, and access controls. Clients could now upload documents from their phones instead of mailing or faxing them.</p>
+
+      <p><strong>Digital intake and e-signatures</strong> — a JotForm intake that replaced paper onboarding forms, with DocuSign integration for engagement letters and authorization forms. The paperwork that used to require an in-person visit could now happen asynchronously.</p>
+
+      <p><strong>Online payments</strong> — Square set up for both online invoicing and in-person card payments. Automated payment reminders replaced manual follow-ups. Average collection time dropped from weeks to days.</p>
+
+      <p><strong>Client portal</strong> — a simple portal where clients could log in, see the status of their return, upload documents, and download completed filings. The most common client question — "where are we with my return?" — became self-serve.</p>
+
+      <p><strong>Video conferencing setup</strong> — Zoom properly configured for client meetings, with calendar integration and automated confirmations. Remote meetings went from impossible to standard.</p>
+
+      <hr class="article-divider">
+
+      <div class="lesson-block">
+        <div class="lesson-number">Lesson 01</div>
+        <div class="lesson-title">The resistance you expect rarely shows up</div>
+        <div class="lesson-body">
+          <p>Before we started, Mark was most worried about his older clients. Some had been coming into the office every year for two decades. Would they use a portal? Would they be comfortable uploading documents? Would they feel like they were losing the relationship?</p>
+          <p>The answer, almost universally, was yes — they adapted. The key was framing. We didn't present the portal as a replacement for the relationship. We presented it as a convenience. "You don't have to drive in just to drop off a W-2 anymore. You can do it from your phone." Most clients appreciated that.</p>
+          <div class="lesson-callout">The clients who struggled most weren't the oldest ones — they were the middle-aged ones who were set in a specific habit. Change management is about habits, not age.</div>
+        </div>
+      </div>
+
+      <div class="lesson-block">
+        <div class="lesson-number">Lesson 02</div>
+        <div class="lesson-title">Start with payments. Always.</div>
+        <div class="lesson-body">
+          <p>If I had to pick one system to implement first for any business, it would be online payments. The ROI is immediate and obvious. In Mark's case, switching from cash and check to online invoicing with Square had a measurable impact within the first billing cycle — clients paid faster, the follow-up time disappeared, and the reconciliation process became automatic instead of manual.</p>
+          <p>There's also a secondary benefit that's easy to overlook: online payments make your business feel more legitimate to new clients. A business that takes credit cards online signals professionalism in a way that "cash or check only" doesn't — regardless of how good the underlying service is.</p>
+          <div class="lesson-callout">Every week you delay setting up online payments is money sitting on the table. It's the single highest-ROI change most small businesses can make.</div>
+        </div>
+      </div>
+
+      <div class="lesson-block">
+        <div class="lesson-number">Lesson 03</div>
+        <div class="lesson-title">The client portal was the biggest quality-of-life change</div>
+        <div class="lesson-body">
+          <p>Mark had been answering the same question — "where are we with my return?" — hundreds of times a year. It wasn't a complicated question. It just required his attention, his time, and his context-switching every time it came in.</p>
+          <p>The portal didn't just eliminate that question. It shifted the dynamic entirely. Clients stopped feeling like they were waiting on Mark and started feeling like they were participating in a process. The status visibility made them more patient, not less — because uncertainty is what drives anxiety, not duration.</p>
+          <div class="lesson-callout">The best client communication isn't more communication. It's proactive visibility that makes the communication unnecessary in the first place.</div>
+        </div>
+      </div>
+
+      <div class="lesson-block">
+        <div class="lesson-number">Lesson 04</div>
+        <div class="lesson-title">30 days is achievable if you sequence it right</div>
+        <div class="lesson-body">
+          <p>The reason this transformation happened in 30 days instead of 6 months wasn't speed — it was sequencing. We didn't try to do everything at once. We built in a specific order: payments first (immediate ROI, builds confidence), then intake forms (removes friction from new clients), then document management (the operational backbone), then the client portal (the polish that makes everything feel cohesive).</p>
+          <p>Each phase built on the last. By the time we got to the portal, the document structure was already in place, which made the portal a connection layer rather than a new system to design from scratch. Sequencing is everything.</p>
+          <div class="lesson-callout">Trying to build everything at once is why most digital transformations stall. Pick the highest-impact piece, finish it, then move to the next.</div>
+        </div>
+      </div>
+
+      <hr class="article-divider">
+
+      <h2>What I'd do differently</h2>
+
+      <p>One thing I underestimated: the staff onboarding time. Mark had one part-time assistant who had been doing things the same way for years. The technical setup was the easy part — the harder part was building the habit of using the new systems consistently. In retrospect I'd have spent more time on training documentation upfront, not after the fact.</p>
+
+      <p>I'd also have pushed harder on the email automation setup from day one. We got to it eventually, but the automated follow-ups and appointment reminders could have been running from week two if I'd prioritized them. The time savings there compound quickly.</p>
+
+      <p>Overall though: this project is the reason I do this work. Watching a 30-year-old business not just survive a major operational change but actually grow because of it — that's the outcome every transformation should produce.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Is your business ready for the <em>same transformation?</em></h3>
+      <p>Book a free 30-minute call. I'll audit your current systems, identify the highest-impact changes, and give you a clear picture of what's possible — no pitch, no pressure.</p>
+      <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-accent">Book a free call →</a>
+      <a href="/#case-study" class="btn-ghost">See the full case study</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Landon. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+
+</body>
+</html>

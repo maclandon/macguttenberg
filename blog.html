@@ -55,7 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .post-card-img{height:200px;background:var(--dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .post-card-img-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%, rgba(127,160,195,0.2) 0%, transparent 70%);}
 .post-card-num{font-family:"Fraunces",serif;font-size:5rem;font-weight:900;color:rgba(255,255,255,.06);position:absolute;bottom:-10px;right:20px;line-height:1;}
-.post-card-tag{position:absolute;top:1rem;left:1rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(127,160,195,.15);color:#7EACD4;border:1px solid rgba(127,160,195,.25);padding:.25rem .7rem;border-radius:100px;}
+.post-card-tag{position:absolute;top:1rem;left:1rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:rgba(28,26,22,.75);color:#fff;border:none;padding:.25rem .7rem;border-radius:100px;}
 .post-card-body{padding:1.75rem;flex:1;display:flex;flex-direction:column;}
 .post-meta{font-size:.72rem;color:var(--text-muted);margin-bottom:.75rem;}
 .post-title{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.75rem;letter-spacing:-.01em;}
@@ -111,10 +111,48 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <div class="blog-body-inner">
     <div class="posts-grid">
 
+      <a href="/blog-admin-cost.html" class="post-card">
+        <div class="post-card-img">
+          <img src="blog-admin-cost.jpg" alt="Admin cost" style="width:100%;height:100%;object-fit:cover;">
+          <span class="post-card-tag">Business Operations</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-meta">April 2026 · 6 min read</div>
+          <div class="post-title">How Much Is Admin Work Actually Costing You? (The Real Math)</div>
+          <div class="post-excerpt">Most small business owners vastly underestimate what manual admin tasks actually cost them. Here's how to calculate the real number — and what to do about it.</div>
+          <div class="post-read-more">Read article</div>
+        </div>
+      </a>
+
+      <a href="/blog-booking.html" class="post-card">
+        <div class="post-card-img">
+          <img src="blog-booking.jpg" alt="Booking system" style="width:100%;height:100%;object-fit:cover;">
+          <span class="post-card-tag">Tools & Software</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-meta">April 2026 · 7 min read</div>
+          <div class="post-title">The Best Booking System for Small Service Businesses in 2026</div>
+          <div class="post-excerpt">Calendly vs Acuity vs Dubsado — an honest comparison of the top booking tools from someone who sets them up for a living. Which one is actually right for your business?</div>
+          <div class="post-read-more">Read article</div>
+        </div>
+      </a>
+
+      <a href="/blog-mgtax.html" class="post-card">
+        <div class="post-card-img">
+          <img src="blog-mgtax.jpg" alt="MG Tax case study" style="width:100%;height:100%;object-fit:cover;">
+          <span class="post-card-tag">Case Study</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-meta">April 2026 · 8 min read</div>
+          <div class="post-title">What I Learned Digitizing a 30-Year-Old Tax Practice in 30 Days</div>
+          <div class="post-excerpt">The full story of how MG Tax Inc. went from entirely paper-based to 100% digital in under a month — what worked, what didn't, and what I'd do differently.</div>
+          <div class="post-read-more">Read article</div>
+        </div>
+      </a>
+
       <a href="/blog-systems.html" class="post-card">
         <div class="post-card-img">
-          <div class="post-card-img-bg"></div>
-          <div class="post-card-num">5</div>
+          <img src="blog-systems.jpg" alt="Small business systems" style="width:100%;height:100%;object-fit:cover;">
           <span class="post-card-tag">Systems</span>
         </div>
         <div class="post-card-body">
@@ -125,11 +163,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
         </div>
       </a>
 
-    </div>
-
-    <div class="coming-soon">
-      <p>More articles coming soon. Want to know when new posts go live?</p>
-      <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-accent">Or just book a call →</a>
     </div>
   </div>
 </div>
