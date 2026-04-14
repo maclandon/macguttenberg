@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Builder — Mac Guttenberg</title>
+<title>Portal Builder — Mac Landon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -128,7 +128,7 @@ textarea.b-input{resize:vertical;min-height:60px;line-height:1.6;}
   <div class="left-header">
     <div>
       <h1>Portal Builder</h1>
-      <p>Internal — Mac Guttenberg</p>
+      <p>Internal — Mac Landon</p>
     </div>
   </div>
 
@@ -144,7 +144,7 @@ textarea.b-input{resize:vertical;min-height:60px;line-height:1.6;}
 
   <span class="s-label">Portal Slug (URL)</span>
   <input class="b-input" id="b-slug" type="text" placeholder="sarah-johnson" oninput="preview()">
-  <div style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:.3rem;">macguttenberg.com/portal?id=<span id="slug-preview">sarah-johnson</span></div>
+  <div style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:.3rem;">maclandon.com/portal?id=<span id="slug-preview">sarah-johnson</span></div>
 
   <span class="s-label">Project Title</span>
   <input class="b-input" id="b-title" type="text" placeholder="Digital Infrastructure Build" oninput="preview()">
@@ -198,7 +198,7 @@ let nextSteps = [
 ];
 let links = [
   { icon: '📁', name: 'Shared Google Drive', url: 'drive.google.com' },
-  { icon: '📅', name: 'Book a Check-In', url: 'calendly.com/macguttenberg/30min' }
+  { icon: '📅', name: 'Book a Check-In', url: 'calendly.com/maclandon/30min' }
 ];
 let lastSlug = '';
 
@@ -318,7 +318,7 @@ function setStatus(msg, type) {
 function copyLink(slug) {
   const s = slug || lastSlug;
   if (!s) return;
-  navigator.clipboard.writeText(`https://macguttenberg.com/portal.html?id=${s}`).then(() => {
+  navigator.clipboard.writeText(`https://maclandon.com/portal.html?id=${s}`).then(() => {
     setStatus('✓ Link copied!', 'success');
     setTimeout(() => setStatus('', ''), 2000);
   });
@@ -377,8 +377,8 @@ function preview() {
 
   document.getElementById('preview-area').innerHTML = `
     <div class="portal-header">
-      <div><div class="portal-brand">Mac Guttenberg · Project Portal</div><div class="portal-client">${d.client || 'Client Name'}</div></div>
-      <a href="mailto:mac@macguttenberg.com" class="btn-msg">✉ Message Mac</a>
+      <div><div class="portal-brand">Mac Landon · Project Portal</div><div class="portal-client">${d.client || 'Client Name'}</div></div>
+      <a href="mailto:mac@maclandon.com" class="btn-msg">✉ Message Mac</a>
     </div>
     <div class="hero-strip">
       <div class="hero-inner">
@@ -424,7 +424,7 @@ function preview() {
         <div class="pcard full msg-card">
           <div class="ctag">Questions?</div>
           <p>Reach out directly and I'll get back to you within 24 hours.</p>
-          <a href="mailto:mac@macguttenberg.com" class="btn-email">✉ Email Mac →</a>
+          <a href="mailto:mac@maclandon.com" class="btn-email">✉ Email Mac →</a>
         </div>
       </div>
     </div>
