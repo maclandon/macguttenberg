@@ -15,6 +15,11 @@
 <!-- SEO -->
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://maclandon.com">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1C1A16">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mac Landon">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -80,6 +85,17 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 @keyframes pagefade{from{opacity:0;}to{opacity:1;}}
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;padding:.6rem 1.25rem;border-radius:100px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:999;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transform:scale(.8);transition:opacity .3s ease,transform .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.2);}
+.btt.show{opacity:1;transform:scale(1);}
+.btt-ring{position:absolute;inset:0;width:100%;height:100%;}
+.btt-arrow{width:16px;height:16px;color:#fff;position:relative;z-index:1;}
+.btt:hover{background:var(--dark2);}
+.btt:hover .btt-arrow{color:#7fa0c3;}
+@media(max-width:900px){
+  .testi-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;}
+  .testi-grid::-webkit-scrollbar{display:none;}
+  .testi-card{min-width:85vw;scroll-snap-align:start;flex-shrink:0;}
+}
 .progress-bar{position:fixed;top:0;left:0;height:3px;background:#7fa0c3;z-index:999;width:0%;transition:width .1s linear;}
 .btn-dark:active,.btn-accent:active,.nav-cta:active,.btn-price:active,.btn-cta:active{transform:scale(.96);transition:transform .1s ease;}
 
@@ -90,8 +106,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 @keyframes draw{to{stroke-dashoffset:0;}}
 .nav-links{display:flex;gap:2rem;list-style:none;}
 .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;position:relative;}
-.nav-links a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#7fa0c3;transition:width .25s ease;}
-.nav-links a:hover::after{width:100%;}
+.nav-links a::after{content:"";position:absolute;bottom:-2px;left:50%;width:0;height:2px;background:#7fa0c3;transition:width .3s ease,left .3s ease;}
+.nav-links a:hover::after{width:100%;left:0;}
 .nav-links a.active{color:rgba(255,255,255,.85);}
 .nav-links a.active::after{width:100%;}
 .nav-links a:hover{color:rgba(255,255,255,.85);}
@@ -112,6 +128,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 h1{font-family:"Fraunces",serif;font-size:clamp(2.4rem,4vw,4rem);font-weight:900;line-height:.98;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem;opacity:0;transform:translateY(20px);animation:up .7s ease .2s forwards;}
 h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradtext 4s ease-in-out infinite;}
 @keyframes gradtext{0%{background-position:0%;}50%{background-position:100%;}100%{background-position:0%;}}
+.about-h em,
+.sec-h2 em,
+.case-h em,
+.cta-h em,
+.blog-hero h1 em {
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gradtext 4s ease-in-out infinite;
+}
 #typeword{display:inline;overflow:visible;vertical-align:bottom;padding-bottom:0.1em;line-height:1.1;}
 .hero-value{font-size:1rem;font-weight:500;color:var(--text-mid);margin-bottom:1rem;line-height:1.5;opacity:0;transform:translateY(12px);animation:up .6s ease .33s forwards;border-left:2px solid var(--accent);padding-left:.75rem;}
 .hero-sub{font-size:.92rem;font-weight:300;line-height:1.75;color:var(--text-muted);margin-bottom:2rem;opacity:0;transform:translateY(12px);animation:up .6s ease .4s forwards;}
@@ -412,6 +442,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .footer-links{justify-content:center;flex-wrap:wrap;gap:1rem;}
   .footer-social{justify-content:center;}
   .nav-links{display:none;}
+  .nav-mobile-blog{display:flex !important;align-items:center;}
   nav{padding:0 1.25rem;}
   .photo-chip{bottom:2.5rem;left:1.5rem;right:auto;transform:none;}
   .scroll-hint{display:none;}
@@ -478,6 +509,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <li><a href="/roi-calculator.html">ROI Calc</a></li>
     <li><a href="/blog.html">Blog</a></li>
   </ul>
+  <a href="/blog.html" class="nav-mobile-blog" style="font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;display:none;">Blog</a>
   <div class="nav-right">
     <span class="nav-li"><a href="https://www.linkedin.com/in/maclandon/" target="_blank" rel="noopener" aria-label="LinkedIn">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -495,7 +527,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <div class="hero-left">
     <div class="hero-card">
       <div class="hero-eyebrow">For Small Businesses</div>
-      <h1>Your business is<br><em id="typeword">good.</em><br>Your systems aren't keeping up.</h1>
+      <h1>Your business is <br><em id="typeword">good.</em><br>Your systems aren't keeping up.</h1>
       <p class="hero-value">I audit your business, fix what's broken, and build the systems that let you actually grow.</p>
       <p class="hero-sub">You've built something real. Now it needs infrastructure to match — so your operations, your sales, and <strong>your sanity</strong> can all keep up.</p>
       <div class="hero-btns">
@@ -1153,6 +1185,79 @@ async function handleStackForm(formEl){
   }
 }
 document.getElementById('stackForm2').addEventListener('submit',e=>{e.preventDefault();handleStackForm(e.target);});
+
+const tGrid=document.querySelector('.testi-grid');
+if(tGrid){
+  let startX=0,scrollLeft=0;
+  tGrid.addEventListener('touchstart',e=>{
+    startX=e.touches[0].clientX;
+    scrollLeft=tGrid.scrollLeft;
+  },{passive:true});
+  tGrid.addEventListener('touchmove',e=>{
+    const dx=startX-e.touches[0].clientX;
+    tGrid.scrollLeft=scrollLeft+dx;
+  },{passive:true});
+}
+
+let matrixActive=false;
+document.querySelector('.nav-logo').addEventListener('dblclick',()=>{
+  if(matrixActive)return;
+  matrixActive=true;
+  const canvas=document.createElement('canvas');
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;transition:opacity 2s ease;';
+  document.body.appendChild(canvas);
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  const cols=Math.floor(canvas.width/14);
+  const drops=Array(cols).fill(0);
+  const chars='MACLANDON01アイウエオカキクケコサシスセソ'.split('');
+  let frames=0;
+  function draw(){
+    ctx.fillStyle='rgba(28,26,22,.08)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#7fa0c3';
+    ctx.font='12px monospace';
+    drops.forEach((y,i)=>{
+      const char=chars[Math.floor(Math.random()*chars.length)];
+      ctx.fillText(char,i*14,y*14);
+      if(y*14>canvas.height&&Math.random()>.95)drops[i]=0;
+      drops[i]++;
+    });
+    frames++;
+    if(frames<180)requestAnimationFrame(draw);
+    else{
+      canvas.style.opacity='0';
+      setTimeout(()=>{canvas.remove();matrixActive=false;},800);
+    }
+  }
+  draw();
+});
+
+document.body.insertAdjacentHTML('beforeend',`<div class="btt" id="btt">
+  <svg viewBox="0 0 36 36" class="btt-ring">
+    <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="2"/>
+    <circle cx="18" cy="18" r="15" fill="none" stroke="#7fa0c3" stroke-width="2"
+      stroke-dasharray="94.2" stroke-dashoffset="94.2"
+      id="bttCircle" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+  </svg>
+  <svg class="btt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</div>`);
+
+const btt=document.getElementById('btt');
+const bttCircle=document.getElementById('bttCircle');
+const circumference=94.2;
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY;
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=scrolled/total;
+  bttCircle.style.strokeDashoffset=circumference-(pct*circumference);
+  if(scrolled>300)btt.classList.add('show');
+  else btt.classList.remove('show');
+});
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 </script>
 </body>
