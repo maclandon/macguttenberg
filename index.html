@@ -113,8 +113,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;position:relative;}
 .nav-links a::after{content:"";position:absolute;bottom:-2px;left:50%;width:0;height:2px;background:#7fa0c3;transition:width .3s ease,left .3s ease;}
 .nav-links a:hover::after{width:100%;left:0;}
-.nav-links a.active{color:rgba(255,255,255,.85);}
-.nav-links a.active::after{width:100%;}
 .nav-links a:hover{color:rgba(255,255,255,.85);}
 .nav-right{display:flex;align-items:center;gap:1rem;}
 .nav-li a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;display:flex;align-items:center;}
@@ -518,13 +516,9 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 <nav>
   <a href="#" class="nav-logo"><div class="nav-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></div>
     <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="/audit.html" style="color:var(--accent);">Free Audit</a></li>
-    <li><a href="/roi-calculator.html">ROI Calc</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="/blog.html">Blog</a></li>
   </ul>
   <a href="/blog.html" class="nav-mobile-blog" style="font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;display:none;">Blog</a>
@@ -540,13 +534,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <button class="menu-text-btn" id="hamburger" aria-label="Menu">MENU</button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/#about">About</a>
   <a href="/#services">Services</a>
   <a href="/#pricing">Pricing</a>
-  <a href="/audit.html">Free Audit</a>
-  <a href="/roi-calculator.html">ROI Calc</a>
+  <a href="/#about">About</a>
   <a href="/blog.html">Blog</a>
-  <a href="/#contact">Contact</a>
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
 </div>
 
@@ -561,8 +552,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
       <p class="hero-sub">You've built something real. Now it needs infrastructure to match — so your operations, your sales, and <strong>your sanity</strong> can all keep up.</p>
       <div class="hero-btns">
         <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-dark">Book a free call →</a>
-        <a href="/audit.html" class="btn-soft">Free assessment →</a>
-        <a href="/roi-calculator.html" class="btn-soft">ROI calculator →</a>
       </div>
     </div>
   </div>
@@ -845,7 +834,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="sec-tag">How It Works</div>
     <h2 class="sec-h2">From chaos to <em>clarity</em> in three steps.</h2>
   </div>
-  <img src="mac-working-new.jpg" alt="Working session with a client" class="p-photo reveal" loading="lazy">
   <div class="p-grid reveal d1">
     <div class="p-card"><div class="p-n">01</div><div class="p-title">Audit & Strategy</div><p class="p-desc">We start with a deep dive into what's working, what's broken, and where you're losing time and money. I map out exactly what needs to change and in what order.</p><div class="p-out">↗ A clear roadmap</div></div>
     <div class="p-card"><div class="p-n">02</div><div class="p-title">Design & Build</div><p class="p-desc">I get into your platforms and build. New systems, automations, funnels — whatever your audit revealed. You stay focused on your business while I handle the build.</p><div class="p-out">↗ A fully functional operation</div></div>
@@ -1194,20 +1182,6 @@ if(window.innerWidth>900){
   }
   setInterval(swap,2000);
 }
-
-// Active nav link
-const sections=document.querySelectorAll('section[id]');
-const navLinks=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(s=>{
-    if(window.scrollY>=s.offsetTop-80)current=s.id;
-  });
-  navLinks.forEach(a=>{
-    a.classList.remove('active');
-    if(a.getAttribute('href')==='#'+current)a.classList.add('active');
-  });
-});
 
 async function handleStackForm(formEl){
   const btn=formEl.querySelector('.stack-btn');
