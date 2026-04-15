@@ -164,6 +164,8 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 }
 .hero-photo{position:absolute;z-index:2;bottom:0;right:0;left:0;display:flex;align-items:flex-end;justify-content:center;height:98%;}
 .hero-photo img{height:95%;width:auto;object-fit:contain;object-position:bottom;filter:drop-shadow(-8px 0 40px rgba(28,26,22,.12));}
+.hero-photo-nyc{display:none;}
+.hero-photo-original{display:block;}
 .photo-chip{position:absolute;bottom:2.5rem;left:1rem;background:rgba(245,242,236,.96);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:14px;padding:.85rem 1.1rem;box-shadow:0 4px 20px rgba(28,26,22,.08);z-index:3;}
 .chip-val{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.15rem;}
 .chip-lbl{font-size:.67rem;color:var(--text-muted);line-height:1.4;}
@@ -436,8 +438,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .hero{grid-template-columns:1fr;height:auto;min-height:100vh;overflow:hidden;}
   .hero-left{padding:calc(56px + 1.5rem) 1.5rem 0;}
   .hero-card{max-width:100%;}
-  .hero-right{height:100vw;min-height:420px;position:relative;margin-top:-60px;margin-bottom:-130px;}
-  .hero-photo img{height:100%;width:100%;object-fit:cover;object-position:center top;}
+  .hero-right{display:none;}
   .right-grid,.about-sec,.contact-grid,.case-grid,.testi-grid,.case-images{grid-template-columns:1fr;}
   .about-img{min-height:55vw;}
   .pricing-grid,.s-grid,.p-grid{grid-template-columns:1fr;}
@@ -475,7 +476,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .btn-dark{width:100%;justify-content:center;}
   .hero-sub{display:none;}
   h1{font-size:1.75rem;}
-  .hero-right{display:none;}
+  .hero-photo-nyc{display:block;}
+  .hero-photo-original{display:none;}
   .photo-chip{display:none;}
   .hero{height:auto !important;min-height:auto !important;padding-bottom:0;}
   .hero-left{justify-content:flex-start;padding:calc(56px + 1rem) 1.5rem 0;}
@@ -572,7 +574,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <div class="hero-right">
     <div class="blob"></div>
     <div class="hero-photo">
-      <img src="mac-photo.png" alt="Mac Landon" loading="eager">
+      <img class="hero-photo-original" src="mac-photo.png" alt="Mac Landon" loading="eager">
+      <img class="hero-photo-nyc" src="mac-nyc.jpg" alt="Mac Landon" loading="lazy">
     </div>
     <div class="photo-chip">
       <div class="chip-val">50%</div>
