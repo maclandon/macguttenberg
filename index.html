@@ -339,6 +339,16 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .p-desc{font-size:.84rem;color:var(--text-muted);line-height:1.75;font-weight:300;}
 .p-out{margin-top:1rem;font-size:.72rem;font-weight:500;color:var(--accent);}
 
+.p-photo{width:100%;height:420px;object-fit:cover;object-position:center center;border-radius:16px;margin-top:2.5rem;display:block;}
+
+/* NYC SPLIT */
+.nyc-sec{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--bg);}
+.nyc-img{overflow:hidden;min-height:560px;}
+.nyc-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .6s ease;}
+.nyc-img:hover img{transform:scale(1.04);}
+.nyc-copy{padding:5.5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.nyc-copy p{font-size:.97rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-top:1.25rem;}
+
 /* TESTIMONIALS */
 .testi-sec{padding:5.5rem 4rem;background:var(--bg);}
 .testi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:2.5rem;}
@@ -438,7 +448,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .stat-bar{grid-template-columns:1fr;padding:2rem 1.5rem;}
   .stat-bar-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:1rem 0;}
   .stat-bar-item:last-child{border-bottom:none;}
-  .services-sec,.process-sec,.about-copy,.right-sec,.case-sec,.case-sec-light,.pricing-sec,.testi-sec,.contact-sec,.cta-sec,.tools-strip,.guide-sec{padding:3rem 1.5rem;}
+  .services-sec,.process-sec,.about-copy,.right-sec,.case-sec,.case-sec-light,.pricing-sec,.testi-sec,.contact-sec,.cta-sec,.tools-strip,.guide-sec,.nyc-copy{padding:3rem 1.5rem;}
+  .nyc-sec{grid-template-columns:1fr;}
+  .nyc-img{min-height:280px;}
+  .p-photo{height:240px;}
   .guide-inner{grid-template-columns:1fr;}
   .guide-right{display:block;}
   .guide-right img{width:80%;max-width:320px;margin:2rem auto 0;display:block;}
@@ -832,6 +845,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="sec-tag">How It Works</div>
     <h2 class="sec-h2">From chaos to <em>clarity</em> in three steps.</h2>
   </div>
+  <img src="mac-working-new.jpg" alt="Working session with a client" class="p-photo reveal" loading="lazy">
   <div class="p-grid reveal d1">
     <div class="p-card"><div class="p-n">01</div><div class="p-title">Audit & Strategy</div><p class="p-desc">We start with a deep dive into what's working, what's broken, and where you're losing time and money. I map out exactly what needs to change and in what order.</p><div class="p-out">↗ A clear roadmap</div></div>
     <div class="p-card"><div class="p-n">02</div><div class="p-title">Design & Build</div><p class="p-desc">I get into your platforms and build. New systems, automations, funnels — whatever your audit revealed. You stay focused on your business while I handle the build.</p><div class="p-out">↗ A fully functional operation</div></div>
@@ -886,6 +900,18 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="guide-right">
       <img src="pdf-mockup.png" alt="Digital Stack Guide" loading="lazy" style="width:100%;border-radius:12px;">
     </div>
+  </div>
+</section>
+
+<!-- NYC SPLIT -->
+<section class="nyc-sec">
+  <div class="nyc-img reveal">
+    <img src="mac-photo-new.jpg" alt="Mac Landon in New York City" loading="lazy">
+  </div>
+  <div class="nyc-copy reveal d1">
+    <div class="sec-tag">Based in NYC</div>
+    <h2 class="sec-h2">Building from <em>New York.</em><br>Working everywhere.</h2>
+    <p>Started in a Long Island tax office. Turned a fully paper-based operation into 100% digital in 30 days. Now working with businesses across the country — cutting admin time, fixing broken systems, and building the infrastructure that actually lets you grow.</p>
   </div>
 </section>
 
