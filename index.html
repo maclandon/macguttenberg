@@ -92,7 +92,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
 .mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(28,26,22,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:99;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{font-size:1.2rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.05em;}
+.mobile-menu a{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.6);text-decoration:none;letter-spacing:.08em;font-family:"DM Sans",sans-serif;}
 .mobile-menu a:last-child{background:var(--accent);color:#fff;padding:.75rem 2rem;border-radius:6px;}
 @media(max-width:900px){
   .hamburger{display:flex;}
@@ -104,11 +104,6 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .btt-arrow{width:16px;height:16px;color:#fff;position:relative;z-index:1;}
 .btt:hover{background:var(--dark2);}
 .btt:hover .btt-arrow{color:#7fa0c3;}
-@media(max-width:900px){
-  .testi-grid{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;}
-  .testi-grid::-webkit-scrollbar{display:none;}
-  .testi-card{min-width:85vw;scroll-snap-align:start;flex-shrink:0;}
-}
 .progress-bar{position:fixed;top:0;left:0;height:3px;background:#7fa0c3;z-index:999;width:0%;transition:width .1s linear;}
 .btn-dark:active,.btn-accent:active,.nav-cta:active,.btn-price:active,.btn-cta:active{transform:scale(.96);transition:transform .1s ease;}
 
@@ -455,7 +450,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .footer-links{justify-content:center;flex-wrap:wrap;gap:1rem;}
   .footer-social{justify-content:center;}
   .nav-links{display:none;}
-  .nav-mobile-blog{display:flex !important;align-items:center;}
+  .nav-mobile-blog{display:none !important;}
   nav{padding:0 1.25rem;}
   .photo-chip{bottom:2.5rem;left:1.5rem;right:auto;transform:none;}
   .scroll-hint{display:none;}
@@ -540,6 +535,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <a href="/#about">About</a>
   <a href="/#services">Services</a>
   <a href="/#pricing">Pricing</a>
+  <a href="/audit.html">Free Audit</a>
+  <a href="/roi-calculator.html">ROI Calc</a>
   <a href="/blog.html">Blog</a>
   <a href="/#contact">Contact</a>
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
@@ -1221,18 +1218,6 @@ mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   mobileMenu.classList.remove('open');
 }));
 
-const tGrid=document.querySelector('.testi-grid');
-if(tGrid){
-  let startX=0,scrollLeft=0;
-  tGrid.addEventListener('touchstart',e=>{
-    startX=e.touches[0].clientX;
-    scrollLeft=tGrid.scrollLeft;
-  },{passive:true});
-  tGrid.addEventListener('touchmove',e=>{
-    const dx=startX-e.touches[0].clientX;
-    tGrid.scrollLeft=scrollLeft+dx;
-  },{passive:true});
-}
 
 let matrixActive=false;
 document.querySelector('.nav-logo').addEventListener('dblclick',()=>{
