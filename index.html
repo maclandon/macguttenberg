@@ -443,9 +443,11 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .pricing-grid,.s-grid,.p-grid{grid-template-columns:1fr;}
   .s-card.featured{grid-column:span 1;}
   .form-row{grid-template-columns:1fr;}
-  .stat-bar{grid-template-columns:1fr;padding:2rem 1.5rem;}
-  .stat-bar-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:1rem 0;}
-  .stat-bar-item:last-child{border-bottom:none;}
+  .stat-bar{grid-template-columns:repeat(3,1fr);padding:1.25rem 1rem;gap:0;}
+  .stat-bar-item{padding:.75rem .5rem;border-right:1px solid rgba(255,255,255,.06);border-bottom:none;}
+  .stat-bar-item:last-child{border-right:none;}
+  .stat-bar-n{font-size:1.6rem;}
+  .stat-bar-l{font-size:.62rem;}
   .services-sec,.process-sec,.about-copy,.right-sec,.case-sec,.case-sec-light,.pricing-sec,.testi-sec,.contact-sec,.cta-sec,.tools-strip,.guide-sec,.nyc-copy{padding:3rem 1.5rem;}
   .nyc-sec{grid-template-columns:1fr;}
   .nyc-img{min-height:280px;}
@@ -476,7 +478,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .hero-right{display:none;}
   .photo-chip{display:none;}
   .hero{height:auto !important;min-height:auto !important;padding-bottom:0;}
-  .hero-left{justify-content:flex-start;padding:calc(56px + 1rem) 1.5rem 2rem;}
+  .hero-left{justify-content:flex-start;padding:calc(56px + 1rem) 1.5rem 1rem;}
   .hero-card{animation:none;}
 }
 
