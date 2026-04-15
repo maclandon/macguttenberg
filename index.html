@@ -63,7 +63,7 @@
 <link rel="dns-prefetch" href="//calendly.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -85,6 +85,19 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 @keyframes pagefade{from{opacity:0;}to{opacity:1;}}
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;padding:.6rem 1.25rem;border-radius:100px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:999;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:all .3s ease;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
+.mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(28,26,22,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:99;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.2rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.05em;}
+.mobile-menu a:last-child{background:var(--accent);color:#fff;padding:.75rem 2rem;border-radius:6px;}
+@media(max-width:900px){
+  .hamburger{display:flex;}
+  .nav-mobile-blog{display:none !important;}
+}
 .btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transform:scale(.8);transition:opacity .3s ease,transform .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.2);}
 .btt.show{opacity:1;transform:scale(1);}
 .btt-ring{position:absolute;inset:0;width:100%;height:100%;}
@@ -92,7 +105,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .btt:hover{background:var(--dark2);}
 .btt:hover .btt-arrow{color:#7fa0c3;}
 @media(max-width:900px){
-  .testi-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;}
+  .testi-grid{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;}
   .testi-grid::-webkit-scrollbar{display:none;}
   .testi-card{min-width:85vw;scroll-snap-align:start;flex-shrink:0;}
 }
@@ -343,7 +356,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .testi-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;}
 .testi-name{font-size:.9rem;font-weight:600;color:var(--text);}
 .testi-role{font-size:.75rem;color:var(--text-muted);}
-.testi-q{font-family:"Fraunces",serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text-mid);line-height:1.7;}
+.testi-q{font-family:"Fraunces",serif;font-style:italic;font-size:.95rem;font-weight:300;color:var(--text-mid);line-height:1.7;}
 .testi-q em{font-style:normal;color:var(--accent);font-weight:600;}
 
 /* CONTACT */
@@ -519,7 +532,18 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     </a></span>
     <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#about">About</a>
+  <a href="/#services">Services</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/blog.html">Blog</a>
+  <a href="/#contact">Contact</a>
+  <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
+</div>
 
 <section class="hero">
   <div class="hero-bg">
@@ -1185,6 +1209,17 @@ async function handleStackForm(formEl){
   }
 }
 document.getElementById('stackForm2').addEventListener('submit',e=>{e.preventDefault();handleStackForm(e.target);});
+
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}));
 
 const tGrid=document.querySelector('.testi-grid');
 if(tGrid){
