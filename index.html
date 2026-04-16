@@ -86,6 +86,9 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;padding:.6rem 1.25rem;border-radius:100px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:999;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .case-bullets{display:none;}
+.pricing-dots{display:none;justify-content:center;gap:.5rem;margin-top:1rem;}
+.pricing-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s;}
+.pricing-dot.active{background:var(--accent);}
 .menu-text-btn{display:none;background:none;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;color:rgba(255,255,255,.5);text-transform:uppercase;transition:color .2s ease;padding:0;}
 .menu-text-btn:hover{color:#fff;}
 .mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(28,26,22,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:99;}
@@ -499,10 +502,12 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .case-bullets li::before{content:"→";position:absolute;left:0;color:#7EACD4;}
   .case-sec-light .case-bullets li{color:var(--text-muted);}
   .case-grid{display:flex;flex-direction:column;}
-  .case-results{order:-1;}
-  .pricing-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding-bottom:1rem;scrollbar-width:none;}
+  .case-results{order:-1;width:100%;}
+  .result-item{width:100%;}
+  .pricing-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:0 2rem 1rem 1.5rem;scrollbar-width:none;}
   .pricing-grid::-webkit-scrollbar{display:none;}
-  .price-card{min-width:80vw;scroll-snap-align:center;flex-shrink:0;}
+  .price-card{min-width:78vw;max-width:85vw;scroll-snap-align:center;flex-shrink:0;overflow:visible;}
+  .pricing-dots{display:flex;}
 }
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
@@ -874,6 +879,11 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
       </ul>
       <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-price btn-price-dark">Book a call</a>
     </div>
+  </div>
+  <div class="pricing-dots">
+    <span class="pricing-dot active"></span>
+    <span class="pricing-dot"></span>
+    <span class="pricing-dot"></span>
   </div>
   <p class="price-note reveal">All projects start with a free 30-minute discovery call. Custom scopes available for larger projects.</p>
 </section>
@@ -1251,6 +1261,15 @@ async function handleStackForm(formEl){
   }
 }
 document.getElementById('stackForm2').addEventListener('submit',e=>{e.preventDefault();handleStackForm(e.target);});
+
+const grid=document.querySelector('.pricing-grid');
+const dots=document.querySelectorAll('.pricing-dot');
+if(grid&&dots.length){
+  grid.addEventListener('scroll',()=>{
+    const index=Math.round(grid.scrollLeft/grid.offsetWidth);
+    dots.forEach((d,i)=>d.classList.toggle('active',i===index));
+  });
+}
 
 const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
