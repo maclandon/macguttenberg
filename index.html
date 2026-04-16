@@ -64,6 +64,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -198,11 +200,11 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 /* IS THIS RIGHT */
 .right-sec{padding:5.5rem 4rem;background:var(--white);}
 .right-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;}
-.right-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem;}
+.right-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem;max-width:640px;}
 .right-list li{display:flex;align-items:flex-start;gap:.85rem;font-size:.95rem;color:var(--text);line-height:1.6;font-weight:400;padding:.85rem 1rem;background:var(--card);border-radius:10px;border:1px solid var(--border);}
 .right-list li::before{content:attr(data-icon);font-size:1.1rem;flex-shrink:0;margin-top:.05rem;}
 .right-list li strong{color:var(--text);font-weight:500;}
-.not-right{margin-top:1.5rem;padding:1.25rem 1.5rem;background:rgba(28,26,22,.03);border-radius:10px;border-left:3px solid var(--border);}
+.not-right{margin-top:1.5rem;padding:1.25rem 1.5rem;background:rgba(28,26,22,.03);border-radius:10px;border-left:3px solid var(--border);max-width:640px;}
 .not-right p{font-size:.85rem;color:var(--text-muted);line-height:1.7;font-weight:300;}
 .not-right strong{color:var(--text-mid);font-weight:500;}
 .right-cta-card{background:var(--dark);border-radius:20px;padding:2.5rem;color:#fff;}
@@ -374,6 +376,14 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 
 /* CONTACT */
 .contact-sec{padding:5.5rem 4rem;background:var(--white);}
+.contact-book-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;padding:3rem;background:var(--card);border:1px solid var(--border);border-radius:20px;}
+.contact-book-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.contact-book-eyebrow::before{content:"";width:14px;height:1.5px;background:var(--accent);}
+.contact-book-desc{font-size:.97rem;color:var(--text-mid);line-height:1.8;font-weight:300;margin-bottom:2rem;max-width:420px;}
+.btn-book-calendly{display:inline-flex;align-items:center;gap:.75rem;background:var(--dark);color:#fff;font-family:"DM Sans",sans-serif;font-size:1.15rem;font-weight:600;padding:1.1rem 2rem;border-radius:8px;border:none;cursor:pointer;transition:background .2s,gap .2s,transform .15s;letter-spacing:-.01em;white-space:nowrap;}
+.btn-book-calendly:hover{background:var(--accent2);gap:1rem;}
+.btn-book-calendly:active{transform:scale(.97);}
+.contact-book-fine{font-size:.78rem;color:var(--text-muted);margin-top:1rem;font-weight:300;}
 .stack-form{display:flex;gap:.75rem;flex-wrap:wrap;}
 .stack-input{padding:.8rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:8px;font-size:.88rem;font-family:"DM Sans",sans-serif;background:rgba(255,255,255,.06);color:#fff;min-width:220px;}
 .stack-input::placeholder{color:rgba(255,255,255,.3);}
@@ -1001,7 +1011,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
       <div class="sec-tag">Get In Touch</div>
       <div class="contact-info">
         <h3>Let's talk about your <em>business.</em></h3>
-        <p>Fill out the form and I'll get back to you within 24 hours. Or book a free 30-minute call directly on my calendar.</p>
+        <p>Book a free 30-minute call directly on my calendar. I'll listen to what's going on and come back with a clear picture of what's possible.</p>
         <div class="contact-detail">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
           <a href="mailto:mac@maclandon.com">mac@maclandon.com</a>
@@ -1021,29 +1031,15 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
       </div>
     </div>
     <div class="reveal d2">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" name="fname" placeholder="Elle" required></div>
-          <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" name="lname" placeholder="Ess" required></div>
-        </div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="Elle@littlebookco.com" required></div>
-        <div style="position:absolute;left:-9999px;" aria-hidden="true"><label>Website</label><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
-        <div class="form-group"><label for="biz">Business Name</label><input type="text" id="biz" name="biz" placeholder="Little Book Co."></div>
-        <div class="form-group">
-          <label for="type">What do you need help with?</label>
-          <select id="type" name="type">
-            <option value="">Select one...</option>
-            <option>Digital Infrastructure (website, portal, booking)</option>
-            <option>Sales Funnels & E-Commerce</option>
-            <option>Automation & Workflows</option>
-            <option>Brand Consistency</option>
-            <option>Not sure — I need an audit</option>
-          </select>
-        </div>
-        <div class="form-group"><label for="msg">Tell me about your business</label><textarea id="msg" name="msg" placeholder="What's going on, what's not working, what you're hoping to achieve..." required></textarea></div>
-        <button type="submit" class="btn-submit">Send message →</button>
-        <div id="form-success" style="display:none;text-align:center;padding:1rem;background:rgba(43,74,107,.08);border-radius:8px;color:var(--accent);font-size:.9rem;font-weight:500;">✓ Message sent! I'll get back to you within 24 hours.</div>
-      </form>
+      <div class="contact-book-card">
+        <div class="contact-book-eyebrow">Free 30-Minute Call</div>
+        <p class="contact-book-desc">No pitch. No pressure. Just a clear look at what's going on in your business and what's possible.</p>
+        <button class="btn-book-calendly" onclick="Calendly.initPopupWidget({url:'https://calendly.com/maclandon/30min'});return false;">
+          Check Availability &amp; Book Now
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="contact-book-fine">Spots are limited — usually available within a few days.</p>
+      </div>
     </div>
   </div>
 </section>
