@@ -85,6 +85,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 @keyframes pagefade{from{opacity:0;}to{opacity:1;}}
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;padding:.6rem 1.25rem;border-radius:100px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:999;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.case-bullets{display:none;}
 .menu-text-btn{display:none;background:none;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;color:rgba(255,255,255,.5);text-transform:uppercase;transition:color .2s ease;padding:0;}
 .menu-text-btn:hover{color:#fff;}
 .mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(28,26,22,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:99;}
@@ -491,6 +492,12 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .right-sec{padding-top:3rem;}
   .right-list li{flex-direction:column;gap:.4rem;}
   .right-list li strong{display:block;margin-bottom:.2rem;}
+  .about-p-hide{display:none;}
+  .case-p-hide{display:none;}
+  .case-bullets{display:flex;flex-direction:column;list-style:none;padding:0;margin:0;gap:.75rem;}
+  .case-bullets li{font-size:.9rem;color:rgba(255,255,255,.65);padding-left:1.25rem;position:relative;line-height:1.5;}
+  .case-bullets li::before{content:"→";position:absolute;left:0;color:#7EACD4;}
+  .case-sec-light .case-bullets li{color:var(--text-muted);}
 }
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
@@ -651,8 +658,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="sec-tag">About Mac</div>
     <h2 class="sec-h2">I got into this by fixing what <em>wasn't working.</em></h2>
     <p class="about-p">My first project was a tax practice doing $500K a year — running entirely on paper, cash, and good intentions. No systems, no digital presence, no way to scale. Just decades of doing things the hard way.</p>
-    <p class="about-p">I rebuilt everything from scratch. Digital intake, online payments, a client portal, automated workflows. <strong>The operation ran better within weeks than it had in years.</strong></p>
-    <p class="about-p">Every small business has this gap. The product is real, the work ethic is there, but the infrastructure is always the last thing that gets built. I'm based in New York City and work with businesses remotely across the country. I don't just consult — <strong>I get in, understand your situation, and build something that works.</strong></p>
+    <p class="about-p about-p-hide">I rebuilt everything from scratch. Digital intake, online payments, a client portal, automated workflows. <strong>The operation ran better within weeks than it had in years.</strong></p>
+    <p class="about-p about-p-hide">Every small business has this gap. The product is real, the work ethic is there, but the infrastructure is always the last thing that gets built. I'm based in New York City and work with businesses remotely across the country. I don't just consult — <strong>I get in, understand your situation, and build something that works.</strong></p>
     <div class="about-pills">
       <span class="pill" data-tip="Based in Manhattan, work with clients nationwide">NYC-Based</span>
       <span class="pill" data-tip="Most projects done in under 30 days">Remote-Friendly</span>
@@ -682,9 +689,14 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     </div>
     <div class="case-grid reveal d2">
       <div class="case-story">
-        <p><strong>The situation:</strong> Mark had been running his tax practice since 1994. Every client interaction was paper-based. Payments were cash only. There was no way to work remotely, share documents, or scale without adding more physical space and more people.</p>
-        <p><strong>What I built:</strong> A complete digital infrastructure — cloud-based document management, digital intake forms with e-signatures, online payment processing, a client portal for document uploads and status tracking, and video conferencing for remote meetings.</p>
-        <p><strong>What happened:</strong> The practice went from fully paper-based to 100% digital in weeks. Admin time dropped by 50%. Clients could now onboard, pay, and communicate without ever coming into the office. The business didn't just survive — it grew.</p>
+        <p class="case-p-hide"><strong>The situation:</strong> Mark had been running his tax practice since 1994. Every client interaction was paper-based. Payments were cash only. There was no way to work remotely, share documents, or scale without adding more physical space and more people.</p>
+        <p class="case-p-hide"><strong>What I built:</strong> A complete digital infrastructure — cloud-based document management, digital intake forms with e-signatures, online payment processing, a client portal for document uploads and status tracking, and video conferencing for remote meetings.</p>
+        <p class="case-p-hide"><strong>What happened:</strong> The practice went from fully paper-based to 100% digital in weeks. Admin time dropped by 50%. Clients could now onboard, pay, and communicate without ever coming into the office. The business didn't just survive — it grew.</p>
+        <ul class="case-bullets">
+          <li>30 years paper-only — no remote work, no scale</li>
+          <li>Built digital intake, payments, portal & workflows</li>
+          <li>50% less admin time. Fully digital in 30 days.</li>
+        </ul>
       </div>
       <div class="case-results">
         <div class="result-item"><div class="result-n"><em>100</em>%</div><div class="result-l">Digital operations — paper to platform in under 30 days</div></div>
@@ -722,9 +734,14 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
             <div class="case-profile-role">Founder, Download Designs by AND</div>
           </div>
         </div>
-        <p><strong>The situation:</strong> Ashley had a creative vision and design talent but no brand, no shop, and no idea how to turn it into a real business. She needed someone to build the full foundation from scratch.</p>
-        <p><strong>What I built:</strong> Complete brand identity (logo, color palette, typography), Etsy shop setup and optimization, product listing strategy, SEO for Etsy search, pricing calculator to ensure profitability, social media launch plan, and customer engagement guidance.</p>
-        <p><strong>What happened:</strong> The shop launched and hit profitability within its first full month. By month 8, Ashley had completed 74 orders, generated $2,839 in revenue, and reached a 52% profit margin — with sales growing from 8 orders in month 1 to 15 in month 8. She earned a 4.8-star rating on Etsy.</p>
+        <p class="case-p-hide"><strong>The situation:</strong> Ashley had a creative vision and design talent but no brand, no shop, and no idea how to turn it into a real business. She needed someone to build the full foundation from scratch.</p>
+        <p class="case-p-hide"><strong>What I built:</strong> Complete brand identity (logo, color palette, typography), Etsy shop setup and optimization, product listing strategy, SEO for Etsy search, pricing calculator to ensure profitability, social media launch plan, and customer engagement guidance.</p>
+        <p class="case-p-hide"><strong>What happened:</strong> The shop launched and hit profitability within its first full month. By month 8, Ashley had completed 74 orders, generated $2,839 in revenue, and reached a 52% profit margin — with sales growing from 8 orders in month 1 to 15 in month 8. She earned a 4.8-star rating on Etsy.</p>
+        <ul class="case-bullets">
+          <li>No brand, no shop, no business foundation</li>
+          <li>Built full brand, Etsy shop, SEO & pricing strategy</li>
+          <li>Profitable in month 1. $2,839 revenue, 52% margin.</li>
+        </ul>
       </div>
       <div class="case-results">
         <div class="result-item"><div class="result-n"><em>74</em> orders</div><div class="result-l">Completed in the first 8 months of launch</div></div>
