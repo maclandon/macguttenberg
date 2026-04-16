@@ -504,10 +504,11 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .case-grid{display:flex;flex-direction:column;}
   .case-results{order:-1;width:100%;}
   .result-item{width:100%;}
-  .pricing-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:0 2rem 1rem 1.5rem;scrollbar-width:none;}
+  .pricing-grid{display:flex;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:1.5rem 2rem 1rem 1.5rem;scrollbar-width:none;}
   .pricing-grid::-webkit-scrollbar{display:none;}
-  .price-card{min-width:78vw;max-width:85vw;scroll-snap-align:center;flex-shrink:0;overflow:visible;}
+  .price-card{min-width:72vw;max-width:72vw;scroll-snap-align:center;flex-shrink:0;overflow:visible;}
   .pricing-dots{display:flex;}
+  #about .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
 }
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
