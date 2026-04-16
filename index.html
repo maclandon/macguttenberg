@@ -147,6 +147,9 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 }
 #typeword{display:inline;overflow:visible;vertical-align:bottom;padding-bottom:0.1em;line-height:1.1;}
 .hero-value{font-size:1rem;font-weight:500;color:var(--text-mid);margin-bottom:1rem;line-height:1.5;opacity:0;transform:translateY(12px);animation:up .6s ease .33s forwards;border-left:2px solid var(--accent);padding-left:.75rem;}
+.hero-value-row{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.hero-value-avatar{display:none;width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.hero-value-row .hero-value{border-left:none;padding-left:0;margin-bottom:0;}
 .hero-sub{font-size:.92rem;font-weight:300;line-height:1.75;color:var(--text-muted);margin-bottom:2rem;opacity:0;transform:translateY(12px);animation:up .6s ease .4s forwards;}
 .hero-sub strong{color:var(--text-mid);font-weight:500;}
 .hero-btns{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(12px);animation:up .6s ease .52s forwards;}
@@ -462,6 +465,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .footer-social{justify-content:center;}
   .nav-links{display:none;}
   .nav-li{display:none;}
+  .nav-cta{display:none;}
   .nav-mobile-blog{display:none !important;}
   nav{padding:0 1.25rem;}
   .photo-chip{bottom:2.5rem;left:1.5rem;right:auto;transform:none;}
@@ -480,8 +484,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .hero-photo-original{display:none;}
   .photo-chip{display:none;}
   .hero{height:auto !important;min-height:auto !important;padding-bottom:0;}
-  .hero-left{justify-content:flex-start;padding:calc(56px + 1rem) 1.5rem 0;}
+  .hero-left{justify-content:flex-start;padding:calc(56px + 1.25rem) 1.5rem 1.25rem;}
   .hero-card{animation:none;}
+  .hero-value-avatar{display:block;}
+  .hero-value-row .hero-value{border-left:2px solid var(--accent);padding-left:.75rem;}
   .right-sec{padding-top:3rem;}
   .right-list li{flex-direction:column;gap:.4rem;}
   .right-list li strong{display:block;margin-bottom:.2rem;}
@@ -547,7 +553,9 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     </a></span>
     <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
   </div>
-  <button class="menu-text-btn" id="hamburger" aria-label="Menu">MENU</button>
+  <button class="menu-text-btn" id="hamburger" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="/#services">Services</a>
@@ -564,7 +572,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="hero-card">
       <div class="hero-eyebrow">For Small Businesses</div>
       <h1>Your business is <em id="typeword">good.</em><br>Your systems aren't keeping up.</h1>
-      <p class="hero-value">I audit your business, fix what's broken, and build the systems that let you actually grow.</p>
+      <div class="hero-value-row">
+        <img src="mac-photo-circle.png" alt="Mac Landon" class="hero-value-avatar">
+        <p class="hero-value">I audit your business, fix what's broken, and build the systems that let you actually grow.</p>
+      </div>
       <p class="hero-sub">You've built something real. Now it needs infrastructure to match — so your operations, your sales, and <strong>your sanity</strong> can all keep up.</p>
       <div class="hero-btns">
         <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-dark">Book a free call →</a>
@@ -1221,13 +1232,15 @@ document.getElementById('stackForm2').addEventListener('submit',e=>{e.preventDef
 
 const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
+const hamburgerIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+const closeIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
 hamburger.addEventListener('click',()=>{
   const isOpen=mobileMenu.classList.toggle('open');
-  hamburger.textContent=isOpen?'CLOSE':'MENU';
+  hamburger.innerHTML=isOpen?closeIcon:hamburgerIcon;
 });
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   mobileMenu.classList.remove('open');
-  hamburger.textContent='MENU';
+  hamburger.innerHTML=hamburgerIcon;
 }));
 
 
