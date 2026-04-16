@@ -88,6 +88,17 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;padding:.6rem 1.25rem;border-radius:100px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:999;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .case-bullets{display:none;}
+/* Recent Work Cards */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
+.work-card{border-radius:20px;padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem;}
+.work-card h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;line-height:1.2;letter-spacing:-.02em;}
+.work-card p{font-size:.9rem;line-height:1.75;font-weight:300;flex:1;}
+.work-card.light{background:var(--white);border:1px solid var(--border);}
+.work-card.light h3{color:var(--dark);}
+.work-card.light p{color:var(--text-mid);}
+.work-card.dark{background:var(--dark);border:1px solid rgba(255,255,255,.06);}
+.work-card.dark h3{color:#fff;}
+.work-card.dark p{color:rgba(255,255,255,.5);}
 .pricing-carousel-wrap{overflow:hidden;padding-top:1.5rem;margin-top:-1.5rem;}
 .sticky-cta{display:none;}
 .testi-read-more{display:none;}
@@ -515,6 +526,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .case-bullets li{font-size:.9rem;color:rgba(255,255,255,.65);padding-left:1.25rem;position:relative;line-height:1.5;}
   .case-bullets li::before{content:"→";position:absolute;left:0;color:#7EACD4;}
   .case-sec-light .case-bullets li{color:var(--text-muted);}
+  .work-grid{grid-template-columns:1fr;}
+  .work-card h3{font-size:1.25rem;}
   .case-h{font-size:1.3rem;}
   .case-images{grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;}
   .case-img-wrap img{height:140px;}
@@ -725,24 +738,24 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
       <div class="case-tag">Recent Work</div>
       <h2 class="case-h">Two businesses. <em>Real results.</em></h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;" class="reveal d1">
+    <div class="work-grid reveal d1">
 
       <!-- Card 1: MG Tax -->
-      <div style="background:var(--white);border:1px solid var(--border-c);border-radius:20px;padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem;">
+      <div class="work-card light">
         <div class="case-tag" style="margin-bottom:0;">MG Tax Inc.</div>
-        <h3 style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--dark);line-height:1.2;letter-spacing:-.02em;">From paper to fully digital in 30 days.</h3>
+        <h3>From paper to fully digital in 30 days.</h3>
         <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(var(--accent-rgb),.08);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2);border-radius:100px;padding:.25rem .85rem;font-size:.78rem;font-weight:600;width:fit-content;">↓ 50% admin time</div>
-        <p style="font-size:.9rem;color:var(--mid);line-height:1.75;font-weight:300;flex:1;">Mark's tax practice ran on paper for 30 years. We rebuilt the entire operation digitally — intake, payments, document management, and scheduling — in under a month.</p>
-        <a href="mg-tax.html" class="btn" style="align-self:flex-start;">Read Full Case Study →</a>
+        <p>Mark's tax practice ran on paper for 30 years. We rebuilt the entire operation digitally — intake, payments, document management, and scheduling — in under a month.</p>
+        <a href="mg-tax.html" class="btn-dark">Read Full Case Study →</a>
       </div>
 
       <!-- Card 2: Ashley -->
-      <div style="background:var(--dark);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem;">
+      <div class="work-card dark">
         <div style="font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;display:flex;align-items:center;gap:.5rem;"><span style="width:14px;height:1.5px;background:#7EACD4;display:inline-block;"></span>Download Designs by AND</div>
-        <h3 style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-.02em;">Zero to profitable Etsy shop in 8 months.</h3>
+        <h3>Zero to profitable Etsy shop in 8 months.</h3>
         <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(127,160,195,.1);color:#7EACD4;border:1px solid rgba(127,160,195,.2);border-radius:100px;padding:.25rem .85rem;font-size:.78rem;font-weight:600;width:fit-content;">52% profit margin</div>
-        <p style="font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.75;font-weight:300;flex:1;">Ashley had raw design talent and zero business foundation. We built the brand, shop, SEO, pricing, and social strategy from scratch. Profitable in month one.</p>
-        <a href="ashley.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;background:#fff;color:var(--dark);font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;">Read Full Case Study →</a>
+        <p>Ashley had raw design talent and zero business foundation. We built the brand, shop, SEO, pricing, and social strategy from scratch. Profitable in month one.</p>
+        <a href="ashley.html" class="btn-dark">Read Full Case Study →</a>
       </div>
 
     </div>
