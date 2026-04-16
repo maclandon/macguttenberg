@@ -86,6 +86,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;padding:.6rem 1.25rem;border-radius:100px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:999;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .case-bullets{display:none;}
+.pricing-carousel-wrap{overflow:hidden;padding-top:1.5rem;margin-top:-1.5rem;}
 .pricing-dots{display:none;justify-content:center;gap:.5rem;margin-top:1rem;}
 .pricing-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s;}
 .pricing-dot.active{background:var(--accent);}
@@ -506,7 +507,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .result-item{width:100%;}
   .pricing-sec{padding:3rem 0;}
   .pricing-sec > .reveal{padding:0 1.5rem;}
-  .pricing-grid{display:flex;align-items:stretch;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:2rem 1.5rem 1rem;scroll-padding-left:1.5rem;scrollbar-width:none;}
+  .pricing-carousel-wrap{overflow-x:clip;overflow-y:visible;}
+  .pricing-grid{display:flex;align-items:stretch;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:2rem 1.5rem 1rem;scroll-padding-left:1.5rem;scrollbar-width:none;}
   .pricing-grid::-webkit-scrollbar{display:none;}
   .price-card{min-width:78vw;max-width:78vw;scroll-snap-align:center;flex-shrink:0;overflow:visible;align-self:stretch;min-height:unset;display:flex;flex-direction:column;justify-content:space-between;}
   .price-card.popular{position:relative;overflow:visible;margin-top:0;}
@@ -839,7 +841,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="sec-tag">Pricing</div>
     <h2 class="sec-h2">Simple, transparent <em>pricing.</em></h2>
   </div>
-  <div class="pricing-grid reveal d1">
+  <div class="pricing-carousel-wrap"><div class="pricing-grid reveal d1">
     <div class="price-card">
       <div class="price-name">Starter</div>
       <div class="price-amount"><sup>$</sup>300</div>
@@ -884,7 +886,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
       </ul>
       <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-price btn-price-dark">Book a call</a>
     </div>
-  </div>
+  </div></div>
   <div class="pricing-dots">
     <span class="pricing-dot active"></span>
     <span class="pricing-dot"></span>
