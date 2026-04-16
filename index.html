@@ -506,10 +506,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .result-item{width:100%;}
   .pricing-sec{padding:3rem 0;}
   .pricing-sec > .reveal{padding:0 1.5rem;}
-  .pricing-grid{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:1.5rem 1.5rem 1rem;scroll-padding-left:1.5rem;scrollbar-width:none;}
+  .pricing-grid{display:flex;align-items:stretch;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:1.5rem 1.5rem 1rem;scroll-padding-left:1.5rem;scrollbar-width:none;}
   .pricing-grid::-webkit-scrollbar{display:none;}
-  .price-card{min-width:78vw;max-width:78vw;scroll-snap-align:center;flex-shrink:0;overflow:visible;}
-  .price-card.popular{position:relative;overflow:visible;}
+  .price-card{min-width:78vw;max-width:78vw;scroll-snap-align:center;flex-shrink:0;overflow:visible;align-self:stretch;min-height:unset;display:flex;flex-direction:column;justify-content:space-between;}
+  .price-card.popular{position:relative;overflow:visible;margin-top:1.25rem;}
   .popular-badge{position:absolute;top:-1rem;left:50%;transform:translateX(-50%);}
   .pricing-dots{display:flex;}
   #about .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
