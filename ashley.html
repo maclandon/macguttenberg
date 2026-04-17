@@ -30,7 +30,6 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 @keyframes pagefade{from{opacity:0;}to{opacity:1;}}
 
 /* PROGRESS BAR */
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:999;width:0%;transition:width .1s linear;}
 
 /* TOAST */
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;padding:.6rem 1.25rem;border-radius:100px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:999;}
@@ -210,6 +209,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 .btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transform:scale(.8);transition:opacity .3s ease,transform .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.2);border:none;}
 .btt.show{opacity:1;transform:scale(1);}
 .btt:hover{background:var(--dark2);}
+.btt-ring{position:absolute;inset:0;width:100%;height:100%;}
+.btt-arrow{width:16px;height:16px;color:#fff;position:relative;z-index:1;}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -243,7 +244,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 </head>
 <body>
 
-<div class="progress-bar" id="progress"></div>
 <div class="toast" id="toast">✓ Copied to clipboard</div>
 
 <div id="preloader">
@@ -359,7 +359,9 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
         </ul>
       </div>
       <div class="reveal d2">
-        <img src="ashley-portrait.jpg" alt="Ashley DeMaria" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:20px;">
+        <div style="height:500px;border-radius:20px;overflow:hidden;">
+          <img src="ashley-portrait.jpg" alt="Ashley DeMaria" style="width:100%;height:100%;object-fit:cover;">
+        </div>
       </div>
     </div>
   </div>
@@ -621,10 +623,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   </div>
 </footer>
 
-<button class="btt" id="btt" aria-label="Back to top">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
 <script>
 // Preloader
 setTimeout(() => {
@@ -637,20 +635,30 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
 }), {threshold: .08});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Progress bar
-window.addEventListener('scroll', () => {
-  const s = document.documentElement.scrollTop;
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('progress').style.width = (s / h * 100) + '%';
-});
-
-// Back to top
-const btt = document.getElementById('btt');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) btt.classList.add('show');
+// Back to top with scroll ring
+document.body.insertAdjacentHTML('beforeend',`<div class="btt" id="btt">
+  <svg viewBox="0 0 36 36" class="btt-ring">
+    <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="2"/>
+    <circle cx="18" cy="18" r="15" fill="none" stroke="#7fa0c3" stroke-width="2"
+      stroke-dasharray="94.2" stroke-dashoffset="94.2"
+      id="bttCircle" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+  </svg>
+  <svg class="btt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</div>`);
+const btt=document.getElementById('btt');
+const bttCircle=document.getElementById('bttCircle');
+const circumference=94.2;
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY;
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=scrolled/total;
+  bttCircle.style.strokeDashoffset=circumference-(pct*circumference);
+  if(scrolled>300)btt.classList.add('show');
   else btt.classList.remove('show');
 });
-btt.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 // Nav hide/show on scroll
 let lastScroll = 0;
