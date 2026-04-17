@@ -400,7 +400,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .contact-book-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
 .contact-book-eyebrow::before{content:"";width:14px;height:1.5px;background:var(--accent);}
 .contact-book-desc{font-size:.97rem;color:var(--text-mid);line-height:1.8;font-weight:300;margin-bottom:2rem;max-width:420px;}
-.btn-book-calendly{display:inline-flex;align-items:center;gap:.75rem;background:var(--dark);color:#fff;font-family:"DM Sans",sans-serif;font-size:1.15rem;font-weight:600;padding:1.1rem 2rem;border-radius:8px;border:none;cursor:pointer;transition:background .2s,gap .2s,transform .15s;letter-spacing:-.01em;white-space:nowrap;}
+.btn-book-calendly{display:inline-flex;align-items:center;gap:.75rem;background:var(--dark);color:#fff;font-family:"DM Sans",sans-serif;font-size:1.15rem;font-weight:600;padding:1.1rem 2rem;border-radius:8px;border:none;cursor:pointer;transition:background .2s,gap .2s,transform .15s;letter-spacing:-.01em;white-space:normal;text-align:center;}
 .btn-book-calendly:hover{background:var(--accent2);gap:1rem;}
 .btn-book-calendly:active{transform:scale(.97);}
 .contact-book-fine{font-size:.78rem;color:var(--text-muted);margin-top:1rem;font-weight:300;}
@@ -458,7 +458,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .cta-btns{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;z-index:1;}
 .btn-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--dark);font-size:.9rem;font-weight:500;padding:.8rem 1.8rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
 .btn-cta:hover{background:var(--card);gap:.65rem;}
-.btn-cta-ghost{font-size:.9rem;color:rgba(255,255,255,.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:color .2s;}
+.btn-cta-ghost{font-size:.9rem;color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:color .2s;}
 .btn-cta-ghost:hover{color:rgba(255,255,255,.75);}
 
 /* FOOTER */
@@ -611,8 +611,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 </div>
 
 <nav>
-  <a href="/" class="nav-logo"><div class="nav-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></div>
-    <ul class="nav-links">
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></a>
+  <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="about.html">About</a></li>
@@ -1227,7 +1227,7 @@ if(window.innerWidth>900){
       ],{duration:300,easing:'ease-out',fill:'forwards'});
     };
   }
-  setInterval(swap,2000);
+  setInterval(swap,4000);
 }
 
 async function handleStackForm(formEl){
