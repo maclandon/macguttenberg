@@ -94,8 +94,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .btn-ghost{font-size:.88rem;color:rgba(255,255,255,.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:color .2s;}
 .btn-ghost:hover{color:rgba(255,255,255,.75);}
 .about-hero-right{position:relative;z-index:1;overflow:hidden;}
-.about-hero-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:.85;filter:grayscale(15%);}
-.about-hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--dark) 0%,transparent 35%),linear-gradient(to top,var(--dark) 0%,transparent 30%);}
+.about-hero-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:.9;}
+.about-hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,#1a1510 0%,transparent 35%),linear-gradient(to top,#1a1510 0%,transparent 30%);}
 .about-hero-chips{position:absolute;bottom:3rem;left:2rem;display:flex;flex-direction:column;gap:.75rem;z-index:3;opacity:0;animation:fadeIn .8s ease .7s forwards;}
 .hero-chip{display:inline-flex;align-items:center;gap:.6rem;background:rgba(245,242,236,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.5rem 1rem;font-size:.75rem;color:rgba(255,255,255,.7);}
 .hero-chip-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
@@ -217,6 +217,16 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   .footer-links{justify-content:center;flex-wrap:wrap;gap:1rem;}
   .footer-social{justify-content:center;}
 }
+.about-quote{padding:4rem;background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
+.about-quote-inner{max-width:720px;margin:0 auto;text-align:center;}
+.about-quote blockquote{font-family:'Fraunces',serif;font-size:clamp(1.2rem,2vw,1.6rem);font-style:italic;color:#fff;line-height:1.5;font-weight:300;margin-bottom:1.5rem;}
+.about-quote blockquote em{color:#7EACD4;font-style:normal;}
+.about-quote-attr{display:flex;align-items:center;justify-content:center;gap:.75rem;}
+.about-quote-attr img{width:36px;height:36px;border-radius:50%;object-fit:cover;opacity:.85;}
+.about-quote-attr-name{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.6);}
+.about-quote-attr-role{font-size:.75rem;color:rgba(255,255,255,.3);}
+.logo-path{stroke:white;stroke-width:2;fill:none;stroke-dasharray:3000;stroke-dashoffset:3000;animation:draw 6s ease forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
 </style>
 </head>
 <body>
@@ -225,7 +235,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
 <div id="preloader">
   <svg class="preloader-logo" width="120" height="76" viewBox="0 0 147 93" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M108.66 81.268C107.593 80.884 106.825 80.3933 106.356 79.796C105.929 79.156 105.673 78.068 105.588 76.532L101.172 14.708C101.087 13.0867 101.3 11.892 101.812 11.124C102.324 10.356 103.199 9.75867 104.436 9.332L107.38 8.436C108.319 8.00934 109.023 7.476 109.492 6.836C109.961 6.15334 110.196 5.3 110.196 4.276C110.196 3.124 109.833 2.20667 109.108 1.524C108.383 0.841334 107.252 0.5 105.716 0.5H84.468C82.164 0.5 80.372 1.03333 79.092 2.1C77.812 3.124 76.6387 5.08667 75.572 7.988L58.5283 54.6V54.1L40.884 7.668C39.86 4.98 38.708 3.124 37.428 2.1C36.148 1.03333 34.3987 0.5 32.18 0.5H10.868C7.83867 0.5 6.324 1.78 6.324 4.34C6.324 5.364 6.55867 6.196 7.028 6.836C7.54 7.476 8.308 8.00934 9.332 8.436L12.212 9.332C13.5347 9.80134 14.4307 10.5693 14.9 11.636C15.3693 12.7027 15.5187 14.3027 15.348 16.436L10.74 74.612C10.5693 76.4893 10.036 77.94 9.14 78.964C8.244 79.988 7.11333 80.756 5.748 81.268L3.7 82.036C2.71867 82.5053 1.92933 83.06 1.332 83.7C0.777333 84.2973 0.5 85.172 0.5 86.324C0.5 87.476 0.862667 88.3933 1.588 89.076C2.31333 89.7587 3.444 90.1 4.98 90.1H24.5C26.036 90.1 27.1453 89.7587 27.828 89.076C28.5533 88.3507 28.916 87.3693 28.916 86.132C28.916 85.2787 28.724 84.5747 28.34 84.02C27.9987 83.4227 27.4867 82.9533 26.804 82.612L24.244 81.588C22.5373 80.82 21.2147 79.924 20.276 78.9C19.38 77.8333 18.996 76.404 19.124 74.612L22.836 25.6L44.148 79.86C44.9587 81.908 45.7267 83.4227 46.452 84.404C47.1773 85.3427 47.9453 85.9613 48.756 86.26C49.5667 86.5587 50.4627 86.708 51.444 86.708C52.8093 86.708 53.9827 86.3027 54.964 85.492C55.9453 84.6813 56.9267 82.9107 57.908 80.18L77.9226 24.1L81.908 76.532C81.9933 77.9827 81.78 79.028 81.268 79.668C80.7987 80.308 79.9667 80.8413 78.772 81.268L75.828 82.164C74.804 82.6333 74.0573 83.2093 73.588 83.892C73.1187 84.532 72.884 85.3427 72.884 86.324C72.884 87.476 73.2467 88.3933 73.972 89.076C74.74 89.7587 75.892 90.1 77.428 90.1" stroke="#E8E4DC" stroke-width="2" fill="none"/>
+    <path class="logo-path" d="M108.66 81.268C107.593 80.884 106.825 80.3933 106.356 79.796C105.929 79.156 105.673 78.068 105.588 76.532L101.172 14.708C101.087 13.0867 101.3 11.892 101.812 11.124C102.324 10.356 103.199 9.75867 104.436 9.332L107.38 8.436C108.319 8.00934 109.023 7.476 109.492 6.836C109.961 6.15334 110.196 5.3 110.196 4.276C110.196 3.124 109.833 2.20667 109.108 1.524C108.383 0.841334 107.252 0.5 105.716 0.5H84.468C82.164 0.5 80.372 1.03333 79.092 2.1C77.812 3.124 76.6387 5.08667 75.572 7.988L58.5283 54.6V54.1L40.884 7.668C39.86 4.98 38.708 3.124 37.428 2.1C36.148 1.03333 34.3987 0.5 32.18 0.5H10.868C7.83867 0.5 6.324 1.78 6.324 4.34C6.324 5.364 6.55867 6.196 7.028 6.836C7.54 7.476 8.308 8.00934 9.332 8.436L12.212 9.332C13.5347 9.80134 14.4307 10.5693 14.9 11.636C15.3693 12.7027 15.5187 14.3027 15.348 16.436L10.74 74.612C10.5693 76.4893 10.036 77.94 9.14 78.964C8.244 79.988 7.11333 80.756 5.748 81.268L3.7 82.036C2.71867 82.5053 1.92933 83.06 1.332 83.7C0.777333 84.2973 0.5 85.172 0.5 86.324C0.5 87.476 0.862667 88.3933 1.588 89.076C2.31333 89.7587 3.444 90.1 4.98 90.1H24.5C26.036 90.1 27.1453 89.7587 27.828 89.076C28.5533 88.3507 28.916 87.3693 28.916 86.132C28.916 85.2787 28.724 84.5747 28.34 84.02C27.9987 83.4227 27.4867 82.9533 26.804 82.612L24.244 81.588C22.5373 80.82 21.2147 79.924 20.276 78.9C19.38 77.8333 18.996 76.404 19.124 74.612L22.836 25.6L44.148 79.86C44.9587 81.908 45.7267 83.4227 46.452 84.404C47.1773 85.3427 47.9453 85.9613 48.756 86.26C49.5667 86.5587 50.4627 86.708 51.444 86.708C52.8093 86.708 53.9827 86.3027 54.964 85.492C55.9453 84.6813 56.9267 82.9107 57.908 80.18L77.9226 24.1L81.908 76.532C81.9933 77.9827 81.78 79.028 81.268 79.668C80.7987 80.308 79.9667 80.8413 78.772 81.268L75.828 82.164C74.804 82.6333 74.0573 83.2093 73.588 83.892C73.1187 84.532 72.884 85.3427 72.884 86.324C72.884 87.476 73.2467 88.3933 73.972 89.076C74.74 89.7587 75.892 90.1 77.428 90.1" fill="none"/>
+    <path class="logo-path" d="M108.336 81.1C108.336 81.1 110.336 82.1 110.836 82.1L118.588 82.1C120.764 82.1 122.705 81.7587 124.412 81.076C126.119 80.3933 127.719 79.22 129.212 77.556C130.705 75.892 132.177 73.5453 133.628 70.516L137.724 61.876C138.364 60.5533 139.111 59.6787 139.964 59.252C140.817 58.8253 141.799 58.74 142.908 58.996C144.103 59.2947 144.956 59.9133 145.468 60.852C145.98 61.748 146.023 62.9427 145.596 64.436L140.284 86.452C139.729 88.5 139.047 89.972 138.236 90.868C137.425 91.764 136.209 92.212 134.588 92.212C133.649 92.212 132.689 92.0413 131.708 91.7C130.727 91.3587 129.639 90.996 128.444 90.612C127.249 90.2707 125.799 90.1 124.092 90.1H77.244C75.7507 90.1 74.62 89.7587 73.852 89.076C73.1267 88.3933 72.764 87.476 72.764 86.324C72.764 84.404 73.724 83.0173 75.644 82.164L78.716 81.268" fill="none"/>
   </svg>
 </div>
 
@@ -346,7 +357,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
         <div class="timeline-item active">
           <div class="timeline-dot"></div>
           <div class="timeline-year">Now</div>
-          <div class="timeline-title">MacGuttenberg.com</div>
+          <div class="timeline-title">MacLandon.com</div>
           <div class="timeline-desc">NYC-based solo consulting practice. Working with small businesses that need real infrastructure, not decks. Clients across tax, e-commerce, coaching, and creative services.</div>
         </div>
       </div>
@@ -397,7 +408,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="philosophy-header reveal">
       <div class="sec-tag light">Design Philosophy</div>
       <h2>Design that <em>earns its place.</em></h2>
-      <p>I didn't come to design through aesthetics. I came through operations — through watching businesses struggle with systems that looked fine but didn't work. That experience shaped a philosophy that's uncomfortable for designers who lead with visuals: <strong style="color:rgba(255,255,255,.6);font-weight:400;">every design decision should make something easier, faster, or less ambiguous for the person using it.</strong> If it doesn't do that, it shouldn't be there.</p>
+      <p>These aren't preferences — they're rules. Every project gets measured against the same framework: does this make something easier, faster, or less ambiguous for the person using it? If it doesn't, it doesn't ship.</p>
     </div>
     <div class="philosophy-grid">
       <div class="philosophy-card reveal d1">
@@ -457,6 +468,20 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     </div>
   </div>
 </section>
+
+<!-- ─── TESTIMONIAL ───────────────────────── -->
+<div class="about-quote">
+  <div class="about-quote-inner reveal">
+    <blockquote>"I thought going digital would be overwhelming, but Mac made it simple. He saved my business and helped me create a <em>better, more efficient way of working</em> — my clients love it, and so do I."</blockquote>
+    <div class="about-quote-attr">
+      <img src="marktest.jpg" alt="Mark G.">
+      <div>
+        <div class="about-quote-attr-name">Mark G.</div>
+        <div class="about-quote-attr-role">Owner, MG Tax Inc. — fully digital in 30 days</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ─── CTA ───────────────────────────────── -->
 <section class="about-cta">
