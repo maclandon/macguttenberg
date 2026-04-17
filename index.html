@@ -189,7 +189,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .btn-soft{font-size:.88rem;color:var(--text-muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .2s;white-space:nowrap;}
 .btn-soft:hover{color:var(--text);}
 .hero-right{position:relative;z-index:4;overflow:visible;opacity:0;animation:fadeIn .9s ease .25s forwards;}
-.blob{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);width:70%;height:70%;background:rgba(127,160,195,.15);border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;animation:blob 8s ease-in-out infinite;z-index:0;}
+.blob{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);width:70%;height:70%;background:rgba(127,160,195,.15);border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;z-index:0;}
 @keyframes blob{
   0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;}
   25%{border-radius:30% 60% 70% 40% / 50% 60% 30% 60%;}
@@ -202,11 +202,11 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .hero-photo-original{display:block;}
 .chip-val{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:.15rem;}
 .chip-lbl{font-size:.75rem;color:var(--text-muted);line-height:1.4;}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;opacity:.4;animation:bounce 2s ease-in-out infinite;}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;opacity:.4;}
 .scroll-hint svg{color:var(--text);}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-.hero-card{animation:float 6s ease-in-out infinite;}
+.hero-card{}
 
 /* STAT BAR */
 .stat-bar{background:var(--dark);padding:1rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;}
@@ -385,13 +385,13 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 /* TESTIMONIALS */
 .testi-sec{padding:5.5rem 4rem;background:var(--bg);}
 .testi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:2.5rem;}
-.testi-card{background:var(--card);border-radius:18px;padding:2.25rem;border:1px solid var(--border);transition:transform .3s ease,box-shadow .3s ease;}
+.testi-card{background:var(--card);border-radius:18px;padding:2.25rem;border:1px solid var(--border);transition:transform .3s ease,box-shadow .3s ease;display:flex;flex-direction:column;height:100%;}
 .testi-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(28,26,22,.1);}
 .testi-top{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;}
 .testi-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0;}
 .testi-name{font-size:.9rem;font-weight:600;color:var(--text);}
 .testi-role{font-size:.75rem;color:var(--text-muted);}
-.testi-q{font-family:"Fraunces",serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text-mid);line-height:1.75;}
+.testi-q{font-family:"Fraunces",serif;font-style:italic;font-size:1rem;font-weight:400;color:var(--text-mid);line-height:1.75;flex-grow:1;}
 .testi-q em{font-style:normal;color:var(--accent);font-weight:600;}
 
 /* CONTACT */
@@ -420,7 +420,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .guide-right{display:flex;align-items:center;justify-content:center;}
 .guide-fine{font-size:.75rem;color:var(--text-muted);margin-top:.75rem;}
 /* PDF preview mockup */
-.guide-pdf-preview{background:var(--dark);border-radius:16px;padding:2rem;aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:space-between;}
+.guide-pdf-preview{background:#252830;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2rem;aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 60px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.3);}
 .guide-pdf-top{}
 .guide-pdf-tag{font-size:.6rem;font-weight:500;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem;}
 .guide-pdf-title{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:.5rem;}
@@ -646,7 +646,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <div class="hero-left">
     <div class="hero-card">
       <div class="hero-eyebrow">For Small Businesses</div>
-      <h1>Your business is <em id="typeword">good.</em><br>Your systems aren't keeping up.</h1>
+      <h1>Your business is <em>growing.</em><br>Your systems aren't keeping up.</h1>
       <div class="hero-value-row">
         <img src="mac-photo-circle.png" alt="Mac Landon" class="hero-value-avatar">
         <p class="hero-value">I audit your business, fix what's broken, and build the systems that let you actually grow.</p>
@@ -658,7 +658,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     </div>
   </div>
   <div class="hero-right">
-    <div class="blob"></div>
     <div class="hero-photo">
       <img class="hero-photo-original" src="mac-photo.png" alt="Mac Landon" loading="eager">
       <img class="hero-photo-nyc" src="mac-nyc.jpg" alt="Mac Landon" loading="lazy">
@@ -1209,26 +1208,6 @@ window.addEventListener('scroll',()=>{
   lastScroll=current;
 });
 
-if(window.innerWidth>900){
-  const words=['good.','real.','ready.','yours.'];
-  let wi=0;
-  const tw=document.getElementById('typeword');
-  tw.style.cssText='display:inline-block;overflow:hidden;vertical-align:bottom;';
-  function swap(){
-    tw.animate([
-      {transform:'translateY(0)',opacity:1},
-      {transform:'translateY(-100%)',opacity:0}
-    ],{duration:300,easing:'ease-in',fill:'forwards'}).onfinish=()=>{
-      wi=(wi+1)%words.length;
-      tw.textContent=words[wi];
-      tw.animate([
-        {transform:'translateY(100%)',opacity:0},
-        {transform:'translateY(0)',opacity:1}
-      ],{duration:300,easing:'ease-out',fill:'forwards'});
-    };
-  }
-  setInterval(swap,4000);
-}
 
 async function handleStackForm(formEl){
   const btn=formEl.querySelector('.stack-btn');
