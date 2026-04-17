@@ -104,7 +104,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 @media(max-width:900px){
   .sticky-cta{position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;font-weight:500;letter-spacing:.06em;padding:.7rem 1.5rem;border-radius:100px;z-index:97;opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25);}
   .sticky-cta a{color:#fff;text-decoration:none;}
-  .sticky-cta.visible{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+  .sticky-cta.visible{display:block;opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
 }
 .testi-read-more{display:none;}
 .timeline-line{display:none;}
@@ -1362,10 +1362,13 @@ window.addEventListener('scroll',()=>{
 btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 const stickyCta=document.querySelector('.sticky-cta');
-window.addEventListener('scroll',()=>{
+if(stickyCta){
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>300)stickyCta.classList.add('visible');
+    else stickyCta.classList.remove('visible');
+  },{passive:true});
   if(window.scrollY>300)stickyCta.classList.add('visible');
-  else stickyCta.classList.remove('visible');
-},{passive:true});
+}
 
 </script>
 </body>
