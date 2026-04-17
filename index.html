@@ -89,16 +89,22 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .case-bullets{display:none;}
 /* Recent Work Cards */
-.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
-.work-card{border-radius:20px;padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem;}
-.work-card h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;line-height:1.2;letter-spacing:-.02em;}
-.work-card p{font-size:.9rem;line-height:1.75;font-weight:300;flex:1;}
-.work-card.light{background:var(--white);border:1px solid var(--border);}
-.work-card.light h3{color:var(--dark);}
-.work-card.light p{color:var(--text-mid);}
-.work-card.dark{background:var(--dark);border:1px solid rgba(255,255,255,.06);}
-.work-card.dark h3{color:#fff;}
-.work-card.dark p{color:rgba(255,255,255,.5);}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
+.work-card{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,border-color .3s ease;text-decoration:none;}
+.work-card:hover{transform:translateY(-4px);border-color:rgba(126,172,212,.35);}
+.work-card-img{aspect-ratio:16/10;overflow:hidden;background:#0f0d0a;}
+.work-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.work-card:hover .work-card-img img{transform:scale(1.04);}
+.work-card-body{padding:1.75rem;display:flex;flex-direction:column;gap:1rem;flex:1;}
+.work-card-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;display:flex;align-items:center;gap:.5rem;}
+.work-card-eyebrow::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.work-card h3{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:700;line-height:1.2;letter-spacing:-.02em;color:#fff;}
+.work-card-metric{display:inline-flex;align-items:center;gap:.4rem;background:rgba(126,172,212,.1);color:#7EACD4;border:1px solid rgba(126,172,212,.2);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;font-weight:600;width:fit-content;}
+.work-card p{font-size:.88rem;line-height:1.7;font-weight:300;color:rgba(255,255,255,.6);flex:1;}
+.work-card-link{font-size:.85rem;font-weight:500;color:#fff;display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;}
+.work-card-link .arrow{transition:transform .3s ease;}
+.work-card:hover .work-card-link .arrow{transform:translateX(4px);}
+@media(max-width:760px){.work-grid{grid-template-columns:1fr;}}
 .pricing-carousel-wrap{overflow:hidden;padding-top:1.5rem;margin-top:-1.5rem;}
 .sticky-cta{display:none;}
 @media(max-width:900px){
@@ -127,7 +133,6 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);ove
 .btt-arrow{width:16px;height:16px;color:#fff;position:relative;z-index:1;}
 .btt:hover{background:var(--dark2);}
 .btt:hover .btt-arrow{color:#7fa0c3;}
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:#7fa0c3;z-index:999;width:0%;transition:width .1s linear;}
 .btn-dark:active,.btn-accent:active,.nav-cta:active,.btn-price:active,.btn-cta:active{transform:scale(.96);transition:transform .1s ease;}
 
 /* NAV */
@@ -595,7 +600,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 </script>
 </head>
 <body>
-<div class="progress-bar" id="progress"></div>
 <div class="toast" id="toast">✓ Copied to clipboard</div>
 
 <div id="preloader">
@@ -742,22 +746,28 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="work-grid reveal d1">
 
       <!-- Card 1: MG Tax -->
-      <div class="work-card light">
-        <div class="case-tag" style="margin-bottom:0;">MG Tax Inc.</div>
-        <h3>From paper to fully digital in 30 days.</h3>
-        <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(var(--accent-rgb),.08);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2);border-radius:100px;padding:.25rem .85rem;font-size:.78rem;font-weight:600;width:fit-content;">↓ 50% admin time</div>
-        <p>Mark's tax practice ran on paper for 30 years. We rebuilt the entire operation digitally — intake, payments, document management, and scheduling — in under a month.</p>
-        <a href="mg-tax.html" class="btn-dark">Read Full Case Study →</a>
-      </div>
+      <a href="mg-tax.html" class="work-card">
+        <div class="work-card-img"><img src="blogmgtax.jpg" alt="MG Tax Inc. case study" loading="lazy"></div>
+        <div class="work-card-body">
+          <div class="work-card-eyebrow">MG Tax Inc.</div>
+          <h3>From paper to fully digital in 30 days.</h3>
+          <div class="work-card-metric">↓ 50% admin time</div>
+          <p>Mark's tax practice ran on paper for 30 years. We rebuilt the entire operation digitally — intake, payments, document management, and scheduling — in under a month.</p>
+          <span class="work-card-link">Read full case study <span class="arrow">→</span></span>
+        </div>
+      </a>
 
       <!-- Card 2: Ashley -->
-      <div class="work-card dark">
-        <div style="font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;display:flex;align-items:center;gap:.5rem;"><span style="width:14px;height:1.5px;background:#7EACD4;display:inline-block;"></span>Download Designs by AND</div>
-        <h3>Zero to profitable Etsy shop in 8 months.</h3>
-        <div style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(127,160,195,.1);color:#7EACD4;border:1px solid rgba(127,160,195,.2);border-radius:100px;padding:.25rem .85rem;font-size:.78rem;font-weight:600;width:fit-content;">52% profit margin</div>
-        <p>Ashley had raw design talent and zero business foundation. We built the brand, shop, SEO, pricing, and social strategy from scratch. Profitable in month one.</p>
-        <a href="ashley.html" class="btn-dark">Read Full Case Study →</a>
-      </div>
+      <a href="ashley.html" class="work-card">
+        <div class="work-card-img"><img src="ashleyetsystorefront.jpg" alt="Download Designs by AND case study" loading="lazy"></div>
+        <div class="work-card-body">
+          <div class="work-card-eyebrow">Download Designs by AND</div>
+          <h3>Zero to profitable Etsy shop in 8 months.</h3>
+          <div class="work-card-metric">52% profit margin</div>
+          <p>Ashley had raw design talent and zero business foundation. We built the brand, shop, SEO, pricing, and social strategy from scratch. Profitable in month one.</p>
+          <span class="work-card-link">Read full case study <span class="arrow">→</span></span>
+        </div>
+      </a>
 
     </div>
   </div>
@@ -1174,12 +1184,6 @@ function toggleFaq(btn){
   document.querySelectorAll('.faq-q').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
   if(!isOpen){btn.classList.add('open');answer.classList.add('open');}
 }
-
-window.addEventListener('scroll',()=>{
-  const s=document.documentElement.scrollTop;
-  const h=document.documentElement.scrollHeight-window.innerHeight;
-  document.getElementById('progress').style.width=(s/h*100)+'%';
-});
 
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
