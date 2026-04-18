@@ -86,16 +86,32 @@
 <nav>
   <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
   <ul class="nav-links">
-    <li><a href="/#about">About</a></li>
     <li><a href="/#services">Services</a></li>
     <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/blog.html" style="color:rgba(255,255,255,.85);">Blog</a></li>
-    <li><a href="/#contact">Contact</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
   </ul>
+  <a href="/blog.html" class="nav-mobile-blog" style="font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;display:none;">Blog</a>
   <div class="nav-right">
+    <span class="nav-li"><a href="https://www.linkedin.com/in/maclandon/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a></span>
+    <span class="nav-li"><a href="https://www.instagram.com/bymaclandon" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a></span>
     <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
   </div>
+  <button class="menu-text-btn" id="hamburger" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#services">Services</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
+</div>
 
 <div class="article-hero">
   <div class="article-hero-inner">
@@ -273,5 +289,19 @@
   </div>
 </footer>
 
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+const hamburgerIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+const closeIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+hamburger.addEventListener('click',()=>{
+  const isOpen=mobileMenu.classList.toggle('open');
+  hamburger.innerHTML=isOpen?closeIcon:hamburgerIcon;
+});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobileMenu.classList.remove('open');
+  hamburger.innerHTML=hamburgerIcon;
+}));
+</script>
 </body>
 </html>
