@@ -1153,6 +1153,9 @@ mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   mobileMenu.classList.remove('open');
   hamburger.innerHTML=hamburgerIcon;
 }));
+mobileMenu.addEventListener('click',e=>{
+  if(e.target===mobileMenu){mobileMenu.classList.remove('open');hamburger.innerHTML=hamburgerIcon;}
+});
 
 
 document.body.insertAdjacentHTML('beforeend',`<div class="btt" id="btt">

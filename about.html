@@ -508,6 +508,9 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
   mobileMenu.classList.remove('open');
   hamburger.innerHTML = hIcon;
 }));
+mobileMenu.addEventListener('click', e => {
+  if(e.target === mobileMenu){ mobileMenu.classList.remove('open'); hamburger.innerHTML = hIcon; }
+});
 
 // Email copy
 document.querySelectorAll('a[href^="mailto"]').forEach(a => {
