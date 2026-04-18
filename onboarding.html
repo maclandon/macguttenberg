@@ -43,6 +43,11 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellips
 .step-dot.active{background:var(--accent);width:24px;border-radius:4px;}
 .step-dot.done{background:var(--accent);opacity:.4;}
 
+/* FORM MESSAGES */
+.form-message{font-size:.85rem;padding:.65rem 1rem;border-radius:6px;margin-top:.5rem;display:none;}
+.form-message.error{display:block;background:rgba(220,53,69,.08);color:#c0392b;border:1px solid rgba(220,53,69,.15);}
+.form-message.success{display:block;background:rgba(46,125,50,.08);color:#2e7d32;border:1px solid rgba(46,125,50,.15);}
+
 /* CARD */
 .form-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.25rem;box-shadow:0 4px 32px rgba(28,26,22,.06);animation:fadeUp .4s ease both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
@@ -258,6 +263,7 @@ function renderStep() {
       <div class="step-title">${s.title}</div>
       <div class="step-sub">${s.sub}</div>
       ${s.fields}
+      <div class="form-message" id="stepMsg"></div>
       ${isLast ? `<button class="btn-submit" onclick="submitForm()">Send to Mac →</button>` : `
       <div class="nav-row">
         <button class="btn-back" onclick="goBack()" ${current === 0 ? 'disabled' : ''}>← Back</button>
@@ -316,7 +322,11 @@ function goNext() {
     const name = document.querySelector('[name="name"]').value.trim();
     const email = document.querySelector('[name="email"]').value.trim();
     const biz = document.querySelector('[name="business_name"]').value.trim();
-    if (!name || !email || !biz) { alert('Please fill in your name, email, and business name.'); return; }
+    if (!name || !email || !biz) {
+      const msg=document.getElementById('stepMsg');
+      msg.className='form-message error';msg.textContent='Please fill in your name, email, and business name.';
+      return;
+    }
   }
   current++;
   renderStep();

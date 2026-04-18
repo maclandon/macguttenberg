@@ -293,7 +293,7 @@ async function deletePortal(id, slug) {
   try {
     await sbFetch('DELETE', `portals?id=eq.${id}`);
     loadPortals();
-  } catch(e) { alert('Error deleting.'); }
+  } catch(e) { document.getElementById('portals-list').insertAdjacentHTML('afterbegin','<div class="status error" style="color:#c0392b;">Error deleting portal. Please try again.</div>'); }
 }
 
 function getPortalData() {

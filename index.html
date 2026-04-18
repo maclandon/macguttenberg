@@ -852,6 +852,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
       <form class="stack-form" id="stackForm2">
         <input class="stack-input" type="email" placeholder="your@email.com" required>
         <button type="submit" class="btn-dark stack-btn">Download free guide →</button>
+        <div class="form-message" id="stackMsg"></div>
       </form>
       <p class="guide-fine">No spam. Instant download.</p>
     </div>
@@ -1059,32 +1060,6 @@ counters.forEach(el => countObs.observe(el));
 
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on");}),{threshold:.08});
 document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
-async function handleSubmit(e){
-  e.preventDefault();
-  const form=e.target;
-  const data=new FormData(form);
-  const btn=form.querySelector(".btn-submit");
-  btn.disabled=true; btn.textContent="Sending…";
-  try{
-    const r=await fetch("https://formspree.io/f/mpqkzqeb",{
-      method:"POST",
-      headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify({
-        name:(data.get("fname")+" "+data.get("lname")).trim(),
-        email:data.get("email"),
-        business:data.get("biz"),
-        type:data.get("type"),
-        message:data.get("msg"),
-        website:data.get("website")
-      })
-    });
-    if(!r.ok)throw new Error(await r.text());
-    window.location.href='/thankyou.html';
-  }catch(err){
-    btn.disabled=false; btn.textContent="Send message →";
-    alert("Couldn't send right now. Please email mac@maclandon.com directly.");
-  }
-}
 function toggleFaq(btn){
   const answer=btn.nextElementSibling;
   const isOpen=btn.classList.contains('open');
@@ -1120,19 +1095,26 @@ window.addEventListener('scroll',()=>{
 
 async function handleStackForm(formEl){
   const btn=formEl.querySelector('.stack-btn');
+  const msg=formEl.querySelector('.form-message');
   const email=formEl.querySelector('.stack-input').value;
-  btn.textContent='Sending...';
-  const fd=new FormData();
-  fd.append('email',email);
-  fd.append('form_type','digital_stack_guide');
-  const res=await fetch('https://formspree.io/f/mpqkzqeb',{method:'POST',body:fd,headers:{Accept:'application/json'}});
-  if(res.ok){
+  msg.className='form-message';msg.textContent='';
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    const fd=new FormData();
+    fd.append('email',email);
+    fd.append('form_type','digital_stack_guide');
+    const res=await fetch('https://formspree.io/f/mpqkzqeb',{method:'POST',body:fd,headers:{Accept:'application/json'}});
+    if(!res.ok)throw new Error();
     btn.textContent='Downloading...';
     const link=document.createElement('a');
     link.href='small-business-digital-stack.pdf';
     link.download='small-business-digital-stack.pdf';
     link.click();
     btn.textContent='Downloaded ✓';
+    msg.className='form-message success';msg.textContent='Check your downloads folder.';
+  }catch(err){
+    btn.disabled=false;btn.textContent='Download free guide →';
+    msg.className='form-message error';msg.textContent='Something went wrong. Please try again or email mac@maclandon.com.';
   }
 }
 document.getElementById('stackForm2').addEventListener('submit',e=>{e.preventDefault();handleStackForm(e.target);});
