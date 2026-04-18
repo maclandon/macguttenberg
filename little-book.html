@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Little Book Co. Digital Transformation | Mac Landon</title>
+<meta name="description" content="How Mac Landon rebuilt the digital infrastructure for Little Book Co., turning viral TikTok views into predictable direct revenue.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231C1A16'/%3E%3Ctext x='50%25' y='68%25' text-anchor='middle' font-size='16' font-family='Fraunces, serif' fill='%237fa0c3' font-weight='700'%3EML%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=1.0">
+<style>
+/* Keeping your exact CSS from the other pages to ensure perfect matches */
+html{scroll-behavior:smooth;}
+.logo-path{stroke:#E8E4DC;}
+.nav-logo{display:flex;align-items:center;}
+.sec-tag.light{color:#7EACD4;}
+.sec-tag.light::before{background:#7EACD4;}
+.inner{max-width:1100px;margin:0 auto;}
+
+/* HERO */
+.cs-hero{padding:7rem 4rem 5rem;background:var(--dark);position:relative;overflow:hidden;}
+.cs-hero::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(43,74,107,.2) 0%,transparent 70%);pointer-events:none;}
+.cs-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.cs-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.65);text-decoration:none;letter-spacing:.06em;margin-bottom:2rem;transition:color .2s;}
+.cs-back:hover{color:rgba(255,255,255,.7);}
+.cs-back::before{content:"←";}
+.cs-hero-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.cs-hero-eyebrow::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.cs-hero h1{font-family:"Fraunces",serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem;}
+.cs-hero h1 em{font-style:italic;background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradtext 4s ease-in-out infinite;}
+.cs-hero-sub{font-size:1.05rem;color:rgba(255,255,255,.65);max-width:560px;line-height:1.75;font-weight:400;margin-bottom:2.5rem;}
+.cs-meta{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.08);}
+.cs-meta-item{}
+.cs-meta-label{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.3rem;}
+.cs-meta-value{font-size:.9rem;color:rgba(255,255,255,.7);font-weight:400;}
+
+/* STAT BAR */
+.cs-stats{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.cs-stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;}
+.cs-stat{text-align:center;padding:1.25rem 1rem;border-right:1px solid rgba(255,255,255,.06);}
+.cs-stat:last-child{border-right:none;}
+.cs-stat-n{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.3rem;}
+.cs-stat-n em{font-style:normal;color:#7EACD4;}
+.cs-stat-l{font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.5;}
+
+/* SECTION BASE */
+.cs-sec{padding:5.5rem 4rem;}
+.cs-sec-dark{background:var(--dark);}
+.cs-sec-white{background:var(--white);}
+.cs-sec-bg{background:var(--bg);}
+.cs-sec-bg2{background:var(--bg2);}
+.cs-sec h2{font-family:"Fraunces",serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:1.5rem;}
+.cs-sec h2 em{font-style:italic;background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradtext 4s ease-in-out infinite;}
+.cs-sec-dark h2{color:#fff;}
+.cs-body{font-size:.97rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1rem;}
+.cs-body strong{color:var(--text);font-weight:500;}
+.cs-body-light{font-size:.97rem;line-height:1.9;color:rgba(255,255,255,.65);font-weight:400;margin-bottom:1rem;}
+.cs-body-light strong{color:#fff;font-weight:500;}
+
+/* THE PROBLEM */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.problem-image-wrap{border-radius:20px;overflow:hidden;background:var(--card);border:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;}
+.problem-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem;}
+.pain-list li{display:flex;align-items:flex-start;gap:.85rem;font-size:.92rem;color:var(--text-mid);line-height:1.6;font-weight:300;padding:.85rem 1rem;background:var(--card);border-radius:10px;border:1px solid var(--border);}
+.pain-list li::before{content:"✗";color:#c97a7a;font-weight:700;flex-shrink:0;margin-top:.05rem;}
+
+/* USER JOURNEY */
+.journey-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem;}
+.journey-step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;position:relative;transition:background .2s;}
+.journey-step:hover{background:rgba(255,255,255,.07);}
+.journey-step-n{font-family:"Fraunces",serif;font-size:3rem;font-weight:900;font-style:italic;color:rgba(255,255,255,.08);line-height:1;margin-bottom:.85rem;}
+.journey-step-title{font-size:.88rem;font-weight:500;color:#fff;margin-bottom:.5rem;letter-spacing:.02em;}
+.journey-step-desc{font-size:.84rem;color:rgba(255,255,255,.65);line-height:1.75;font-weight:400;}
+.journey-step-old{margin-top:1rem;padding:.75rem 1rem;background:rgba(201,122,122,.08);border:1px solid rgba(201,122,122,.15);border-radius:8px;font-size:.8rem;color:rgba(201,122,122,.8);line-height:1.6;}
+.journey-step-new{margin-top:.5rem;padding:.75rem 1rem;background:rgba(127,160,195,.08);border:1px solid rgba(127,160,195,.2);border-radius:8px;font-size:.8rem;color:#7EACD4;line-height:1.6;}
+
+/* FINAL UI */
+.final-ui-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem;}
+.final-ui-grid.reverse{direction:rtl;}
+.final-ui-grid.reverse > *{direction:ltr;}
+.final-ui-image{border-radius:20px;overflow:hidden;border:1px solid var(--border);}
+.final-ui-image img{width:100%;display:block;}
+.solution-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(127,160,195,.12);color:var(--accent);border:1px solid rgba(127,160,195,.2);padding:.2rem .75rem;border-radius:100px;margin-bottom:.85rem;}
+.solution-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:1rem;}
+.solution-list li{display:flex;align-items:flex-start;gap:.65rem;font-size:.88rem;color:var(--text-mid);line-height:1.6;font-weight:300;}
+.solution-list li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:.1rem;}
+
+/* CTA */
+.cs-cta{padding:6rem 4rem;background:var(--dark);text-align:center;position:relative;overflow:hidden;}
+.cs-cta::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(43,74,107,.25) 0%,transparent 70%);pointer-events:none;}
+.cs-cta-eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:.85rem;}
+.cs-cta h2{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;font-style:italic;color:#fff;line-height:1.05;max-width:600px;margin:0 auto 1rem;letter-spacing:-.02em;position:relative;z-index:1;}
+.cs-cta p{font-size:.97rem;color:rgba(255,255,255,.65);max-width:380px;margin:0 auto 2.25rem;line-height:1.75;font-weight:400;position:relative;z-index:1;}
+.cs-cta-btns{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;position:relative;z-index:1;}
+.btn-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--dark);font-size:.9rem;font-weight:500;padding:.85rem 1.8rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-cta:hover{background:var(--card);gap:.65rem;}
+.btn-ghost{font-size:.9rem;color:rgba(255,255,255,.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.75);}
+
+/* NEXT CASE STUDY */
+.next-case{display:flex;align-items:center;gap:2.5rem;max-width:900px;margin:0 auto;padding:4rem;background:var(--card);border-top:1px solid var(--border);text-decoration:none;transition:background .2s;}
+.next-case:hover{background:var(--bg2);}
+.next-case-label{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem;}
+.next-case-title{font-family:"Fraunces",serif;font-size:clamp(1.2rem,2vw,1.6rem);font-weight:700;color:var(--text);line-height:1.2;}
+.next-case-title em{font-style:italic;color:var(--accent);}
+.next-case-img{width:140px;min-width:140px;height:95px;border-radius:10px;overflow:hidden;flex-shrink:0;}
+.next-case-img img{width:100%;height:100%;object-fit:cover;}
+.next-case-arrow{margin-left:auto;color:var(--text-muted);transition:transform .2s,color .2s;flex-shrink:0;}
+.next-case:hover .next-case-arrow{transform:translateX(4px);color:var(--accent);}
+
+/* MOBILE */
+@media(max-width:900px){
+  .cs-hero{padding:5rem 1.5rem 3rem;}
+  .cs-stats{padding:2rem 1.5rem;}
+  .cs-stats-inner{grid-template-columns:repeat(2,1fr);}
+  .cs-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:.85rem .5rem;}
+  .cs-stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.06);}
+  .cs-stat:nth-last-child(-n+2){border-bottom:none;}
+  .cs-stat-n{font-size:1.8rem;}
+  .cs-sec{padding:3rem 1.5rem;}
+  .cs-sec h2{font-size:1.6rem;}
+  .problem-grid,.final-ui-grid,.journey-steps{grid-template-columns:1fr;}
+  .final-ui-grid{display:flex;flex-direction:column;}
+  .final-ui-grid.reverse{direction:ltr;}
+  .final-ui-grid > :last-child{order:-1;}
+  .cs-meta{gap:1.25rem;}
+  .cs-cta{padding:4rem 1.5rem;}
+  .next-case{flex-direction:column;text-align:center;padding:2.5rem 1.5rem;gap:1.25rem;}
+  .next-case-img{width:100%;max-width:280px;height:auto;aspect-ratio:16/10;}
+  .next-case-arrow{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast">✓ Copied to clipboard</div>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
+  <ul class="nav-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+  </ul>
+  <a href="/blog.html" class="nav-mobile-blog" style="font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;display:none;">Blog</a>
+  <div class="nav-right">
+    <span class="nav-li"><a href="https://www.linkedin.com/in/maclandon/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a></span>
+    <span class="nav-li"><a href="https://www.instagram.com/bymaclandon" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a></span>
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+  <button class="menu-text-btn" id="hamburger" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#services">Services</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="about.html">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
+</div>
+
+<main>
+
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="/" class="cs-back reveal">Back to Home</a>
+    <div class="cs-hero-eyebrow reveal">Case Study (Speculative)</div>
+    <h1 class="reveal d1">Little Book Co. — <em>From broken links to a seamless revenue engine.</em></h1>
+    <p class="cs-hero-sub reveal d2">Laura built a product parents loved, generating 798K views on TikTok and earning Etsy Star Seller status. But her digital infrastructure was fragmented and leaking revenue. Here is how I mapped the fix.</p>
+    <div class="cs-meta reveal d3">
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Client</div>
+        <div class="cs-meta-value">Little Book Co.</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Industry</div>
+        <div class="cs-meta-value">E-commerce / Education</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Services</div>
+        <div class="cs-meta-value">Funnel Architecture, System Audit</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Goal</div>
+        <div class="cs-meta-value">Capture Owned Audience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-stats">
+  <div class="cs-stats-inner">
+    <div class="cs-stat">
+      <div class="cs-stat-n"><em>798K</em></div>
+      <div class="cs-stat-l">Top TikTok video views driving traffic</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n"><em>967</em>+</div>
+      <div class="cs-stat-l">Etsy favorites indicating strong demand</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n"><em>0</em>%</div>
+      <div class="cs-stat-l">Owned audience before intervention</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n"><em>3</em></div>
+      <div class="cs-stat-l">Phased architecture roadmap to scale</div>
+    </div>
+  </div>
+</div>
+
+<section class="cs-sec cs-sec-white">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-tag">The Problem</div>
+      <h2>Massive attention. <em>Broken conversion paths.</em></h2>
+    </div>
+    <div class="problem-grid">
+      <div>
+        <p class="cs-body">Little Book Co. had achieved the hardest part of e-commerce: incredible product-market fit. With thousands of personalized, reusable preschool workbooks sold, the demand was undeniable.</p>
+        <p class="cs-body">However, despite viral social traffic, the brand's digital infrastructure was a mess. They were 100% reliant on third-party algorithms (Etsy and Amazon) and owned zero customer data. To make matters worse, the traffic they *did* generate was being sent to broken links and mislabeled lead magnets.</p>
+        <ul class="pain-list">
+          <li>Primary website (littlebookco.org) was dead with zero indexable content.</li>
+          <li>TikTok traffic routed to a broken Shop link in the bio.</li>
+          <li>Amazon listings were under the wrong brand name ("JEFURE"), making them invisible.</li>
+          <li>Valuable Canva lead magnets were incorrectly labeled as real estate flyers.</li>
+        </ul>
+      </div>
+      <div>
+        <div style="aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#f3f3f3;display:flex;align-items:center;justify-content:center;">
+          <span style="color:#aaa;font-family:'DM Sans';font-size:0.9rem;">[Insert placeholder for Little Book Co graphic]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec cs-sec-dark">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-tag light">The Architecture Roadmap</div>
+      <h2>Transitioning from rented platforms to an <em>owned revenue engine.</em></h2>
+    </div>
+    <div class="journey-steps">
+      <div class="journey-step">
+        <div class="journey-step-n">01</div>
+        <div class="journey-step-title">Phase 1: Fixing the Leaks</div>
+        <div class="journey-step-desc">Immediately repairing the broken funnels causing lost sales.</div>
+        <div class="journey-step-old">❌ Before: Broken TikTok links and invisible Amazon listings.</div>
+        <div class="journey-step-new">✓ After: Relabeled lead magnets, cleaned Linktree, and unified Amazon branding.</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-n">02</div>
+        <div class="journey-step-title">Phase 2: Building the Foundation</div>
+        <div class="journey-step-desc">Creating a home base to own the customer relationship.</div>
+        <div class="journey-step-old">❌ Before: 100% reliance on Etsy fees.</div>
+        <div class="journey-step-new">✓ After: Functional direct-checkout storefront and branded email capture.</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-n">03</div>
+        <div class="journey-step-title">Phase 3: Scaling</div>
+        <div class="journey-step-desc">Automating growth through SEO and retention systems.</div>
+        <div class="journey-step-old">❌ Before: Viral peaks followed by sales dips.</div>
+        <div class="journey-step-new">✓ After: Organic search traffic, A+ Amazon content, and post-purchase email flows.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec cs-sec-white">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-tag">The Build</div>
+      <h2>Restoring the funnel. <em>Capturing the demand.</em></h2>
+    </div>
+
+    <div class="final-ui-grid" style="margin-top:3rem;">
+      <div>
+        <div class="solution-tag">01 — Link & Funnel Repair</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.75rem;line-height:1.2;">Stopping the bleed from viral social traffic.</h3>
+        <p class="cs-body">A thorough audit of the brand's Linktree and social bios revealed critical dead-ends. By simply fixing the TikTok Shop link and accurately naming the free Canva lead magnet, we immediately cleared the path for high-intent buyers to convert.</p>
+      </div>
+      <div>
+        <div style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#f3f3f3;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);">
+           <span style="color:#aaa;font-family:'DM Sans';font-size:0.9rem;">[Insert placeholder for Funnel graphic]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="final-ui-grid reverse" style="margin-top:3rem;">
+      <div>
+        <div class="solution-tag">02 — Platform Consolidation</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.75rem;line-height:1.2;">One brand, everywhere.</h3>
+        <p class="cs-body">Customers searching for "Little Book Co" on Amazon were finding nothing because products were listed under a disconnected vendor name. Rebranding the Amazon storefront synchronized the brand's footprint across all major purchasing platforms.</p>
+      </div>
+      <div>
+         <div style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#f3f3f3;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);">
+           <span style="color:#aaa;font-family:'DM Sans';font-size:0.9rem;">[Insert placeholder for Platform graphic]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-cta">
+  <div class="cs-cta-eyebrow reveal">Ready to do this for your business?</div>
+  <h2 class="reveal d1">Your operation could run <em>this smoothly.</em></h2>
+  <p class="reveal d2">Book a free 30-minute call. I'll listen to what's going on and come back with a clear picture of what's possible.</p>
+  <div class="cs-cta-btns reveal d3">
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-cta">Book a free call →</a>
+    <a href="/" class="btn-ghost">See all work</a>
+  </div>
+</section>
+
+<a href="ashley.html" class="next-case">
+  <div class="next-case-img"><img src="ashley-portrait.webp" alt="Download Designs by AND" loading="lazy"></div>
+  <div>
+    <div class="next-case-label">Next Case Study</div>
+    <div class="next-case-title">Download Designs by AND — <em>From zero to profitable Etsy shop.</em></div>
+  </div>
+  <svg class="next-case-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+
+</main>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Landon. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+const hamburgerIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+const closeIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+hamburger.addEventListener('click',()=>{
+  const isOpen=mobileMenu.classList.toggle('open');
+  hamburger.innerHTML=isOpen?closeIcon:hamburgerIcon;
+});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobileMenu.classList.remove('open');
+  hamburger.innerHTML=hamburgerIcon;
+}));
+mobileMenu.addEventListener('click',e=>{
+  if(e.target===mobileMenu){mobileMenu.classList.remove('open');hamburger.innerHTML=hamburgerIcon;}
+});
+
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("on");}),{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
