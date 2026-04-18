@@ -147,7 +147,11 @@ html{scroll-behavior:smooth;}
   .about-stat:nth-last-child(-n+2){border-bottom:none;}
   .story-sec,.philosophy-sec,.approach-sec,.about-cta,.skills-strip{padding:3rem 1.5rem;}
   .story-grid{grid-template-columns:1fr;gap:3rem;}
-  .philosophy-grid,.approach-grid,.skills-grid{grid-template-columns:1fr;}
+  .philosophy-grid,.skills-grid{grid-template-columns:1fr;}
+  .approach-grid{position:relative;display:flex;flex-direction:column;gap:0;}
+  .approach-item{position:relative;padding-left:3.5rem;border-radius:0;border:none;border-left:2px solid var(--border);margin-left:1rem;padding-bottom:2rem;background:none;}
+  .approach-item:last-child{border-left:2px solid transparent;}
+  .approach-n{position:absolute;left:-1.25rem;top:0;width:2.25rem;height:2.25rem;background:var(--white);border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--accent);font-family:"DM Sans",sans-serif;font-style:normal;}
 }
 .about-quote{padding:4rem;background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
 .about-quote-inner{max-width:720px;margin:0 auto;text-align:center;}
