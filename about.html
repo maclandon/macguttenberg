@@ -536,6 +536,35 @@ document.querySelectorAll('a[href^="mailto"]').forEach(a => {
     setTimeout(() => t.classList.remove('show'), 2500);
   });
 });
+// Counter animation
+setTimeout(() => {
+const counters = document.querySelectorAll('.about-stat-n');
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const text = el.innerText;
+      const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+      const prefix = text.includes('$') ? '$' : '';
+      const suffix = text.includes('%') ? '%' : (text.includes('h') ? 'h' : (text.includes('K') ? 'K<sup style="font-size:.5em">+</sup>' : (text.includes('+') ? '+' : '')));
+      let start = 0;
+      const duration = 1200;
+      const step = num / (duration / 16);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= num) {
+          el.innerHTML = `<em>${prefix}${Math.floor(num)}</em>${suffix}`;
+          clearInterval(timer);
+        } else {
+          el.innerHTML = `<em>${prefix}${Math.floor(start)}</em>${suffix}`;
+        }
+      }, 16);
+      countObs.unobserve(el);
+    }
+  });
+}, {threshold: 0.5});
+counters.forEach(el => countObs.observe(el));
+}, 1000);
 </script>
 </body>
 </html>
