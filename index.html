@@ -1257,15 +1257,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-document.querySelectorAll('a[href^="mailto"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    navigator.clipboard.writeText('mac@maclandon.com');
-    const t=document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2500);
-  });
-});
 
 // Nav hide/show on scroll
 let lastScroll=0;
