@@ -141,7 +141,9 @@ html{scroll-behavior:smooth;}
   .cs-sec{padding:3rem 1.5rem;}
   .cs-sec h2{font-size:1.6rem;}
   .problem-grid,.final-ui-grid,.wireframe-grid,.journey-steps,.results-grid{grid-template-columns:1fr;}
+  .final-ui-grid{display:flex;flex-direction:column;}
   .final-ui-grid.reverse{direction:ltr;}
+  .final-ui-grid > :last-child{order:-1;}
   .journey-connector{display:none;}
   .cs-meta{gap:1.25rem;}
   .cs-cta{padding:4rem 1.5rem;}
