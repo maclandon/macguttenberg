@@ -128,6 +128,17 @@ html{scroll-behavior:smooth;}
 .btn-ghost{font-size:.9rem;color:rgba(255,255,255,.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:color .2s;}
 .btn-ghost:hover{color:rgba(255,255,255,.75);}
 
+/* NEXT CASE STUDY */
+.next-case{display:flex;align-items:center;gap:2.5rem;max-width:900px;margin:0 auto;padding:4rem;background:var(--card);border-top:1px solid var(--border);text-decoration:none;transition:background .2s;}
+.next-case:hover{background:var(--bg2);}
+.next-case-label{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem;}
+.next-case-title{font-family:"Fraunces",serif;font-size:clamp(1.2rem,2vw,1.6rem);font-weight:700;color:var(--text);line-height:1.2;}
+.next-case-title em{font-style:italic;color:var(--accent);}
+.next-case-img{width:140px;min-width:140px;height:95px;border-radius:10px;overflow:hidden;flex-shrink:0;}
+.next-case-img img{width:100%;height:100%;object-fit:cover;}
+.next-case-arrow{margin-left:auto;color:var(--text-muted);transition:transform .2s,color .2s;flex-shrink:0;}
+.next-case:hover .next-case-arrow{transform:translateX(4px);color:var(--accent);}
+
 /* MOBILE */
 @media(max-width:900px){
   .cs-hero{padding:5rem 1.5rem 3rem;}
@@ -147,6 +158,9 @@ html{scroll-behavior:smooth;}
   .cs-meta{gap:1.25rem;}
   .cs-cta{padding:4rem 1.5rem;}
   .results-grid{grid-template-columns:1fr 1fr;}
+  .next-case{flex-direction:column;text-align:center;padding:2.5rem 1.5rem;gap:1.25rem;}
+  .next-case-img{width:100%;max-width:280px;height:auto;aspect-ratio:16/10;}
+  .next-case-arrow{display:none;}
 }
 </style>
 </head>
@@ -499,6 +513,16 @@ html{scroll-behavior:smooth;}
     <a href="/" class="btn-ghost">See all work</a>
   </div>
 </section>
+
+<!-- NEXT CASE STUDY -->
+<a href="ashley.html" class="next-case">
+  <div class="next-case-img"><img src="ashley-brand-identity.webp" alt="Download Designs by AND" loading="lazy"></div>
+  <div>
+    <div class="next-case-label">Next Case Study</div>
+    <div class="next-case-title">Download Designs by AND — <em>From zero to profitable Etsy shop.</em></div>
+  </div>
+  <svg class="next-case-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
 
 </main>
 
