@@ -29,7 +29,6 @@ html{overflow-x:hidden;scroll-behavior:smooth;}
 body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;animation:pagefade .6s ease forwards;}
 @keyframes pagefade{from{opacity:0;}to{opacity:1;}}
 
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:999;width:0%;transition:width .1s linear;}
 
 #preloader{position:fixed;inset:0;z-index:9999;background:var(--dark);display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease;}
 #preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
@@ -75,7 +74,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .cs-hero{padding:7rem 4rem 5rem;background:var(--dark);position:relative;overflow:hidden;}
 .cs-hero::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(43,74,107,.2) 0%,transparent 70%);pointer-events:none;}
 .cs-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
-.cs-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.06em;margin-bottom:2rem;transition:color .2s;}
+.cs-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.6);text-decoration:none;letter-spacing:.06em;margin-bottom:2rem;transition:color .2s;}
 .cs-back:hover{color:rgba(255,255,255,.7);}
 .cs-back::before{content:"←";}
 .cs-hero-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
@@ -190,6 +189,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 .btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transform:scale(.8);transition:opacity .3s ease,transform .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.2);border:none;}
 .btt.show{opacity:1;transform:scale(1);}
 .btt:hover{background:var(--dark2);}
+.btt-ring{position:absolute;inset:0;width:100%;height:100%;}
+.btt-arrow{width:16px;height:16px;color:#fff;position:relative;z-index:1;}
 
 @media(max-width:900px){
   nav{padding:0 1.25rem;}
@@ -220,8 +221,6 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 </style>
 </head>
 <body>
-
-<div class="progress-bar" id="progress"></div>
 
 <div id="preloader">
   <svg class="preloader-logo" width="120" height="76" viewBox="0 0 147 93" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -261,6 +260,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
 </div>
 
+<main>
+
 <!-- HERO -->
 <section class="cs-hero">
   <div class="cs-hero-inner">
@@ -293,6 +294,27 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   </div>
 </section>
 
+<!-- STATS BAR -->
+<section class="cs-stats">
+  <div class="cs-stats-inner">
+    <div class="cs-stat">
+      <div class="cs-stat-n">100<em>%</em></div>
+      <div class="cs-stat-l">WCAG AA Accessible<br>on every page</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n">98</div>
+      <div class="cs-stat-l">Google Lighthouse<br>Performance Score</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n">0<em>→</em>1</div>
+      <div class="cs-stat-l">Page 1 Google ranking<br>within 60 days of launch</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n">1<em>day</em></div>
+      <div class="cs-stat-l">Full site designed<br>and launched</div>
+    </div>
+  </div>
+</section>
 
 <!-- THE PROBLEM -->
 <section class="cs-sec cs-sec-white">
@@ -315,7 +337,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
         </ul>
       </div>
       <div class="problem-image-wrap reveal d2">
-        <img src="marissa-portrait.jpg" alt="Marissa Guttenberg, PT DPT">
+        <img src="marissa-portrait.webp" alt="Marissa Guttenberg, PT DPT">
       </div>
     </div>
   </div>
@@ -365,7 +387,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
     <div class="build-grid">
       <div class="build-image reveal d1">
-        <img src="marissa-homepage.jpg" alt="Marissa Joy Wellness homepage" style="width:100%;display:block;">
+        <img src="marissa-homepage.webp" alt="Marissa Joy Wellness homepage" loading="lazy" style="width:100%;display:block;">
       </div>
       <div class="reveal d2">
         <div class="solution-tag">Homepage</div>
@@ -383,7 +405,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
     <div class="build-grid reverse" style="margin-top:3rem;">
       <div class="build-image reveal d1">
-        <img src="marissa-blog.jpg" alt="About and blog sections" style="width:100%;display:block;">
+        <img src="marissa-blog.webp" alt="About and blog sections" loading="lazy" style="width:100%;display:block;">
       </div>
       <div class="reveal d2">
         <div class="solution-tag">About + Blog</div>
@@ -401,7 +423,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
     <div class="build-grid" style="margin-top:3rem;">
       <div class="build-image reveal d1">
-        <img src="marissa-contact.jpg" alt="FAQ and contact form" style="width:100%;display:block;">
+        <img src="marissa-contact.webp" alt="FAQ and contact form" loading="lazy" style="width:100%;display:block;">
       </div>
       <div class="reveal d2">
         <div class="solution-tag">FAQ + Contact</div>
@@ -432,10 +454,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
         <div class="site-preview-dot"></div>
         <div class="site-preview-dot"></div>
         <div class="site-preview-dot"></div>
-        <div class="site-preview-url">marissa-joy-wellness.pages.dev</div>
-        <a href="https://marissa-joy-wellness.pages.dev" target="_blank" rel="noopener" style="font-size:.7rem;color:var(--accent);text-decoration:none;white-space:nowrap;">Visit site →</a>
+        <div class="site-preview-url">marissajoywellness.com</div>
+        <a href="https://marissajoywellness.com" target="_blank" rel="noopener" style="font-size:.7rem;color:var(--accent);text-decoration:none;white-space:nowrap;">Visit site →</a>
       </div>
-      <img src="marissa-homepage.jpg" alt="Marissa Joy Wellness website" style="width:100%;display:block;">
+      <img src="marissa-homepage.webp" alt="Marissa Joy Wellness website" loading="lazy" style="width:100%;display:block;">
     </div>
   </div>
 </section>
@@ -450,7 +472,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <div class="testimonial-block reveal">
       <p class="testi-q">"I went from having no web presence to a site that actually reflects the level of care I put into my work. <em>It feels like me — and now patients can find me.</em>"</p>
       <div class="testi-person">
-        <img src="marissa-portrait.jpg" alt="Marissa" class="testi-avatar">
+        <img src="marissa-portrait.webp" alt="Marissa" class="testi-avatar">
         <div>
           <div class="testi-name">Marissa Guttenberg, PT DPT GCS 200RYT</div>
           <div class="testi-role">Founder, Marissa Joy Wellness · Denver, CO</div>
@@ -469,7 +491,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-cta">Book a free call →</a>
     <a href="/" class="btn-ghost">See all work</a>
   </div>
+  <p class="reveal" style="margin-top:2rem;font-size:.78rem;color:rgba(255,255,255,.25);letter-spacing:.03em;">Currently accepting select independent clients and exploring full-time opportunities with design-forward teams.</p>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -498,32 +523,40 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   </div>
 </footer>
 
-<button class="btt" id="btt" aria-label="Back to top">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
 <script>
-setTimeout(() => {
+window.addEventListener('load', () => {
   document.getElementById('preloader').classList.add('hidden');
-}, 800);
+});
 
 const obs = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) e.target.classList.add('on');
 }), {threshold: .08});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-window.addEventListener('scroll', () => {
-  const s = document.documentElement.scrollTop;
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('progress').style.width = (s / h * 100) + '%';
-});
-
-const btt = document.getElementById('btt');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) btt.classList.add('show');
+// Back to top with scroll ring
+document.body.insertAdjacentHTML('beforeend',`<div class="btt" id="btt">
+  <svg viewBox="0 0 36 36" class="btt-ring">
+    <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="2"/>
+    <circle cx="18" cy="18" r="15" fill="none" stroke="#7fa0c3" stroke-width="2"
+      stroke-dasharray="94.2" stroke-dashoffset="94.2"
+      id="bttCircle" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+  </svg>
+  <svg class="btt-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</div>`);
+const btt=document.getElementById('btt');
+const bttCircle=document.getElementById('bttCircle');
+const circumference=94.2;
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY;
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=scrolled/total;
+  bttCircle.style.strokeDashoffset=circumference-(pct*circumference);
+  if(scrolled>300)btt.classList.add('show');
   else btt.classList.remove('show');
 });
-btt.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 let lastScroll = 0;
 const nav = document.querySelector('nav');
