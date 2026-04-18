@@ -552,7 +552,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 <!-- STAT BAR -->
 <div class="stat-bar">
   <div class="stat-bar-item">
-    <div class="stat-bar-n"><em>$500K<sup style="font-size:.45em">+</sup></em></div>
+    <div class="stat-bar-n"><em>$500</em>K<sup style="font-size:.45em">+</sup></div>
     <div class="stat-bar-l">Client revenue digitized</div>
   </div>
   <div class="stat-bar-item">
@@ -560,7 +560,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
     <div class="stat-bar-l">Profit margin built</div>
   </div>
   <div class="stat-bar-item">
-    <div class="stat-bar-n"><em>24h</em></div>
+    <div class="stat-bar-n"><em>24</em>h</div>
     <div class="stat-bar-l">Fastest system deployment</div>
   </div>
 </div>
@@ -1049,18 +1049,17 @@ const countObs = new IntersectionObserver(entries => {
       const text = el.innerText;
       const num = parseFloat(text.replace(/[^0-9.]/g, ''));
       const prefix = text.includes('$') ? '$' : '';
-      const suffix = text.includes('%') ? '%' : (text.includes('h') ? 'h' : '');
+      const suffix = text.includes('%') ? '%' : (text.includes('h') ? 'h' : (text.includes('K') ? 'K<sup style="font-size:.45em">+</sup>' : ''));
       let start = 0;
       const duration = 1200;
       const step = num / (duration / 16);
       const timer = setInterval(() => {
         start += step;
         if (start >= num) {
-          let finalDisplay = `<em>${prefix}${text.includes('K') ? '500K<sup style="font-size:.45em">+</sup>' : num}</em>${suffix}`;
-          el.innerHTML = finalDisplay;
+          el.innerHTML = `<em>${prefix}${Math.floor(num)}</em>${suffix}`;
           clearInterval(timer);
         } else {
-          el.innerHTML = `<em>${prefix}${Math.floor(start)}${suffix}</em>`;
+          el.innerHTML = `<em>${prefix}${Math.floor(start)}</em>${suffix}`;
         }
       }, 16);
       countObs.unobserve(el);
