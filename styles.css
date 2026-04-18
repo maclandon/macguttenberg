@@ -71,7 +71,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 @keyframes gradtext{0%{background-position:0%;}50%{background-position:100%;}100%{background-position:0%;}}
 
 /* ===== LOGO DRAW ===== */
-.logo-path{stroke:white;stroke-width:2;fill:none;stroke-dasharray:3000;stroke-dashoffset:3000;animation:draw 6s ease forwards;}
+.logo-path{stroke:#E8E4DC;stroke-width:2;fill:none;stroke-dasharray:3000;stroke-dashoffset:3000;animation:draw 6s ease forwards;}
 @keyframes draw{to{stroke-dashoffset:0;}}
 
 
