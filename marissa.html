@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marissa Joy Wellness Case Study — Mac Landon</title>
+<meta name="description" content="How Mac Landon built a complete digital presence for a solo pelvic floor PT — full website, blog, patient trust systems, and booking flow from scratch.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231C1A16'/%3E%3Ctext x='50%25' y='72%25' text-anchor='middle' font-size='14' font-family='Georgia,serif' fill='%23E8E4DC' font-weight='bold'%3EML%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#E8E4DC;
+  --bg2:#DDD9D0;
+  --white:#FAFAF7;
+  --card:#F5F2EC;
+  --border:#D0CAC0;
+  --text:#1C1A16;
+  --text-mid:#48443C;
+  --text-muted:#7A7468;
+  --accent:#7fa0c3;
+  --accent2:#3D6B9A;
+  --dark:#1C1A16;
+  --dark2:#2A2720;
+}
+html{overflow-x:hidden;scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;animation:pagefade .6s ease forwards;}
+@keyframes pagefade{from{opacity:0;}to{opacity:1;}}
+
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:999;width:0%;transition:width .1s linear;}
+
+#preloader{position:fixed;inset:0;z-index:9999;background:var(--dark);display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease;}
+#preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.preloader-logo{opacity:0;transform:scale(1.9);animation:preloaderIn .5s ease .15s forwards;}
+@keyframes preloaderIn{to{opacity:1;transform:scale(1);}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo{display:flex;align-items:center;}
+.nav-logo img{height:26px;width:auto;display:block;opacity:.9;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;position:relative;}
+.nav-links a::after{content:"";position:absolute;bottom:-2px;left:50%;width:0;height:2px;background:var(--accent);transition:width .3s ease,left .3s ease;}
+.nav-links a:hover::after{width:100%;left:0;}
+.nav-links a:hover{color:rgba(255,255,255,.85);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-li a{color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;display:flex;align-items:center;}
+.nav-li a:hover{color:rgba(255,255,255,.8);}
+.nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.25);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);border-color:var(--accent);}
+.menu-text-btn{display:none;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.6);padding:0;line-height:1;}
+.mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(28,26,22,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:99;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.6);text-decoration:none;letter-spacing:.08em;}
+.mobile-menu a:last-child{background:var(--accent);color:#fff;padding:.75rem 2rem;border-radius:6px;}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+.sec-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem;}
+.sec-tag::before{content:"";width:14px;height:1.5px;background:var(--accent);flex-shrink:0;}
+.sec-tag.light{color:#7EACD4;}
+.sec-tag.light::before{background:#7EACD4;}
+.inner{max-width:1100px;margin:0 auto;}
+.btn-dark{display:inline-flex;align-items:center;gap:.4rem;background:var(--dark);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;white-space:nowrap;}
+.btn-dark:hover{background:var(--dark2);gap:.65rem;}
+.btn-accent{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.88rem;font-weight:500;padding:.8rem 1.6rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-accent:hover{background:var(--accent2);gap:.65rem;}
+
+@keyframes gradtext{0%{background-position:0%;}50%{background-position:100%;}100%{background-position:0%;}}
+
+/* HERO */
+.cs-hero{padding:7rem 4rem 5rem;background:var(--dark);position:relative;overflow:hidden;}
+.cs-hero::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(43,74,107,.2) 0%,transparent 70%);pointer-events:none;}
+.cs-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.cs-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.06em;margin-bottom:2rem;transition:color .2s;}
+.cs-back:hover{color:rgba(255,255,255,.7);}
+.cs-back::before{content:"←";}
+.cs-hero-eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.cs-hero-eyebrow::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.cs-hero h1{font-family:"Fraunces",serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem;}
+.cs-hero h1 em{font-style:italic;background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradtext 4s ease-in-out infinite;}
+.cs-hero-sub{font-size:1.05rem;color:rgba(255,255,255,.5);max-width:560px;line-height:1.75;font-weight:300;margin-bottom:2.5rem;}
+.cs-meta{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.08);}
+.cs-meta-label{font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.3rem;}
+.cs-meta-value{font-size:.9rem;color:rgba(255,255,255,.7);font-weight:400;}
+
+/* STAT BAR */
+.cs-stats{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.cs-stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;}
+.cs-stat{text-align:center;padding:1.25rem 1rem;border-right:1px solid rgba(255,255,255,.06);}
+.cs-stat:last-child{border-right:none;}
+.cs-stat-n{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.3rem;}
+.cs-stat-n em{font-style:normal;color:#7EACD4;}
+.cs-stat-l{font-size:.72rem;color:rgba(255,255,255,.35);line-height:1.5;}
+
+/* SECTION BASE */
+.cs-sec{padding:5.5rem 4rem;}
+.cs-sec-dark{background:var(--dark);}
+.cs-sec-white{background:var(--white);}
+.cs-sec-bg{background:var(--bg);}
+.cs-sec-bg2{background:var(--bg2);}
+.cs-sec h2{font-family:"Fraunces",serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:1.5rem;}
+.cs-sec h2 em{font-style:italic;background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradtext 4s ease-in-out infinite;}
+.cs-sec-dark h2{color:#fff;}
+.cs-body{font-size:.97rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1rem;}
+.cs-body strong{color:var(--text);font-weight:500;}
+.cs-body-light{font-size:.97rem;line-height:1.9;color:rgba(255,255,255,.55);font-weight:300;margin-bottom:1rem;}
+.cs-body-light strong{color:#fff;font-weight:500;}
+
+/* PROBLEM */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.problem-image-wrap{border-radius:20px;overflow:hidden;border:1px solid var(--border);aspect-ratio:3/4;}
+.problem-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem;}
+.pain-list li{display:flex;align-items:flex-start;gap:.85rem;font-size:.92rem;color:var(--text-mid);line-height:1.6;font-weight:300;padding:.85rem 1rem;background:var(--card);border-radius:10px;border:1px solid var(--border);}
+.pain-list li::before{content:"✗";color:#c97a7a;font-weight:700;flex-shrink:0;margin-top:.05rem;}
+
+/* JOURNEY STEPS */
+.journey-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem;}
+.journey-step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;transition:background .2s;}
+.journey-step:hover{background:rgba(255,255,255,.07);}
+.journey-step-n{font-family:"Fraunces",serif;font-size:3rem;font-weight:900;font-style:italic;color:rgba(255,255,255,.08);line-height:1;margin-bottom:.85rem;}
+.journey-step-title{font-size:.88rem;font-weight:500;color:#fff;margin-bottom:.5rem;}
+.journey-step-desc{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.75;font-weight:300;}
+.journey-step-old{margin-top:1rem;padding:.75rem 1rem;background:rgba(201,122,122,.08);border:1px solid rgba(201,122,122,.15);border-radius:8px;font-size:.8rem;color:rgba(201,122,122,.8);line-height:1.6;}
+.journey-step-new{margin-top:.5rem;padding:.75rem 1rem;background:rgba(127,160,195,.08);border:1px solid rgba(127,160,195,.2);border-radius:8px;font-size:.8rem;color:#7EACD4;line-height:1.6;}
+
+/* WHAT WAS BUILT */
+.build-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem;}
+.build-grid.reverse{direction:rtl;}
+.build-grid.reverse > *{direction:ltr;}
+.build-image{border-radius:20px;overflow:hidden;border:1px solid var(--border);}
+.build-image img{width:100%;display:block;}
+.solution-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(127,160,195,.12);color:var(--accent);border:1px solid rgba(127,160,195,.2);padding:.2rem .75rem;border-radius:100px;margin-bottom:.85rem;}
+.solution-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:1rem;}
+.solution-list li{display:flex;align-items:flex-start;gap:.65rem;font-size:.88rem;color:var(--text-mid);line-height:1.6;font-weight:300;}
+.solution-list li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:.1rem;}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;}
+.result-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.75rem 1.5rem;text-align:center;transition:background .25s,transform .25s;}
+.result-card:hover{background:rgba(255,255,255,.09);transform:translateY(-3px);}
+.result-n{font-family:"Fraunces",serif;font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.35rem;}
+.result-n em{font-style:normal;color:#7EACD4;}
+.result-l{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5;}
+.testimonial-block{margin-top:3rem;padding:2.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;max-width:720px;}
+.testi-q{font-size:1.05rem;color:rgba(255,255,255,.7);line-height:1.85;font-weight:300;font-style:italic;margin-bottom:1.25rem;}
+.testi-q em{font-style:normal;color:#fff;font-weight:400;}
+.testi-person{display:flex;align-items:center;gap:.85rem;}
+.testi-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.15);}
+.testi-name{font-size:.88rem;font-weight:500;color:#fff;}
+.testi-role{font-size:.75rem;color:rgba(255,255,255,.35);}
+
+/* LIVE SITE PREVIEW */
+.site-preview{margin-top:2.5rem;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.08);}
+.site-preview-bar{background:var(--bg2);padding:.65rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border);}
+.site-preview-dot{width:10px;height:10px;border-radius:50%;background:var(--border);}
+.site-preview-url{flex:1;background:var(--card);border-radius:4px;padding:.3rem .75rem;font-size:.72rem;color:var(--text-muted);border:1px solid var(--border);}
+.site-preview img{width:100%;display:block;}
+
+/* CTA */
+.cs-cta{padding:6rem 4rem;background:var(--dark);text-align:center;position:relative;overflow:hidden;}
+.cs-cta::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(43,74,107,.25) 0%,transparent 70%);pointer-events:none;}
+.cs-cta-eyebrow{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.85rem;}
+.cs-cta h2{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;font-style:italic;color:#fff;line-height:1.05;max-width:600px;margin:0 auto 1rem;letter-spacing:-.02em;position:relative;z-index:1;}
+.cs-cta p{font-size:.97rem;color:rgba(255,255,255,.4);max-width:380px;margin:0 auto 2.25rem;line-height:1.75;font-weight:300;position:relative;z-index:1;}
+.cs-cta-btns{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;position:relative;z-index:1;}
+.btn-cta{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);color:var(--dark);font-size:.9rem;font-weight:500;padding:.85rem 1.8rem;border-radius:6px;text-decoration:none;transition:background .2s,gap .2s;}
+.btn-cta:hover{background:var(--card);gap:.65rem;}
+.btn-ghost{font-size:.9rem;color:rgba(255,255,255,.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.75);}
+
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
+.footer-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:2rem;}
+.footer-logo img{height:22px;width:auto;opacity:.45;}
+.footer-links{display:flex;gap:2rem;list-style:none;}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,.25);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .15s;}
+.footer-links a:hover{color:rgba(255,255,255,.6);}
+.footer-social{display:flex;justify-content:flex-end;gap:1rem;}
+.footer-social a{color:rgba(255,255,255,.25);text-decoration:none;font-size:.8rem;transition:color .15s;display:flex;align-items:center;gap:.3rem;}
+.footer-social a:hover{color:rgba(255,255,255,.6);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.04);}
+.footer-copy{font-size:.7rem;color:rgba(255,255,255,.18);}
+.footer-loc{font-size:.7rem;color:rgba(255,255,255,.18);}
+
+.btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transform:scale(.8);transition:opacity .3s ease,transform .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.2);border:none;}
+.btt.show{opacity:1;transform:scale(1);}
+.btt:hover{background:var(--dark2);}
+
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-links,.nav-li{display:none;}
+  .nav-cta{display:none;}
+  .menu-text-btn{display:block;}
+  .cs-hero{padding:5rem 1.5rem 3rem;}
+  .cs-stats{padding:2rem 1.5rem;}
+  .cs-stats-inner{grid-template-columns:repeat(2,1fr);}
+  .cs-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:.85rem .5rem;}
+  .cs-stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.06);}
+  .cs-stat:nth-last-child(-n+2){border-bottom:none;}
+  .cs-stat-n{font-size:1.8rem;}
+  .cs-sec{padding:3rem 1.5rem;}
+  .cs-sec h2{font-size:1.6rem;}
+  .problem-grid,.build-grid,.journey-steps,.results-grid{grid-template-columns:1fr;}
+  .build-grid.reverse{direction:ltr;}
+  .cs-meta{gap:1.25rem;}
+  .cs-cta{padding:4rem 1.5rem;}
+  footer{padding:2rem 1.5rem;}
+  .footer-top{grid-template-columns:1fr;gap:1.5rem;text-align:center;}
+  .footer-links{justify-content:center;flex-wrap:wrap;gap:1rem;}
+  .footer-social{justify-content:center;}
+  .results-grid{grid-template-columns:1fr 1fr;}
+}
+.logo-path{stroke:#E8E4DC;stroke-width:2;fill:none;stroke-dasharray:3000;stroke-dashoffset:3000;animation:draw 6s ease forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div id="preloader">
+  <svg class="preloader-logo" width="120" height="76" viewBox="0 0 147 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M108.66 81.268C107.593 80.884 106.825 80.3933 106.356 79.796C105.929 79.156 105.673 78.068 105.588 76.532L101.172 14.708C101.087 13.0867 101.3 11.892 101.812 11.124C102.324 10.356 103.199 9.75867 104.436 9.332L107.38 8.436C108.319 8.00934 109.023 7.476 109.492 6.836C109.961 6.15334 110.196 5.3 110.196 4.276C110.196 3.124 109.833 2.20667 109.108 1.524C108.383 0.841334 107.252 0.5 105.716 0.5H84.468C82.164 0.5 80.372 1.03333 79.092 2.1C77.812 3.124 76.6387 5.08667 75.572 7.988L58.5283 54.6V54.1L40.884 7.668C39.86 4.98 38.708 3.124 37.428 2.1C36.148 1.03333 34.3987 0.5 32.18 0.5H10.868C7.83867 0.5 6.324 1.78 6.324 4.34C6.324 5.364 6.55867 6.196 7.028 6.836C7.54 7.476 8.308 8.00934 9.332 8.436L12.212 9.332C13.5347 9.80134 14.4307 10.5693 14.9 11.636C15.3693 12.7027 15.5187 14.3027 15.348 16.436L10.74 74.612C10.5693 76.4893 10.036 77.94 9.14 78.964C8.244 79.988 7.11333 80.756 5.748 81.268L3.7 82.036C2.71867 82.5053 1.92933 83.06 1.332 83.7C0.777333 84.2973 0.5 85.172 0.5 86.324C0.5 87.476 0.862667 88.3933 1.588 89.076C2.31333 89.7587 3.444 90.1 4.98 90.1H24.5C26.036 90.1 27.1453 89.7587 27.828 89.076C28.5533 88.3507 28.916 87.3693 28.916 86.132C28.916 85.2787 28.724 84.5747 28.34 84.02C27.9987 83.4227 27.4867 82.9533 26.804 82.612L24.244 81.588C22.5373 80.82 21.2147 79.924 20.276 78.9C19.38 77.8333 18.996 76.404 19.124 74.612L22.836 25.6L44.148 79.86C44.9587 81.908 45.7267 83.4227 46.452 84.404C47.1773 85.3427 47.9453 85.9613 48.756 86.26C49.5667 86.5587 50.4627 86.708 51.444 86.708C52.8093 86.708 53.9827 86.3027 54.964 85.492C55.9453 84.6813 56.9267 82.9107 57.908 80.18L77.9226 24.1L81.908 76.532C81.9933 77.9827 81.78 79.028 81.268 79.668C80.7987 80.308 79.9667 80.8413 78.772 81.268L75.828 82.164C74.804 82.6333 74.0573 83.2093 73.588 83.892C73.1187 84.532 72.884 85.3427 72.884 86.324C72.884 87.476 73.2467 88.3933 73.972 89.076C74.74 89.7587 75.892 90.1 77.428 90.1" class="logo-path" fill="none"/>
+    <path class="logo-path" d="M108.336 81.1C108.336 81.1 110.336 82.1 110.836 82.1L118.588 82.1C120.764 82.1 122.705 81.7587 124.412 81.076C126.119 80.3933 127.719 79.22 129.212 77.556C130.705 75.892 132.177 73.5453 133.628 70.516L137.724 61.876C138.364 60.5533 139.111 59.6787 139.964 59.252C140.817 58.8253 141.799 58.74 142.908 58.996C144.103 59.2947 144.956 59.9133 145.468 60.852C145.98 61.748 146.023 62.9427 145.596 64.436L140.284 86.452C139.729 88.5 139.047 89.972 138.236 90.868C137.425 91.764 136.209 92.212 134.588 92.212C133.649 92.212 132.689 92.0413 131.708 91.7C130.727 91.3587 129.639 90.996 128.444 90.612C127.249 90.2707 125.799 90.1 124.092 90.1H77.244C75.7507 90.1 74.62 89.7587 73.852 89.076C73.1267 88.3933 72.764 87.476 72.764 86.324C72.764 84.404 73.724 83.0173 75.644 82.164L78.716 81.268" fill="none"/>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></a>
+  <ul class="nav-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-li"><a href="https://www.linkedin.com/in/maclandon/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a></span>
+    <span class="nav-li"><a href="https://www.instagram.com/macguttenberg" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a></span>
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+  <button class="menu-text-btn" id="hamburger" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#services">Services</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/#about">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="cs-hero-inner">
+    <a href="/" class="cs-back reveal">Back to Home</a>
+    <div class="cs-hero-eyebrow reveal">Case Study</div>
+    <h1 class="reveal d1">Marissa Joy Wellness — <em>A complete digital presence</em> for a solo PT launching her practice.</h1>
+    <p class="cs-hero-sub reveal d2">A licensed pelvic floor physical therapist with real clinical expertise and a growing patient base — but no website, no online presence, and no way for new patients to find or trust her. Here's what we built.</p>
+    <div class="cs-meta reveal d3">
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Client</div>
+        <div class="cs-meta-value">Marissa Joy Wellness</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Industry</div>
+        <div class="cs-meta-value">Healthcare / Private PT Practice</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Location</div>
+        <div class="cs-meta-value">Denver, Colorado</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Services</div>
+        <div class="cs-meta-value">Website, Copywriting, Blog, Lead Capture</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Result</div>
+        <div class="cs-meta-value">Launched from zero</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="cs-stats">
+  <div class="cs-stats-inner">
+    <div class="cs-stat reveal">
+      <div class="cs-stat-n"><em>6</em></div>
+      <div class="cs-stat-l">Full pages built from scratch</div>
+    </div>
+    <div class="cs-stat reveal d1">
+      <div class="cs-stat-n"><em>3</em></div>
+      <div class="cs-stat-l">Blog posts written & published</div>
+    </div>
+    <div class="cs-stat reveal d2">
+      <div class="cs-stat-n"><em>0 → 1</em></div>
+      <div class="cs-stat-l">Web presence: none to complete</div>
+    </div>
+    <div class="cs-stat reveal d3">
+      <div class="cs-stat-n"><em>PT</em> DPT</div>
+      <div class="cs-stat-l">Credentials surfaced prominently</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE PROBLEM -->
+<section class="cs-sec cs-sec-white">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-tag">The Problem</div>
+      <h2>World-class credentials. <em>No one could find her.</em></h2>
+    </div>
+    <div class="problem-grid">
+      <div class="reveal d1">
+        <p class="cs-body">Marissa is a Doctor of Physical Therapy with a specialty in pelvic floor health — a niche with high demand and low competition in Denver. She had clinical training from NYU, 200-hour yoga certification from Bali, and a growing patient base built entirely on word of mouth. But without a website, she was invisible to anyone searching for pelvic floor PT.</p>
+        <p class="cs-body">In healthcare, credibility is everything. A patient dealing with something as personal as pelvic pain, postpartum recovery, or incontinence needs to trust their provider before they ever pick up the phone. Without a professional online presence, there was no way for Marissa to establish that trust before the first appointment.</p>
+        <ul class="pain-list">
+          <li>No website — completely absent from Google searches</li>
+          <li>No way for prospective patients to vet her credentials</li>
+          <li>No explanation of her services or what to expect</li>
+          <li>No contact or booking mechanism beyond a phone number</li>
+          <li>No content to educate patients or build organic traffic</li>
+          <li>No patient testimonials surfaced anywhere online</li>
+        </ul>
+      </div>
+      <div class="problem-image-wrap reveal d2">
+        <img src="marissa-portrait.jpg" alt="Marissa Guttenberg, PT DPT">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WAS NEEDED -->
+<section class="cs-sec cs-sec-dark">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-tag light">The Build Plan</div>
+      <h2>Not just a website. <em>A full patient acquisition system.</em></h2>
+      <p class="cs-body-light" style="max-width:580px;margin-bottom:0;">Before writing a line of code, I mapped every touchpoint between a potential patient discovering Marissa and booking an appointment. Each gap was a build requirement.</p>
+    </div>
+    <div class="journey-steps">
+      <div class="journey-step reveal d1">
+        <div class="journey-step-n">01</div>
+        <div class="journey-step-title">Discovery & Trust</div>
+        <div class="journey-step-desc">How does a new patient find Marissa and decide she's the right provider?</div>
+        <div class="journey-step-old">❌ Before: No web presence. No Google footprint. No way to be found.</div>
+        <div class="journey-step-new">✓ After: SEO-optimized site, credential display, patient testimonials, full bio.</div>
+      </div>
+      <div class="journey-step reveal d2">
+        <div class="journey-step-n">02</div>
+        <div class="journey-step-title">Education & Warmth</div>
+        <div class="journey-step-desc">Pelvic floor PT is misunderstood. Patients need to feel safe before they reach out.</div>
+        <div class="journey-step-old">❌ Before: No content explaining her approach, services, or what therapy looks like.</div>
+        <div class="journey-step-new">✓ After: Services page, FAQ, "What I treat" section, and 3 published blog posts.</div>
+      </div>
+      <div class="journey-step reveal d3">
+        <div class="journey-step-n">03</div>
+        <div class="journey-step-title">Contact & Conversion</div>
+        <div class="journey-step-desc">Interested patients need a frictionless path to reach out and book.</div>
+        <div class="journey-step-old">❌ Before: No contact form, no structured booking, no clear call to action.</div>
+        <div class="journey-step-new">✓ After: Intake form with topic dropdown, email, social links, clear CTAs site-wide.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WAS BUILT -->
+<section class="cs-sec cs-sec-bg">
+  <div class="inner">
+    <div class="reveal" style="margin-bottom:3.5rem;">
+      <div class="sec-tag">What Was Built</div>
+      <h2>Every page. Every word. <em>Built to convert.</em></h2>
+    </div>
+
+    <div class="build-grid">
+      <div class="build-image reveal d1">
+        <img src="marissa-homepage.jpg" alt="Marissa Joy Wellness homepage" style="width:100%;display:block;">
+      </div>
+      <div class="reveal d2">
+        <div class="solution-tag">Homepage</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem;color:var(--text);">Full-bleed hero that earns trust in 3 seconds.</h3>
+        <p class="cs-body">The homepage leads with a professional portrait in a garden setting — warm, approachable, human. The copy beneath it does one job: tell a patient with pelvic pain that they've found the right person. A dual CTA ("Work with me" / "Learn more") routes visitors based on how ready they are.</p>
+        <ul class="solution-list">
+          <li>Full-bleed hero image with location + specialty callout</li>
+          <li>4-service grid (PT, yoga therapy, consultations, ongoing support)</li>
+          <li>"What I treat" condition list with soft CTA</li>
+          <li>Brand quote section establishing tone and philosophy</li>
+          <li>Patient testimonials from 3 real patients</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="build-grid reverse" style="margin-top:3rem;">
+      <div class="build-image reveal d1">
+        <img src="marissa-blog.jpg" alt="About and blog sections" style="width:100%;display:block;">
+      </div>
+      <div class="reveal d2">
+        <div class="solution-tag">About + Blog</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem;color:var(--text);">Credentials that build confidence. Content that builds traffic.</h3>
+        <p class="cs-body">The About section surfaces Marissa's full clinical pedigree — Cornell undergrad, NYU Doctorate, GCS specialty, 200-hour yoga certification — alongside her story. Patients in this niche want to know their provider is serious. The blog supplements with three SEO-ready educational posts targeting high-intent search terms in pelvic health.</p>
+        <ul class="solution-list">
+          <li>Full bio with Cornell + NYU credentials surfaced</li>
+          <li>Credential tag pills (PT, DPT, GCS, 200RYT, Denver CO)</li>
+          <li>3 published blog posts: pelvic PT explainer, breathwork, postpartum</li>
+          <li>Categorized (Pelvic Health, Yoga Therapy, Postpartum)</li>
+          <li>Read time displayed — signals depth and expertise</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="build-grid" style="margin-top:3rem;">
+      <div class="build-image reveal d1">
+        <img src="marissa-contact.jpg" alt="FAQ and contact form" style="width:100%;display:block;">
+      </div>
+      <div class="reveal d2">
+        <div class="solution-tag">FAQ + Contact</div>
+        <h3 style="font-family:'Fraunces",serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem;color:var(--text);">Answering objections before they're asked.</h3>
+        <p class="cs-body">Pelvic floor PT carries stigma and confusion — many patients don't know if they need a referral, what to expect, or whether internal exams are required. The FAQ section addresses every hesitation head-on, reducing friction before a patient ever reaches out. The contact form routes inquiries by topic, making follow-up easier for Marissa.</p>
+        <ul class="solution-list">
+          <li>5 FAQ items covering the most common patient hesitations</li>
+          <li>Accordion interaction — clean, not overwhelming</li>
+          <li>Contact form with name, email, topic dropdown, message</li>
+          <li>Email + location + social links in footer</li>
+          <li>Instagram and LinkedIn linked throughout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE SITE -->
+<section class="cs-sec cs-sec-bg2">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-tag">The Result</div>
+      <h2>A website that works as hard <em>as she does.</em></h2>
+      <p class="cs-body" style="max-width:580px;">From zero web presence to a fully realized digital practice — a site that ranks for pelvic floor PT in Denver, converts visitors into inquiries, and communicates Marissa's clinical excellence before a patient ever steps into the room.</p>
+    </div>
+    <div class="site-preview reveal d1">
+      <div class="site-preview-bar">
+        <div class="site-preview-dot"></div>
+        <div class="site-preview-dot"></div>
+        <div class="site-preview-dot"></div>
+        <div class="site-preview-url">marissa-joy-wellness.pages.dev</div>
+        <a href="https://marissa-joy-wellness.pages.dev" target="_blank" rel="noopener" style="font-size:.7rem;color:var(--accent);text-decoration:none;white-space:nowrap;">Visit site →</a>
+      </div>
+      <img src="marissa-homepage.jpg" alt="Marissa Joy Wellness website" style="width:100%;display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="cs-sec cs-sec-dark">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-tag light">Deliverables</div>
+      <h2>Zero to live. <em>Everything built from scratch.</em></h2>
+      <p class="cs-body-light" style="max-width:520px;margin-bottom:0;">Every page, every word, every interaction — built specifically for a solo healthcare practitioner launching a private practice.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card reveal d1">
+        <div class="result-n"><em>6</em></div>
+        <div class="result-l">Pages: Home, Services, About, Blog, FAQ, Contact</div>
+      </div>
+      <div class="result-card reveal d2">
+        <div class="result-n"><em>3</em></div>
+        <div class="result-l">Blog posts written targeting pelvic health searches</div>
+      </div>
+      <div class="result-card reveal d3">
+        <div class="result-n"><em>5</em></div>
+        <div class="result-l">FAQ items reducing patient friction pre-inquiry</div>
+      </div>
+      <div class="result-card reveal d1">
+        <div class="result-n"><em>100<em style="font-size:1.6rem">%</em></div>
+        <div class="result-l">Copywritten — every word tailored to this practice</div>
+      </div>
+    </div>
+    <div class="testimonial-block reveal">
+      <p class="testi-q">"I went from having no web presence to a site that actually reflects the level of care I put into my work. <em>It feels like me — and now patients can find me.</em>"</p>
+      <div class="testi-person">
+        <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.4);font-weight:500;">MG</div>
+        <div>
+          <div class="testi-name">Marissa Guttenberg, PT DPT GCS 200RYT</div>
+          <div class="testi-role">Founder, Marissa Joy Wellness · Denver, CO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cs-cta">
+  <div class="cs-cta-eyebrow reveal">Ready to do this for your business?</div>
+  <h2 class="reveal d1">Your practice deserves a presence that <em>matches your work.</em></h2>
+  <p class="reveal d2">Book a free 30-minute call. I'll assess what you have, what's missing, and what's possible.</p>
+  <div class="cs-cta-btns reveal d3">
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-cta">Book a free call →</a>
+    <a href="/" class="btn-ghost">See all work</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></div>
+    <ul class="footer-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/maclandon/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.instagram.com/macguttenberg" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Landon. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+setTimeout(() => {
+  document.getElementById('preloader').classList.add('hidden');
+}, 800);
+
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('on');
+}), {threshold: .08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+window.addEventListener('scroll', () => {
+  const s = document.documentElement.scrollTop;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progress').style.width = (s / h * 100) + '%';
+});
+
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) btt.classList.add('show');
+  else btt.classList.remove('show');
+});
+btt.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  const current = window.scrollY;
+  if (current > lastScroll && current > 100) {
+    nav.style.transform = 'translateY(-100%)';
+    nav.style.transition = 'transform .3s ease';
+  } else {
+    nav.style.transform = 'translateY(0)';
+  }
+  lastScroll = current;
+});
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const hamburgerIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+const closeIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.innerHTML = isOpen ? closeIcon : hamburgerIcon;
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('open');
+  hamburger.innerHTML = hamburgerIcon;
+}));
+</script>
+</body>
+</html>
