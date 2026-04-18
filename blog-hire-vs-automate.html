@@ -17,3 +17,179 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=1.0">
 <style>
+.article-hero{padding:7rem 4rem 4rem;background:var(--dark);}
+.article-hero-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;margin-bottom:2rem;transition:color .2s;}
+.back-link:hover{color:rgba(255,255,255,.7);}
+.back-link::before{content:"←";}
+.article-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.article-tag::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.article-hero h1{font-family:"Fraunces",serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.5rem;}
+.article-hero h1 em{font-style:italic;color:#7EACD4;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;font-size:.78rem;color:rgba(255,255,255,.35);}
+.article-body{padding:4rem;background:var(--bg);}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.article-content p{font-size:1.02rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;}
+.article-content p strong{color:var(--text);font-weight:500;}
+.article-content .lead{font-size:1.12rem;line-height:1.85;color:var(--text-mid);font-weight:400;margin-bottom:2rem;padding-left:1.25rem;border-left:2px solid var(--accent);}
+.article-content h2{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:var(--text);margin:2.5rem 0 1rem;line-height:1.2;}
+.article-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.signal-block{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;margin:2rem 0;}
+.signal-block:hover{border-color:rgba(43,74,107,.25);}
+.signal-type{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .75rem;border-radius:100px;margin-bottom:.75rem;}
+.signal-type.automate{background:rgba(127,160,195,.12);color:var(--accent2);}
+.signal-type.hire{background:rgba(72,68,60,.08);color:var(--text-muted);}
+.signal-title{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:.75rem;line-height:1.3;}
+.signal-body{font-size:.95rem;line-height:1.8;color:var(--text-muted);font-weight:300;}
+.signal-body strong{color:var(--text-mid);font-weight:500;}
+.decision-box{background:var(--dark);border-radius:18px;padding:2rem 2.25rem;margin:2.5rem 0;}
+.decision-box h3{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:1.25rem;}
+.decision-q{font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.6;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:1rem;align-items:flex-start;}
+.decision-q:last-child{border-bottom:none;}
+.decision-q-arrow{color:var(--accent);flex-shrink:0;font-size:.8rem;margin-top:3px;}
+.article-cta{background:var(--dark);border-radius:20px;padding:2.75rem;margin-top:3rem;text-align:center;}
+.article-cta h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.3;}
+.article-cta h3 em{font-style:italic;color:#7EACD4;}
+.article-cta p{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem;font-weight:300;}
+.btn-ghost{display:inline-flex;align-items:center;font-size:.85rem;color:rgba(255,255,255,.35);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:1px;margin-left:1.25rem;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.65);}
+@media(max-width:900px){.article-hero,.article-body{padding:5rem 1.5rem 3rem;}}
+</style>
+<link rel="canonical" href="https://maclandon.com/blog-hire-vs-automate.html">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1C1A16">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mac Landon">
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog.html" style="color:rgba(255,255,255,.85);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/blog.html" class="back-link">Back to Blog</a>
+    <div class="article-tag">Business Operations</div>
+    <h1>How to Know If You're Ready to <em>Hire</em> vs. Ready to <em>Automate</em></h1>
+    <div class="article-meta">
+      <span>Mac Landon</span>
+      <span>April 2026</span>
+      <span>6 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-body-inner">
+    <img src="blog-hire-vs-automate.jpg" alt="" style="width:100%;border-radius:12px;margin-bottom:2.5rem;max-height:420px;object-fit:cover;">
+    <div class="article-content">
+
+      <p class="lead">At some point, every growing small business hits a wall. You're busy, you're overwhelmed, and you know something has to change. The instinct for most business owners is to hire — bring in another person to help carry the load. Sometimes that's the right call. Often it isn't.</p>
+
+      <p>Before you hire, there's a question worth asking honestly: is the work that's overwhelming you something a person needs to do, or something a system could handle? The answer determines whether you need payroll or a Zapier account.</p>
+
+      <hr class="article-divider">
+
+      <h2>Signs you should automate first</h2>
+
+      <div class="signal-block">
+        <div class="signal-type automate">Automate</div>
+        <div class="signal-title">You're doing the same tasks repeatedly, in the same order</div>
+        <div class="signal-body">
+          <p>Scheduling confirmations. Payment reminders. Welcome emails. Follow-ups after a consultation. If you find yourself doing the same sequence of actions for every new client, that sequence is a workflow — and workflows can be automated. The work doesn't require your judgment; it requires your time. Automation gives you the time back without giving up control.</p>
+        </div>
+      </div>
+
+      <div class="signal-block">
+        <div class="signal-type automate">Automate</div>
+        <div class="signal-title">The tasks are administrative, not creative or relational</div>
+        <div class="signal-body">
+          <p>There's a meaningful difference between tasks that require your specific judgment or relationship, and tasks that are purely logistical. Deciding how to handle a difficult client situation — that requires you. Sending that client a reminder that their invoice is due in 3 days — that doesn't. If the work you're drowning in is mostly logistical, hire after you've automated, not before.</p>
+        </div>
+      </div>
+
+      <div class="signal-block">
+        <div class="signal-type automate">Automate</div>
+        <div class="signal-title">You don't have documented processes yet</div>
+        <div class="signal-body">
+          <p>Hiring before you've documented how you do things is one of the most common and expensive mistakes I see small business owners make. If you can't write down the steps for how something gets done, you can't train someone else to do it. And if you can write it down clearly enough to train someone — you can probably automate it instead.</p>
+          <p>The discipline of building automations forces you to document your processes. Do that work first. You'll either end up with automations that handle it, or processes clear enough to actually delegate.</p>
+        </div>
+      </div>
+
+      <hr class="article-divider">
+
+      <h2>Signs you should actually hire</h2>
+
+      <div class="signal-block">
+        <div class="signal-type hire">Hire</div>
+        <div class="signal-title">The work requires human judgment or relationships</div>
+        <div class="signal-body">
+          <p>Some work genuinely can't be automated. Client strategy, complex problem solving, sales conversations, creative work — these require a thinking human being. If the capacity you're missing is the ability to think through problems, have nuanced conversations, or make judgment calls, you need a person. No automation replaces that.</p>
+        </div>
+      </div>
+
+      <div class="signal-block">
+        <div class="signal-type hire">Hire</div>
+        <div class="signal-title">You've already automated everything automatable and still can't keep up</div>
+        <div class="signal-body">
+          <p>If you've genuinely removed all the repetitive, automatable work from your plate — your scheduling runs itself, your invoicing is automatic, your onboarding is digital — and you're still overwhelmed, that's a capacity problem. You have more real work than one person can do. That's when hiring makes sense, because you're not hiring someone to do busywork; you're hiring someone to do actual work.</p>
+        </div>
+      </div>
+
+      <div class="signal-block">
+        <div class="signal-type hire">Hire</div>
+        <div class="signal-title">You're turning away revenue because of bandwidth</div>
+        <div class="signal-body">
+          <p>If you're regularly saying no to new clients or projects because you physically don't have the time — and the work is real, revenue-generating work that requires human effort — then you've outgrown solo operations. The math is simple: if a hire costs you $2,000/month and enables $5,000/month in additional revenue, that's a clear decision. But only make it once you're sure the bottleneck is capacity, not systems.</p>
+        </div>
+      </div>
+
+      <hr class="article-divider">
+
+      <h2>The decision framework</h2>
+
+      <div class="decision-box">
+        <h3>Ask these questions before you hire</h3>
+        <div class="decision-q"><div class="decision-q-arrow">→</div><div>Is this task the same every time, or does it require judgment? If it's the same → automate.</div></div>
+        <div class="decision-q"><div class="decision-q-arrow">→</div><div>Could I write down the exact steps in under 30 minutes? If yes → build a workflow or automation first.</div></div>
+        <div class="decision-q"><div class="decision-q-arrow">→</div><div>Have I already eliminated all the repetitive work from my plate? If no → automate before hiring.</div></div>
+        <div class="decision-q"><div class="decision-q-arrow">→</div><div>Would hiring solve a capacity problem or a systems problem? Systems problems need systems, not people.</div></div>
+        <div class="decision-q"><div class="decision-q-arrow">→</div><div>Can I clearly describe the role and the outcomes I expect? If not → you're not ready to hire.</div></div>
+      </div>
+
+      <p>The businesses that scale well are the ones that automate ruthlessly before they hire. They bring people in to do work that genuinely requires people — and they use systems to handle everything else. The businesses that struggle are the ones that hire to compensate for bad systems, end up with expensive overhead and the same underlying problems, and wonder why adding headcount didn't help.</p>
+
+      <p>Get your systems right first. You might be surprised how much more capacity you have once the automated work stops landing in your inbox.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Not sure what's <em>automatable</em> in your business?</h3>
+      <p>Book a free 30-minute call. I'll walk through your current workflows, tell you what I'd automate and in what order, and give you a clear picture of what's possible before you consider hiring.</p>
+      <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-accent">Book a free call →</a>
+      <a href="/audit.html" class="btn-ghost">Or take the free audit</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Landon. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+</body>
+</html>

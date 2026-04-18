@@ -17,3 +17,187 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=1.0">
 <style>
+.article-hero{padding:7rem 4rem 4rem;background:var(--dark);}
+.article-hero-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;margin-bottom:2rem;transition:color .2s;}
+.back-link:hover{color:rgba(255,255,255,.7);}
+.back-link::before{content:"←";}
+.article-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.article-tag::before{content:"";width:14px;height:1.5px;background:#7EACD4;}
+.article-hero h1{font-family:"Fraunces",serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:1.5rem;}
+.article-hero h1 em{font-style:italic;color:#7EACD4;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;font-size:.78rem;color:rgba(255,255,255,.35);}
+.article-body{padding:4rem;background:var(--bg);}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.article-content p{font-size:1.02rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;}
+.article-content p strong{color:var(--text);font-weight:500;}
+.article-content .lead{font-size:1.12rem;line-height:1.85;color:var(--text-mid);font-weight:400;margin-bottom:2rem;padding-left:1.25rem;border-left:2px solid var(--accent);}
+.article-content h2{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:var(--text);margin:2.5rem 0 1rem;line-height:1.2;}
+.article-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+.tool-row{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;margin:1.25rem 0;display:flex;gap:1.5rem;align-items:flex-start;}
+.tool-row:hover{border-color:rgba(43,74,107,.25);}
+.tool-row-left{min-width:140px;}
+.tool-row-name{font-family:"Fraunces",serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
+.tool-row-price{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#4CAF7D;}
+.tool-row-body{font-size:.9rem;line-height:1.7;color:var(--text-muted);font-weight:300;}
+.tool-row-body strong{color:var(--text-mid);font-weight:500;}
+.total-box{background:var(--dark);border-radius:14px;padding:1.75rem;margin:2.5rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.total-label{font-size:.9rem;color:rgba(255,255,255,.5);}
+.total-value{font-family:"Fraunces",serif;font-size:2.5rem;font-weight:700;color:#4CAF7D;}
+.article-cta{background:var(--dark);border-radius:20px;padding:2.75rem;margin-top:3rem;text-align:center;}
+.article-cta h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.3;}
+.article-cta h3 em{font-style:italic;color:#7EACD4;}
+.article-cta p{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem;font-weight:300;}
+.btn-ghost{display:inline-flex;align-items:center;font-size:.85rem;color:rgba(255,255,255,.35);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:1px;margin-left:1.25rem;transition:color .2s;}
+.btn-ghost:hover{color:rgba(255,255,255,.65);}
+@media(max-width:900px){.article-hero,.article-body{padding:5rem 1.5rem 3rem;}.tool-row{flex-direction:column;gap:.75rem;}.tool-row-left{min-width:unset;}}
+</style>
+<link rel="canonical" href="https://maclandon.com/blog-free-stack.html">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1C1A16">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mac Landon">
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/blog.html" style="color:rgba(255,255,255,.85);">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <a href="/blog.html" class="back-link">Back to Blog</a>
+    <div class="article-tag">Tools & Software</div>
+    <h1>The <em>$0 Tech Stack</em> That Can Run a Small Service Business</h1>
+    <div class="article-meta">
+      <span>Mac Landon</span>
+      <span>April 2026</span>
+      <span>5 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="article-body-inner">
+    <img src="blog-free-stack.jpg" alt="" style="width:100%;border-radius:12px;margin-bottom:2.5rem;max-height:420px;object-fit:cover;">
+    <div class="article-content">
+
+      <p class="lead">One of the most common things I hear from small business owners is that they can't afford to invest in better systems. I understand the hesitation — software costs add up fast. But for most service businesses just getting started or trying to clean up their operations, you can build a fully functional digital infrastructure for exactly $0/month.</p>
+
+      <p>Here's the complete stack. Every tool on this list has a genuinely useful free plan — not a crippled trial, but a real free tier you can run a business on.</p>
+
+      <hr class="article-divider">
+
+      <h2>The stack</h2>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">Carrd</div>
+          <div class="tool-row-price">Free</div>
+        </div>
+        <div class="tool-row-body"><strong>Website.</strong> One-page websites that look professional and take about an hour to set up. For a service business that needs a simple online presence — what you do, who you help, how to reach you — Carrd is all you need to start. The free plan lets you publish one site at carrd.co/yourdomain. Upgrade to pro ($9/year) when you want a custom domain.</div>
+      </div>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">Calendly</div>
+          <div class="tool-row-price">Free</div>
+        </div>
+        <div class="tool-row-body"><strong>Scheduling.</strong> One event type, unlimited bookings, automatic calendar sync and confirmation emails. For most service businesses, that's everything. Share your link in your email signature, on your website, and on social. Clients book themselves. You stop managing schedules manually.</div>
+      </div>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">Google Forms</div>
+          <div class="tool-row-price">Free</div>
+        </div>
+        <div class="tool-row-body"><strong>Client intake.</strong> Not pretty, but it works. Build a form that collects everything you need before the first meeting — name, business type, what they're looking for, how they found you. Responses go straight to a Google Sheet. You can upgrade to Typeform later when aesthetics matter more.</div>
+      </div>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">Wave</div>
+          <div class="tool-row-price">Free</div>
+        </div>
+        <div class="tool-row-body"><strong>Invoicing & payments.</strong> Free invoicing software with built-in payment processing. Send professional invoices by email, clients pay by card online, money hits your bank account. Wave takes a standard processing fee per transaction but the software itself is free. Also includes basic bookkeeping and expense tracking.</div>
+      </div>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">Google Drive</div>
+          <div class="tool-row-price">Free</div>
+        </div>
+        <div class="tool-row-body"><strong>Document management.</strong> 15GB free, accessible from anywhere, shareable with clients in one click. Create a folder for each client. Store contracts, deliverables, notes, and any files you exchange. Clients can upload documents directly to a shared folder instead of emailing attachments.</div>
+      </div>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">Notion</div>
+          <div class="tool-row-price">Free</div>
+        </div>
+        <div class="tool-row-body"><strong>Operations & notes.</strong> Free for personal use with unlimited pages. Use it to document your processes, track ongoing projects, and keep notes from client calls. The free plan is enough for a solo operator — upgrade to the paid plan when you add team members.</div>
+      </div>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">Mailchimp</div>
+          <div class="tool-row-price">Free (up to 500)</div>
+        </div>
+        <div class="tool-row-body"><strong>Email marketing.</strong> Up to 500 contacts and 1,000 sends/month free. Enough to build your list, send a monthly newsletter, and set up a welcome automation for new subscribers. When you hit 500 contacts you're probably generating enough revenue to justify the paid plan.</div>
+      </div>
+
+      <div class="tool-row">
+        <div class="tool-row-left">
+          <div class="tool-row-name">DocuSign</div>
+          <div class="tool-row-price">Free (3/mo)</div>
+        </div>
+        <div class="tool-row-body"><strong>Contracts & e-signatures.</strong> Free plan allows 3 documents per month for signing. For a small service business with a handful of new clients per month, that's usually enough to start. Clients sign contracts from their phone without printing anything.</div>
+      </div>
+
+      <hr class="article-divider">
+
+      <div class="total-box">
+        <div class="total-label">Total monthly cost for this entire stack</div>
+        <div class="total-value">$0/month</div>
+      </div>
+
+      <h2>When to start paying</h2>
+
+      <p>The free versions of these tools have real limits. You'll hit them eventually — and that's fine. When you do, it usually means your business has grown enough to justify the upgrade. The general rule I give clients: <strong>pay for a tool when the free plan is actively limiting your revenue, not before.</strong></p>
+
+      <p>The first paid upgrade I'd recommend for most businesses is a custom domain — usually $10-15/year — so your website and email look professional. After that, Calendly's paid plan ($16/month) is worth it once you need multiple meeting types or want intake questions before bookings.</p>
+
+      <p>Everything else can stay free until you're genuinely constrained by the limits.</p>
+
+      <p>The point isn't to stay on free plans forever. It's to prove your model first, generate revenue, and then invest in better tools once you know exactly what you need and why.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Want help setting up <em>the right stack</em> for your business?</h3>
+      <p>Book a free 30-minute call. I'll tell you exactly which tools fit your specific situation — free or paid — and what it would take to get everything connected.</p>
+      <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-accent">Book a free call →</a>
+      <a href="/small-business-digital-stack.pdf" download class="btn-ghost">Download the full stack guide</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Mac Landon. All rights reserved.</div>
+    <div class="footer-loc">New York City · Remote Nationwide</div>
+  </div>
+</footer>
+</body>
+</html>
