@@ -109,16 +109,17 @@ html{scroll-behavior:smooth;}
 .philosophy-quote-attr{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);}
 
 /* ─── APPROACH ──────────────────────────── */
-.approach-sec{padding:6rem 4rem;background:var(--bg);}
+.approach-sec{padding:5.5rem 4rem;background:var(--white);}
 .approach-inner{max-width:1100px;margin:0 auto;}
-.approach-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:2.5rem;}
-.approach-item{padding:2rem;background:var(--card);border-radius:16px;border:1px solid var(--border);transition:transform .25s,border-color .25s,box-shadow .25s;}
-.approach-item:hover{transform:translateY(-3px);border-color:rgba(127,160,195,.3);box-shadow:0 12px 36px rgba(28,26,22,.07);}
-.approach-n{font-family:"Fraunces",serif;font-size:2.8rem;font-weight:900;font-style:italic;color:var(--border);line-height:1;margin-bottom:.85rem;transition:color .25s;}
-.approach-item:hover .approach-n{color:rgba(127,160,195,.3);}
+.approach-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2.5rem;}
+.approach-item{padding:2rem;background:var(--card);border-radius:16px;border:1px solid var(--border);transition:background .25s,border-color .25s;}
+.approach-item:hover{background:var(--bg2);border-color:rgba(43,74,107,.2);}
+.approach-n{font-family:"Fraunces",serif;font-size:3rem;font-weight:900;font-style:italic;color:var(--border);line-height:1;margin-bottom:.85rem;transition:color .25s;}
+.approach-item:hover .approach-n{color:rgba(43,74,107,.2);}
 .approach-title{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
 .approach-desc{font-size:.86rem;color:var(--text-muted);line-height:1.75;font-weight:400;}
-.approach-out{margin-top:1rem;font-size:.72rem;font-weight:500;color:var(--accent);}
+.approach-out{margin-top:1rem;font-size:.72rem;font-weight:500;color:var(--accent);display:flex;align-items:center;gap:.35rem;}
+.approach-out svg{width:14px;height:14px;stroke:var(--accent);stroke-width:2;fill:none;}
 
 /* ─── CTA ───────────────────────────────── */
 .about-cta{padding:6rem 4rem;background:var(--dark);text-align:center;position:relative;overflow:hidden;}
@@ -377,26 +378,26 @@ html{scroll-behavior:smooth;}
   <div class="approach-inner">
     <div class="reveal">
       <div class="sec-tag">How I Work</div>
-      <h2 style="font-family:'Fraunces',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--text);margin-bottom:2.5rem;">Three steps. No surprises.</h2>
+      <h2 class="sec-h2">Three steps. <em>No surprises.</em></h2>
     </div>
     <div class="approach-grid">
       <div class="approach-item">
         <div class="approach-n">01</div>
         <div class="approach-title">Audit & Strategy</div>
         <p class="approach-desc">We start with a deep dive into what's working, what's broken, and where you're losing time and money. I map out exactly what needs to change and in what order. You get a clear roadmap before anything gets built.</p>
-        <div class="approach-out">↗ A clear roadmap</div>
+        <div class="approach-out"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>A clear roadmap</div>
       </div>
       <div class="approach-item">
         <div class="approach-n">02</div>
         <div class="approach-title">Design & Build</div>
         <p class="approach-desc">I get into your platforms and build. New systems, automations, funnels — whatever your audit revealed. You stay focused on your business while I handle the build. I don't disappear. I don't hand off. I build it myself.</p>
-        <div class="approach-out">↗ A fully functional operation</div>
+        <div class="approach-out"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>A fully functional operation</div>
       </div>
       <div class="approach-item">
         <div class="approach-n">03</div>
         <div class="approach-title">Launch & Optimize</div>
         <p class="approach-desc">We launch, make sure everything sticks, and optimize based on what the first month teaches us. You walk away knowing exactly how to run it — and I'm available if anything needs tuning.</p>
-        <div class="approach-out">↗ More time, better results</div>
+        <div class="approach-out"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>More time, better results</div>
       </div>
     </div>
   </div>
