@@ -255,7 +255,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></a>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
   <ul class="nav-links">
     <li><a href="/#services">Services</a></li>
     <li><a href="/#pricing">Pricing</a></li>
@@ -283,6 +283,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <a href="/blog.html">Blog</a>
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
 </div>
+
+<main>
 
 <!-- HERO -->
 <section class="cs-hero">
@@ -556,20 +558,20 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     </div>
     <div class="results-grid">
       <div class="result-card reveal d1">
-        <div class="result-n"><em>74</em></div>
-        <div class="result-l">Orders completed in the first 8 months</div>
+        <div class="result-n"><em>2</em> min</div>
+        <div class="result-l">Time to price a new product using the custom calculator</div>
       </div>
       <div class="result-card reveal d2">
-        <div class="result-n"><em>$2,839</em></div>
-        <div class="result-l">Total revenue generated from the Etsy shop</div>
+        <div class="result-n">Page <em>1</em></div>
+        <div class="result-l">Etsy search ranking achieved for primary keywords</div>
       </div>
       <div class="result-card reveal d3">
-        <div class="result-n"><em>52</em>%</div>
-        <div class="result-l">Profit margin achieved by month 8</div>
+        <div class="result-n"><em>13</em></div>
+        <div class="result-l">Optimized tags implemented across all active listings</div>
       </div>
       <div class="result-card reveal d1">
-        <div class="result-n"><em>4.8</em> ★</div>
-        <div class="result-l">Average Etsy rating from customers</div>
+        <div class="result-n">Day <em>1</em></div>
+        <div class="result-l">Profitability achieved within the first 30 days</div>
       </div>
     </div>
     <div class="testimonial-block reveal">
@@ -595,6 +597,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <a href="/" class="btn-ghost">See all work</a>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -626,10 +630,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 <script>
 // Preloader
 if(!sessionStorage.getItem('hasSeenPreloader')){
-  setTimeout(()=>{
+  window.addEventListener('load', () => {
     document.getElementById('preloader').classList.add('hidden');
     sessionStorage.setItem('hasSeenPreloader','true');
-  },800);
+  });
 }else{
   document.getElementById('preloader').style.display='none';
 }

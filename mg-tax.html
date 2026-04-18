@@ -255,7 +255,7 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon" loading="lazy"></a>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon"></a>
   <ul class="nav-links">
     <li><a href="/#services">Services</a></li>
     <li><a href="/#pricing">Pricing</a></li>
@@ -283,6 +283,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
   <a href="/blog.html">Blog</a>
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
 </div>
+
+<main>
 
 <!-- HERO -->
 <section class="cs-hero">
@@ -556,20 +558,20 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     </div>
     <div class="results-grid">
       <div class="result-card reveal d1">
-        <div class="result-n"><em>100</em>%</div>
-        <div class="result-l">Digital operations — fully paperless across all client touchpoints</div>
+        <div class="result-n"><em>0</em></div>
+        <div class="result-l">Physical documents lost or misfiled</div>
       </div>
       <div class="result-card reveal d2">
-        <div class="result-n"><em>50</em>%</div>
-        <div class="result-l">Reduction in admin time — hours back every week</div>
+        <div class="result-n"><em>24/7</em></div>
+        <div class="result-l">Client onboarding capability</div>
       </div>
       <div class="result-card reveal d3">
-        <div class="result-n"><em>$500K</em><sup style="font-size:.4em">+</sup></div>
-        <div class="result-l">Annual revenue — fully digitized and running smoothly</div>
+        <div class="result-n"><em>100</em>%</div>
+        <div class="result-l">Invoices paid digitally via Stripe</div>
       </div>
       <div class="result-card reveal d1">
-        <div class="result-n"><em>30</em> days</div>
-        <div class="result-l">From kickoff to fully operational digital system</div>
+        <div class="result-n"><em>0</em></div>
+        <div class="result-l">Phone calls required to book an appointment</div>
       </div>
     </div>
     <div class="testimonial-block reveal">
@@ -595,6 +597,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
     <a href="/" class="btn-ghost">See all work</a>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -627,10 +631,10 @@ footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);paddin
 <script>
 // Preloader
 if(!sessionStorage.getItem('hasSeenPreloader')){
-  setTimeout(()=>{
+  window.addEventListener('load', () => {
     document.getElementById('preloader').classList.add('hidden');
     sessionStorage.setItem('hasSeenPreloader','true');
-  },800);
+  });
 }else{
   document.getElementById('preloader').style.display='none';
 }
