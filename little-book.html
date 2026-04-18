@@ -109,6 +109,7 @@ html{scroll-behavior:smooth;}
 .btn-ghost:hover{color:rgba(255,255,255,.75);}
 
 /* LIGHTBOX */
+@media(min-width:901px){.final-ui-image img{cursor:zoom-in;}}
 .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(28,26,22,0.92);align-items:center;justify-content:center;padding:24px;cursor:zoom-out;}
 .lightbox.open{display:flex;}
 .lightbox img{max-width:90%;max-height:80vh;object-fit:contain;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.4);}
@@ -304,7 +305,7 @@ html{scroll-behavior:smooth;}
       </div>
       <div>
         <div style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;border:1px solid var(--border);">
-           <img src="little-book-co-funnel-architecture.jpg" alt="Little Book Co. funnel architecture" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+           <img src="little-book-co-funnel-architecture.jpg" alt="Little Book Co. funnel architecture" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onclick="if(window.innerWidth>900)openLightbox(this.src)">
         </div>
       </div>
     </div>
@@ -317,7 +318,7 @@ html{scroll-behavior:smooth;}
       </div>
       <div>
          <div style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;border:1px solid var(--border);">
-           <img src="little-book-co-audience-capture-engine.jpg" alt="Little Book Co. audience capture engine" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+           <img src="little-book-co-audience-capture-engine.jpg" alt="Little Book Co. audience capture engine" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onclick="if(window.innerWidth>900)openLightbox(this.src)">
         </div>
       </div>
     </div>
