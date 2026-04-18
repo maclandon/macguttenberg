@@ -1049,14 +1049,15 @@ const countObs = new IntersectionObserver(entries => {
       const text = el.innerText;
       const num = parseFloat(text.replace(/[^0-9.]/g, ''));
       const prefix = text.includes('$') ? '$' : '';
-      const suffix = text.includes('%') ? '%' : '';
+      const suffix = text.includes('%') ? '%' : (text.includes('h') ? 'h' : '');
       let start = 0;
       const duration = 1200;
       const step = num / (duration / 16);
       const timer = setInterval(() => {
         start += step;
         if (start >= num) {
-          el.innerHTML = `<em>${prefix}${text.includes('K') ? '500K<sup style="font-size:.45em">+</sup>' : num}</em>${suffix}`;
+          let finalDisplay = `<em>${prefix}${text.includes('K') ? '500K<sup style="font-size:.45em">+</sup>' : num}</em>${suffix}`;
+          el.innerHTML = finalDisplay;
           clearInterval(timer);
         } else {
           el.innerHTML = `<em>${prefix}${Math.floor(start)}${suffix}</em>`;
