@@ -79,20 +79,73 @@
 .cal-item.today .cal-day{color:var(--accent2);}
 .badge-today{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:#0f1f35;color:#E8E4DC;padding:.28rem .7rem;border-radius:100px;white-space:nowrap;}
 
-/* QUICK LINKS — matches index link/button patterns */
-.links{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.link{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;text-decoration:none;color:var(--text-mid);font-size:.88rem;font-weight:500;display:flex;align-items:center;justify-content:space-between;transition:border-color .3s ease,background .2s,transform .3s ease,box-shadow .3s ease;}
-.link:hover{border-color:rgba(126,172,212,.35);background:var(--card);color:var(--text);transform:translateY(-2px);box-shadow:0 8px 24px rgba(28,26,22,.06);}
-.link svg{color:var(--text-muted);transition:color .2s,transform .2s;}
-.link:hover svg{color:var(--accent);transform:translateX(2px);}
+/* NEXT UP HERO BANNER */
+.next-up{background:var(--dark);border-radius:18px;padding:2rem 2.25rem;margin-bottom:3.5rem;display:flex;align-items:center;gap:2rem;transition:box-shadow .3s ease;}
+.next-up:hover{box-shadow:0 16px 40px rgba(28,26,22,.15);}
+.next-up-label{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#7EACD4;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
+.next-up-label::before{content:"";width:8px;height:8px;border-radius:50%;background:#7EACD4;animation:pulse-dot 2s ease infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.4;}}
+.next-up-date{min-width:64px;text-align:center;}
+.next-up-day{font-family:"Fraunces",serif;font-size:2.2rem;font-weight:900;color:#fff;line-height:1;}
+.next-up-mon{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);font-weight:500;}
+.next-up-divider{width:1px;height:48px;background:rgba(255,255,255,.1);}
+.next-up-body{flex:1;min-width:0;}
+.next-up-title{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.next-up-sub{font-size:.82rem;color:rgba(255,255,255,.5);}
+.next-up-right{display:flex;align-items:center;gap:1rem;flex-shrink:0;}
+.next-up-badge{font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px;background:rgba(127,160,195,.15);color:#7EACD4;}
+
+/* CONTENT PROGRESS */
+.progress-sec{margin-bottom:3.5rem;}
+.progress-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:.75rem;}
+.progress-label{font-size:.82rem;color:var(--text-mid);font-weight:500;}
+.progress-label span{color:var(--accent2);font-weight:600;}
+.progress-bar-wrap{flex:1;height:8px;background:var(--border);border-radius:100px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:var(--accent);border-radius:100px;transition:width .5s ease;}
+.progress-meta{font-size:.75rem;color:var(--text-muted);}
+
+/* CLIENTS GRID */
+.clients{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:3.5rem;}
+.client-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.75rem;text-decoration:none;color:inherit;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;display:flex;flex-direction:column;gap:.65rem;}
+.client-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(28,26,22,.1);border-color:rgba(126,172,212,.35);}
+.client-card:hover .client-arrow{transform:translateX(4px);color:var(--accent);}
+.client-name{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:var(--text);}
+.client-industry{font-size:.78rem;color:var(--text-muted);font-weight:400;}
+.client-status{display:inline-flex;align-items:center;gap:.35rem;font-size:.65rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);margin-top:.25rem;}
+.client-status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);}
+.client-arrow{font-size:.82rem;color:var(--text-muted);margin-top:auto;transition:transform .3s ease,color .3s ease;}
+
+/* QUICK ACTIONS */
+.actions{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:3.5rem;}
+.action{background:var(--dark);border-radius:14px;padding:1.25rem 1rem;text-decoration:none;color:#fff;display:flex;flex-direction:column;align-items:center;gap:.65rem;text-align:center;transition:transform .3s ease,box-shadow .3s ease,background .3s ease;}
+.action:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(28,26,22,.15);background:var(--dark2);}
+.action-icon{width:40px;height:40px;border-radius:10px;background:rgba(126,172,212,.12);color:#7EACD4;display:flex;align-items:center;justify-content:center;}
+.action-label{font-size:.75rem;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.7);}
+
+/* IG STAT STRIP */
+.ig-strip{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:.85rem 1.5rem;display:flex;align-items:center;gap:1.5rem;margin-bottom:3.5rem;}
+.ig-strip-icon{width:32px;height:32px;border-radius:8px;background:var(--dark);color:#7EACD4;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ig-strip-stats{display:flex;align-items:center;gap:1.25rem;flex:1;}
+.ig-strip-stat{font-size:.82rem;color:var(--text-mid);font-weight:500;}
+.ig-strip-stat strong{color:var(--text);font-weight:600;}
+.ig-strip-dot{width:3px;height:3px;border-radius:50%;background:var(--border);}
+.ig-strip-link{font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:500;margin-left:auto;white-space:nowrap;}
+.ig-strip-link:hover{text-decoration:underline;}
 
 /* RESPONSIVE */
 @media(max-width:900px){
   .dash-wrap{padding:calc(56px + 2rem) 1.5rem 3rem;}
   .quick{grid-template-columns:repeat(2,1fr);}
   .tools{grid-template-columns:1fr;}
-  .links{grid-template-columns:1fr;}
+  .clients{grid-template-columns:repeat(2,1fr);}
+  .actions{grid-template-columns:repeat(3,1fr);}
   .nav-dash-badge{display:none;}
+  .next-up{flex-direction:column;align-items:flex-start;gap:1.25rem;}
+  .next-up-divider{width:100%;height:1px;}
+  .next-up-right{width:100%;justify-content:space-between;}
+  .ig-strip{flex-wrap:wrap;gap:.75rem;}
+  .ig-strip-link{margin-left:0;width:100%;text-align:center;}
+  .progress-row{flex-direction:column;align-items:flex-start;gap:.5rem;}
 }
 </style>
 <link rel="manifest" href="/manifest-dashboard.json">
@@ -120,12 +173,43 @@
     <p class="dash-sub">Your tools, trackers, and templates. Bookmark this page — it's the only link you need.</p>
   </div>
 
+  <!-- NEXT UP HERO BANNER -->
+  <div class="next-up">
+    <div class="next-up-date">
+      <div class="next-up-day">19</div>
+      <div class="next-up-mon">Apr</div>
+    </div>
+    <div class="next-up-divider"></div>
+    <div class="next-up-body">
+      <div class="next-up-label"><span>Next Up</span></div>
+      <div class="next-up-title">Post 16 — Elle Ess blue card "798K views. 0% owned audience."</div>
+      <div class="next-up-sub">Saturday — Elle Ess</div>
+    </div>
+    <div class="next-up-right">
+      <div class="next-up-badge">Instagram</div>
+      <a href="#" class="btn-cta" style="font-size:.82rem;padding:.6rem 1.25rem;">View Spec →</a>
+    </div>
+  </div>
+
   <!-- QUICK STATS (live from lead tracker) -->
   <div class="quick">
     <div class="q-card"><div class="q-n" id="stat-total">—</div><div class="q-l">Total Leads</div></div>
     <div class="q-card"><div class="q-n" id="stat-active">—</div><div class="q-l">Active</div></div>
     <div class="q-card"><div class="q-n" id="stat-calls">—</div><div class="q-l">Calls Booked</div></div>
     <div class="q-card"><div class="q-n" id="stat-won">—</div><div class="q-l">Won</div></div>
+  </div>
+
+  <!-- CONTENT PROGRESS -->
+  <div class="progress-sec">
+    <div class="progress-row">
+      <div class="progress-label">Instagram: <span>0</span> of 15 posts</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%;"></div></div>
+    </div>
+    <div class="progress-row">
+      <div class="progress-label">LinkedIn: <span>0</span> of 6 posts</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%;"></div></div>
+    </div>
+    <div class="progress-meta">0 of 21 total posts completed</div>
   </div>
 
   <!-- TOOLS -->
@@ -412,33 +496,71 @@
     </div>
   </div>
 
-  <!-- EXTERNAL LINKS -->
-  <div class="sec-tag">Quick Links</div>
-  <div class="links">
-    <a href="https://calendly.com/maclandon/30min" target="_blank" class="link">
-      Calendly
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+  <!-- CLIENTS -->
+  <div class="sec-tag">Clients</div>
+  <div class="clients">
+    <a href="/little-book" class="client-card">
+      <div class="client-name">Elle Ess</div>
+      <div class="client-industry">Candle & Wellness Brand</div>
+      <div class="client-status">Case Study Live</div>
+      <div class="client-arrow">View →</div>
     </a>
-    <a href="https://www.linkedin.com/in/maclandon/" target="_blank" class="link">
-      LinkedIn
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    <a href="/ashley" class="client-card">
+      <div class="client-name">Ashley</div>
+      <div class="client-industry">Etsy Seller & E-Commerce</div>
+      <div class="client-status">Case Study Live</div>
+      <div class="client-arrow">View →</div>
     </a>
-    <a href="https://github.com/maclandon/macguttenberg" target="_blank" class="link">
-      GitHub Repo
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    <a href="/mg-tax" class="client-card">
+      <div class="client-name">MG Tax</div>
+      <div class="client-industry">Tax Prep & Accounting</div>
+      <div class="client-status">Case Study Live</div>
+      <div class="client-arrow">View →</div>
     </a>
-    <a href="https://dash.cloudflare.com" target="_blank" class="link">
-      Cloudflare
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    <a href="/marissa" class="client-card">
+      <div class="client-name">Marissa</div>
+      <div class="client-industry">Wellness & Coaching</div>
+      <div class="client-status">Case Study Live</div>
+      <div class="client-arrow">View →</div>
     </a>
-    <a href="/cdn-cgi/l/email-protection#430e2220030e222024363737262d212631246d202c2e" class="link">
-      Email Inbox
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+  </div>
+
+  <!-- QUICK ACTIONS -->
+  <div class="sec-tag">Quick Actions</div>
+  <div class="actions">
+    <a href="https://calendly.com/maclandon/30min" target="_blank" class="action">
+      <div class="action-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="action-label">Book a Call</div>
     </a>
-    <a href="/" class="link">
-      Live Site
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    <a href="https://www.instagram.com/bymaclandon/" target="_blank" class="action">
+      <div class="action-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      <div class="action-label">Instagram</div>
     </a>
+    <a href="https://www.linkedin.com/in/maclandon/" target="_blank" class="action">
+      <div class="action-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+      <div class="action-label">LinkedIn</div>
+    </a>
+    <a href="/blog" class="action">
+      <div class="action-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <div class="action-label">New Blog Post</div>
+    </a>
+    <a href="https://github.com/maclandon/macguttenberg" target="_blank" class="action">
+      <div class="action-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div class="action-label">GitHub Repo</div>
+    </a>
+  </div>
+
+  <!-- INSTAGRAM STAT STRIP -->
+  <div class="ig-strip">
+    <div class="ig-strip-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+    <div class="ig-strip-stats">
+      <div class="ig-strip-stat"><strong>58</strong> Followers</div>
+      <div class="ig-strip-dot"></div>
+      <div class="ig-strip-stat"><strong>15</strong> Posts</div>
+      <div class="ig-strip-dot"></div>
+      <div class="ig-strip-stat">maclandon.com/audit in bio</div>
+    </div>
+    <a href="https://www.instagram.com/bymaclandon/" target="_blank" class="ig-strip-link">@bymaclandon →</a>
   </div>
 
 </div>
