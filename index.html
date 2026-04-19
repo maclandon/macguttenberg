@@ -119,6 +119,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 .hero-card{}
+.hero-card-img{display:none;}
 
 /* STAT BAR */
 .stat-bar{background:var(--dark);padding:1rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;}
@@ -464,6 +465,41 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
   #about .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
 }
 
+/* ═══════ MOBILE HERO CARD REDESIGN ═══════ */
+@media(max-width:768px){
+  .hero{min-height:auto !important;height:auto !important;padding-bottom:0;display:block;}
+  .hero-bg{display:none;}
+  .hero-left{padding:calc(56px + 16px) 16px 0;justify-content:flex-start;}
+  .hero-card{
+    background:#FAFAF7;border-radius:24px;padding:0;overflow:hidden;
+    backdrop-filter:none;-webkit-backdrop-filter:none;border:none;
+    box-shadow:0 4px 24px rgba(28,26,22,.1);margin-top:0;max-width:100%;
+  }
+  .hero-card-img{
+    display:block;position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;
+  }
+  .hero-card-img img{
+    width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+  }
+  .hero-card-img::after{
+    content:"";position:absolute;bottom:0;left:0;right:0;height:40%;
+    background:linear-gradient(to top,rgba(0,0,0,.4),transparent);pointer-events:none;
+  }
+  .hero-eyebrow{margin:1.5rem 1.5rem .75rem;animation:none;opacity:1;transform:none;}
+  .hero-eyebrow::before{width:14px;}
+  h1{font-size:1.65rem;margin-bottom:.75rem;padding:0 1.5rem;animation:none;opacity:1;transform:none;line-height:1.15;}
+  h1 em{-webkit-text-fill-color:#7EACD4;background:none;animation:none;}
+  .hero-value-row{padding:0 1.5rem;margin-bottom:.75rem;}
+  .hero-value-avatar{display:none !important;}
+  .hero-value{animation:none;opacity:1;transform:none;font-size:.92rem;border-left:2px solid var(--accent);padding-left:.75rem;}
+  .hero-sub{display:none;}
+  .hero-btns{padding:0 1.5rem 1.5rem;animation:none;opacity:1;transform:none;}
+  .hero-btns .btn-dark{width:100%;justify-content:center;padding:.9rem 1.6rem;border-radius:12px;font-size:.95rem;}
+  .hero-right{display:none;}
+  .scroll-hint{display:none;}
+  .photo-chip{display:none;}
+}
+
 /* FAQ */
 .faq-sec{padding:5.5rem 4rem;background:var(--bg);}
 .faq-grid{max-width:760px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:.75rem;}
@@ -525,6 +561,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 </div>
   <div class="hero-left">
     <div class="hero-card">
+      <div class="hero-card-img"><img src="macphotonew.jpg" alt="Mac Landon" loading="eager"></div>
       <div class="hero-eyebrow">For Small Businesses</div>
       <h1>Your business is <em>growing.</em><br>Your systems aren't keeping up.</h1>
       <div class="hero-value-row">
