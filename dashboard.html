@@ -58,6 +58,31 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 .tool-meta{display:flex;align-items:center;gap:.5rem;margin-top:.25rem;font-size:.7rem;color:var(--text-muted);letter-spacing:.04em;text-transform:uppercase;}
 .tool-meta .dot{width:5px;height:5px;border-radius:50%;background:#7EACD4;}
 
+/* CONTENT CALENDAR */
+.cal{margin-bottom:3rem;}
+.cal-list{display:flex;flex-direction:column;gap:.75rem;}
+.cal-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.15rem 1.5rem;display:flex;align-items:center;gap:1.25rem;transition:border-color .2s;}
+.cal-item:hover{border-color:rgba(127,160,195,.4);}
+.cal-date{min-width:52px;text-align:center;}
+.cal-day{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:900;line-height:1;color:var(--text);}
+.cal-mon{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:500;}
+.cal-divider{width:1px;height:32px;background:var(--border);}
+.cal-body{flex:1;min-width:0;}
+.cal-title{font-size:.92rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cal-sub{font-size:.75rem;color:var(--text-muted);margin-top:.15rem;}
+.cal-badge{font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:6px;white-space:nowrap;}
+.cal-badge.ig{background:rgba(127,160,195,.15);color:var(--accent2);}
+.cal-badge.li{background:rgba(28,26,22,.08);color:var(--text-mid);}
+
+/* SOCIAL STATS */
+.social{margin-bottom:3rem;}
+.social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.s-card{background:var(--dark);border-radius:14px;padding:1.25rem 1.5rem;color:#fff;}
+.s-card label{display:block;font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:.04em;margin-bottom:.35rem;}
+.s-card input{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.15);font-family:"Fraunces",serif;font-size:1.8rem;font-weight:900;color:#7EACD4;width:100%;padding:0 0 .2rem;outline:none;transition:border-color .2s;}
+.s-card input:focus{border-color:#7EACD4;}
+.s-card input::placeholder{color:rgba(126,172,212,.35);}
+
 /* LINKS ROW */
 .links{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
 .link{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;text-decoration:none;color:var(--text-mid);font-size:.88rem;font-weight:500;display:flex;align-items:center;justify-content:space-between;transition:border-color .2s,background .2s;}
@@ -71,6 +96,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
   .quick{grid-template-columns:repeat(2,1fr);}
   .tools{grid-template-columns:1fr;}
   .links{grid-template-columns:1fr;}
+  .social-grid{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 <link rel="manifest" href="/manifest-dashboard.json">
@@ -144,6 +170,81 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 
   </div>
 
+  <!-- CONTENT CALENDAR -->
+  <div class="sec-tag">This Week</div>
+  <div class="cal">
+    <div class="cal-list">
+      <div class="cal-item">
+        <div class="cal-date"><div class="cal-day">19</div><div class="cal-mon">Apr</div></div>
+        <div class="cal-divider"></div>
+        <div class="cal-body">
+          <div class="cal-title">Post 16 — Elle Ess blue card "798K views. 0% owned audience."</div>
+          <div class="cal-sub">Saturday</div>
+        </div>
+        <div class="cal-badge ig">Instagram</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date"><div class="cal-day">21</div><div class="cal-mon">Apr</div></div>
+        <div class="cal-divider"></div>
+        <div class="cal-body">
+          <div class="cal-title">Elle Ess: The Problem</div>
+          <div class="cal-sub">Monday</div>
+        </div>
+        <div class="cal-badge li">LinkedIn</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date"><div class="cal-day">23</div><div class="cal-mon">Apr</div></div>
+        <div class="cal-divider"></div>
+        <div class="cal-body">
+          <div class="cal-title">Post 17 — Elle Ess funnel image</div>
+          <div class="cal-sub">Wednesday</div>
+        </div>
+        <div class="cal-badge ig">Instagram</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date"><div class="cal-day">26</div><div class="cal-mon">Apr</div></div>
+        <div class="cal-divider"></div>
+        <div class="cal-body">
+          <div class="cal-title">Post 18 — Elle Ess blue card "Broken link. Lost sale. Every time."</div>
+          <div class="cal-sub">Saturday</div>
+        </div>
+        <div class="cal-badge ig">Instagram</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date"><div class="cal-day">30</div><div class="cal-mon">Apr</div></div>
+        <div class="cal-divider"></div>
+        <div class="cal-body">
+          <div class="cal-title">Post 19 — Ashley storefront image</div>
+          <div class="cal-sub">Wednesday</div>
+        </div>
+        <div class="cal-badge ig">Instagram</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL STATS -->
+  <div class="sec-tag">Social Stats</div>
+  <div class="social">
+    <div class="social-grid">
+      <div class="s-card">
+        <label>Instagram Followers</label>
+        <input type="text" id="ig-followers" placeholder="—" value="">
+      </div>
+      <div class="s-card">
+        <label>LinkedIn Connections</label>
+        <input type="text" id="li-connections" placeholder="—" value="">
+      </div>
+      <div class="s-card">
+        <label>Latest Post Reach</label>
+        <input type="text" id="post-reach" placeholder="—" value="">
+      </div>
+      <div class="s-card">
+        <label>Latest Post Saves</label>
+        <input type="text" id="post-saves" placeholder="—" value="">
+      </div>
+    </div>
+  </div>
+
   <!-- EXTERNAL LINKS -->
   <div class="sec-tag">Quick Links</div>
   <div class="links">
@@ -189,6 +290,14 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     ['stat-total','stat-active','stat-calls','stat-won'].forEach(id => document.getElementById(id).textContent = '–');
   }
 })();
+
+// Persist social stats in localStorage
+['ig-followers','li-connections','post-reach','post-saves'].forEach(id => {
+  const el = document.getElementById(id);
+  const saved = localStorage.getItem('social-' + id);
+  if (saved) el.value = saved;
+  el.addEventListener('input', () => localStorage.setItem('social-' + id, el.value));
+});
 </script>
 </body>
 </html>
