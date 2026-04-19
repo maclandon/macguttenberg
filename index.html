@@ -519,6 +519,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
 </div>
 
+<div class="page-content" id="pageContent">
 <section class="hero">
   <div class="hero-bg">
 </div>
@@ -1036,6 +1037,8 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
   </div>
 </footer>
 
+</div><!-- /.page-content -->
+
 <div class="sticky-cta">
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a free call →</a>
 </div>
@@ -1158,16 +1161,19 @@ const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
 const hamburgerIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
 const closeIcon=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+const pageContent=document.getElementById('pageContent');
 hamburger.addEventListener('click',()=>{
   const isOpen=mobileMenu.classList.toggle('open');
   hamburger.innerHTML=isOpen?closeIcon:hamburgerIcon;
+  if(pageContent) pageContent.classList.toggle('blurred',isOpen);
 });
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   mobileMenu.classList.remove('open');
   hamburger.innerHTML=hamburgerIcon;
+  if(pageContent) pageContent.classList.remove('blurred');
 }));
 mobileMenu.addEventListener('click',e=>{
-  if(e.target===mobileMenu){mobileMenu.classList.remove('open');hamburger.innerHTML=hamburgerIcon;}
+  if(e.target===mobileMenu){mobileMenu.classList.remove('open');hamburger.innerHTML=hamburgerIcon;if(pageContent) pageContent.classList.remove('blurred');}
 });
 
 
