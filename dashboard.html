@@ -97,6 +97,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .ring-label{font-size:.85rem;color:var(--text2);font-weight:500;letter-spacing:.04em;}
 
 /* ═══════ TOOLS ═══════ */
+.tools-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-user-select:none;user-select:none;}
+.tools-toggle .sec-tag{margin-bottom:0;pointer-events:none;}
+.tools-chevron{width:28px;height:28px;border-radius:8px;background:rgba(126,172,212,.08);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:transform .3s ease,background .2s;}
+.tools-toggle:hover .tools-chevron{background:rgba(126,172,212,.15);}
+.tools-chevron.open{transform:rotate(180deg);}
+.tools-collapse{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin .3s ease;opacity:0;margin-top:0;}
+.tools-collapse.open{max-height:600px;opacity:1;margin-top:1.25rem;}
 .tools{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
 .tool{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.85rem;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
 .tool::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
@@ -289,7 +296,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 
   <!-- TOOLS -->
   <div class="section">
-    <div class="sec-tag rv">My Tools</div>
+    <div class="tools-toggle rv" id="tools-toggle">
+      <div class="sec-tag">My Tools</div>
+      <div class="tools-chevron" id="tools-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="tools-collapse" id="tools-collapse">
     <div class="tools">
       <a href="/lead-tracker" class="tool c-blue rv d1">
         <div class="t-top">
@@ -327,6 +338,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
         <div class="t-desc">Cold outreach, follow-ups, proposals — copy, customize, send.</div>
         <div class="t-meta"><span class="dot" style="background:var(--orange)"></span>Outreach</div>
       </a>
+    </div>
     </div>
   </div>
 
@@ -494,6 +506,12 @@ const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }});
 }, { threshold: 0.08 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// Tools collapse toggle
+document.getElementById('tools-toggle').addEventListener('click', () => {
+  document.getElementById('tools-collapse').classList.toggle('open');
+  document.getElementById('tools-chevron').classList.toggle('open');
+});
 </script>
 </body>
 </html>
