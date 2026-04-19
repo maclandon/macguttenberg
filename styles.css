@@ -55,23 +55,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .btn-submit:hover{background:var(--dark2);}
 .btn-dark:active,.btn-accent:active,.nav-cta:active,.btn-price:active,.btn-cta:active{transform:scale(.96);transition:transform .1s ease;}
 
-/* ===== MOBILE TAP FEEDBACK ===== */
-@media(max-width:900px){
-  .btn-dark,.btn-accent,.btn-cta,.btn-submit,.btn-price,.nav-cta,.btn-price-dark,.btn-price-light,.btn-price-outline,
-  .work-card,.s-card,.p-card,.price-card,.testi-card,.faq-item,.right-list li,.link,
-  .mobile-menu a{
-    -webkit-tap-highlight-color:transparent;
-    transition:transform .2s cubic-bezier(.25,.46,.45,.94);
-  }
-  .btn-dark:active,.btn-accent:active,.btn-cta:active,.btn-submit:active,.btn-price:active,.nav-cta:active,
-  .btn-price-dark:active,.btn-price-light:active,.btn-price-outline:active,
-  .work-card:active,.s-card:active,.p-card:active,.price-card:active,.testi-card:active,.faq-item:active,.right-list li:active,.link:active,
-  .mobile-menu a:active{
-    transform:scale(.97);
-    transition:transform .08s ease;
-  }
-}
-
 /* ===== MOBILE MENU BACKGROUND BLUR ===== */
 .page-content{transition:filter .3s ease;}
 .page-content.blurred{filter:blur(6px) brightness(.7);}
