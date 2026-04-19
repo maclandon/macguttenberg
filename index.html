@@ -487,6 +487,13 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 </script>
 </head>
 <body>
+<!-- PULL-TO-REFRESH OVERLAY -->
+<div id="ptr-overlay" style="position:fixed;inset:0;z-index:9999;background:rgba(28,26,22,0.95);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;">
+  <svg id="ptr-logo" width="148" height="94" viewBox="0 0 148 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path id="ptr-path" d="M109.16 81.768C108.093 81.384 107.325 80.8933 106.856 80.296C106.429 79.656 106.173 78.568 106.088 77.032L101.672 15.208C101.587 13.5867 101.8 12.392 102.312 11.624C102.824 10.856 103.699 10.2587 104.936 9.832L107.88 8.936C108.819 8.50934 109.523 7.976 109.992 7.336C110.461 6.65334 110.696 5.8 110.696 4.776C110.696 3.624 110.333 2.70667 109.608 2.024C108.883 1.34133 107.752 1 106.216 1H84.968C82.664 1 80.872 1.53333 79.592 2.6C78.312 3.624 77.1387 5.58667 76.072 8.488L59.0283 55.1V54.6L41.384 8.168C40.36 5.48 39.208 3.624 37.928 2.6C36.648 1.53333 34.8987 1 32.68 1H11.368C8.33867 1 6.824 2.28 6.824 4.84C6.824 5.864 7.05867 6.696 7.528 7.336C8.04 7.976 8.808 8.50934 9.832 8.936L12.712 9.832C14.0347 10.3013 14.9307 11.0693 15.4 12.136C15.8693 13.2027 16.0187 14.8027 15.848 16.936L11.24 75.112C11.0693 76.9893 10.536 78.44 9.64 79.464C8.744 80.488 7.61333 81.256 6.248 81.768L4.2 82.536C3.21867 83.0053 2.42933 83.56 1.832 84.2C1.27733 84.7973 1 85.672 1 86.824C1 87.976 1.36267 88.8933 2.088 89.576C2.81333 90.2587 3.944 90.6 5.48 90.6H25C26.536 90.6 27.6453 90.2587 28.328 89.576C29.0533 88.8507 29.416 87.8693 29.416 86.632C29.416 85.7787 29.224 85.0747 28.84 84.52C28.4987 83.9227 27.9867 83.4533 27.304 83.112L24.744 82.088C23.0373 81.32 21.7147 80.424 20.776 79.4C19.88 78.3333 19.496 76.904 19.624 75.112L23.336 26.1L44.648 80.36C45.4587 82.408 46.2267 83.9227 46.952 84.904C47.6773 85.8427 48.4453 86.4613 49.256 86.76C50.0667 87.0587 50.9627 87.208 51.944 87.208C53.3093 87.208 54.4827 86.8027 55.464 85.992C56.4453 85.1813 57.4267 83.4107 58.408 80.68L78.4226 24.6L82.408 77.032C82.4933 78.4827 82.28 79.528 81.768 80.168C81.2987 80.808 80.4667 81.3413 79.272 81.768L76.328 82.664C75.304 83.1333 74.5573 83.7093 74.088 84.392C73.6187 85.032 73.384 85.8427 73.384 86.824C73.384 87.976 73.7467 88.8933 74.472 89.576C75.24 90.2587 76.392 90.6 77.928 90.6M108.836 81.6C108.836 81.6 110.836 82.6 111.336 82.6L119.088 82.6C121.264 82.6 123.205 82.2587 124.912 81.576C126.619 80.8933 128.219 79.72 129.712 78.056C131.205 76.392 132.677 74.0453 134.128 71.016L138.224 62.376C138.864 61.0533 139.611 60.1787 140.464 59.752C141.317 59.3253 142.299 59.24 143.408 59.496C144.603 59.7947 145.456 60.4133 145.968 61.352C146.48 62.248 146.523 63.4427 146.096 64.936L140.784 86.952C140.229 89 139.547 90.472 138.736 91.368C137.925 92.264 136.709 92.712 135.088 92.712C134.149 92.712 133.189 92.5413 132.208 92.2C131.227 91.8587 130.139 91.496 128.944 91.112C127.749 90.7707 126.299 90.6 124.592 90.6H77.744C76.2507 90.6 75.12 90.2587 74.352 89.576C73.6267 88.8933 73.264 87.976 73.264 86.824C73.264 84.904 74.224 83.5173 76.144 82.664L79.216 81.768" stroke="#7EACD4" stroke-width="2"/>
+  </svg>
+</div>
+
 <div class="toast" id="toast">✓ Copied to clipboard</div>
 
 <nav>
@@ -1205,6 +1212,102 @@ if(stickyCta){
   if(window.scrollY>300)stickyCta.classList.add('visible');
 }
 
+// ═══════ PULL-TO-REFRESH & CMD+R LOGO DRAW ═══════
+(function(){
+  const overlay = document.getElementById('ptr-overlay');
+  const path = document.getElementById('ptr-path');
+  const totalLength = path.getTotalLength();
+  const THRESHOLD = 140; // px pull distance to trigger reload
+
+  // Init: hide the entire stroke
+  path.style.strokeDasharray = totalLength;
+  path.style.strokeDashoffset = totalLength;
+  path.style.transition = 'none';
+
+  // ── MOBILE PULL-TO-REFRESH ──
+  let startY = 0;
+  let pulling = false;
+  let pullDist = 0;
+
+  document.addEventListener('touchstart', function(e) {
+    if (window.scrollY === 0 && e.touches.length === 1) {
+      startY = e.touches[0].clientY;
+      pulling = true;
+      pullDist = 0;
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e) {
+    if (!pulling) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy < 0) { pulling = false; return; }
+    pullDist = dy;
+
+    // Map pull distance to stroke progress
+    const progress = Math.min(dy / THRESHOLD, 1);
+    const offset = totalLength * (1 - progress);
+
+    overlay.style.opacity = Math.min(progress * 1.5, 1);
+    overlay.style.pointerEvents = progress > 0.05 ? 'auto' : 'none';
+    path.style.transition = 'none';
+    path.style.strokeDashoffset = offset;
+
+    // Scale logo slightly with pull
+    const scale = 0.8 + 0.2 * progress;
+    document.getElementById('ptr-logo').style.transform = 'scale(' + scale + ')';
+
+    if (progress >= 1) {
+      // Prevent further scroll
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  document.addEventListener('touchend', function() {
+    if (!pulling) return;
+    pulling = false;
+
+    const progress = Math.min(pullDist / THRESHOLD, 1);
+
+    if (progress >= 1) {
+      // Triggered — complete draw, hold, reload
+      path.style.transition = 'stroke-dashoffset .3s cubic-bezier(.4,0,.2,1)';
+      path.style.strokeDashoffset = 0;
+      document.getElementById('ptr-logo').style.transition = 'transform .3s ease';
+      document.getElementById('ptr-logo').style.transform = 'scale(1)';
+      setTimeout(function() { location.reload(); }, 600);
+    } else {
+      // Not enough — un-draw and fade out
+      path.style.transition = 'stroke-dashoffset .4s cubic-bezier(.4,0,.2,1)';
+      path.style.strokeDashoffset = totalLength;
+      overlay.style.transition = 'opacity .4s ease';
+      overlay.style.opacity = 0;
+      overlay.style.pointerEvents = 'none';
+      document.getElementById('ptr-logo').style.transition = 'transform .4s ease';
+      document.getElementById('ptr-logo').style.transform = 'scale(0.8)';
+      setTimeout(function() {
+        overlay.style.transition = 'opacity .3s ease';
+      }, 450);
+    }
+  }, { passive: true });
+
+  // ── DESKTOP CMD+R / CTRL+R ──
+  let cmdRFired = false;
+  document.addEventListener('keydown', function(e) {
+    if (cmdRFired) return;
+    if ((e.metaKey || e.ctrlKey) && e.key === 'r') {
+      e.preventDefault();
+      cmdRFired = true;
+
+      overlay.style.opacity = 1;
+      overlay.style.pointerEvents = 'auto';
+      document.getElementById('ptr-logo').style.transform = 'scale(1)';
+      path.style.transition = 'stroke-dashoffset 1s cubic-bezier(.4,0,.2,1)';
+      path.style.strokeDashoffset = 0;
+
+      setTimeout(function() { location.reload(); }, 1300);
+    }
+  });
+})();
 
 </script>
 </body>
