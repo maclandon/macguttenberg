@@ -105,6 +105,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 
 /* ===== STICKY CTA ===== */
 .sticky-cta{display:none;}
+@media(max-width:900px){
+  .sticky-cta{position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:.8rem;font-weight:500;letter-spacing:.06em;padding:.7rem 1.5rem;border-radius:100px;z-index:97;opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25);}
+  .sticky-cta a{color:#fff;text-decoration:none;}
+  .sticky-cta.visible{display:block;opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+}
 
 /* ===== FOOTER ===== */
 footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 4rem;}
