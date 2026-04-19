@@ -60,24 +60,30 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 
 /* CONTENT CALENDAR */
 .cal{margin-bottom:3rem;}
-.cal-list{display:flex;flex-direction:column;gap:.75rem;}
-.cal-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.15rem 1.5rem;display:flex;align-items:center;gap:1.25rem;transition:border-color .2s;}
-.cal-item:hover{border-color:rgba(127,160,195,.4);}
-.cal-date{min-width:52px;text-align:center;}
-.cal-day{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:900;line-height:1;color:var(--text);}
-.cal-mon{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:500;}
-.cal-divider{width:1px;height:32px;background:var(--border);}
+.cal-list{display:flex;flex-direction:column;gap:1.25rem;}
+.cal-week{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.cal-week-header{font-family:"Fraunces",serif;font-size:.82rem;font-weight:700;color:var(--text-mid);padding:.75rem 1.5rem;background:var(--bg2);border-bottom:1px solid var(--border);}
+.cal-item{padding:1rem 1.5rem;display:flex;align-items:center;gap:1.25rem;border-left:3px solid transparent;transition:background .2s;}
+.cal-item:not(:last-child){border-bottom:1px solid var(--border);}
+.cal-item:hover{background:rgba(127,160,195,.04);}
+.cal-item.ig{border-left-color:#0f1f35;}
+.cal-item.li{border-left-color:#7EACD4;}
+.cal-item.done{opacity:.5;}
+.cal-date{min-width:48px;text-align:center;}
+.cal-day{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:900;line-height:1;color:var(--text);}
+.cal-mon{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:500;}
+.cal-divider{width:1px;height:28px;background:var(--border);}
 .cal-body{flex:1;min-width:0;}
-.cal-title{font-size:.92rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cal-sub{font-size:.75rem;color:var(--text-muted);margin-top:.15rem;}
-.cal-badge{font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:6px;white-space:nowrap;}
+.cal-title{font-size:.88rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;}
+.cal-sub{font-size:.68rem;color:var(--text-muted);margin-top:.2rem;letter-spacing:.02em;}
+.cal-badge{font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .6rem;border-radius:6px;white-space:nowrap;}
 .cal-badge.ig{background:rgba(127,160,195,.15);color:var(--accent2);}
 .cal-badge.li{background:rgba(28,26,22,.08);color:var(--text-mid);}
 
-/* TODAY BADGE */
-.cal-today{border-color:var(--accent);background:rgba(127,160,195,.06);}
-.cal-today .cal-day{color:var(--accent2);}
-.badge-today{font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:var(--accent2);color:#fff;padding:.2rem .5rem;border-radius:5px;margin-left:.5rem;}
+/* TODAY */
+.cal-item.today{background:rgba(15,31,53,.04);}
+.cal-item.today .cal-day{color:var(--accent2);}
+.badge-today{font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:#0f1f35;color:#E8E4DC;padding:.25rem .6rem;border-radius:5px;white-space:nowrap;}
 
 /* LINKS ROW */
 .links{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
@@ -170,215 +176,234 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
   <div class="cal">
     <div class="cal-list">
 
-      <div class="cal-item cal-today">
-        <div class="cal-date"><div class="cal-day">19</div><div class="cal-mon">Apr</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 16 — Elle Ess blue card "798K views. 0% owned audience."</div>
-          <div class="cal-sub">Saturday</div>
+      <!-- WEEK OF APR 19 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of Apr 19</div>
+        <div class="cal-item ig today">
+          <div class="cal-date"><div class="cal-day">19</div><div class="cal-mon">Apr</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 16 — Elle Ess blue card "798K views. 0% owned audience."</div>
+            <div class="cal-sub">Saturday</div>
+          </div>
+          <span class="badge-today">Today</span>
+          <div class="cal-badge ig">Instagram</div>
         </div>
-        <span class="badge-today">Today</span>
-        <div class="cal-badge ig">Instagram</div>
+        <div class="cal-item li">
+          <div class="cal-date"><div class="cal-day">21</div><div class="cal-mon">Apr</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">LI 1 — Elle Ess: The Problem</div>
+            <div class="cal-sub">Monday</div>
+          </div>
+          <div class="cal-badge li">LinkedIn</div>
+        </div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">23</div><div class="cal-mon">Apr</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 17 — Elle Ess funnel architecture image</div>
+            <div class="cal-sub">Wednesday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
       </div>
 
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">21</div><div class="cal-mon">Apr</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">LI 1 — Elle Ess: The Problem</div>
-          <div class="cal-sub">Monday</div>
+      <!-- WEEK OF APR 26 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of Apr 26</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">26</div><div class="cal-mon">Apr</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 18 — Elle Ess blue card "Broken link. Lost sale. Every time."</div>
+            <div class="cal-sub">Saturday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
         </div>
-        <div class="cal-badge li">LinkedIn</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">30</div><div class="cal-mon">Apr</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 19 — Ashley Etsy storefront image</div>
+            <div class="cal-sub">Wednesday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
       </div>
 
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">23</div><div class="cal-mon">Apr</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 17 — Elle Ess funnel architecture image</div>
-          <div class="cal-sub">Wednesday</div>
+      <!-- WEEK OF MAY 2 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of May 2</div>
+        <div class="cal-item li">
+          <div class="cal-date"><div class="cal-day">2</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">LI 2 — Elle Ess: The Fix</div>
+            <div class="cal-sub">Friday</div>
+          </div>
+          <div class="cal-badge li">LinkedIn</div>
         </div>
-        <div class="cal-badge ig">Instagram</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">4</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 20 — Ashley blue card "$2,839. 52% margin. 8 months."</div>
+            <div class="cal-sub">Sunday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">7</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 21 — Ashley product image</div>
+            <div class="cal-sub">Wednesday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
       </div>
 
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">26</div><div class="cal-mon">Apr</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 18 — Elle Ess blue card "Broken link. Lost sale. Every time."</div>
-          <div class="cal-sub">Saturday</div>
+      <!-- WEEK OF MAY 9 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of May 9</div>
+        <div class="cal-item li">
+          <div class="cal-date"><div class="cal-day">9</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">LI 3 — Ashley: The Build</div>
+            <div class="cal-sub">Friday</div>
+          </div>
+          <div class="cal-badge li">LinkedIn</div>
         </div>
-        <div class="cal-badge ig">Instagram</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">11</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 22 — MG Tax blue card "Paper. Cash. Good intentions."</div>
+            <div class="cal-sub">Sunday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">14</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 23 — MG Tax before image</div>
+            <div class="cal-sub">Wednesday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
       </div>
 
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">30</div><div class="cal-mon">Apr</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 19 — Ashley Etsy storefront image</div>
-          <div class="cal-sub">Wednesday</div>
+      <!-- WEEK OF MAY 16 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of May 16</div>
+        <div class="cal-item li">
+          <div class="cal-date"><div class="cal-day">16</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">LI 4 — MG Tax: The Transformation</div>
+            <div class="cal-sub">Friday</div>
+          </div>
+          <div class="cal-badge li">LinkedIn</div>
         </div>
-        <div class="cal-badge ig">Instagram</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">18</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 24 — MG Tax blue card "50% less admin time. Every week."</div>
+            <div class="cal-sub">Sunday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">21</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 25 — Marissa portrait or website screenshot</div>
+            <div class="cal-sub">Wednesday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
       </div>
 
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">2</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">LI 2 — Elle Ess: The Fix</div>
-          <div class="cal-sub">Friday</div>
+      <!-- WEEK OF MAY 23 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of May 23</div>
+        <div class="cal-item li">
+          <div class="cal-date"><div class="cal-day">23</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">LI 5 — Marissa: Speed + Quality</div>
+            <div class="cal-sub">Friday</div>
+          </div>
+          <div class="cal-badge li">LinkedIn</div>
         </div>
-        <div class="cal-badge li">LinkedIn</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">25</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 26 — Marissa blue card "No website. Page 1 Google. 1 day."</div>
+            <div class="cal-sub">Sunday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">28</div><div class="cal-mon">May</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 27 — Marissa website mockup screenshot</div>
+            <div class="cal-sub">Wednesday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
       </div>
 
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">4</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 20 — Ashley blue card "$2,839. 52% margin. 8 months."</div>
-          <div class="cal-sub">Sunday</div>
+      <!-- WEEK OF JUN 1 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of Jun 1</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">1</div><div class="cal-mon">Jun</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 28 — Mac Landon cream card "One problem every time."</div>
+            <div class="cal-sub">Sunday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
         </div>
-        <div class="cal-badge ig">Instagram</div>
+        <div class="cal-item li">
+          <div class="cal-date"><div class="cal-day">3</div><div class="cal-mon">Jun</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">LI 6 — The Wrap-Up: 4 Clients, 1 Problem</div>
+            <div class="cal-sub">Tuesday</div>
+          </div>
+          <div class="cal-badge li">LinkedIn</div>
+        </div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">6</div><div class="cal-mon">Jun</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 29 — Mac Landon blue card "30 minutes. That's all it takes."</div>
+            <div class="cal-sub">Friday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
+        </div>
       </div>
 
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">7</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 21 — Ashley product image</div>
-          <div class="cal-sub">Wednesday</div>
+      <!-- WEEK OF JUN 9 -->
+      <div class="cal-week">
+        <div class="cal-week-header">Week of Jun 9</div>
+        <div class="cal-item ig">
+          <div class="cal-date"><div class="cal-day">9</div><div class="cal-mon">Jun</div></div>
+          <div class="cal-divider"></div>
+          <div class="cal-body">
+            <div class="cal-title">Post 30 — Mac Landon cream card "I build the system behind the business."</div>
+            <div class="cal-sub">Monday</div>
+          </div>
+          <div class="cal-badge ig">Instagram</div>
         </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">9</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">LI 3 — Ashley: The Build</div>
-          <div class="cal-sub">Friday</div>
-        </div>
-        <div class="cal-badge li">LinkedIn</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">11</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 22 — MG Tax blue card "Paper. Cash. Good intentions."</div>
-          <div class="cal-sub">Sunday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">14</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 23 — MG Tax before image</div>
-          <div class="cal-sub">Wednesday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">16</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">LI 4 — MG Tax: The Transformation</div>
-          <div class="cal-sub">Friday</div>
-        </div>
-        <div class="cal-badge li">LinkedIn</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">18</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 24 — MG Tax blue card "50% less admin time. Every week."</div>
-          <div class="cal-sub">Sunday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">21</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 25 — Marissa portrait or website screenshot</div>
-          <div class="cal-sub">Wednesday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">23</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">LI 5 — Marissa: Speed + Quality</div>
-          <div class="cal-sub">Friday</div>
-        </div>
-        <div class="cal-badge li">LinkedIn</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">25</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 26 — Marissa blue card "No website. Page 1 Google. 1 day."</div>
-          <div class="cal-sub">Sunday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">28</div><div class="cal-mon">May</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 27 — Marissa website mockup screenshot</div>
-          <div class="cal-sub">Wednesday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">1</div><div class="cal-mon">Jun</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 28 — Mac Landon cream card "One problem every time."</div>
-          <div class="cal-sub">Sunday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">3</div><div class="cal-mon">Jun</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">LI 6 — The Wrap-Up: 4 Clients, 1 Problem</div>
-          <div class="cal-sub">Tuesday</div>
-        </div>
-        <div class="cal-badge li">LinkedIn</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">6</div><div class="cal-mon">Jun</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 29 — Mac Landon blue card "30 minutes. That's all it takes."</div>
-          <div class="cal-sub">Friday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
-      </div>
-
-      <div class="cal-item">
-        <div class="cal-date"><div class="cal-day">9</div><div class="cal-mon">Jun</div></div>
-        <div class="cal-divider"></div>
-        <div class="cal-body">
-          <div class="cal-title">Post 30 — Mac Landon cream card "I build the system behind the business."</div>
-          <div class="cal-sub">Monday</div>
-        </div>
-        <div class="cal-badge ig">Instagram</div>
       </div>
 
     </div>
