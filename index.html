@@ -98,7 +98,7 @@
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;opacity:0;transform:translateY(10px);animation:up .5s ease .1s forwards;}
 .hero-eyebrow::before{content:"";width:16px;height:1.5px;background:var(--accent);}
 h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;line-height:.98;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem;opacity:0;transform:translateY(20px);animation:up .7s ease .2s forwards;}
-h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradtext 4s ease-in-out infinite;}
+
 #typeword{display:inline;overflow:visible;vertical-align:bottom;padding-bottom:0.1em;line-height:1.1;}
 .hero-value{font-size:1rem;font-weight:500;color:var(--text-mid);margin-bottom:1rem;line-height:1.5;opacity:0;transform:translateY(12px);animation:up .6s ease .33s forwards;border-left:2px solid var(--accent);padding-left:.75rem;}
 .hero-value-row{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
@@ -477,6 +477,33 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .faq-q.open span{transform:rotate(45deg);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;font-size:.9rem;color:var(--text-muted);line-height:1.75;font-weight:400;padding:0 1.5rem;}
 .faq-a.open{max-height:200px;padding:.25rem 1.5rem 1.25rem;}
+
+/* ===== ELITE HERO IMPLEMENTATION (FOOLPROOF) ===== */
+.hero-elite{position:relative;background:var(--bg);min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;padding-top:80px;border-bottom:1px solid rgba(28,26,22,0.05);}
+.hero-elite-container{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 0.9fr;gap:2rem;align-items:flex-end;padding:0 4rem;}
+.hero-elite-content{padding-bottom:6rem;z-index:10;}
+.hero-elite-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:"DM Sans",sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem;}
+.hero-elite-eyebrow::before{content:"";width:16px;height:1.5px;background:var(--text-muted);}
+h1.hero-elite-h1{font-family:"Fraunces",serif !important;font-size:clamp(2.5rem,5vw,4.5rem) !important;font-weight:700 !important;line-height:1.08 !important;letter-spacing:-.02em !important;color:var(--text) !important;margin-bottom:1.25rem !important;opacity:1 !important;transform:none !important;animation:none !important;}
+h1.hero-elite-h1 em{font-style:italic !important;font-weight:700 !important;background:none !important;-webkit-text-fill-color:var(--text) !important;color:var(--text) !important;animation:none !important;}
+.hero-elite-sub{font-family:"DM Sans",sans-serif;font-size:1.1rem;line-height:1.6;font-weight:400;color:var(--text-mid);max-width:520px;margin-bottom:2.5rem;}
+.hero-elite-cta-wrap{display:flex;}
+a.btn-elite-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--text);color:#fff !important;font-family:"DM Sans",sans-serif;font-size:.95rem;font-weight:500;padding:1rem 2rem;border-radius:4px;text-decoration:none !important;transition:all .2s ease;}
+a.btn-elite-primary:hover{background:var(--text-mid);gap:.75rem;}
+.hero-elite-visual{display:flex;justify-content:flex-end;align-items:flex-end;width:100%;height:100%;}
+.hero-elite-portrait{width:100%;max-width:600px;height:auto;max-height:85vh;object-fit:contain;object-position:bottom right;display:block;filter:drop-shadow(-10px 10px 30px rgba(0,0,0,0.06));}
+
+/* ELITE MOBILE OVERRIDES */
+@media(max-width:900px){
+  .hero-elite{min-height:auto;padding-top:100px;align-items:flex-start;}
+  .hero-elite-container{grid-template-columns:1fr;gap:0;padding:0;}
+  .hero-elite-content{padding:0 1.5rem 2rem 1.5rem;}
+  h1.hero-elite-h1{font-size:2.75rem !important;}
+  .hero-elite-sub{font-size:1rem;margin-bottom:2rem;}
+  a.btn-elite-primary{width:100%;justify-content:center;}
+  .hero-elite-visual{justify-content:center;padding:0 1.5rem;}
+  .hero-elite-portrait{max-width:100%;max-height:60vh;object-position:bottom center;}
+}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQSZMG06BY"></script>
