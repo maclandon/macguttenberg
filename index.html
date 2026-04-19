@@ -107,6 +107,7 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 .hero-sub{font-size:.92rem;font-weight:400;line-height:1.75;color:var(--text-muted);margin-bottom:2rem;opacity:0;transform:translateY(12px);animation:up .6s ease .4s forwards;}
 .hero-sub strong{color:var(--text-mid);font-weight:500;}
 .hero-btns{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(12px);animation:up .6s ease .52s forwards;}
+.hero-cta-overlap{display:none;}
 .hero-right{position:relative;z-index:4;overflow:visible;opacity:0;animation:fadeIn .9s ease .25s forwards;}
 .hero-photo{position:absolute;z-index:2;bottom:0;right:0;left:0;display:flex;align-items:flex-end;justify-content:center;height:98%;}
 .hero-photo img{height:95%;width:auto;object-fit:contain;object-position:bottom;filter:drop-shadow(-8px 0 40px rgba(28,26,22,.12));}
@@ -412,7 +413,9 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 
 @media(max-width:900px){
   #typeword{display:inline;}
-  .hero-card{padding:2rem 1.75rem 1.75rem;text-align:left;}
+  .hero-card{background:transparent;border:none;box-shadow:none;padding:2rem 1.5rem 0;text-align:left;}
+  .hero-cta-desktop{display:none !important;}
+  .hero-cta-overlap{display:flex;width:calc(100% - 3rem);margin:-1.5rem auto 2rem;position:relative;z-index:3;justify-content:center;}
   .btn-dark{width:100%;justify-content:center;}
   .hero-sub{display:none;}
   h1{font-size:2.5rem;line-height:1.02;}
@@ -421,12 +424,12 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
   .photo-chip{display:none;}
   .scroll-hint{display:none;}
   .contact-book-card{margin:0;padding:2rem 1.25rem;width:100%;}
-  .hero{height:auto !important;min-height:auto !important;padding-bottom:2.5rem;}
+  .hero{height:auto !important;min-height:auto !important;padding-bottom:1rem;}
   .hero-left{justify-content:flex-start;padding:calc(56px + 1.25rem) 1.5rem 2rem;}
   .hero-card{animation:none;}
-  .hero-value-avatar{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:12px;margin:1.5rem 0;border:none;padding:0;}
+  .hero-value-avatar{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:16px;margin:0;border:none;padding:0;position:relative;z-index:2;box-shadow:0 12px 40px rgba(0,0,0,0.15);}
   .hero-value-row{display:block;}
-  .hero-value-row .hero-value{border-left:2px solid #7fa0c3;padding-left:1rem;text-align:left;font-size:1.05rem;line-height:1.6;margin-top:0;}
+  .hero-value-row .hero-value{border-left:2px solid #7fa0c3;padding-left:1rem;text-align:left;font-size:1.05rem;line-height:1.6;margin-top:0;margin-bottom:2rem;}
   .right-sec{padding-top:3rem;}
   .right-list li{flex-direction:column;gap:.4rem;}
   .right-list li strong{display:block;margin-bottom:.2rem;}
@@ -526,12 +529,13 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
       <div class="hero-eyebrow">For Small Businesses</div>
       <h1>Your business is <em>growing.</em><br>Your <span style="color:#7fa0c3;-webkit-text-fill-color:#7fa0c3;">systems</span> aren't keeping up.</h1>
       <div class="hero-value-row">
-        <img src="mac-mockup-8.webp" alt="Mac Landon" class="hero-value-avatar">
         <p class="hero-value">I audit your business, fix what's broken, and build the systems that let you actually grow.</p>
+        <img src="mac-mockup-8.webp" alt="Mac Landon" class="hero-value-avatar">
+        <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-dark hero-cta-overlap">Book a free call →</a>
       </div>
       <p class="hero-sub">You've built something real. Now it needs infrastructure to match — so your operations, your sales, and <strong>your sanity</strong> can all keep up.</p>
       <div class="hero-btns">
-        <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-dark">Book a free call →</a>
+        <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-dark hero-cta-desktop">Book a free call →</a>
       </div>
     </div>
   </div>
