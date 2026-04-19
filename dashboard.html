@@ -13,118 +13,124 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#0f1f35;--card:#1a2f47;--card2:#1f354d;--card3:#243a52;
+  --bg:#0f1f35;--card:#1a2f47;--card2:#1f354d;
   --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);
   --text:#E8E4DC;--text2:rgba(232,228,220,.65);--muted:rgba(232,228,220,.35);
   --accent:#7EACD4;--accent2:#3D6B9A;--glow:rgba(126,172,212,.1);
+  --blue:#7EACD4;--green:#6BCB77;--yellow:#F2C94C;--teal:#4ECDC4;--orange:#F2994A;
 }
 html{overflow-x:hidden;scroll-behavior:smooth;}
 body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;opacity:0;animation:pagefade .8s ease .1s forwards;}
 @keyframes pagefade{to{opacity:1}}
 
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(15,31,53,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
 .nav-logo{display:flex;align-items:center;gap:.85rem;text-decoration:none;}
 .nav-logo img{height:26px;width:auto;display:block;opacity:.9;}
-.nav-badge{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);font-family:"DM Sans",sans-serif;border-left:1px solid rgba(255,255,255,.08);padding-left:.85rem;}
+.nav-badge{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);border-left:1px solid rgba(255,255,255,.08);padding-left:.85rem;}
 .nav-right{display:flex;align-items:center;gap:1.25rem;}
 .nav-back{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
 .nav-back:hover{color:rgba(255,255,255,.8);}
 .nav-cta{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.12);padding:.45rem 1.1rem;border-radius:4px;text-decoration:none;transition:all .2s;}
 .nav-cta:hover{background:var(--accent);border-color:var(--accent);}
 
-/* LAYOUT */
-.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:calc(56px + 3rem) 4rem 5rem;}
-.sec-tag{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:calc(56px + 3.5rem) 4rem 5rem;}
+.sec-tag{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;}
 .sec-tag::before{content:"";width:14px;height:1.5px;background:var(--accent);}
+.section{margin-bottom:4rem;}
 
-/* REVEAL */
 .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
 .rv.on{opacity:1;transform:translateY(0);}
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.35s}
 
-/* ═══════════════════════════════════════
-   S1 — HERO STRIP
-   ═══════════════════════════════════════ */
-.hero{margin-bottom:3rem;opacity:0;animation:slideup .8s ease .2s forwards;}
+/* ═══════ HERO ═══════ */
+.hero{margin-bottom:4rem;opacity:0;animation:slideup .8s ease .2s forwards;transform:translateY(16px);}
 @keyframes slideup{to{opacity:1;transform:translateY(0)}}
-.hero{transform:translateY(16px);}
-.hero-greeting{font-family:"Fraunces",serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:900;font-style:italic;color:var(--text);line-height:1.08;letter-spacing:-.03em;margin-bottom:.5rem;}
-.hero-greeting em{color:var(--accent);font-style:italic;}
-.hero-date{font-size:.88rem;color:var(--muted);font-weight:400;margin-bottom:2rem;}
+.hero-greeting{font-family:"Fraunces",serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:900;font-style:italic;color:var(--text);line-height:1.08;letter-spacing:-.03em;margin-bottom:.4rem;}
+.hero-greeting em{color:var(--accent);}
+.hero-date{font-size:.9rem;color:var(--muted);margin-bottom:2.5rem;}
 
-.next-up{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:1.75rem 2rem;display:flex;align-items:center;gap:2rem;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;}
-.next-up::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,var(--accent) 50%,transparent 100%);}
-.next-up:hover{border-color:rgba(126,172,212,.2);box-shadow:0 8px 40px rgba(126,172,212,.08);}
-.nu-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent);animation:pulse 2s ease infinite;flex-shrink:0;}
-@keyframes pulse{0%,100%{box-shadow:0 0 16px var(--accent);opacity:1}50%{box-shadow:0 0 4px var(--accent);opacity:.4}}
-.nu-tag{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
-.nu-date{min-width:56px;text-align:center;flex-shrink:0;}
-.nu-day{font-family:"Fraunces",serif;font-size:2rem;font-weight:900;color:var(--text);line-height:1;}
-.nu-mon{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;}
-.nu-div{width:1px;height:40px;background:var(--border2);}
+.next-up{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2.25rem 2.5rem;display:flex;align-items:center;gap:2.25rem;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;}
+.next-up::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent);}
+.next-up:hover{border-color:rgba(126,172,212,.2);box-shadow:0 12px 48px rgba(126,172,212,.1);}
+.nu-left{display:flex;align-items:center;gap:1.5rem;flex-shrink:0;}
+.nu-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 20px var(--accent);animation:pulse 2s ease infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px var(--accent);opacity:1}50%{box-shadow:0 0 6px var(--accent);opacity:.4}}
+.nu-date{text-align:center;}
+.nu-day{font-family:"Fraunces",serif;font-size:3rem;font-weight:900;color:var(--text);line-height:1;}
+.nu-mon{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;}
+.nu-div{width:1px;height:56px;background:var(--border2);flex-shrink:0;}
 .nu-body{flex:1;min-width:0;}
-.nu-title{font-family:"Fraunces",serif;font-size:1.05rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:.15rem;}
-.nu-sub{font-size:.78rem;color:var(--muted);}
-.nu-badge{font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:100px;background:rgba(126,172,212,.1);color:var(--accent);flex-shrink:0;}
+.nu-tag{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
+.nu-title{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.3rem;}
+.nu-sub{font-size:.82rem;color:var(--muted);}
+.nu-right{display:flex;flex-direction:column;align-items:flex-end;gap:.75rem;flex-shrink:0;}
+.nu-badge{font-size:.65rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .8rem;border-radius:100px;background:rgba(126,172,212,.15);color:var(--accent);}
+.nu-btn{display:inline-flex;align-items:center;gap:.35rem;font-size:.88rem;font-weight:600;color:var(--bg);background:var(--accent);padding:.7rem 1.5rem;border-radius:8px;text-decoration:none;transition:background .2s,gap .2s,transform .15s;}
+.nu-btn:hover{background:#5B8DB8;gap:.55rem;}
+.nu-btn:active{transform:scale(.97);}
 
-/* ═══════════════════════════════════════
-   S2 — STATS ROW
-   ═══════════════════════════════════════ */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3.5rem;}
-.stat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;align-items:flex-start;gap:1rem;transition:transform .3s,border-color .3s,box-shadow .3s;}
-.stat:hover{transform:translateY(-4px);border-color:rgba(126,172,212,.18);box-shadow:0 12px 40px rgba(126,172,212,.06);}
-.stat-icon{width:42px;height:42px;border-radius:10px;background:rgba(126,172,212,.08);border:1px solid rgba(126,172,212,.1);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.stat-val{font-family:"Fraunces",serif;font-size:2rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:.2rem;}
-.stat-lbl{font-size:.72rem;color:var(--muted);letter-spacing:.04em;}
+/* ═══════ STATS ═══════ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.75rem;display:flex;align-items:flex-start;gap:1.15rem;transition:transform .3s,border-color .3s,box-shadow .3s;}
+.stat:hover{transform:translateY(-4px);border-color:rgba(126,172,212,.18);box-shadow:0 16px 48px rgba(126,172,212,.08);}
+.stat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.stat-icon.blue{background:rgba(126,172,212,.12);color:var(--blue);}
+.stat-icon.green{background:rgba(107,203,119,.12);color:var(--green);}
+.stat-icon.yellow{background:rgba(242,201,76,.12);color:var(--yellow);}
+.stat-icon.accent{background:rgba(126,172,212,.12);color:var(--blue);}
+.stat-val{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:.25rem;}
+.stat-lbl{font-size:.78rem;color:var(--muted);letter-spacing:.03em;}
 
-/* ═══════════════════════════════════════
-   S3 — PROGRESS RINGS
-   ═══════════════════════════════════════ */
-.progress{display:flex;justify-content:center;gap:4rem;margin-bottom:3.5rem;padding:2.5rem 0;}
+/* ═══════ PROGRESS RINGS ═══════ */
+.progress-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem 2rem;display:flex;justify-content:center;gap:5rem;}
 .ring-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;}
-.ring-svg{width:120px;height:120px;transform:rotate(-90deg);}
-.ring-track{fill:none;stroke:rgba(255,255,255,.04);stroke-width:6;}
-.ring-fill{fill:none;stroke-width:6;stroke-linecap:round;stroke-dasharray:326.73;stroke-dashoffset:326.73;transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1);}
+.ring-container{position:relative;width:180px;height:180px;}
+.ring-svg{width:180px;height:180px;transform:rotate(-90deg);}
+.ring-track{fill:none;stroke:rgba(255,255,255,.04);stroke-width:8;}
+.ring-fill{fill:none;stroke-width:8;stroke-linecap:round;stroke-dasharray:452.39;stroke-dashoffset:452.39;transition:stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1);}
 .ring-fill.ig{stroke:var(--accent);}
 .ring-fill.li{stroke:var(--accent2);}
 .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.ring-container{position:relative;width:120px;height:120px;}
-.ring-num{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:900;color:var(--text);line-height:1;}
-.ring-of{font-size:.65rem;color:var(--muted);margin-top:.1rem;}
-.ring-label{font-size:.78rem;color:var(--text2);font-weight:500;letter-spacing:.04em;}
+.ring-pct{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:900;color:var(--text);line-height:1;}
+.ring-plat{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.35rem;}
+.ring-count{font-size:.82rem;color:var(--text2);margin-top:.15rem;}
+.ring-label{font-size:.85rem;color:var(--text2);font-weight:500;letter-spacing:.04em;}
 
-/* ═══════════════════════════════════════
-   S4 — TOOLS
-   ═══════════════════════════════════════ */
-.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-bottom:3.5rem;}
+/* ═══════ TOOLS ═══════ */
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
 .tool{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.85rem;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
-.tool::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(126,172,212,.03),transparent);transition:left .6s ease;}
+.tool::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+.tool.c-blue::before{background:var(--blue);}
+.tool.c-teal::before{background:var(--teal);}
+.tool.c-green::before{background:var(--green);}
+.tool.c-orange::before{background:var(--orange);}
+.tool::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.02),transparent);transition:left .6s ease;}
 .tool:hover::after{left:100%;}
-.tool:hover{transform:translateY(-4px);border-color:rgba(126,172,212,.2);box-shadow:0 12px 40px rgba(126,172,212,.06);}
+.tool:hover{transform:translateY(-4px);border-color:rgba(126,172,212,.2);box-shadow:0 16px 48px rgba(126,172,212,.06);}
 .tool:hover .t-arrow{transform:translateX(6px);color:var(--accent);}
 .t-top{display:flex;align-items:center;justify-content:space-between;}
-.t-icon{width:44px;height:44px;border-radius:12px;background:rgba(126,172,212,.08);border:1px solid rgba(126,172,212,.1);color:var(--accent);display:flex;align-items:center;justify-content:center;}
-.t-arrow{color:var(--muted);transition:transform .3s,color .3s;font-size:1.1rem;}
-.t-name{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--text);}
+.t-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;}
+.t-icon.blue{background:rgba(126,172,212,.12);color:var(--blue);}
+.t-icon.teal{background:rgba(78,205,196,.12);color:var(--teal);}
+.t-icon.green{background:rgba(107,203,119,.12);color:var(--green);}
+.t-icon.orange{background:rgba(242,153,74,.12);color:var(--orange);}
+.t-arrow{color:var(--muted);transition:transform .3s,color .3s;font-size:1.2rem;}
+.t-name{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:700;color:var(--text);}
 .t-desc{font-size:.88rem;color:var(--muted);line-height:1.75;}
 .t-meta{display:flex;align-items:center;gap:.5rem;font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;}
-.t-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
+.t-meta .dot{width:5px;height:5px;border-radius:50%;}
 
-/* ═══════════════════════════════════════
-   S5 — CALENDAR
-   ═══════════════════════════════════════ */
-.cal{margin-bottom:3.5rem;}
+/* ═══════ CALENDAR ═══════ */
 .cal-list{display:flex;flex-direction:column;gap:1.25rem;}
 .cal-week{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .3s;}
 .cal-week:hover{border-color:rgba(126,172,212,.12);}
-.wk-head{font-family:"Fraunces",serif;font-size:.85rem;font-weight:700;color:var(--text2);padding:.85rem 1.75rem;background:rgba(255,255,255,.02);border-bottom:1px solid var(--border);}
+.wk-head{font-family:"Fraunces",serif;font-size:1rem;font-weight:900;color:var(--text);padding:1rem 1.75rem;background:rgba(255,255,255,.02);border-bottom:1px solid var(--border);letter-spacing:-.01em;}
 .ci{padding:1rem 1.75rem;display:flex;align-items:center;gap:1.25rem;border-left:3px solid transparent;transition:background .2s;}
 .ci:not(:last-child){border-bottom:1px solid var(--border);}
 .ci:hover{background:rgba(126,172,212,.03);}
 .ci.ig{border-left-color:var(--accent);}
 .ci.li{border-left-color:var(--accent2);}
-.ci.done{opacity:.4;}
+.ci.done{opacity:.3;}
 .ci-date{min-width:44px;text-align:center;}
 .ci-day{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:900;line-height:1;color:var(--text);}
 .ci-mon{font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;}
@@ -133,34 +139,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 .ci-title{font-size:.86rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ci-sub{font-size:.65rem;color:var(--muted);margin-top:.15rem;letter-spacing:.02em;}
 .ci-badge{font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .6rem;border-radius:100px;white-space:nowrap;}
-.ci-badge.ig{background:rgba(126,172,212,.1);color:var(--accent);}
-.ci-badge.li{background:rgba(232,228,220,.05);color:var(--text2);}
-.ci.today{background:var(--glow);}
-.ci.today .ci-day{color:var(--accent);}
-.badge-today{font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--bg);padding:.25rem .65rem;border-radius:100px;white-space:nowrap;box-shadow:0 0 20px rgba(126,172,212,.3);animation:todaypulse 3s ease infinite;}
-@keyframes todaypulse{0%,100%{box-shadow:0 0 20px rgba(126,172,212,.3)}50%{box-shadow:0 0 8px rgba(126,172,212,.15)}}
+.ci-badge.ig{background:rgba(126,172,212,.12);color:var(--accent);}
+.ci-badge.li{background:rgba(61,107,154,.2);color:var(--accent2);}
 
-/* ═══════════════════════════════════════
-   S6 — IG STRIP
-   ═══════════════════════════════════════ */
-.ig-strip{border-top:1px solid var(--border);padding:1.25rem 0;display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:3.5rem;}
-.ig-strip-stat{font-size:.8rem;color:var(--muted);font-weight:400;}
-.ig-strip-stat strong{color:var(--text2);font-weight:600;}
-.ig-strip-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.15);}
-.ig-strip-handle{font-size:.8rem;color:var(--accent);text-decoration:none;font-weight:500;transition:color .2s;}
-.ig-strip-handle:hover{color:#a8cbe6;}
+/* TODAY — bright accent row */
+.ci.today{background:var(--accent);border-left-color:var(--accent);}
+.ci.today .ci-day,.ci.today .ci-title{color:var(--bg);}
+.ci.today .ci-mon,.ci.today .ci-sub{color:rgba(15,31,53,.5);}
+.ci.today .ci-div{background:rgba(15,31,53,.15);}
+.ci.today .ci-badge{background:rgba(15,31,53,.15);color:var(--bg);}
+.badge-today{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--bg);color:var(--accent);padding:.28rem .7rem;border-radius:100px;white-space:nowrap;box-shadow:0 0 24px rgba(15,31,53,.3);animation:todaypulse 3s ease infinite;}
+@keyframes todaypulse{0%,100%{box-shadow:0 0 24px rgba(15,31,53,.3)}50%{box-shadow:0 0 8px rgba(15,31,53,.15)}}
 
-/* ═══════════════════════════════════════
-   S7 — QUICK LINKS
-   ═══════════════════════════════════════ */
-.qlinks{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-bottom:3rem;}
-.ql{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1rem;text-decoration:none;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:.75rem;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;}
-.ql:hover{transform:translateY(-4px);border-color:rgba(126,172,212,.2);box-shadow:0 12px 36px rgba(126,172,212,.08);}
-.ql-icon{width:44px;height:44px;border-radius:12px;background:rgba(126,172,212,.06);border:1px solid rgba(126,172,212,.08);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:background .3s,box-shadow .3s;}
-.ql:hover .ql-icon{background:rgba(126,172,212,.12);box-shadow:0 0 20px rgba(126,172,212,.12);}
-.ql-label{font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--text2);}
+/* ═══════ IG STATS ═══════ */
+.ig-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem;display:flex;align-items:center;gap:2rem;}
+.ig-card-header{flex-shrink:0;}
+.ig-card-title{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.15rem;}
+.ig-card-handle{font-size:.78rem;color:var(--accent);text-decoration:none;transition:color .2s;}
+.ig-card-handle:hover{color:#a8cbe6;}
+.ig-stats{display:flex;gap:1rem;flex:1;justify-content:flex-end;}
+.ig-stat-box{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:1rem 1.5rem;text-align:center;min-width:100px;}
+.ig-stat-num{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:.2rem;}
+.ig-stat-lbl{font-size:.68rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
 
-/* RESPONSIVE */
+/* ═══════ QUICK LINKS ═══════ */
+.qlinks{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;}
+.ql{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem 1rem;text-decoration:none;color:var(--text);display:flex;flex-direction:column;align-items:center;gap:.85rem;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;}
+.ql:hover{transform:translateY(-4px);border-color:rgba(126,172,212,.2);box-shadow:0 16px 40px rgba(126,172,212,.08);}
+.ql-icon{width:48px;height:48px;border-radius:14px;background:rgba(126,172,212,.06);border:1px solid rgba(126,172,212,.08);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:background .3s,box-shadow .3s;}
+.ql:hover .ql-icon{background:rgba(126,172,212,.14);box-shadow:0 0 24px rgba(126,172,212,.12);}
+.ql-label{font-size:.75rem;font-weight:500;letter-spacing:.04em;color:var(--text2);}
+
 @media(max-width:900px){
   nav{padding:0 1.25rem;}
   .wrap{padding:calc(56px + 2rem) 1.5rem 3rem;}
@@ -168,16 +177,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
   .tools{grid-template-columns:1fr;}
   .qlinks{grid-template-columns:repeat(3,1fr);}
   .nav-badge{display:none;}
-  .next-up{flex-direction:column;align-items:flex-start;gap:1rem;padding:1.5rem;}
+  .next-up{flex-direction:column;align-items:flex-start;gap:1.25rem;padding:1.75rem;}
   .nu-div{width:100%;height:1px;}
-  .progress{gap:2rem;padding:1.5rem 0;}
-  .ring-svg{width:100px;height:100px;}
-  .ring-container{width:100px;height:100px;}
-  .ring-num{font-size:1.3rem;}
+  .nu-right{flex-direction:row;align-items:center;width:100%;justify-content:space-between;}
+  .progress-card{flex-direction:column;align-items:center;gap:2.5rem;padding:2rem;}
+  .ring-container,.ring-svg{width:140px;height:140px;}
+  .ring-pct{font-size:1.8rem;}
+  .ig-card{flex-direction:column;align-items:flex-start;}
+  .ig-stats{width:100%;justify-content:flex-start;}
 }
 @media(max-width:500px){
   .qlinks{grid-template-columns:repeat(2,1fr);}
   .stats{grid-template-columns:1fr;}
+  .ig-stats{flex-direction:column;}
+  .ig-stat-box{width:100%;}
 }
 </style>
 <link rel="manifest" href="/manifest-dashboard.json">
@@ -197,120 +210,130 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
 
 <div class="wrap">
 
-  <!-- S1 — HERO -->
+  <!-- HERO -->
   <div class="hero">
     <h1 class="hero-greeting">Good morning, <em>Mac.</em></h1>
     <p class="hero-date" id="hero-date">Saturday, April 19, 2026</p>
-
     <div class="next-up">
-      <div class="nu-dot"></div>
-      <div class="nu-tag">Next Up</div>
-      <div class="nu-date"><div class="nu-day">19</div><div class="nu-mon">Apr</div></div>
+      <div class="nu-left">
+        <div class="nu-dot"></div>
+        <div class="nu-date"><div class="nu-day">19</div><div class="nu-mon">Apr</div></div>
+      </div>
       <div class="nu-div"></div>
       <div class="nu-body">
+        <div class="nu-tag">Next Up</div>
         <div class="nu-title">Post 16 — Elle Ess blue card "798K views. 0% owned audience."</div>
         <div class="nu-sub">Saturday — Elle Ess</div>
       </div>
-      <div class="nu-badge">Instagram</div>
+      <div class="nu-right">
+        <div class="nu-badge">Instagram</div>
+        <a href="#" class="nu-btn">Build This →</a>
+      </div>
     </div>
   </div>
 
-  <!-- S2 — STATS -->
-  <div class="stats rv">
-    <div class="stat">
-      <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <div><div class="stat-val" id="stat-total" data-count="0">—</div><div class="stat-lbl">Total Leads</div></div>
-    </div>
-    <div class="stat">
-      <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div><div class="stat-val" id="stat-active" data-count="0">—</div><div class="stat-lbl">Active</div></div>
-    </div>
-    <div class="stat">
-      <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div><div class="stat-val" id="stat-calls" data-count="0">—</div><div class="stat-lbl">Calls Booked</div></div>
-    </div>
-    <div class="stat">
-      <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-      <div><div class="stat-val" id="stat-won" data-count="0">—</div><div class="stat-lbl">Won</div></div>
+  <!-- STATS -->
+  <div class="section">
+    <div class="stats rv">
+      <div class="stat">
+        <div class="stat-icon blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><div class="stat-val" id="stat-total">—</div><div class="stat-lbl">Total Leads</div></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div><div class="stat-val" id="stat-active">—</div><div class="stat-lbl">Active</div></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon yellow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div><div class="stat-val" id="stat-calls">—</div><div class="stat-lbl">Calls Booked</div></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon accent"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div><div class="stat-val" id="stat-won">—</div><div class="stat-lbl">Won</div></div>
+      </div>
     </div>
   </div>
 
-  <!-- S3 — PROGRESS RINGS -->
-  <div class="progress rv">
-    <div class="ring-wrap">
-      <div class="ring-container">
-        <svg class="ring-svg" viewBox="0 0 120 120">
-          <circle class="ring-track" cx="60" cy="60" r="52"/>
-          <circle class="ring-fill ig" id="ring-ig" cx="60" cy="60" r="52"/>
-        </svg>
-        <div class="ring-center">
-          <div class="ring-num" id="ring-ig-num">0</div>
-          <div class="ring-of">of 15</div>
+  <!-- PROGRESS RINGS -->
+  <div class="section">
+    <div class="sec-tag rv">Content Progress</div>
+    <div class="progress-card rv">
+      <div class="ring-wrap">
+        <div class="ring-container">
+          <svg class="ring-svg" viewBox="0 0 180 180">
+            <circle class="ring-track" cx="90" cy="90" r="72"/>
+            <circle class="ring-fill ig" id="ring-ig" cx="90" cy="90" r="72"/>
+          </svg>
+          <div class="ring-center">
+            <div class="ring-pct" id="ring-ig-pct">0%</div>
+            <div class="ring-plat">Instagram</div>
+            <div class="ring-count" id="ring-ig-count">0 of 15</div>
+          </div>
         </div>
       </div>
-      <div class="ring-label">Instagram</div>
-    </div>
-    <div class="ring-wrap">
-      <div class="ring-container">
-        <svg class="ring-svg" viewBox="0 0 120 120">
-          <circle class="ring-track" cx="60" cy="60" r="52"/>
-          <circle class="ring-fill li" id="ring-li" cx="60" cy="60" r="52"/>
-        </svg>
-        <div class="ring-center">
-          <div class="ring-num" id="ring-li-num">0</div>
-          <div class="ring-of">of 6</div>
+      <div class="ring-wrap">
+        <div class="ring-container">
+          <svg class="ring-svg" viewBox="0 0 180 180">
+            <circle class="ring-track" cx="90" cy="90" r="72"/>
+            <circle class="ring-fill li" id="ring-li" cx="90" cy="90" r="72"/>
+          </svg>
+          <div class="ring-center">
+            <div class="ring-pct" id="ring-li-pct">0%</div>
+            <div class="ring-plat">LinkedIn</div>
+            <div class="ring-count" id="ring-li-count">0 of 6</div>
+          </div>
         </div>
       </div>
-      <div class="ring-label">LinkedIn</div>
     </div>
   </div>
 
-  <!-- S4 — TOOLS -->
-  <div class="sec-tag rv">My Tools</div>
-  <div class="tools">
-    <a href="/lead-tracker" class="tool rv d1">
-      <div class="t-top">
-        <div class="t-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <span class="t-arrow">→</span>
-      </div>
-      <div class="t-name">Lead Tracker</div>
-      <div class="t-desc">Manage prospects, track outreach, and move deals through your pipeline.</div>
-      <div class="t-meta"><span class="dot"></span>Pipeline</div>
-    </a>
-    <a href="/proposal-generator" class="tool rv d2">
-      <div class="t-top">
-        <div class="t-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
-        <span class="t-arrow">→</span>
-      </div>
-      <div class="t-name">Proposal Generator</div>
-      <div class="t-desc">Build and send custom proposals fast. Pricing, scope, and timelines in one click.</div>
-      <div class="t-meta"><span class="dot"></span>Sales</div>
-    </a>
-    <a href="/onboarding" class="tool rv d3">
-      <div class="t-top">
-        <div class="t-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <span class="t-arrow">→</span>
-      </div>
-      <div class="t-name">Onboarding</div>
-      <div class="t-desc">Kick off new clients with a structured intake form and welcome flow.</div>
-      <div class="t-meta"><span class="dot"></span>Client</div>
-    </a>
-    <a href="/email-templates" class="tool rv d4">
-      <div class="t-top">
-        <div class="t-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg></div>
-        <span class="t-arrow">→</span>
-      </div>
-      <div class="t-name">Email Templates</div>
-      <div class="t-desc">Cold outreach, follow-ups, proposals — copy, customize, send.</div>
-      <div class="t-meta"><span class="dot"></span>Outreach</div>
-    </a>
+  <!-- TOOLS -->
+  <div class="section">
+    <div class="sec-tag rv">My Tools</div>
+    <div class="tools">
+      <a href="/lead-tracker" class="tool c-blue rv d1">
+        <div class="t-top">
+          <div class="t-icon blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <span class="t-arrow">→</span>
+        </div>
+        <div class="t-name">Lead Tracker</div>
+        <div class="t-desc">Manage prospects, track outreach, and move deals through your pipeline.</div>
+        <div class="t-meta"><span class="dot" style="background:var(--blue)"></span>Pipeline</div>
+      </a>
+      <a href="/proposal-generator" class="tool c-teal rv d2">
+        <div class="t-top">
+          <div class="t-icon teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+          <span class="t-arrow">→</span>
+        </div>
+        <div class="t-name">Proposal Generator</div>
+        <div class="t-desc">Build and send custom proposals fast. Pricing, scope, and timelines in one click.</div>
+        <div class="t-meta"><span class="dot" style="background:var(--teal)"></span>Sales</div>
+      </a>
+      <a href="/onboarding" class="tool c-green rv d3">
+        <div class="t-top">
+          <div class="t-icon green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <span class="t-arrow">→</span>
+        </div>
+        <div class="t-name">Onboarding</div>
+        <div class="t-desc">Kick off new clients with a structured intake form and welcome flow.</div>
+        <div class="t-meta"><span class="dot" style="background:var(--green)"></span>Client</div>
+      </a>
+      <a href="/email-templates" class="tool c-orange rv d4">
+        <div class="t-top">
+          <div class="t-icon orange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg></div>
+          <span class="t-arrow">→</span>
+        </div>
+        <div class="t-name">Email Templates</div>
+        <div class="t-desc">Cold outreach, follow-ups, proposals — copy, customize, send.</div>
+        <div class="t-meta"><span class="dot" style="background:var(--orange)"></span>Outreach</div>
+      </a>
+    </div>
   </div>
 
-  <!-- S5 — CALENDAR -->
-  <div class="sec-tag rv">Content Calendar</div>
-  <div class="cal">
+  <!-- CALENDAR -->
+  <div class="section">
+    <div class="sec-tag rv">Content Calendar</div>
     <div class="cal-list">
-
       <div class="cal-week rv">
         <div class="wk-head">Week of Apr 19</div>
         <div class="ci ig today">
@@ -320,105 +343,96 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
           <span class="badge-today">Today</span>
           <div class="ci-badge ig">Instagram</div>
         </div>
-        <div class="ci li">
-          <div class="ci-date"><div class="ci-day">21</div><div class="ci-mon">Apr</div></div>
-          <div class="ci-div"></div>
-          <div class="ci-body"><div class="ci-title">LI 1 — Elle Ess: The Problem</div><div class="ci-sub">Monday</div></div>
-          <div class="ci-badge li">LinkedIn</div>
-        </div>
-        <div class="ci ig">
-          <div class="ci-date"><div class="ci-day">23</div><div class="ci-mon">Apr</div></div>
-          <div class="ci-div"></div>
-          <div class="ci-body"><div class="ci-title">Post 17 — Elle Ess funnel architecture image</div><div class="ci-sub">Wednesday</div></div>
-          <div class="ci-badge ig">Instagram</div>
-        </div>
+        <div class="ci li"><div class="ci-date"><div class="ci-day">21</div><div class="ci-mon">Apr</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">LI 1 — Elle Ess: The Problem</div><div class="ci-sub">Monday</div></div><div class="ci-badge li">LinkedIn</div></div>
+        <div class="ci ig"><div class="ci-date"><div class="ci-day">23</div><div class="ci-mon">Apr</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 17 — Elle Ess funnel architecture image</div><div class="ci-sub">Wednesday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
       <div class="cal-week rv">
         <div class="wk-head">Week of Apr 26</div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">26</div><div class="ci-mon">Apr</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 18 — Elle Ess blue card "Broken link. Lost sale. Every time."</div><div class="ci-sub">Saturday</div></div><div class="ci-badge ig">Instagram</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">30</div><div class="ci-mon">Apr</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 19 — Ashley Etsy storefront image</div><div class="ci-sub">Wednesday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
       <div class="cal-week rv">
         <div class="wk-head">Week of May 2</div>
         <div class="ci li"><div class="ci-date"><div class="ci-day">2</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">LI 2 — Elle Ess: The Fix</div><div class="ci-sub">Friday</div></div><div class="ci-badge li">LinkedIn</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">4</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 20 — Ashley blue card "$2,839. 52% margin. 8 months."</div><div class="ci-sub">Sunday</div></div><div class="ci-badge ig">Instagram</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">7</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 21 — Ashley product image</div><div class="ci-sub">Wednesday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
       <div class="cal-week rv">
         <div class="wk-head">Week of May 9</div>
         <div class="ci li"><div class="ci-date"><div class="ci-day">9</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">LI 3 — Ashley: The Build</div><div class="ci-sub">Friday</div></div><div class="ci-badge li">LinkedIn</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">11</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 22 — MG Tax blue card "Paper. Cash. Good intentions."</div><div class="ci-sub">Sunday</div></div><div class="ci-badge ig">Instagram</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">14</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 23 — MG Tax before image</div><div class="ci-sub">Wednesday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
       <div class="cal-week rv">
         <div class="wk-head">Week of May 16</div>
         <div class="ci li"><div class="ci-date"><div class="ci-day">16</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">LI 4 — MG Tax: The Transformation</div><div class="ci-sub">Friday</div></div><div class="ci-badge li">LinkedIn</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">18</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 24 — MG Tax blue card "50% less admin time. Every week."</div><div class="ci-sub">Sunday</div></div><div class="ci-badge ig">Instagram</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">21</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 25 — Marissa portrait or website screenshot</div><div class="ci-sub">Wednesday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
       <div class="cal-week rv">
         <div class="wk-head">Week of May 23</div>
         <div class="ci li"><div class="ci-date"><div class="ci-day">23</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">LI 5 — Marissa: Speed + Quality</div><div class="ci-sub">Friday</div></div><div class="ci-badge li">LinkedIn</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">25</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 26 — Marissa blue card "No website. Page 1 Google. 1 day."</div><div class="ci-sub">Sunday</div></div><div class="ci-badge ig">Instagram</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">28</div><div class="ci-mon">May</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 27 — Marissa website mockup screenshot</div><div class="ci-sub">Wednesday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
       <div class="cal-week rv">
         <div class="wk-head">Week of Jun 1</div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">1</div><div class="ci-mon">Jun</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 28 — Mac Landon cream card "One problem every time."</div><div class="ci-sub">Sunday</div></div><div class="ci-badge ig">Instagram</div></div>
         <div class="ci li"><div class="ci-date"><div class="ci-day">3</div><div class="ci-mon">Jun</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">LI 6 — The Wrap-Up: 4 Clients, 1 Problem</div><div class="ci-sub">Tuesday</div></div><div class="ci-badge li">LinkedIn</div></div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">6</div><div class="ci-mon">Jun</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 29 — Mac Landon blue card "30 minutes. That's all it takes."</div><div class="ci-sub">Friday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
       <div class="cal-week rv">
         <div class="wk-head">Week of Jun 9</div>
         <div class="ci ig"><div class="ci-date"><div class="ci-day">9</div><div class="ci-mon">Jun</div></div><div class="ci-div"></div><div class="ci-body"><div class="ci-title">Post 30 — Mac Landon cream card "I build the system behind the business."</div><div class="ci-sub">Monday</div></div><div class="ci-badge ig">Instagram</div></div>
       </div>
-
     </div>
   </div>
 
-  <!-- S6 — IG STRIP -->
-  <div class="ig-strip rv">
-    <div class="ig-strip-stat"><strong>58</strong> Followers</div>
-    <div class="ig-strip-dot"></div>
-    <div class="ig-strip-stat"><strong>15</strong> Posts</div>
-    <div class="ig-strip-dot"></div>
-    <a href="https://www.instagram.com/bymaclandon/" target="_blank" class="ig-strip-handle">@bymaclandon</a>
+  <!-- IG STATS -->
+  <div class="section">
+    <div class="sec-tag rv">Instagram</div>
+    <div class="ig-card rv">
+      <div class="ig-card-header">
+        <div class="ig-card-title">@bymaclandon</div>
+        <a href="https://www.instagram.com/bymaclandon/" target="_blank" class="ig-card-handle">View Profile →</a>
+      </div>
+      <div class="ig-stats">
+        <div class="ig-stat-box"><div class="ig-stat-num">58</div><div class="ig-stat-lbl">Followers</div></div>
+        <div class="ig-stat-box"><div class="ig-stat-num">15</div><div class="ig-stat-lbl">Posts</div></div>
+        <div class="ig-stat-box"><div class="ig-stat-num">50</div><div class="ig-stat-lbl">Following</div></div>
+      </div>
+    </div>
   </div>
 
-  <!-- S7 — QUICK LINKS -->
-  <div class="sec-tag rv">Quick Links</div>
-  <div class="qlinks rv">
-    <a href="https://calendly.com/maclandon/30min" target="_blank" class="ql">
-      <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div class="ql-label">Calendly</div>
-    </a>
-    <a href="https://www.linkedin.com/in/maclandon/" target="_blank" class="ql">
-      <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-      <div class="ql-label">LinkedIn</div>
-    </a>
-    <a href="https://www.instagram.com/bymaclandon/" target="_blank" class="ql">
-      <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
-      <div class="ql-label">Instagram</div>
-    </a>
-    <a href="https://github.com/maclandon/macguttenberg" target="_blank" class="ql">
-      <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-      <div class="ql-label">GitHub</div>
-    </a>
-    <a href="https://dash.cloudflare.com" target="_blank" class="ql">
-      <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
-      <div class="ql-label">Cloudflare</div>
-    </a>
-    <a href="/" class="ql">
-      <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-      <div class="ql-label">Live Site</div>
-    </a>
+  <!-- QUICK LINKS -->
+  <div class="section">
+    <div class="sec-tag rv">Quick Links</div>
+    <div class="qlinks rv">
+      <a href="https://calendly.com/maclandon/30min" target="_blank" class="ql">
+        <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="ql-label">Calendly</div>
+      </a>
+      <a href="https://www.linkedin.com/in/maclandon/" target="_blank" class="ql">
+        <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div class="ql-label">LinkedIn</div>
+      </a>
+      <a href="https://www.instagram.com/bymaclandon/" target="_blank" class="ql">
+        <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        <div class="ql-label">Instagram</div>
+      </a>
+      <a href="https://github.com/maclandon/macguttenberg" target="_blank" class="ql">
+        <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="ql-label">GitHub</div>
+      </a>
+      <a href="https://dash.cloudflare.com" target="_blank" class="ql">
+        <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+        <div class="ql-label">Cloudflare</div>
+      </a>
+      <a href="/" class="ql">
+        <div class="ql-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="ql-label">Live Site</div>
+      </a>
+    </div>
   </div>
 
 </div>
@@ -430,19 +444,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;padding:0 3rem;d
   const h = new Date().getHours();
   const g = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
   document.querySelector('.hero-greeting').innerHTML = g + ', <em>Mac.</em>';
-  const d = new Date();
-  document.getElementById('hero-date').textContent = d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  document.getElementById('hero-date').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
 })();
 
-// Count-up animation
+// Count-up
 function countUp(el, target) {
   if (target === 0) { el.textContent = '0'; return; }
-  let current = 0;
+  let cur = 0;
   const step = Math.max(1, Math.floor(target / 40));
-  const interval = setInterval(() => {
-    current += step;
-    if (current >= target) { current = target; clearInterval(interval); }
-    el.textContent = current;
+  const iv = setInterval(() => {
+    cur += step;
+    if (cur >= target) { cur = target; clearInterval(iv); }
+    el.textContent = cur;
   }, 30);
 }
 
@@ -452,35 +465,34 @@ function countUp(el, target) {
     const r = await fetch('/api/leads');
     if (!r.ok) throw new Error(r.status);
     const leads = await r.json();
-    const vals = {
+    const v = {
       'stat-total': leads.length,
       'stat-active': leads.filter(l => !['Won','Lost'].includes(l.stage)).length,
       'stat-calls': leads.filter(l => l.stage === 'Call Booked').length,
       'stat-won': leads.filter(l => l.stage === 'Won').length
     };
-    Object.entries(vals).forEach(([id, val]) => countUp(document.getElementById(id), val));
+    Object.entries(v).forEach(([id, val]) => countUp(document.getElementById(id), val));
   } catch(e) {
-    ['stat-total','stat-active','stat-calls','stat-won'].forEach(id => {
-      document.getElementById(id).textContent = '–';
-    });
+    ['stat-total','stat-active','stat-calls','stat-won'].forEach(id => document.getElementById(id).textContent = '–');
   }
 })();
 
-// Progress rings animation
-function animateRing(id, current, total) {
-  const circ = 2 * Math.PI * 52; // 326.73
+// Progress rings — r=72, circ = 2*PI*72 = 452.39
+function animateRing(id, current, total, pctId, countId) {
+  const circ = 452.39;
+  const pct = Math.round((current / total) * 100);
   const offset = circ - (current / total) * circ;
-  setTimeout(() => {
-    document.getElementById(id).style.strokeDashoffset = offset;
-  }, 600);
+  document.getElementById(pctId).textContent = pct + '%';
+  document.getElementById(countId).textContent = current + ' of ' + total;
+  setTimeout(() => { document.getElementById(id).style.strokeDashoffset = offset; }, 800);
 }
-animateRing('ring-ig', 0, 15);
-animateRing('ring-li', 0, 6);
+animateRing('ring-ig', 0, 15, 'ring-ig-pct', 'ring-ig-count');
+animateRing('ring-li', 0, 6, 'ring-li-pct', 'ring-li-count');
 
 // Scroll reveal
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }});
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 </script>
 </body>
