@@ -5,65 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard — Mac Landon</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#1C1A16">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231C1A16'/%3E%3Ctext x='50%25' y='68%25' text-anchor='middle' font-size='16' font-family='Fraunces, serif' fill='%237fa0c3' font-weight='700'%3EML%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=1.0">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --bg:#E8E4DC;--bg2:#DDD9D0;--white:#FAFAF7;--card:#F5F2EC;
-  --border:#D0CAC0;--text:#1C1A16;--text-mid:#48443C;--text-muted:#7A7468;
-  --accent:#7fa0c3;--accent2:#3D6B9A;--dark:#1C1A16;--dark2:#2A2720;
-}
-body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
-.bg{position:fixed;inset:0;z-index:0;background:var(--bg);}
-.bg::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23E8E4DC'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23D0CAC0' opacity='0.35'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23D0CAC0' opacity='0.35'/%3E%3C/svg%3E");background-size:4px 4px;}
+/* DASHBOARD-SPECIFIC STYLES */
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;height:56px;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(28,26,22,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
-.nav-logo{display:flex;align-items:center;gap:.75rem;color:#fff;text-decoration:none;font-family:"Fraunces",serif;font-weight:900;font-size:1.1rem;}
-.nav-logo span{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);font-family:"DM Sans",sans-serif;border-left:1px solid rgba(255,255,255,.15);padding-left:.75rem;}
-.nav-right a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;}
-.nav-right a:hover{color:rgba(255,255,255,.85);}
+/* Background texture (same as index hero-bg) */
+.dash-bg{position:fixed;inset:0;z-index:0;background:var(--bg);}
+.dash-bg::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23E8E4DC'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23D0CAC0' opacity='0.35'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23D0CAC0' opacity='0.35'/%3E%3C/svg%3E");background-size:4px 4px;}
 
-/* HEADER */
-.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:4rem 3rem 5rem;}
-.eyebrow{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
-.eyebrow::before{content:"";width:16px;height:1.5px;background:var(--accent);}
-h1{font-family:"Fraunces",serif;font-size:clamp(2.2rem,3.6vw,3.4rem);font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:.85rem;}
-h1 em{font-style:italic;color:var(--accent);font-weight:700;}
-.sub{font-size:1rem;color:var(--text-muted);font-weight:300;line-height:1.6;max-width:520px;}
+/* Dashboard badge in nav */
+.nav-dash-badge{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);font-family:"DM Sans",sans-serif;border-left:1px solid rgba(255,255,255,.12);padding-left:.85rem;margin-left:.15rem;}
 
-/* QUICK STATS */
-.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2.5rem 0 3rem;}
-.q-card{background:var(--dark);border-radius:14px;padding:1.25rem 1.5rem;color:#fff;}
-.q-n{font-family:"Fraunces",serif;font-size:1.8rem;font-weight:900;line-height:1;color:#7EACD4;margin-bottom:.25rem;}
-.q-l{font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:.04em;}
+/* Page wrapper */
+.dash-wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:calc(56px + 3.5rem) 4rem 5rem;}
 
-/* SECTION */
-.sec-tag{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
-.sec-tag::before{content:"";width:14px;height:1.5px;background:var(--text-muted);}
+/* Page header */
+.dash-header{margin-bottom:3rem;}
+.dash-header .sec-tag{margin-bottom:1rem;}
+.dash-h1{font-family:"Fraunces",serif;font-size:clamp(2rem,3.2vw,3rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem;}
+.dash-h1 em{font-style:italic;color:var(--accent);font-weight:700;}
+.dash-sub{font-size:.97rem;color:var(--text-muted);font-weight:400;line-height:1.7;max-width:520px;}
 
-/* TOOL GRID */
-.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-bottom:3rem;}
-.tool{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.75rem;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;gap:.85rem;position:relative;overflow:hidden;}
-.tool:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(28,26,22,.08);border-color:rgba(127,160,195,.4);}
-.tool:hover .arrow{transform:translateX(4px);color:var(--accent);}
+/* QUICK STATS BAR */
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3.5rem;}
+.q-card{background:var(--dark);border-radius:16px;padding:1.5rem 1.75rem;color:#fff;transition:transform .25s,box-shadow .25s;}
+.q-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(28,26,22,.12);}
+.q-n{font-family:"Fraunces",serif;font-size:2rem;font-weight:900;line-height:1;color:#7EACD4;margin-bottom:.3rem;}
+.q-l{font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:.04em;}
+
+/* TOOL GRID — matches s-card / testi-card pattern */
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:3.5rem;}
+.tool{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem;text-decoration:none;color:inherit;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;display:flex;flex-direction:column;gap:.85rem;}
+.tool:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(28,26,22,.1);border-color:rgba(126,172,212,.35);}
+.tool:hover .tool-arrow{transform:translateX(4px);color:var(--accent);}
 .tool-top{display:flex;align-items:center;justify-content:space-between;}
-.tool-icon{width:42px;height:42px;border-radius:10px;background:var(--dark);color:#7EACD4;display:flex;align-items:center;justify-content:center;}
-.arrow{color:var(--text-muted);transition:transform .25s,color .25s;}
+.tool-icon{width:44px;height:44px;border-radius:12px;background:var(--dark);color:#7EACD4;display:flex;align-items:center;justify-content:center;}
+.tool-arrow{color:var(--text-muted);transition:transform .3s ease,color .3s ease;}
 .tool-name{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:700;color:var(--text);}
-.tool-desc{font-size:.86rem;color:var(--text-muted);line-height:1.6;font-weight:300;}
-.tool-meta{display:flex;align-items:center;gap:.5rem;margin-top:.25rem;font-size:.7rem;color:var(--text-muted);letter-spacing:.04em;text-transform:uppercase;}
+.tool-desc{font-size:.88rem;color:var(--text-muted);line-height:1.75;font-weight:400;}
+.tool-meta{display:flex;align-items:center;gap:.5rem;margin-top:.25rem;font-size:.72rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;}
 .tool-meta .dot{width:5px;height:5px;border-radius:50%;background:#7EACD4;}
 
 /* CONTENT CALENDAR */
-.cal{margin-bottom:3rem;}
+.cal{margin-bottom:3.5rem;}
 .cal-list{display:flex;flex-direction:column;gap:1.25rem;}
-.cal-week{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
-.cal-week-header{font-family:"Fraunces",serif;font-size:.82rem;font-weight:700;color:var(--text-mid);padding:.75rem 1.5rem;background:var(--bg2);border-bottom:1px solid var(--border);}
-.cal-item{padding:1rem 1.5rem;display:flex;align-items:center;gap:1.25rem;border-left:3px solid transparent;transition:background .2s;}
+.cal-week{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .3s ease;}
+.cal-week:hover{border-color:rgba(126,172,212,.2);}
+.cal-week-header{font-family:"Fraunces",serif;font-size:.85rem;font-weight:700;color:var(--text-mid);padding:.85rem 1.75rem;background:var(--bg2);border-bottom:1px solid var(--border);}
+.cal-item{padding:1rem 1.75rem;display:flex;align-items:center;gap:1.25rem;border-left:3px solid transparent;transition:background .2s;}
 .cal-item:not(:last-child){border-bottom:1px solid var(--border);}
 .cal-item:hover{background:rgba(127,160,195,.04);}
 .cal-item.ig{border-left-color:#0f1f35;}
@@ -71,51 +65,60 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
 .cal-item.done{opacity:.5;}
 .cal-date{min-width:48px;text-align:center;}
 .cal-day{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:900;line-height:1;color:var(--text);}
-.cal-mon{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:500;}
+.cal-mon{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:500;}
 .cal-divider{width:1px;height:28px;background:var(--border);}
 .cal-body{flex:1;min-width:0;}
-.cal-title{font-size:.88rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;}
+.cal-title{font-size:.88rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .cal-sub{font-size:.68rem;color:var(--text-muted);margin-top:.2rem;letter-spacing:.02em;}
-.cal-badge{font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .6rem;border-radius:6px;white-space:nowrap;}
-.cal-badge.ig{background:rgba(127,160,195,.15);color:var(--accent2);}
-.cal-badge.li{background:rgba(28,26,22,.08);color:var(--text-mid);}
+.cal-badge{font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .65rem;border-radius:100px;white-space:nowrap;}
+.cal-badge.ig{background:rgba(127,160,195,.12);color:var(--accent2);}
+.cal-badge.li{background:rgba(28,26,22,.06);color:var(--text-mid);}
 
 /* TODAY */
 .cal-item.today{background:rgba(15,31,53,.04);}
 .cal-item.today .cal-day{color:var(--accent2);}
-.badge-today{font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:#0f1f35;color:#E8E4DC;padding:.25rem .6rem;border-radius:5px;white-space:nowrap;}
+.badge-today{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:#0f1f35;color:#E8E4DC;padding:.28rem .7rem;border-radius:100px;white-space:nowrap;}
 
-/* LINKS ROW */
-.links{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
-.link{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;text-decoration:none;color:var(--text-mid);font-size:.88rem;font-weight:500;display:flex;align-items:center;justify-content:space-between;transition:border-color .2s,background .2s;}
-.link:hover{border-color:var(--accent);background:var(--card);color:var(--text);}
+/* QUICK LINKS — matches index link/button patterns */
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.link{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;text-decoration:none;color:var(--text-mid);font-size:.88rem;font-weight:500;display:flex;align-items:center;justify-content:space-between;transition:border-color .3s ease,background .2s,transform .3s ease,box-shadow .3s ease;}
+.link:hover{border-color:rgba(126,172,212,.35);background:var(--card);color:var(--text);transform:translateY(-2px);box-shadow:0 8px 24px rgba(28,26,22,.06);}
 .link svg{color:var(--text-muted);transition:color .2s,transform .2s;}
 .link:hover svg{color:var(--accent);transform:translateX(2px);}
 
-@media(max-width:800px){
-  nav{padding:0 1.25rem;}
-  .wrap{padding:2.5rem 1.25rem 3rem;}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .dash-wrap{padding:calc(56px + 2rem) 1.5rem 3rem;}
   .quick{grid-template-columns:repeat(2,1fr);}
   .tools{grid-template-columns:1fr;}
   .links{grid-template-columns:1fr;}
+  .nav-dash-badge{display:none;}
 }
 </style>
 <link rel="manifest" href="/manifest-dashboard.json">
 </head>
 <body>
-<div class="bg"></div>
+<div class="dash-bg"></div>
 
 <nav>
-  <a href="/" class="nav-logo"><img src="logo.png" alt="Mac Landon" style="height:20px;width:auto;"><span>Dashboard</span></a>
+  <a href="/" class="nav-logo">
+    <img src="logo.png" alt="Mac Landon">
+    <span class="nav-dash-badge">Dashboard</span>
+  </a>
   <div class="nav-right">
-    <a href="/">← Back to site</a>
+    <a href="/" class="nav-links"><span style="font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .15s;">Back to Site</span></a>
+    <a href="/lead-tracker" class="nav-cta">Lead Tracker</a>
   </div>
 </nav>
 
-<div class="wrap">
-  <div class="eyebrow">Command Center</div>
-  <h1>Everything in <em>one place.</em></h1>
-  <p class="sub">Your tools, trackers, and templates. Bookmark this page — it's the only link you need.</p>
+<div class="dash-wrap">
+
+  <!-- HEADER -->
+  <div class="dash-header">
+    <div class="sec-tag">Command Center</div>
+    <h1 class="dash-h1">Everything in <em>one place.</em></h1>
+    <p class="dash-sub">Your tools, trackers, and templates. Bookmark this page — it's the only link you need.</p>
+  </div>
 
   <!-- QUICK STATS (live from lead tracker) -->
   <div class="quick">
@@ -132,7 +135,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     <a href="/lead-tracker" class="tool">
       <div class="tool-top">
         <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <span class="arrow">→</span>
+        <span class="tool-arrow">→</span>
       </div>
       <div class="tool-name">Lead Tracker</div>
       <div class="tool-desc">Manage prospects, track outreach, and move deals through your pipeline.</div>
@@ -142,7 +145,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     <a href="/proposal-generator" class="tool">
       <div class="tool-top">
         <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
-        <span class="arrow">→</span>
+        <span class="tool-arrow">→</span>
       </div>
       <div class="tool-name">Proposal Generator</div>
       <div class="tool-desc">Build and send custom proposals fast. Pricing, scope, and timelines in one click.</div>
@@ -152,7 +155,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     <a href="/onboarding" class="tool">
       <div class="tool-top">
         <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <span class="arrow">→</span>
+        <span class="tool-arrow">→</span>
       </div>
       <div class="tool-name">Onboarding</div>
       <div class="tool-desc">Kick off new clients with a structured intake form and welcome flow.</div>
@@ -162,7 +165,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     <a href="/email-templates" class="tool">
       <div class="tool-top">
         <div class="tool-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg></div>
-        <span class="arrow">→</span>
+        <span class="tool-arrow">→</span>
       </div>
       <div class="tool-name">Email Templates</div>
       <div class="tool-desc">Cold outreach, follow-ups, proposals — copy, customize, send.</div>
@@ -437,6 +440,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
   </div>
+
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -454,7 +458,6 @@ h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     ['stat-total','stat-active','stat-calls','stat-won'].forEach(id => document.getElementById(id).textContent = '–');
   }
 })();
-
 </script>
 </body>
 </html>
