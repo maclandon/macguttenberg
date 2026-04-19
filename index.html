@@ -98,7 +98,7 @@
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;opacity:0;transform:translateY(10px);animation:up .5s ease .1s forwards;}
 .hero-eyebrow::before{content:"";width:16px;height:1.5px;background:var(--accent);}
 h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;line-height:.98;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem;opacity:0;transform:translateY(20px);animation:up .7s ease .2s forwards;}
-
+h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3,#3D6B9A,#7fa0c3,#a0c4e8);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradtext 4s ease-in-out infinite;}
 #typeword{display:inline;overflow:visible;vertical-align:bottom;padding-bottom:0.1em;line-height:1.1;}
 .hero-value{font-size:1rem;font-weight:500;color:var(--text-mid);margin-bottom:1rem;line-height:1.5;opacity:0;transform:translateY(12px);animation:up .6s ease .33s forwards;border-left:2px solid var(--accent);padding-left:.75rem;}
 .hero-value-row{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
@@ -107,7 +107,6 @@ h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;l
 .hero-sub{font-size:.92rem;font-weight:400;line-height:1.75;color:var(--text-muted);margin-bottom:2rem;opacity:0;transform:translateY(12px);animation:up .6s ease .4s forwards;}
 .hero-sub strong{color:var(--text-mid);font-weight:500;}
 .hero-btns{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(12px);animation:up .6s ease .52s forwards;}
-.hero-cta-overlap{display:none;}
 .hero-right{position:relative;z-index:4;overflow:visible;opacity:0;animation:fadeIn .9s ease .25s forwards;}
 .hero-photo{position:absolute;z-index:2;bottom:0;right:0;left:0;display:flex;align-items:flex-end;justify-content:center;height:98%;}
 .hero-photo img{height:95%;width:auto;object-fit:contain;object-position:bottom;filter:drop-shadow(-8px 0 40px rgba(28,26,22,.12));}
@@ -413,23 +412,20 @@ h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;l
 
 @media(max-width:900px){
   #typeword{display:inline;}
-  .hero-card{background:transparent;border:none;box-shadow:none;padding:2rem 1.5rem 0;text-align:left;}
-  .hero-cta-desktop{display:none !important;}
-  .hero-cta-overlap{display:flex;width:calc(100% - 3rem);margin:-1.5rem auto 2rem;position:relative;z-index:3;justify-content:center;}
+  .hero-card{padding:2rem 1.75rem 1.75rem;}
   .btn-dark{width:100%;justify-content:center;}
   .hero-sub{display:none;}
-  h1{font-size:2.5rem;line-height:1.02;}
+  h1{font-size:1.75rem;}
   .hero-photo-nyc{display:block;}
   .hero-photo-original{display:none;}
   .photo-chip{display:none;}
   .scroll-hint{display:none;}
   .contact-book-card{margin:0;padding:2rem 1.25rem;width:100%;}
-  .hero{height:auto !important;min-height:auto !important;padding-bottom:1rem;}
-  .hero-left{justify-content:flex-start;padding:calc(56px + 1.25rem) 1.5rem 2rem;}
+  .hero{height:auto !important;min-height:auto !important;padding-bottom:0;}
+  .hero-left{justify-content:flex-start;padding:calc(56px + 1.25rem) 1.5rem 1.25rem;}
   .hero-card{animation:none;}
-  .hero-value-avatar{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:16px;margin:0;border:none;padding:0;position:relative;z-index:2;box-shadow:0 12px 40px rgba(0,0,0,0.15);}
-  .hero-value-row{display:block;}
-  .hero-value-row .hero-value{border-left:2px solid #7fa0c3;padding-left:1rem;text-align:left;font-size:1.05rem;line-height:1.6;margin-top:0;margin-bottom:2rem;}
+  .hero-value-avatar{display:block;}
+  .hero-value-row .hero-value{border-left:2px solid var(--accent);padding-left:.75rem;}
   .right-sec{padding-top:3rem;}
   .right-list li{flex-direction:column;gap:.4rem;}
   .right-list li strong{display:block;margin-bottom:.2rem;}
@@ -478,31 +474,7 @@ h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;l
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;font-size:.9rem;color:var(--text-muted);line-height:1.75;font-weight:400;padding:0 1.5rem;}
 .faq-a.open{max-height:200px;padding:.25rem 1.5rem 1.25rem;}
 
-/* ===== ELITE HERO IMPLEMENTATION (THE MASTER FIX) ===== */
-.hero-elite{position:relative;background:var(--bg);min-height:calc(100vh - 56px);display:flex;padding-top:56px;border-bottom:1px solid rgba(28,26,22,0.05);overflow:hidden;}
-.hero-elite-container{max-width:1600px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:stretch;}
-.hero-elite-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:2rem 5% 6rem 4rem;z-index:10;max-width:850px;}
-.hero-elite-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.5rem;}
-.hero-elite-eyebrow::before{content:"";width:20px;height:2px;background:var(--text-muted);}
-h1.hero-elite-h1{font-family:"Fraunces",serif !important;font-size:clamp(3rem,6vw,6rem) !important;font-weight:700 !important;line-height:1.05 !important;letter-spacing:-.02em !important;color:var(--text) !important;margin-bottom:1.5rem !important;opacity:1 !important;transform:none !important;animation:none !important;}
-h1.hero-elite-h1 em{font-style:italic !important;font-weight:700 !important;background:none !important;-webkit-text-fill-color:var(--text) !important;color:var(--text) !important;animation:none !important;}
-.hero-elite-sub{font-family:"DM Sans",sans-serif;font-size:1.25rem;line-height:1.6;font-weight:400;color:var(--text-mid);max-width:600px;margin-bottom:2.5rem;}
-a.btn-elite-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--text);color:#fff !important;font-family:"DM Sans",sans-serif;font-size:1.05rem;font-weight:500;padding:1.1rem 2.5rem;border-radius:4px;text-decoration:none !important;transition:all .2s ease;width:fit-content;}
-a.btn-elite-primary:hover{background:var(--text-mid);gap:.75rem;}
-.hero-elite-visual{flex:1;display:flex;justify-content:flex-end;align-items:flex-end;position:relative;}
-.hero-elite-portrait{width:100%;max-width:850px;height:auto;max-height:85vh;object-fit:contain;object-position:bottom right;display:block;filter:drop-shadow(-15px 15px 40px rgba(0,0,0,0.06));margin-bottom:-2px;}
 
-/* ELITE MOBILE OVERRIDES */
-@media(max-width:900px){
-  .hero-elite{min-height:100vh;padding-top:80px;}
-  .hero-elite-container{flex-direction:column;}
-  .hero-elite-content{padding:2rem 1.5rem 0 1.5rem;justify-content:flex-start;}
-  h1.hero-elite-h1{font-size:clamp(2.5rem,11vw,3.5rem) !important;line-height:1.02 !important;}
-  .hero-elite-sub{font-size:1.1rem;margin-bottom:2rem;}
-  a.btn-elite-primary{width:100%;justify-content:center;}
-  .hero-elite-visual{width:100%;justify-content:center;margin-top:auto;}
-  .hero-elite-portrait{max-width:100%;max-height:55vh;object-position:bottom center;}
-}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQSZMG06BY"></script>
@@ -547,24 +519,35 @@ a.btn-elite-primary:hover{background:var(--text-mid);gap:.75rem;}
   <a href="https://calendly.com/maclandon/30min" target="_blank">Book a Call</a>
 </div>
 
-<section class="hero-elite">
-  <div class="hero-elite-container">
-
-    <div class="hero-elite-content">
-      <div class="hero-elite-eyebrow">For Small Businesses</div>
-      <h1 class="hero-elite-h1">Your business is <em>growing.</em><br>Your systems aren't keeping up.</h1>
-
-      <p class="hero-elite-sub">I audit your business, fix what's broken, and build the systems that let you actually grow. You've built something real. Now it needs infrastructure to match.</p>
-
-      <div class="hero-elite-cta-wrap">
-        <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-elite-primary">Book a free call →</a>
+<section class="hero">
+  <div class="hero-bg">
+</div>
+  <div class="hero-left">
+    <div class="hero-card">
+      <div class="hero-eyebrow">For Small Businesses</div>
+      <h1>Your business is <em>growing.</em><br>Your systems aren't keeping up.</h1>
+      <div class="hero-value-row">
+        <img src="mac-photo-circle.png" alt="Mac Landon" class="hero-value-avatar">
+        <p class="hero-value">I audit your business, fix what's broken, and build the systems that let you actually grow.</p>
+      </div>
+      <p class="hero-sub">You've built something real. Now it needs infrastructure to match — so your operations, your sales, and <strong>your sanity</strong> can all keep up.</p>
+      <div class="hero-btns">
+        <a href="https://calendly.com/maclandon/30min" target="_blank" class="btn-dark">Book a free call →</a>
       </div>
     </div>
-
-    <div class="hero-elite-visual">
-      <img src="mac-mock-4.png" alt="Mac Landon - Digital Transformation Consultant" class="hero-elite-portrait">
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo">
+      <img class="hero-photo-original" src="mac-photo.png" alt="Mac Landon" loading="eager">
+      <img class="hero-photo-nyc" src="mac-nyc.jpg" alt="Mac Landon" loading="lazy">
     </div>
-
+    <div class="photo-chip">
+      <div class="chip-val">50%</div>
+      <div class="chip-lbl">Admin time saved<br>MG Tax Inc.</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </section>
 
