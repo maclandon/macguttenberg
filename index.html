@@ -94,7 +94,7 @@
 .hero-bg{position:absolute;inset:0;z-index:0;background:var(--bg);}
 .hero-bg::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23E8E4DC'/%3E%3Crect width='1' height='1' x='0' y='0' fill='%23D0CAC0' opacity='0.35'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23D0CAC0' opacity='0.35'/%3E%3C/svg%3E");background-size:4px 4px;}
 .hero-left{position:relative;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:96px 3rem 3rem 4rem;padding-bottom:8rem;}
-.hero-card{background:rgba(255,255,255,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:24px;padding:3rem 3rem 2.75rem;border:3px solid red;box-shadow:0 2px 40px rgba(28,26,22,.07);max-width:640px;width:100%;margin-top:-8rem;}
+.hero-card{background:rgba(255,255,255,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:24px;padding:3rem 3rem 2.75rem;border:1px solid rgba(28,26,22,0.05);box-shadow:0 2px 40px rgba(28,26,22,.07);max-width:55vw;width:100%;margin-top:-8rem;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;opacity:0;transform:translateY(10px);animation:up .5s ease .1s forwards;}
 .hero-eyebrow::before{content:"";width:16px;height:1.5px;background:var(--accent);}
 h1{font-family:"Fraunces",serif;font-size:clamp(2rem,4vw,4rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;color:var(--text);margin-bottom:.75rem;opacity:0;transform:translateY(20px);animation:up .7s ease .2s forwards;}
@@ -488,11 +488,6 @@ h1 em{font-style:italic;font-weight:700;background:linear-gradient(90deg,#7fa0c3
 @media(min-width:769px) and (max-width:900px){
   .hero-card-img{position:relative;width:100%;margin-top:-220px;margin-left:auto;right:auto;bottom:auto;display:block;}
   .hero-card-img img{width:60%;display:block;margin:0 0 0 auto;}
-}
-@media(min-width:901px) and (max-width:1400px){
-  .hero{grid-template-columns:1.5fr .5fr !important;}
-  .hero-left{padding-left:2.5rem;padding-right:1.5rem;}
-  .hero-card{max-width:none !important;width:100% !important;border:3px solid red !important;}
 }
 
 /* FAQ */
