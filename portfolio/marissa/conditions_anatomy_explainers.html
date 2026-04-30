@@ -1,0 +1,164 @@
+
+<style>
+.cond-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px; }
+.cond-btn { border:0.5px solid var(--color-border-tertiary); border-radius:10px; padding:10px 12px; font-size:13px; color:var(--color-text-secondary); cursor:pointer; background:transparent; text-align:left; transition:all 0.15s; display:flex; align-items:center; gap:8px; }
+.cond-btn:hover { background:var(--color-background-secondary); border-color:var(--color-border-secondary); }
+.cond-btn.active { background:var(--color-background-secondary); border-color:#7A9E7E; color:var(--color-text-primary); }
+.cond-dot { width:7px; height:7px; border-radius:50%; background:var(--color-border-secondary); flex-shrink:0; transition:background 0.15s; }
+.cond-btn.active .cond-dot { background:#7A9E7E; }
+.cond-panel { border:0.5px solid var(--color-border-tertiary); border-radius:12px; padding:20px; display:none; }
+.cond-panel.visible { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
+.cond-panel-text h3 { font-size:15px; font-weight:500; color:var(--color-text-primary); margin-bottom:8px; }
+.cond-panel-text p { font-size:13px; color:var(--color-text-secondary); line-height:1.7; margin-bottom:10px; }
+.cond-panel-text .what-helps { font-size:12px; font-weight:500; color:#4A6B4E; background:#EAF3DE; border-radius:6px; padding:6px 10px; display:inline-block; }
+@media(max-width:500px){ .cond-grid{grid-template-columns:1fr 1fr;} .cond-panel.visible{grid-template-columns:1fr;} }
+</style>
+
+<h2 class="sr-only">Common pelvic floor conditions — click any to learn more</h2>
+
+<div class="cond-grid">
+  <button class="cond-btn" onclick="showCond('incontinence',this)"><span class="cond-dot"></span>Incontinence</button>
+  <button class="cond-btn" onclick="showCond('prolapse',this)"><span class="cond-dot"></span>Prolapse</button>
+  <button class="cond-btn" onclick="showCond('pain',this)"><span class="cond-dot"></span>Pelvic pain</button>
+  <button class="cond-btn" onclick="showCond('diastasis',this)"><span class="cond-dot"></span>Diastasis recti</button>
+  <button class="cond-btn" onclick="showCond('dyspareunia',this)"><span class="cond-dot"></span>Painful sex</button>
+  <button class="cond-btn" onclick="showCond('urgency',this)"><span class="cond-dot"></span>Urgency</button>
+</div>
+
+<div class="cond-panel" id="condPanel">
+  <div class="cond-panel-text" id="condText"></div>
+  <svg id="condSvg" width="100%" viewBox="0 0 260 200" role="img"></svg>
+</div>
+
+<script>
+const conds = {
+  incontinence: {
+    title: 'Urinary incontinence',
+    body: 'Leaking happens when the pressure inside your abdomen — from a cough, sneeze, or jump — exceeds what your pelvic floor can manage. The muscles aren\'t generating force fast enough to stay closed.',
+    help: 'Strength + timing training, breath work',
+    draw(svg) {
+      svg.innerHTML = `
+        <ellipse cx="130" cy="80" rx="55" ry="38" fill="#EAF3DE" stroke="#5A8F60" stroke-width="1"/>
+        <text x="130" y="76" text-anchor="middle" font-size="11" fill="#27500A" font-family="sans-serif" font-weight="500">Bladder</text>
+        <path d="M105,118 Q130,138 155,118" fill="none" stroke="#5A8F60" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M118,132 Q130,148 142,132" fill="none" stroke="#C4803A" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+        <text x="130" y="165" text-anchor="middle" font-size="11" fill="#854F0B" font-family="sans-serif">Floor can't hold under pressure</text>
+        <path d="M130,40 L130,20" stroke="#5A8F60" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+        <polygon points="130,14 126,22 134,22" fill="#C4803A" opacity="0.7"/>
+        <text x="130" y="12" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">pressure spike</text>`;
+    }
+  },
+  prolapse: {
+    title: 'Pelvic organ prolapse',
+    body: 'When the pelvic floor support is insufficient, one or more organs (bladder, uterus, or rectum) can descend into or beyond the vaginal canal. Symptoms include heaviness, bulging, or a feeling of "falling out."',
+    help: 'Load management, strength, pessary support',
+    draw(svg) {
+      svg.innerHTML = `
+        <ellipse cx="130" cy="72" rx="50" ry="32" fill="#EAF3DE" stroke="#5A8F60" stroke-width="1"/>
+        <text x="130" y="68" text-anchor="middle" font-size="11" fill="#27500A" font-family="sans-serif" font-weight="500">Bladder</text>
+        <text x="130" y="82" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif">or uterus</text>
+        <path d="M95,104 Q130,115 165,104" fill="none" stroke="#5A8F60" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3"/>
+        <ellipse cx="130" cy="128" rx="28" ry="16" fill="#FDF0E4" stroke="#C4803A" stroke-width="1" stroke-dasharray="3 2"/>
+        <text x="130" y="132" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">descends here</text>
+        <path d="M130,104 L130,112" stroke="#C4803A" stroke-width="1.5" fill="none" marker-end="url(#a2)"/>
+        <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#C4803A" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <text x="130" y="170" text-anchor="middle" font-size="11" fill="#854F0B" font-family="sans-serif">Support floor drops</text>`;
+    }
+  },
+  pain: {
+    title: 'Pelvic pain',
+    body: 'Chronic pelvic pain is often driven by hypertonic (too-tight) pelvic floor muscles that are stuck in a guarding pattern. The nervous system reads the area as unsafe, perpetuating the cycle.',
+    help: 'Manual therapy, nervous system work, breathing',
+    draw(svg) {
+      svg.innerHTML = `
+        <path d="M80,150 Q130,170 180,150" fill="#FDF0E4" stroke="#C4803A" stroke-width="2.5" stroke-linecap="round"/>
+        <ellipse cx="130" cy="143" rx="50" ry="20" fill="rgba(196,128,58,0.12)"/>
+        <text x="130" y="175" text-anchor="middle" font-size="11" fill="#854F0B" font-family="sans-serif">Muscles can't release</text>
+        <path d="M100,143 Q130,130 160,143" fill="none" stroke="#C4803A" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+        <circle cx="108" cy="138" r="4" fill="#C4803A" opacity="0.5"/>
+        <circle cx="130" cy="133" r="4" fill="#C4803A" opacity="0.7"/>
+        <circle cx="152" cy="138" r="4" fill="#C4803A" opacity="0.5"/>
+        <text x="130" y="115" text-anchor="middle" font-size="11" fill="#854F0B" font-family="sans-serif" font-weight="500">Trigger points</text>
+        <line x1="130" y1="119" x2="130" y2="128" stroke="#C4803A" stroke-width="0.8" stroke-dasharray="2 2"/>
+        <text x="130" y="55" text-anchor="middle" font-size="12" fill="#412402" font-family="sans-serif" font-weight="500">Nervous system</text>
+        <rect x="90" y="62" width="80" height="28" rx="6" fill="#FDF0E4" stroke="rgba(196,128,58,0.3)" stroke-width="0.5"/>
+        <text x="130" y="74" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">Threat signal</text>
+        <text x="130" y="86" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">→ guard → pain</text>
+        <path d="M130,90 L130,108" stroke="#C4803A" stroke-width="1" stroke-dasharray="3 2" fill="none"/>`;
+    }
+  },
+  diastasis: {
+    title: 'Diastasis recti',
+    body: 'Diastasis is a separation of the rectus abdominis muscles at the midline. The key issue isn\'t the gap itself — it\'s whether the linea alba can generate tension. A wide gap with good tension functions better than a narrow one without.',
+    help: 'Load management, breathing, progressive core rehab',
+    draw(svg) {
+      svg.innerHTML = `
+        <rect x="88" y="40" width="34" height="120" rx="8" fill="#EAF3DE" stroke="#5A8F60" stroke-width="1"/>
+        <rect x="138" y="40" width="34" height="120" rx="8" fill="#EAF3DE" stroke="#5A8F60" stroke-width="1"/>
+        <text x="105" y="105" text-anchor="middle" font-size="10" fill="#27500A" font-family="sans-serif">Rectus</text>
+        <text x="155" y="105" text-anchor="middle" font-size="10" fill="#27500A" font-family="sans-serif">Rectus</text>
+        <line x1="122" y1="45" x2="122" y2="155" stroke="#C4803A" stroke-width="1" stroke-dasharray="3 2"/>
+        <line x1="138" y1="45" x2="138" y2="155" stroke="#C4803A" stroke-width="1" stroke-dasharray="3 2"/>
+        <rect x="122" y="80" width="16" height="40" rx="0" fill="rgba(196,128,58,0.15)"/>
+        <text x="130" y="175" text-anchor="middle" font-size="11" fill="#854F0B" font-family="sans-serif">Gap at midline</text>
+        <text x="130" y="188" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">(linea alba)</text>
+        <text x="130" y="30" text-anchor="middle" font-size="11" fill="#412402" font-family="sans-serif" font-weight="500">Abdominal wall — front view</text>`;
+    }
+  },
+  dyspareunia: {
+    title: 'Painful sex (dyspareunia)',
+    body: 'Pain with sex is usually caused by pelvic floor muscles that brace instead of yield. The body\'s threat response causes contraction at exactly the moment it needs to release — creating friction, pressure, and pain.',
+    help: 'Relaxation, manual therapy, desensitization',
+    draw(svg) {
+      svg.innerHTML = `
+        <text x="130" y="30" text-anchor="middle" font-size="11" fill="#412402" font-family="sans-serif" font-weight="500">What should happen</text>
+        <path d="M80,70 Q130,90 180,70" fill="none" stroke="#5A8F60" stroke-width="3" stroke-linecap="round"/>
+        <text x="130" y="100" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif">Floor softens + yields</text>
+        <text x="130" y="125" text-anchor="middle" font-size="11" fill="#633806" font-family="sans-serif" font-weight="500">What actually happens</text>
+        <path d="M80,148 Q130,136 180,148" fill="none" stroke="#C4803A" stroke-width="3" stroke-linecap="round"/>
+        <text x="130" y="168" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">Floor braces → pain</text>
+        <line x1="200" y1="70" x2="220" y2="70" stroke="#5A8F60" stroke-width="1" stroke-dasharray="2 2"/>
+        <text x="224" y="74" font-size="10" fill="#3B6D11" font-family="sans-serif">open</text>
+        <line x1="200" y1="148" x2="220" y2="148" stroke="#C4803A" stroke-width="1" stroke-dasharray="2 2"/>
+        <text x="224" y="152" font-size="10" fill="#854F0B" font-family="sans-serif">tight</text>`;
+    }
+  },
+  urgency: {
+    title: 'Urgency & frequency',
+    body: 'Urgency is the sudden, compelling need to urinate that\'s difficult to defer. It\'s usually driven by an overactive bladder sending premature signals, combined with a pelvic floor that can\'t suppress the urge long enough.',
+    help: 'Bladder retraining, urge suppression, breathing',
+    draw(svg) {
+      svg.innerHTML = `
+        <ellipse cx="130" cy="85" rx="55" ry="45" fill="#EAF3DE" stroke="#5A8F60" stroke-width="1"/>
+        <text x="130" y="82" text-anchor="middle" font-size="11" fill="#27500A" font-family="sans-serif" font-weight="500">Bladder</text>
+        <text x="130" y="96" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif">sends signal early</text>
+        <path d="M155,55 Q185,30 210,45" fill="none" stroke="#C4803A" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <text x="215" y="38" font-size="10" fill="#854F0B" font-family="sans-serif">"Go now!"</text>
+        <path d="M105,130 Q130,148 155,130" fill="none" stroke="#5A8F60" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="130" y="168" text-anchor="middle" font-size="11" fill="#854F0B" font-family="sans-serif">Urge arrives before full</text>
+        <text x="130" y="182" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">Pelvic floor can't suppress</text>`;
+    }
+  }
+};
+
+let activeCond = null;
+function showCond(key, btn) {
+  document.querySelectorAll('.cond-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('condPanel');
+  if (activeCond === key) {
+    activeCond = null;
+    panel.classList.remove('visible');
+    return;
+  }
+  activeCond = key;
+  btn.classList.add('active');
+  const c = conds[key];
+  document.getElementById('condText').innerHTML = `
+    <h3>${c.title}</h3>
+    <p>${c.body}</p>
+    <span class="what-helps">Pelvic PT helps: ${c.help}</span>`;
+  const svg = document.getElementById('condSvg');
+  c.draw(svg);
+  panel.classList.add('visible');
+}
+</script>

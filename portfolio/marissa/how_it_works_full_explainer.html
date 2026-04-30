@@ -1,0 +1,208 @@
+
+<style>
+.hiw-stepper { display:flex; gap:6px; margin-bottom:20px; flex-wrap:wrap; }
+.hiw-pill { padding:7px 14px; border-radius:20px; font-size:12px; font-weight:500; border:0.5px solid var(--color-border-tertiary); cursor:pointer; background:transparent; color:var(--color-text-secondary); transition:all 0.2s; }
+.hiw-pill.active { background:#2C4230; color:#EAF0E8; border-color:#2C4230; }
+.hiw-panel { display:none; }
+.hiw-panel.visible { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
+.hiw-copy h3 { font-size:16px; font-weight:500; color:var(--color-text-primary); margin-bottom:10px; }
+.hiw-copy p { font-size:13px; color:var(--color-text-secondary); line-height:1.75; margin-bottom:12px; }
+.hiw-copy .callout { background:var(--color-background-secondary); border-radius:8px; padding:10px 14px; font-size:12px; color:var(--color-text-secondary); line-height:1.6; border-left:2px solid #7A9E7E; border-radius:0 8px 8px 0; }
+@media(max-width:520px){ .hiw-panel.visible{grid-template-columns:1fr;} }
+</style>
+
+<h2 class="sr-only">How pelvic floor PT works — an interactive guide through anatomy, assessment, and treatment</h2>
+
+<div class="hiw-stepper">
+  <button class="hiw-pill active" onclick="showPanel('anatomy',this)">1 · Anatomy</button>
+  <button class="hiw-pill" onclick="showPanel('hyper',this)">2 · Too tight</button>
+  <button class="hiw-pill" onclick="showPanel('hypo',this)">3 · Too weak</button>
+  <button class="hiw-pill" onclick="showPanel('breath',this)">4 · Breath link</button>
+  <button class="hiw-pill" onclick="showPanel('treatment',this)">5 · Treatment</button>
+</div>
+
+<div class="hiw-panel visible" id="panel-anatomy">
+  <div class="hiw-copy">
+    <h3>What is the pelvic floor?</h3>
+    <p>The pelvic floor is a group of muscles that sit at the base of the pelvis like a hammock. They support the bladder, bowel, and uterus, and play a role in continence, sexual function, core stability, and breathing.</p>
+    <p>When these muscles are working well, they're mostly invisible — you don't think about them. When they're not, they make themselves known.</p>
+    <div class="callout">Click each layer to see what it does.</div>
+  </div>
+  <svg width="100%" viewBox="0 0 260 240" role="img" id="anatSvg">
+    <title>Pelvic floor anatomy — hammock of muscles at the base of the pelvis</title>
+    <ellipse cx="130" cy="60" rx="60" ry="38" fill="#EAF3DE" stroke="#5A8F60" stroke-width="1" opacity="0.7" id="al1" style="cursor:pointer" onclick="anatClick('bladder')"/>
+    <text x="130" y="56" text-anchor="middle" font-size="11" fill="#27500A" font-family="sans-serif" font-weight="500" style="pointer-events:none">Bladder</text>
+    <text x="130" y="70" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif" style="pointer-events:none">bowel · uterus</text>
+    <path d="M60,105 Q130,130 200,105" fill="#C0DD97" stroke="#5A8F60" stroke-width="1.5" stroke-linecap="round" id="al2" style="cursor:pointer" onclick="anatClick('floor')"/>
+    <path d="M60,105 Q130,142 200,105 Z" fill="rgba(90,143,96,0.12)" style="pointer-events:none"/>
+    <text x="130" y="158" text-anchor="middle" font-size="11" fill="#27500A" font-family="sans-serif" font-weight="500" style="pointer-events:none">Pelvic floor</text>
+    <text x="130" y="170" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif" style="pointer-events:none">muscles + fascia</text>
+    <line x1="60" y1="98" x2="60" y2="105" stroke="#5A8F60" stroke-width="0.5"/>
+    <line x1="200" y1="98" x2="200" y2="105" stroke="#5A8F60" stroke-width="0.5"/>
+    <path d="M60,98 Q130,80 200,98" fill="none" stroke="#5A8F60" stroke-width="0.5" stroke-dasharray="3 2"/>
+    <text x="130" y="89" text-anchor="middle" font-size="10" fill="#5A8F60" font-family="sans-serif">pelvic brim</text>
+    <rect id="anatInfo" x="20" y="190" width="220" height="36" rx="8" fill="#EAF3DE" stroke="rgba(90,143,96,0.3)" stroke-width="0.5" opacity="0"/>
+    <text id="anatInfoText" x="130" y="213" text-anchor="middle" font-size="11" fill="#27500A" font-family="sans-serif" opacity="0"/>
+  </svg>
+</div>
+
+<div class="hiw-panel" id="panel-hyper">
+  <div class="hiw-copy">
+    <h3>Hypertonic: the too-tight floor</h3>
+    <p>A hypertonic pelvic floor is one that can't fully relax. The muscles stay in a state of chronic contraction — not because of strength, but because of guarding, stress, or learned tension patterns.</p>
+    <p>This is often the root cause of pelvic pain, pain during sex, urgency, and difficulty with bowel movements. More kegels will make it worse.</p>
+    <div class="callout">Drag the tension slider to feel the difference.</div>
+  </div>
+  <div>
+    <svg width="100%" viewBox="0 0 260 180" role="img">
+      <title>Hypertonic pelvic floor — too much resting tension</title>
+      <text x="130" y="20" text-anchor="middle" font-size="11" fill="var(--p)" font-family="sans-serif" font-weight="500">Resting tension level</text>
+      <rect x="30" y="30" width="200" height="12" rx="6" fill="var(--bg2)" stroke="var(--b)" stroke-width="0.5"/>
+      <rect id="tensBar" x="30" y="30" width="160" height="12" rx="6" fill="#C4803A"/>
+      <text id="tensLabel" x="130" y="58" text-anchor="middle" font-size="12" fill="#854F0B" font-family="sans-serif">High tension — floor can't drop</text>
+      <path id="floorPath" d="M40,120 Q130,108 220,120" fill="none" stroke="#C4803A" stroke-width="3" stroke-linecap="round"/>
+      <path id="floorFill" d="M40,120 Q130,108 220,120 L220,160 L40,160 Z" fill="rgba(196,128,58,0.12)" stroke="none"/>
+      <line x1="40" y1="130" x2="220" y2="130" stroke="var(--b)" stroke-width="0.5" stroke-dasharray="3 2"/>
+      <text x="26" y="134" font-size="10" fill="var(--t)" text-anchor="end" font-family="sans-serif">ideal</text>
+      <text x="130" y="170" text-anchor="middle" font-size="10" fill="var(--t)" font-family="sans-serif">← above baseline = chronic tension</text>
+    </svg>
+    <div style="display:flex;align-items:center;gap:10px;margin-top:6px;font-size:12px;color:var(--color-text-secondary);">
+      <span>Low</span>
+      <input type="range" min="0" max="100" value="80" step="1" style="flex:1" oninput="setTens(this.value)">
+      <span>High</span>
+    </div>
+  </div>
+</div>
+
+<div class="hiw-panel" id="panel-hypo">
+  <div class="hiw-copy">
+    <h3>Hypotonic: the too-weak floor</h3>
+    <p>A hypotonic pelvic floor lacks the strength or coordination to generate adequate force on demand. It can't close quickly enough when you cough, jump, or sneeze — leading to leaking.</p>
+    <p>This is where kegels are genuinely helpful, when done correctly with a full release between each rep.</p>
+    <div class="callout">A weak floor needs strength + timing — not just squeezing.</div>
+  </div>
+  <svg width="100%" viewBox="0 0 260 200" role="img">
+    <title>Hypotonic pelvic floor — insufficient strength and response speed</title>
+    <text x="130" y="20" text-anchor="middle" font-size="11" fill="var(--p)" font-family="sans-serif" font-weight="500">Force response to a cough</text>
+    <line x1="30" y1="160" x2="230" y2="160" stroke="var(--b)" stroke-width="0.5"/>
+    <line x1="30" y1="160" x2="30" y2="40" stroke="var(--b)" stroke-width="0.5"/>
+    <text x="18" y="100" text-anchor="middle" font-size="9" fill="var(--t)" font-family="sans-serif">force</text>
+    <path d="M30,155 Q60,80 80,75 Q100,70 110,90 Q120,110 140,100 Q160,90 180,100 Q200,110 230,130" fill="none" stroke="#5A8F60" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="round"/>
+    <text x="180" y="68" font-size="10" fill="#3B6D11" font-family="sans-serif">healthy</text>
+    <path d="M30,155 Q60,140 80,135 Q100,130 130,140 Q160,148 230,153" fill="none" stroke="#C4803A" stroke-width="2" stroke-linecap="round"/>
+    <text x="175" y="148" font-size="10" fill="#854F0B" font-family="sans-serif">weak/slow</text>
+    <line x1="75" y1="40" x2="75" y2="160" stroke="#412402" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <text x="75" y="35" text-anchor="middle" font-size="9" fill="#412402" font-family="sans-serif">cough ↓</text>
+    <text x="130" y="185" text-anchor="middle" font-size="10" fill="var(--t)" font-family="sans-serif">time →</text>
+  </svg>
+</div>
+
+<div class="hiw-panel" id="panel-breath">
+  <div class="hiw-copy">
+    <h3>The breath–pelvic floor link</h3>
+    <p>Your diaphragm and pelvic floor move together on every breath. On an inhale, the diaphragm descends and the pelvic floor gently drops. On an exhale, both recoil upward.</p>
+    <p>When breathing is shallow or the core is chronically braced, this rhythm breaks down — and the pelvic floor loses its natural release cycle.</p>
+    <div class="callout">Press Inhale / Exhale to see the movement.</div>
+  </div>
+  <div>
+    <svg id="breathHiw" width="100%" viewBox="0 0 260 200" role="img">
+      <title>Breath and pelvic floor coordination</title>
+      <path d="M30,80 Q80,55 130,58 Q180,55 230,80" fill="none" stroke="#5A8F60" stroke-width="3" stroke-linecap="round" id="diaph"/>
+      <path d="M40,155 Q95,168 130,170 Q165,168 220,155" fill="none" stroke="#7A9E7E" stroke-width="3" stroke-linecap="round" id="pelv"/>
+      <line x1="130" y1="58" x2="130" y2="155" stroke="var(--b)" stroke-width="0.5" stroke-dasharray="3 2"/>
+      <text x="40" y="100" font-size="11" fill="#27500A" font-family="sans-serif" font-weight="500">Diaphragm</text>
+      <text x="40" y="145" font-size="11" fill="#3B6D11" font-family="sans-serif" font-weight="500">Pelvic floor</text>
+      <text id="breathPhase" x="180" y="115" text-anchor="middle" font-size="12" fill="#5A8F60" font-family="sans-serif" font-weight="500">at rest</text>
+    </svg>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+      <button onclick="breathHiw('in')" style="font-size:12px;padding:7px 16px;border-radius:20px;border:0.5px solid #5A8F60;color:#4A6B4E;background:transparent;cursor:pointer;">Inhale</button>
+      <button onclick="breathHiw('out')" style="font-size:12px;padding:7px 16px;border-radius:20px;border:0.5px solid #7A9E7E;color:#4A6B4E;background:transparent;cursor:pointer;">Exhale</button>
+      <button onclick="breathHiw('rest')" style="font-size:12px;padding:7px 16px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);background:transparent;cursor:pointer;">Rest</button>
+    </div>
+  </div>
+</div>
+
+<div class="hiw-panel" id="panel-treatment">
+  <div class="hiw-copy">
+    <h3>What treatment involves</h3>
+    <p>Pelvic floor PT is never one-size-fits-all. Treatment is built around what your specific floor needs — which requires an assessment first.</p>
+    <p>Sessions typically include a combination of manual therapy, breathing and nervous system work, movement re-education, and a home program.</p>
+    <div class="callout">Most people see meaningful progress within 4–8 sessions.</div>
+  </div>
+  <svg width="100%" viewBox="0 0 260 220" role="img">
+    <title>Treatment components in pelvic floor PT</title>
+    <rect x="20" y="20" width="220" height="38" rx="8" fill="#EAF3DE" stroke="rgba(90,143,96,0.3)" stroke-width="0.5"/>
+    <text x="130" y="34" text-anchor="middle" font-size="11" fill="#27500A" font-family="sans-serif" font-weight="500">Assessment first</text>
+    <text x="130" y="50" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif">Tight or weak? Both? What's driving it?</text>
+    <line x1="130" y1="58" x2="130" y2="72" stroke="#5A8F60" stroke-width="1" stroke-dasharray="3 2"/>
+    <rect x="20" y="72" width="100" height="52" rx="8" fill="#FAEEDA" stroke="rgba(186,117,23,0.3)" stroke-width="0.5"/>
+    <text x="70" y="90" text-anchor="middle" font-size="10" fill="#412402" font-family="sans-serif" font-weight="500">Manual therapy</text>
+    <text x="70" y="104" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">Release tight</text>
+    <text x="70" y="116" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">tissue + fascia</text>
+    <rect x="140" y="72" width="100" height="52" rx="8" fill="#EAF3DE" stroke="rgba(90,143,96,0.3)" stroke-width="0.5"/>
+    <text x="190" y="90" text-anchor="middle" font-size="10" fill="#27500A" font-family="sans-serif" font-weight="500">Breathing work</text>
+    <text x="190" y="104" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif">Restore the</text>
+    <text x="190" y="116" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif">breath rhythm</text>
+    <line x1="80" y1="124" x2="80" y2="138" stroke="#5A8F60" stroke-width="1" stroke-dasharray="3 2"/>
+    <line x1="190" y1="124" x2="190" y2="138" stroke="#5A8F60" stroke-width="1" stroke-dasharray="3 2"/>
+    <line x1="80" y1="138" x2="190" y2="138" stroke="#5A8F60" stroke-width="1" stroke-dasharray="3 2"/>
+    <line x1="135" y1="138" x2="135" y2="152" stroke="#5A8F60" stroke-width="1" stroke-dasharray="3 2"/>
+    <rect x="35" y="152" width="190" height="38" rx="8" fill="#EAF3DE" stroke="rgba(90,143,96,0.3)" stroke-width="0.5"/>
+    <text x="130" y="167" text-anchor="middle" font-size="10" fill="#27500A" font-family="sans-serif" font-weight="500">Movement re-education + home program</text>
+    <text x="130" y="181" text-anchor="middle" font-size="10" fill="#3B6D11" font-family="sans-serif">Tailored to your body + goals</text>
+    <text x="130" y="212" text-anchor="middle" font-size="11" fill="#4A6B4E" font-family="sans-serif" font-weight="500">You leave every session with tools to use</text>
+  </svg>
+</div>
+
+<script>
+function showPanel(id, btn) {
+  document.querySelectorAll('.hiw-pill').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.hiw-panel').forEach(p => p.classList.remove('visible'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+id).classList.add('visible');
+}
+
+function anatClick(part) {
+  const msgs = { bladder:'Supports bladder, bowel + uterus above', floor:'Hammock of muscles — the pelvic floor' };
+  const el = document.getElementById('anatInfo');
+  const txt = document.getElementById('anatInfoText');
+  el.setAttribute('opacity','1');
+  txt.setAttribute('opacity','1');
+  txt.textContent = msgs[part];
+}
+
+function setTens(v) {
+  const w = Math.round(v * 2);
+  document.getElementById('tensBar').setAttribute('width', w);
+  const isHigh = v > 50;
+  document.getElementById('tensLabel').textContent = isHigh ? 'High tension — floor can\'t drop' : 'Low tension — floor can relax';
+  document.getElementById('tensLabel').setAttribute('fill', isHigh ? '#854F0B' : '#27500A');
+  const y = 130 - (v - 50) * 0.4;
+  document.getElementById('floorPath').setAttribute('d', `M40,${y} Q130,${y-12} 220,${y}`);
+  document.getElementById('floorPath').setAttribute('stroke', isHigh ? '#C4803A' : '#5A8F60');
+  document.getElementById('floorFill').setAttribute('d', `M40,${y} Q130,${y-12} 220,${y} L220,160 L40,160 Z`);
+  document.getElementById('floorFill').setAttribute('fill', isHigh ? 'rgba(196,128,58,0.12)' : 'rgba(90,143,96,0.12)');
+}
+
+function breathHiw(phase) {
+  const diaph = document.getElementById('diaph');
+  const pelv  = document.getElementById('pelv');
+  const label = document.getElementById('breathPhase');
+  if (phase === 'in') {
+    diaph.setAttribute('d','M30,95 Q80,70 130,73 Q180,70 230,95');
+    pelv.setAttribute('d','M40,165 Q95,178 130,180 Q165,178 220,165');
+    label.textContent = 'inhale — both drop ↓';
+    label.setAttribute('fill','#5A8F60');
+  } else if (phase === 'out') {
+    diaph.setAttribute('d','M30,68 Q80,43 130,46 Q180,43 230,68');
+    pelv.setAttribute('d','M40,145 Q95,158 130,160 Q165,158 220,145');
+    label.textContent = 'exhale — both rise ↑';
+    label.setAttribute('fill','#7A9E7E');
+  } else {
+    diaph.setAttribute('d','M30,80 Q80,55 130,58 Q180,55 230,80');
+    pelv.setAttribute('d','M40,155 Q95,168 130,170 Q165,168 220,155');
+    label.textContent = 'at rest';
+    label.setAttribute('fill','#5A8F60');
+  }
+}
+</script>

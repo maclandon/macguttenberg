@@ -1,0 +1,71 @@
+# Marissa Joy Wellness — Site Rules
+# Use this file to understand the project before making any changes.
+
+## Who this is for
+Marissa Guttenberg — Denver-based pelvic floor physical therapist and yoga therapist.
+Credentials: PT DPT GCS 200RYT
+Location: Denver, Colorado
+Email: marissa@marissajoywellness.com
+Instagram: @marissajoy_wellness
+LinkedIn: https://www.linkedin.com/in/marissa-guttenberg-pt-dpt-gcs-0088b751/
+
+## Site structure
+- index.html — main site (home, services, conditions, about, blog, testimonials, FAQ, contact)
+- blog-pelvic-floor-therapy.html — blog post 1
+- blog-breathwork.html — blog post 2
+- blog-postpartum-movement.html — blog post 3
+- privacy-policy.html — privacy policy
+- headshot.jpg — Marissa's photo
+- Contact form uses Formspree: https://formspree.io/f/mgorklze
+
+## Design system
+Font: Cormorant Garamond (serif, headings) + DM Sans (sans, body)
+Tone: warm, soft, calming — never clinical or cold
+
+### Colors
+--sage: #7A9E7E
+--sage-light: #A8C5AC
+--sage-pale: #EAF0E8
+--sage-deep: #4A6B4E
+--sage-dark: #2C4230
+--warm: #F7F3EE
+--white: #FDFCFA
+--text: #2A2A28
+--text-mid: #5C5B57
+--text-light: #9A9990
+
+### Key CSS classes
+.btn-sage — primary green button (rounded pill)
+.btn-ghost — outlined secondary button
+.section-tag — small uppercase label above headings
+.section-heading — serif heading with optional <em> italic
+.reveal / .reveal-delay-1/2/3 — scroll animation classes
+.cred-pill — credential badge (PT, DPT, GCS, 200RYT)
+.service-card — service block with number
+.condition-item — what I treat list item with dot
+.blog-card — blog preview card
+.testimonial-card — patient review card
+.faq-question / .faq-answer — accordion FAQ (JS toggleFaq())
+.hero-photo — full bleed headshot image
+.contact-form — Formspree form
+
+## Writing style
+- First person (I, my, me) — Marissa's voice
+- Warm, empowering, never preachy
+- Sentence case always — never ALL CAPS headings
+- Short paragraphs, plain language
+- Avoid overly clinical jargon
+
+## Deployment
+- GitHub repo: maclandon/marissa-joy-wellness
+- Hosted on Cloudflare Pages — auto-deploys on every push to main
+- Domain: marissajoywellness.com
+
+## Important notes
+- Always keep headshot.jpg filename exactly as is
+- Blog posts link back to index.html#blog
+- Nav links use anchor tags (#services, #about, #blog, #faq, #contact)
+- Mobile hamburger menu controlled by toggleMenu() JS function
+- FAQ accordion controlled by toggleFaq() JS function
+- Never remove Formspree action URL from the contact form
+- Privacy policy links to privacy-policy.html from footer

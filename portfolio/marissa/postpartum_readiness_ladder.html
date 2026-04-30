@@ -1,0 +1,139 @@
+
+<style>
+.ladder-step { border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; margin-bottom: 8px; overflow: hidden; transition: border-color 0.2s; }
+.ladder-step.active { border-color: var(--color-border-secondary); }
+.ladder-header { display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; user-select:none; }
+.ladder-header:hover { background: var(--color-background-secondary); }
+.step-num { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:500; flex-shrink:0; }
+.step-info { flex:1; }
+.step-title { font-size:14px; font-weight:500; color:var(--color-text-primary); }
+.step-timing { font-size:12px; color:var(--color-text-secondary); margin-top:1px; }
+.step-chevron { font-size:12px; color:var(--color-text-tertiary); transition:transform 0.2s; }
+.ladder-step.open .step-chevron { transform: rotate(180deg); }
+.ladder-body { display:none; padding:0 16px 16px 56px; }
+.ladder-step.open .ladder-body { display:block; }
+.check-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px; }
+.check-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--color-text-secondary); line-height:1.5; cursor:pointer; }
+.check-list li.checked { color:var(--color-text-primary); }
+.check-box { width:16px; height:16px; border-radius:4px; border:1.5px solid var(--color-border-secondary); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+.check-list li.checked .check-box { background:#5A8F60; border-color:#5A8F60; }
+.check-mark { display:none; }
+.check-list li.checked .check-mark { display:block; }
+.step-tag { display:inline-block; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+</style>
+
+<h2 class="sr-only">Postpartum movement readiness: a step-by-step guide to returning to exercise</h2>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+  <div style="font-size:13px;color:var(--color-text-secondary);">Check off what you can do. Progress when a stage is complete.</div>
+  <div style="font-size:13px;color:var(--color-text-secondary);">Ready: <span id="readyCount" style="font-weight:500;color:var(--color-text-primary);">0</span> of 4 stages</div>
+</div>
+
+<div id="ladder">
+
+  <div class="ladder-step" data-step="0">
+    <div class="ladder-header" onclick="toggleStep(0)">
+      <div class="step-num" style="background:#EAF3DE;color:#27500A;">1</div>
+      <div class="step-info">
+        <div class="step-title">Foundation</div>
+        <div class="step-timing">Weeks 1 – 6</div>
+      </div>
+      <span class="step-chevron">▼</span>
+    </div>
+    <div class="ladder-body">
+      <div class="step-tag" style="background:#EAF3DE;color:#27500A;">Start here</div>
+      <ul class="check-list" data-step="0">
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Diaphragmatic breathing feels natural</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Can gently contract and fully release pelvic floor</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Short walks (10–15 min) without symptoms</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>No heaviness or leaking during daily activities</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ladder-step" data-step="1">
+    <div class="ladder-header" onclick="toggleStep(1)">
+      <div class="step-num" style="background:#FAEEDA;color:#412402;">2</div>
+      <div class="step-info">
+        <div class="step-title">Strength base</div>
+        <div class="step-timing">Weeks 6 – 12</div>
+      </div>
+      <span class="step-chevron">▼</span>
+    </div>
+    <div class="ladder-body">
+      <div class="step-tag" style="background:#FAEEDA;color:#412402;">Build slowly</div>
+      <ul class="check-list" data-step="1">
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>30 min brisk walk without symptoms</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>10 single-leg calf raises each side, no pressure</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Bodyweight squats with good control</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Stairs feel effortless and symptom-free</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ladder-step" data-step="2">
+    <div class="ladder-header" onclick="toggleStep(2)">
+      <div class="step-num" style="background:#FDF0E4;color:#633806;">3</div>
+      <div class="step-info">
+        <div class="step-title">Impact readiness</div>
+        <div class="step-timing">Weeks 12 – 16+</div>
+      </div>
+      <span class="step-chevron">▼</span>
+    </div>
+    <div class="ladder-body">
+      <div class="step-tag" style="background:#FDF0E4;color:#633806;">Check carefully</div>
+      <ul class="check-list" data-step="2">
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Single-leg squat with stable pelvis, no lean</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Jog in place for 1 min — no leak or heaviness</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>10 single-leg hops each side, no symptoms</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Core feels connected, no doming or coning</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ladder-step" data-step="3">
+    <div class="ladder-header" onclick="toggleStep(3)">
+      <div class="step-num" style="background:#EAF3DE;color:#27500A;">4</div>
+      <div class="step-info">
+        <div class="step-title">Return to running</div>
+        <div class="step-timing">16+ weeks (when stages 1–3 complete)</div>
+      </div>
+      <span class="step-chevron">▼</span>
+    </div>
+    <div class="ladder-body">
+      <div class="step-tag" style="background:#EAF3DE;color:#27500A;">You're ready</div>
+      <ul class="check-list" data-step="3">
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Start with run/walk intervals (1 min run, 1 min walk)</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>No symptoms during or after each session</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Gradually increase run intervals over 4–6 weeks</li>
+        <li onclick="toggleCheck(this)"><span class="check-box"><svg class="check-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Pain, leaking, or heaviness = back to previous stage</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleStep(i) {
+  const step = document.querySelector(`.ladder-step[data-step="${i}"]`);
+  step.classList.toggle('open');
+  step.classList.toggle('active');
+}
+
+let stageComplete = [false,false,false,false];
+
+function toggleCheck(li) {
+  li.classList.toggle('checked');
+  updateReady();
+}
+
+function updateReady() {
+  stageComplete = [0,1,2,3].map(i => {
+    const items = document.querySelectorAll(`.check-list[data-step="${i}"] li`);
+    return [...items].every(li => li.classList.contains('checked'));
+  });
+  document.getElementById('readyCount').textContent = stageComplete.filter(Boolean).length;
+}
+
+toggleStep(0);
+</script>

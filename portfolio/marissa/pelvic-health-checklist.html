@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Is This Normal? | Pelvic Health Self-Screen | Marissa Joy Wellness</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%237A9E7E'/%3E%3Ctext x='50%25' y='68%25' text-anchor='middle' font-size='18' font-family='Cormorant Garamond, serif' fill='%23FDFCFA' font-weight='500'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #7A9E7E;
+    --sage-light: #A8C5AC;
+    --sage-pale: #EAF0E8;
+    --sage-deep: #4A6B4E;
+    --sage-dark: #2C4230;
+    --warm: #F7F3EE;
+    --white: #FDFCFA;
+    --text: #2A2A28;
+    --text-mid: #3A3A38;
+    --text-light: #76756B;
+    --amber: #C4803A;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 60px;
+    margin: 0;
+  }
+  .checklist-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    background: rgba(253,252,250,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(122,158,126,0.15);
+  }
+  .checklist-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 760px;
+  }
+  .checklist-nav-logo {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--sage-dark);
+    text-decoration: none;
+  }
+  .checklist-nav-logo em { font-style: italic; color: var(--sage); }
+  .checklist-nav-link {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--sage);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    border: 1px solid rgba(122,158,126,0.3);
+    border-radius: 40px;
+    transition: background 0.2s, color 0.2s;
+    min-height: 44px;
+  }
+  .checklist-nav-link:hover { background: var(--sage-pale); color: var(--sage-deep); }
+
+  .page {
+    background: var(--white);
+    max-width: 760px;
+    width: 90%;
+    margin: 40px auto 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(44,66,48,0.12);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--sage-dark);
+    padding: 48px 52px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(168,197,172,0.08);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(168,197,172,0.05);
+  }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--sage-light);
+    letter-spacing: 0.06em;
+    margin-bottom: 28px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo em { font-style: italic; color: rgba(168,197,172,0.7); }
+
+  .header-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    opacity: 0.8;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  .header-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-title em {
+    font-style: italic;
+    color: var(--sage-light);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 480px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    padding: 36px 52px 28px;
+    border-bottom: 1px solid rgba(122,158,126,0.15);
+  }
+
+  .intro p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  .intro strong { color: var(--sage-deep); font-weight: 500; }
+
+  /* ── COLUMNS ── */
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  /* ── COLUMN ── */
+  .col {
+    padding: 32px 52px 36px;
+  }
+
+  .col:first-child {
+    border-right: 1px solid rgba(122,158,126,0.15);
+  }
+
+  .col-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid;
+  }
+
+  .col--normal .col-header { border-color: rgba(122,158,126,0.3); }
+  .col--treatable .col-header { border-color: rgba(196,128,58,0.3); }
+
+  .col-badge {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .col--normal .col-badge {
+    background: var(--sage-pale);
+    color: var(--sage-deep);
+  }
+
+  .col--treatable .col-badge {
+    background: #FDF0E4;
+    color: var(--amber);
+  }
+
+  .col-label {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .col--normal .col-label { color: var(--sage-dark); }
+  .col--treatable .col-label { color: #8B5A1F; }
+
+  .col-sublabel {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* ── ITEMS ── */
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(122,158,126,0.1);
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 6px;
+    padding-left: 6px;
+    margin: 0 -6px;
+  }
+
+  .item:last-child { border-bottom: none; }
+
+  .item:hover { background: rgba(122,158,126,0.04); }
+
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+
+  .col--normal .checkbox {
+    border: 1.5px solid var(--sage-light);
+    background: transparent;
+  }
+
+  .col--treatable .checkbox {
+    border: 1.5px solid rgba(196,128,58,0.4);
+    background: transparent;
+  }
+
+  .item.checked .checkbox {
+    background: var(--sage-deep);
+    border-color: var(--sage-deep);
+  }
+
+  .col--treatable .item.checked .checkbox {
+    background: var(--amber);
+    border-color: var(--amber);
+  }
+
+  .checkmark {
+    display: none;
+    width: 10px;
+    height: 10px;
+  }
+
+  .checkmark path {
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+  .item.checked .checkmark { display: block; }
+
+  .item-text {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  .item.checked .item-text {
+    color: var(--text);
+  }
+
+  /* ── FOOTER NOTE ── */
+  .note {
+    padding: 28px 52px 32px;
+    background: var(--sage-pale);
+    border-top: 1px solid rgba(122,158,126,0.2);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .note-text {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  .note-text strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--sage-dark);
+    margin-bottom: 4px;
+  }
+
+  /* ── CTA ── */
+  .cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sage);
+    color: white;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 13px 24px;
+    border-radius: 40px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-cta:hover {
+    background: var(--sage-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(74,107,78,0.3);
+  }
+
+  .btn-cta svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .cta-sub {
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── COUNTER ── */
+  .counter-bar {
+    padding: 14px 52px;
+    background: var(--white);
+    border-top: 1px solid rgba(122,158,126,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .counter-label {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .counter-val {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--sage-dark);
+  }
+
+  .counter-val span {
+    color: var(--sage);
+    font-weight: 500;
+  }
+
+  /* ── RESULT MESSAGE ── */
+  .result-msg {
+    display: none;
+    padding: 18px 52px;
+    background: #FDF0E4;
+    border-top: 1px solid rgba(196,128,58,0.2);
+    align-items: center;
+    gap: 14px;
+  }
+
+  .result-msg.visible { display: flex; }
+
+  .result-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(196,128,58,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .result-icon svg {
+    width: 16px;
+    height: 16px;
+    color: var(--amber);
+  }
+
+  .result-text {
+    font-size: 13px;
+    color: #7A4A1A;
+    line-height: 1.6;
+  }
+
+  .result-text strong {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    body { padding: 0; }
+    .page { border-radius: 0; box-shadow: none; margin-top: 0; }
+    .header, .intro, .col, .note, .counter-bar, .result-msg { padding-left: 24px; padding-right: 24px; }
+    .columns { grid-template-columns: 1fr; }
+    .col:first-child { border-right: none; border-bottom: 1px solid rgba(122,158,126,0.15); }
+    .note { grid-template-columns: 1fr; }
+    .cta-wrap { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="checklist-nav">
+  <div class="checklist-nav-inner">
+    <a href="index.html" class="checklist-nav-logo">Marissa Joy <em>Wellness</em></a>
+    <a href="index.html" class="checklist-nav-link">Visit site →</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <a href="index.html" class="logo" style="text-decoration:none;">Marissa Joy <em>Wellness</em></a>
+    <div class="header-eyebrow">Pelvic health self-screen</div>
+    <h1 class="header-title">Is this <em>normal?</em></h1>
+    <p class="header-sub">Many people quietly live with symptoms they've been told to accept. Use this checklist to understand what's common versus what's treatable — and decide if it's time to seek support.</p>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Check any symptoms you're currently experiencing. <strong>Common doesn't mean normal</strong> — many of these symptoms are so widespread that people assume they're inevitable. They're not. Scroll through, be honest with yourself, and see what your body might be trying to tell you.</p>
+  </div>
+
+  <!-- COLUMNS -->
+  <div class="columns">
+
+    <!-- NORMAL PHYSIOLOGY -->
+    <div class="col col--normal">
+      <div class="col-header">
+        <div>
+          <div class="col-badge">Normal physiology</div>
+          <div class="col-label">These are expected<br>body processes</div>
+          <div class="col-sublabel">No cause for concern</div>
+        </div>
+      </div>
+
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Needing to urinate more frequently during pregnancy</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Mild pelvic pressure in the third trimester</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Some tenderness in the early postpartum weeks</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Feeling less coordinated or weaker right after birth</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Hormonal shifts affecting lubrication while breastfeeding</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Occasional urgency after a very full bladder</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Core feeling different at 2 weeks postpartum</span>
+      </div>
+    </div>
+
+    <!-- COMMON BUT TREATABLE -->
+    <div class="col col--treatable">
+      <div class="col-header">
+        <div>
+          <div class="col-badge">Common but treatable</div>
+          <div class="col-label">These are widespread —<br>but not inevitable</div>
+          <div class="col-sublabel">Pelvic floor PT can help</div>
+        </div>
+      </div>
+
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Leaking urine when you sneeze, cough, laugh, or jump</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Rushing to the bathroom and not always making it</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Pain or discomfort during or after sex</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">A feeling of heaviness, bulging, or "falling out" in the pelvis</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Chronic low back, hip, or tailbone pain</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Painful periods or pelvic pain throughout the month</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Doming or coning in your abdomen during movement</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Difficulty fully emptying your bladder or bowels</span>
+      </div>
+      <div class="item" onclick="toggleItem(this)">
+        <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3"/></svg></div>
+        <span class="item-text">Leaking or discomfort when returning to exercise postpartum</span>
+      </div>
+    </div>
+
+  </div><!-- /columns -->
+
+  <!-- COUNTER BAR -->
+  <div class="counter-bar">
+    <div>
+      <div class="counter-label">Symptoms checked</div>
+    </div>
+    <div class="counter-val">
+      <span id="countVal">0</span> of 16 checked
+    </div>
+  </div>
+
+  <!-- RESULT MESSAGE (shows when treatable items checked) -->
+  <div class="result-msg" id="resultMsg">
+    <div class="result-icon">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 11v.5"/></svg>
+    </div>
+    <div class="result-text">
+      <strong>You've checked symptoms that pelvic floor PT can address.</strong>
+      You don't have to keep living with these. A single consultation can give you clarity on what's going on and a path forward.
+    </div>
+  </div>
+
+  <!-- FOOTER NOTE + CTA -->
+  <div class="note">
+    <div class="note-text">
+      <strong>Ready to talk?</strong>
+      This checklist is a starting point, not a diagnosis. If anything on the right column resonates — even one item — it's worth a conversation. You deserve to feel well in your own body.
+    </div>
+    <div class="cta-wrap">
+      <a href="index.html#contact" class="btn-cta">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 5.5l6 4 6-4"/></svg>
+        Work with Marissa
+      </a>
+      <span class="cta-sub">marissajoywellness.com</span>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+  let totalChecked = 0;
+  let treatableChecked = 0;
+  const TOTAL_ITEMS = 16;
+  const TREATABLE_ITEMS = 9;
+
+  function toggleItem(el) {
+    const wasTreatable = el.closest('.col--treatable') !== null;
+    const wasChecked = el.classList.contains('checked');
+
+    el.classList.toggle('checked');
+
+    if (wasChecked) {
+      totalChecked--;
+      if (wasTreatable) treatableChecked--;
+    } else {
+      totalChecked++;
+      if (wasTreatable) treatableChecked++;
+    }
+
+    document.getElementById('countVal').textContent = totalChecked;
+
+
+    const msg = document.getElementById('resultMsg');
+    if (treatableChecked >= 1) {
+      msg.classList.add('visible');
+    } else {
+      msg.classList.remove('visible');
+    }
+  }
+</script>
+
+</body>
+</html>

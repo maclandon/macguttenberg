@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="An interactive guide to pelvic floor physical therapy — what the pelvic floor is, what goes wrong, and how treatment actually works. From Marissa Joy Wellness, Denver CO.">
+<title>How Pelvic Floor PT Works | Marissa Joy Wellness</title>
+<meta property="og:title" content="How Pelvic Floor PT Works | Marissa Joy Wellness" />
+<meta property="og:description" content="An interactive guide to pelvic floor physical therapy — anatomy, dysfunction, breathwork, and what treatment actually looks like." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marissajoywellness.com/how-it-works.html" />
+<meta property="og:image" content="https://marissajoywellness.com/marissasocialshare.jpg" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%237A9E7E'/%3E%3Ctext x='50%25' y='68%25' text-anchor='middle' font-size='18' font-family='Cormorant Garamond, serif' fill='%23FDFCFA' font-weight='500'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+/* ── STICKY PROGRESS NAV ── */
+.stage-nav {
+  position: sticky;
+  top: 65px;
+  z-index: 50;
+  background: rgba(253,252,250,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(122,158,126,0.12);
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.stage-nav::-webkit-scrollbar { display: none; }
+.stage-pill {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding: 16px 20px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stage-pill:hover { color: var(--sage-deep); }
+.stage-pill.active { color: var(--sage-dark); border-bottom-color: var(--sage); }
+.stage-num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(122,158,126,0.15);
+  color: var(--sage-deep);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.stage-pill.active .stage-num {
+  background: var(--sage);
+  color: #fff;
+}
+
+/* ── PAGE HERO ── */
+.hiw-hero {
+  padding: 80px 56px 72px;
+  max-width: 680px;
+}
+.hiw-hero .section-tag { margin-bottom: 16px; }
+.hiw-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--sage-dark);
+  margin-bottom: 20px;
+}
+.hiw-hero h1 em { font-style: italic; color: var(--sage); }
+.hiw-hero p {
+  font-size: 17px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+/* ── STAGE SECTIONS ── */
+.stage-section {
+  padding: 80px 56px;
+  border-top: 1px solid rgba(122,158,126,0.12);
+  scroll-margin-top: 120px;
+}
+.stage-section:nth-child(even) {
+  background: var(--warm);
+}
+.stage-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.stage-eyebrow-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.stage-eyebrow-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.stage-layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 480px);
+  gap: 64px;
+  align-items: center;
+}
+.stage-layout.flip { direction: rtl; }
+.stage-layout.flip > * { direction: ltr; }
+.stage-copy h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--sage-dark);
+  margin-bottom: 20px;
+}
+.stage-copy h2 em { font-style: italic; color: var(--sage); }
+.stage-copy p {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+.stage-copy p:last-of-type { margin-bottom: 0; }
+.insight-box {
+  margin-top: 28px;
+  padding: 18px 22px;
+  background: var(--sage-pale);
+  border-radius: 12px;
+  border-left: 3px solid var(--sage);
+  font-size: 14px;
+  color: var(--sage-dark);
+  line-height: 1.7;
+}
+.insight-box strong {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-family: var(--serif);
+  font-size: 16px;
+}
+
+/* ── DIAGRAM CONTAINERS ── */
+.diagram-wrap {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid rgba(122,158,126,0.15);
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(44,66,48,0.06);
+  max-width: 480px;
+  margin-left: auto;
+}
+.stage-section:nth-child(even) .diagram-wrap {
+  background: var(--sage-pale);
+  border-color: rgba(122,158,126,0.2);
+  box-shadow: none;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes breathDown { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+@keyframes breathUp   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes floorDrop  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+@keyframes bellySwell { 0%,100%{transform:scaleX(1)}    50%{transform:scaleX(1.06)} }
+@keyframes dashFlow   { to { stroke-dashoffset: -20; } }
+@keyframes tensionPulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+.anim-diaphragm { animation: breathDown 4s ease-in-out infinite; transform-origin: 340px 200px; }
+.anim-belly     { animation: bellySwell 4s ease-in-out infinite; transform-origin: 340px 280px; }
+.anim-floor     { animation: floorDrop  4s ease-in-out infinite; transform-origin: 340px 370px; }
+.anim-flow      { stroke-dasharray: 6 4; animation: dashFlow 1.6s linear infinite; }
+.anim-tension   { animation: tensionPulse 2s ease-in-out infinite; }
+.paused * { animation-play-state: paused !important; }
+
+/* ── TENSION SLIDER ── */
+.tension-track {
+  width: 100%;
+  margin: 20px 0 8px;
+}
+.tension-bar-bg {
+  height: 8px;
+  background: rgba(122,158,126,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.tension-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+/* ── READINESS LADDER ── */
+.ladder-step {
+  border: 0.5px solid rgba(122,158,126,0.2);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.ladder-step.open { border-color: var(--sage); }
+.ladder-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.ladder-header:hover { background: rgba(122,158,126,0.04); }
+.ladder-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.ladder-info { flex: 1; }
+.ladder-title { font-size: 15px; font-weight: 500; color: var(--text); }
+.ladder-timing { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.ladder-chevron { font-size: 11px; color: var(--text-light); transition: transform 0.2s; }
+.ladder-step.open .ladder-chevron { transform: rotate(180deg); }
+.ladder-body { display: none; padding: 0 20px 18px 64px; }
+.ladder-step.open .ladder-body { display: block; }
+.check-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.check-list li.checked { color: var(--text); }
+.chk {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid var(--sage-light);
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.check-list li.checked .chk { background: var(--sage-deep); border-color: var(--sage-deep); }
+.chk-mark { display: none; }
+.check-list li.checked .chk-mark { display: block; }
+
+/* ── BOTTOM CTA ── */
+.hiw-cta {
+  background: var(--sage-dark);
+  padding: 80px 56px;
+  text-align: center;
+}
+.hiw-cta h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.hiw-cta h2 em { font-style: italic; color: var(--sage-light); }
+.hiw-cta p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+.btn-white-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 32px;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
+}
+.btn-white-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.7);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .stage-nav { padding: 0 24px; }
+  .hiw-hero { padding: 60px 24px 48px; }
+  .stage-section { padding: 56px 24px; }
+  .stage-layout { grid-template-columns: 1fr; gap: 36px; }
+  .stage-layout.flip { direction: ltr; }
+  .hiw-cta { padding: 64px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">Marissa Joy <em>Wellness</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="how-it-works.html">How it works</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#services" onclick="closeMenu()">Services</a>
+  <a href="index.html#about" onclick="closeMenu()">About</a>
+  <a href="how-it-works.html" onclick="closeMenu()">How it works</a>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- STICKY STAGE NAV -->
+<div class="stage-nav" id="stageNav">
+  <a class="stage-pill active" href="#anatomy" data-stage="anatomy">
+    <span class="stage-num">1</span>The pelvic floor
+  </a>
+  <a class="stage-pill" href="#hypertonic" data-stage="hypertonic">
+    <span class="stage-num">2</span>Too tight
+  </a>
+  <a class="stage-pill" href="#hypotonic" data-stage="hypotonic">
+    <span class="stage-num">3</span>Too weak
+  </a>
+  <a class="stage-pill" href="#breath" data-stage="breath">
+    <span class="stage-num">4</span>The breath link
+  </a>
+  <a class="stage-pill" href="#treatment" data-stage="treatment">
+    <span class="stage-num">5</span>Treatment
+  </a>
+</div>
+
+<!-- HERO -->
+<div class="hiw-hero">
+  <div class="section-tag">Interactive guide</div>
+  <h1>How pelvic floor PT <em>actually works</em></h1>
+  <p>Pelvic floor physical therapy can sound abstract until you see what's actually happening. This guide walks you through the anatomy, what goes wrong, and how treatment helps — step by step.</p>
+</div>
+
+<!-- ── STAGE 1: ANATOMY ── -->
+<section class="stage-section" id="anatomy">
+  <div class="stage-eyebrow">
+    <div class="stage-eyebrow-num">1</div>
+    <div class="stage-eyebrow-label">The foundation</div>
+  </div>
+  <div class="stage-layout">
+    <div class="stage-copy">
+      <h2>What is the <em>pelvic floor?</em></h2>
+      <p>The pelvic floor is a group of muscles, connective tissue, and nerves that sit at the base of your pelvis — like a hammock stretched between your sit bones, tailbone, and pubic bone.</p>
+      <p>These muscles do a remarkable amount of work. They support your bladder, bowel, and uterus. They control continence. They play a role in sexual function, core stability, and — as we'll see — every single breath you take.</p>
+      <p>When they're working well, you don't notice them. When they're not, they make themselves known in ways that can quietly take over your life.</p>
+      <div class="insight-box">
+        <strong>The key thing to understand</strong>
+        The pelvic floor isn't just about strength. It needs to contract AND fully release — a floor that can't let go causes just as many problems as one that's too weak.
+      </div>
+    </div>
+    <div class="diagram-wrap">
+      <svg width="100%" viewBox="0 0 400 340" role="img">
+        <title>Pelvic floor anatomy — cross-section showing muscles at the base of the pelvis</title>
+
+        <!-- Pelvis outline -->
+        <ellipse cx="200" cy="120" rx="150" ry="90" fill="rgba(122,158,126,0.06)" stroke="rgba(122,158,126,0.3)" stroke-width="1.5"/>
+
+        <!-- Organs above -->
+        <ellipse cx="200" cy="90" rx="72" ry="42" fill="#EAF0E8" stroke="#7A9E7E" stroke-width="1.5"/>
+        <text x="200" y="85" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" font-weight="500" fill="#2C4230">Bladder</text>
+        <text x="200" y="102" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#4A6B4E">bowel · uterus</text>
+
+        <!-- Pelvic brim dashed -->
+        <path d="M60,150 Q200,130 340,150" fill="none" stroke="rgba(122,158,126,0.4)" stroke-width="1" stroke-dasharray="5 4"/>
+        <text x="316" y="145" font-family="'DM Sans',sans-serif" font-size="11" fill="#7A9E7E">pelvic brim</text>
+
+        <!-- Pelvic floor hammock -->
+        <path d="M68,180 Q140,210 200,215 Q260,210 332,180" fill="none" stroke="#4A6B4E" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M68,180 Q140,222 200,228 Q260,222 332,180 Z" fill="rgba(74,107,78,0.1)" stroke="none"/>
+
+        <!-- Hammock label -->
+        <line x1="200" y1="228" x2="200" y2="258" stroke="rgba(122,158,126,0.4)" stroke-width="0.5" stroke-dasharray="3 2"/>
+        <text x="200" y="272" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" font-weight="500" fill="#2C4230">Pelvic floor</text>
+        <text x="200" y="288" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#4A6B4E">muscles + fascia + nerves</text>
+
+        <!-- Side annotations -->
+        <line x1="60" y1="178" x2="28" y2="195" stroke="rgba(122,158,126,0.3)" stroke-width="0.5" stroke-dasharray="3 2"/>
+        <text x="22" y="193" text-anchor="end" font-family="'DM Sans',sans-serif" font-size="11" fill="#76756B">sit bone</text>
+        <line x1="332" y1="178" x2="362" y2="195" stroke="rgba(122,158,126,0.3)" stroke-width="0.5" stroke-dasharray="3 2"/>
+        <text x="368" y="193" font-family="'DM Sans',sans-serif" font-size="11" fill="#76756B">sit bone</text>
+
+        <!-- Tailbone -->
+        <circle cx="200" cy="175" r="5" fill="rgba(122,158,126,0.4)" stroke="#7A9E7E" stroke-width="1"/>
+        <line x1="200" y1="170" x2="200" y2="140" stroke="rgba(122,158,126,0.3)" stroke-width="0.5" stroke-dasharray="3 2"/>
+        <text x="200" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#76756B">tailbone</text>
+
+        <!-- Functions list -->
+        <rect x="20" y="305" width="360" height="28" rx="8" fill="rgba(122,158,126,0.08)" stroke="rgba(122,158,126,0.2)" stroke-width="0.5"/>
+        <text x="200" y="323" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#4A6B4E">Continence · Sexual function · Core stability · Breathing</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── STAGE 2: HYPERTONIC ── -->
+<section class="stage-section" id="hypertonic">
+  <div class="stage-eyebrow">
+    <div class="stage-eyebrow-num">2</div>
+    <div class="stage-eyebrow-label">When things go wrong</div>
+  </div>
+  <div class="stage-layout flip">
+    <div class="stage-copy">
+      <h2>The <em>too-tight</em> floor</h2>
+      <p>A hypertonic pelvic floor is one that can't fully relax. The muscles stay in a state of chronic contraction — not because of strength, but because of guarding, stress, trauma, or learned tension patterns built up over years.</p>
+      <p>This is one of the most common things I see in practice, and one of the most misunderstood. People with hypertonic floors are often told to do kegels — which is the exact wrong prescription. Contracting an already-contracted muscle makes things worse.</p>
+      <p>Symptoms often include pelvic pain, pain during sex, urgency without leaking, constipation, and tailbone or hip pain that never quite resolves.</p>
+      <div class="insight-box">
+        <strong>The clinical reality</strong>
+        More kegels on a hypertonic floor is like clenching an already-clenched fist. The first intervention is almost always learning to let go — not squeeze harder.
+      </div>
+    </div>
+    <div class="diagram-wrap">
+      <p style="font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:16px;">Resting tension level</p>
+      <div class="tension-track">
+        <div class="tension-bar-bg">
+          <div class="tension-bar-fill" id="tensBarFill" style="width:80%;background:#C4803A;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-light);">
+          <span>Low</span><span id="tensStatus" style="font-weight:500;color:#C4803A;">High — floor can't drop</span><span>High</span>
+        </div>
+      </div>
+      <input type="range" min="0" max="100" value="80" step="1" style="width:100%;margin:4px 0 24px;" oninput="setTension(this.value)">
+
+      <svg width="100%" viewBox="0 0 400 200" role="img" id="tensSvg">
+        <title>Pelvic floor resting tension visualization</title>
+        <!-- Baseline -->
+        <line x1="30" y1="130" x2="370" y2="130" stroke="rgba(122,158,126,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="18" y="134" font-family="'DM Sans',sans-serif" font-size="11" fill="#76756B" text-anchor="end">ideal</text>
+
+        <!-- Floor curve -->
+        <path id="tensPath" d="M40,100 Q200,88 360,100" fill="none" stroke="#C4803A" stroke-width="4" stroke-linecap="round"/>
+        <path id="tensFill" d="M40,100 Q200,88 360,100 L360,160 L40,160 Z" fill="rgba(196,128,58,0.1)" stroke="none"/>
+
+        <!-- Tension dots -->
+        <circle class="anim-tension" cx="130" cy="94" r="5" fill="#C4803A" opacity="0.6"/>
+        <circle class="anim-tension" cx="200" cy="90" r="7" fill="#C4803A" opacity="0.8" style="animation-delay:0.4s"/>
+        <circle class="anim-tension" cx="270" cy="94" r="5" fill="#C4803A" opacity="0.6" style="animation-delay:0.8s"/>
+
+        <text x="200" y="180" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#854F0B">Floor stuck above baseline = chronic tension</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── STAGE 3: HYPOTONIC ── -->
+<section class="stage-section" id="hypotonic">
+  <div class="stage-eyebrow">
+    <div class="stage-eyebrow-num">3</div>
+    <div class="stage-eyebrow-label">The other side</div>
+  </div>
+  <div class="stage-layout">
+    <div class="stage-copy">
+      <h2>The <em>too-weak</em> floor</h2>
+      <p>A hypotonic pelvic floor lacks the strength or timing to generate adequate force on demand. The muscles can't contract quickly enough to stay closed when intra-abdominal pressure spikes — like when you cough, sneeze, laugh, or jump.</p>
+      <p>This is what drives stress urinary incontinence — the most common pelvic floor complaint I see. The solution isn't just "do more kegels" but building strength with correct timing, breathing coordination, and progressive load.</p>
+      <p>Many people have elements of both — areas that are too tight and areas that are too weak. This is exactly why assessment matters before treatment.</p>
+      <div class="insight-box">
+        <strong>Strength is only half of it</strong>
+        A pelvic floor that can generate 10/10 force but fires half a second too late will still leak. Strength and timing are trained together.
+      </div>
+    </div>
+    <div class="diagram-wrap">
+      <p style="font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:16px;">Force response to a cough</p>
+      <svg width="100%" viewBox="0 0 400 240" role="img">
+        <title>Pelvic floor force response comparison — healthy vs hypotonic</title>
+
+        <!-- Axes -->
+        <line x1="40" y1="200" x2="380" y2="200" stroke="rgba(122,158,126,0.3)" stroke-width="0.5"/>
+        <line x1="40" y1="200" x2="40" y2="30"  stroke="rgba(122,158,126,0.3)" stroke-width="0.5"/>
+        <text x="210" y="220" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#76756B">time →</text>
+        <text x="16" y="115" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#76756B" transform="rotate(-90,16,115)">force</text>
+
+        <!-- Cough spike -->
+        <line x1="100" y1="200" x2="100" y2="30" stroke="rgba(196,128,58,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+        <polygon points="100,24 95,36 105,36" fill="rgba(196,128,58,0.5)"/>
+        <text x="100" y="18" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#854F0B">cough ↓</text>
+
+        <!-- Healthy response -->
+        <path d="M40,190 Q80,188 95,190 Q100,170 110,60 Q115,80 125,110 Q150,160 200,175 Q280,188 380,192" fill="none" stroke="#5A8F60" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 4"/>
+        <text x="290" y="148" font-family="'DM Sans',sans-serif" font-size="11" fill="#3B6D11" font-weight="500">healthy response</text>
+
+        <!-- Weak response -->
+        <path d="M40,190 Q80,190 100,192 Q115,186 130,155 Q145,170 180,182 Q260,192 380,196" fill="none" stroke="#C4803A" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="200" y="174" font-family="'DM Sans',sans-serif" font-size="11" fill="#854F0B" font-weight="500">weak / delayed</text>
+
+        <!-- Legend -->
+        <line x1="50" y1="228" x2="76" y2="228" stroke="#5A8F60" stroke-width="2" stroke-dasharray="5 3"/>
+        <text x="82" y="232" font-family="'DM Sans',sans-serif" font-size="11" fill="#3B6D11">quick &amp; strong</text>
+        <line x1="185" y1="228" x2="211" y2="228" stroke="#C4803A" stroke-width="2"/>
+        <text x="217" y="232" font-family="'DM Sans',sans-serif" font-size="11" fill="#854F0B">slow &amp; insufficient</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── STAGE 4: BREATH ── -->
+<section class="stage-section" id="breath">
+  <div class="stage-eyebrow">
+    <div class="stage-eyebrow-num">4</div>
+    <div class="stage-eyebrow-label">The missing piece</div>
+  </div>
+  <div class="stage-layout flip">
+    <div class="stage-copy">
+      <h2>The breath <em>connection</em></h2>
+      <p>Your diaphragm and pelvic floor move together in a coordinated rhythm on every single breath. On an inhale, the diaphragm descends, your belly expands, and the pelvic floor gently lengthens and drops. On an exhale, everything recoils back up.</p>
+      <p>When we breathe shallowly, hold our breath under load, or chronically brace our core — a habit most of us have developed without knowing it — this rhythm breaks down. The pelvic floor loses its natural release cue and can become stuck in a state of tension.</p>
+      <p>This is why breathwork is foundational to almost everything I do in practice. It's not supplementary — it's where we start.</p>
+      <div class="insight-box">
+        <strong>Try this right now</strong>
+        Take a slow inhale through your nose and feel if your belly rises before your chest. On the exhale, consciously let your jaw, shoulders, and belly soften. Many people feel their pelvic floor for the first time during this exercise.
+      </div>
+    </div>
+    <div class="diagram-wrap" style="text-align:center;">
+      <svg id="breathSvg2" width="100%" viewBox="0 0 400 380" role="img">
+        <title>Animated diagram of diaphragm and pelvic floor moving together during a breath cycle</title>
+        <defs>
+          <marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <!-- Torso -->
+        <g class="anim-belly">
+          <path d="M110,70 Q76,80 68,140 Q60,200 64,255 Q68,285 110,300 L200,305 L290,300 Q332,285 336,255 Q340,200 332,140 Q324,80 290,70 Z"
+                fill="none" stroke="rgba(122,158,126,0.25)" stroke-width="2" stroke-linejoin="round"/>
+        </g>
+
+        <!-- Rib cage -->
+        <path d="M118,72 Q100,100 98,132 Q118,122 138,127 Q160,118 180,122 Q200,116 220,120 Q240,116 260,122 Q280,118 300,127 Q320,122 302,132 Q300,100 282,72"
+              fill="rgba(122,158,126,0.05)" stroke="rgba(122,158,126,0.15)" stroke-width="0.5"/>
+
+        <!-- Lung regions -->
+        <ellipse cx="162" cy="115" rx="38" ry="44" fill="rgba(122,158,126,0.08)" class="anim-belly"/>
+        <ellipse cx="238" cy="115" rx="38" ry="44" fill="rgba(122,158,126,0.08)" class="anim-belly"/>
+
+        <!-- Diaphragm -->
+        <g class="anim-diaphragm">
+          <path d="M82,158 Q140,134 200,138 Q260,134 318,158" fill="none" stroke="#4A6B4E" stroke-width="4" stroke-linecap="round"/>
+          <path d="M200,138 L200,158" fill="none" stroke="#4A6B4E" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+        </g>
+
+        <!-- Pressure arrows -->
+        <line class="anim-flow" x1="200" y1="165" x2="200" y2="222" stroke="#4A6B4E" stroke-width="1.5" marker-end="url(#arr3)" fill="none"/>
+        <line class="anim-flow" x1="80" y1="195" x2="56" y2="195" stroke="rgba(122,158,126,0.5)" stroke-width="1.2" marker-end="url(#arr3)" fill="none" style="animation-delay:0.3s"/>
+        <line class="anim-flow" x1="320" y1="195" x2="344" y2="195" stroke="rgba(122,158,126,0.5)" stroke-width="1.2" marker-end="url(#arr3)" fill="none" style="animation-delay:0.3s"/>
+
+        <!-- Pelvic floor -->
+        <g class="anim-floor">
+          <path d="M110,275 Q160,292 200,295 Q240,292 290,275" fill="none" stroke="#7A9E7E" stroke-width="4" stroke-linecap="round"/>
+          <path d="M110,275 Q160,300 200,304 Q240,300 290,275 Z" fill="rgba(122,158,126,0.1)" stroke="none"/>
+        </g>
+
+        <!-- Labels -->
+        <line x1="320" y1="156" x2="356" y2="132" stroke="rgba(122,158,126,0.3)" stroke-width="0.5" stroke-dasharray="3 2"/>
+        <text x="360" y="128" font-family="'DM Sans',sans-serif" font-size="12" font-weight="500" fill="#2C4230">Diaphragm</text>
+        <text x="360" y="143" font-family="'DM Sans',sans-serif" font-size="10" fill="#76756B">descends ↓</text>
+
+        <line x1="292" y1="283" x2="356" y2="283" stroke="rgba(122,158,126,0.3)" stroke-width="0.5" stroke-dasharray="3 2"/>
+        <text x="360" y="279" font-family="'DM Sans',sans-serif" font-size="12" font-weight="500" fill="#2C4230">Pelvic floor</text>
+        <text x="360" y="294" font-family="'DM Sans',sans-serif" font-size="10" fill="#76756B">drops gently ↓</text>
+
+        <text x="40" y="193" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#76756B">belly</text>
+        <text x="40" y="205" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#76756B">expands</text>
+
+        <!-- Inhale badge -->
+        <rect x="152" y="32" width="96" height="28" rx="14" fill="rgba(74,107,78,0.1)" stroke="rgba(74,107,78,0.3)" stroke-width="0.5"/>
+        <text x="200" y="50" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" font-weight="500" fill="#2C4230">inhale ↓</text>
+
+        <!-- Exhale note -->
+        <text x="200" y="348" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#76756B">On exhale both recoil upward — restoring resting tone.</text>
+      </svg>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;">
+        <button onclick="toggleBreath2()" style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-light);background:none;border:0.5px solid var(--warm-dark);border-radius:20px;padding:7px 18px;cursor:pointer;font-family:var(--sans);">
+          <svg id="b2Icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/></svg>
+          <span id="b2Label">Pause</span>
+        </button>
+        <span style="font-size:12px;color:var(--text-light)">4s breath cycle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STAGE 5: TREATMENT ── -->
+<section class="stage-section" id="treatment">
+  <div class="stage-eyebrow">
+    <div class="stage-eyebrow-num">5</div>
+    <div class="stage-eyebrow-label">What we do about it</div>
+  </div>
+  <div class="stage-layout">
+    <div class="stage-copy">
+      <h2>What treatment <em>actually looks like</em></h2>
+      <p>Pelvic floor PT is never one-size-fits-all. What you need depends entirely on what your floor is actually doing — which is why we start with a thorough assessment before anything else.</p>
+      <p>Sessions are unhurried and conversational. We spend time on your history, your goals, and what's been going on in your life — because healing doesn't happen in a vacuum. From there, we build a treatment plan that fits your body and your situation.</p>
+      <p>Most people see meaningful progress within 4–8 sessions. Some need more; some need less. I'll always give you an honest picture of what to expect after our first meeting.</p>
+      <div class="insight-box">
+        <strong>Nothing happens without your consent</strong>
+        Internal assessment can provide valuable information but is never required. We can do meaningful work externally, and I always follow your lead on what feels right.
+      </div>
+    </div>
+    <div class="diagram-wrap">
+      <p style="font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:20px;">A typical treatment arc</p>
+
+      <div id="treatLadder">
+        <div class="ladder-step open" data-i="0">
+          <div class="ladder-header" onclick="toggleLadder(0)">
+            <div class="ladder-num" style="background:var(--sage-pale);color:var(--sage-deep);">1</div>
+            <div class="ladder-info">
+              <div class="ladder-title">Assessment</div>
+              <div class="ladder-timing">Session 1</div>
+            </div>
+            <span class="ladder-chevron">▼</span>
+          </div>
+          <div class="ladder-body">
+            <ul class="check-list">
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Full history and symptom review</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Postural and movement assessment</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>External pelvic floor evaluation</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Clear plan and honest timeline</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ladder-step" data-i="1">
+          <div class="ladder-header" onclick="toggleLadder(1)">
+            <div class="ladder-num" style="background:#FAEEDA;color:#412402;">2</div>
+            <div class="ladder-info">
+              <div class="ladder-title">Foundation work</div>
+              <div class="ladder-timing">Sessions 2–4</div>
+            </div>
+            <span class="ladder-chevron">▼</span>
+          </div>
+          <div class="ladder-body">
+            <ul class="check-list">
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Breathing and nervous system regulation</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Manual therapy to release tight tissue</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Beginning home exercise program</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Body awareness and movement re-education</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ladder-step" data-i="2">
+          <div class="ladder-header" onclick="toggleLadder(2)">
+            <div class="ladder-num" style="background:var(--sage-pale);color:var(--sage-deep);">3</div>
+            <div class="ladder-info">
+              <div class="ladder-title">Progressive loading</div>
+              <div class="ladder-timing">Sessions 4–8</div>
+            </div>
+            <span class="ladder-chevron">▼</span>
+          </div>
+          <div class="ladder-body">
+            <ul class="check-list">
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Strength and coordination training</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Return to activity progression</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Symptom monitoring and adjustments</li>
+              <li onclick="toggleChk(this)"><span class="chk"><svg class="chk-mark" width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>Tools to maintain progress independently</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="hiw-cta">
+  <h2>Ready to understand <em>your</em> body?</h2>
+  <p>Every pelvic floor is different. The best next step is a conversation — so we can figure out exactly what yours needs.</p>
+  <a href="index.html#contact" class="btn-white-outline">Work with Marissa →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Marissa Joy <em>Wellness</em></div>
+  <p class="footer-copy">&copy; 2025 Marissa Joy Wellness · Denver, CO · <a href="privacy-policy.html" style="color:rgba(168,197,172,0.5);text-decoration:none;">Privacy Policy</a></p>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/marissajoy_wellness/" target="_blank" class="social-icon" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A8C5AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="#A8C5AC"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/marissa-guttenberg-pt-dpt-gcs-0088b751/" target="_blank" class="social-icon" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A8C5AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 016 0v4"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+// ── STAGE NAV SCROLL SPY ──
+const stages = ['anatomy','hypertonic','hypotonic','breath','treatment'];
+const pills = document.querySelectorAll('.stage-pill');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      pills.forEach(p => p.classList.remove('active'));
+      const active = document.querySelector(`.stage-pill[data-stage="${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+
+stages.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+
+// ── TENSION SLIDER ──
+function setTension(v) {
+  const isHigh = v > 50;
+  const w = Math.round(v * 1);
+  document.getElementById('tensBarFill').style.width = w + '%';
+  document.getElementById('tensBarFill').style.background = isHigh ? '#C4803A' : '#5A8F60';
+  document.getElementById('tensStatus').textContent = isHigh ? 'High — floor can\'t drop' : 'Low — floor can relax';
+  document.getElementById('tensStatus').style.color = isHigh ? '#C4803A' : '#5A8F60';
+  const y = 130 - (v - 50) * 0.5;
+  document.getElementById('tensPath').setAttribute('d', `M40,${y} Q200,${y-14} 360,${y}`);
+  document.getElementById('tensPath').setAttribute('stroke', isHigh ? '#C4803A' : '#5A8F60');
+  document.getElementById('tensFill').setAttribute('d', `M40,${y} Q200,${y-14} 360,${y} L360,160 L40,160 Z`);
+  document.getElementById('tensFill').setAttribute('fill', isHigh ? 'rgba(196,128,58,0.1)' : 'rgba(90,143,96,0.1)');
+}
+
+// ── BREATH ANIMATION ──
+let b2Playing = true;
+function toggleBreath2() {
+  b2Playing = !b2Playing;
+  document.getElementById('breathSvg2').classList.toggle('paused', !b2Playing);
+  document.getElementById('b2Label').textContent = b2Playing ? 'Pause' : 'Play';
+  document.getElementById('b2Icon').innerHTML = b2Playing
+    ? '<rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/>'
+    : '<path d="M2 1L11 6L2 11Z"/>';
+}
+
+// ── TREATMENT LADDER ──
+function toggleLadder(i) {
+  const step = document.querySelector(`#treatLadder .ladder-step[data-i="${i}"]`);
+  step.classList.toggle('open');
+}
+function toggleChk(li) {
+  li.classList.toggle('checked');
+}
+
+// ── NAV ──
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+</script>
+</body>
+</html>

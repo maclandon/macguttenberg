@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page Not Found | Marissa Joy Wellness</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%237A9E7E'/%3E%3Ctext x='50%25' y='68%25' text-anchor='middle' font-size='18' font-family='Cormorant Garamond, serif' fill='%23FDFCFA' font-weight='500'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .fourofour-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    text-align: center;
+    background: var(--warm);
+  }
+  .fourofour-number {
+    font-family: var(--serif);
+    font-size: clamp(80px, 15vw, 140px);
+    font-weight: 300;
+    color: var(--sage-light);
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.5;
+  }
+  .fourofour-tag {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .fourofour-tag::before, .fourofour-tag::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--sage-light);
+  }
+  .fourofour-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 300;
+    color: var(--sage-dark);
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .fourofour-title em {
+    font-style: italic;
+    color: var(--sage);
+  }
+  .fourofour-body {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 420px;
+    margin: 0 auto 40px;
+  }
+  .fourofour-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .fourofour-back {
+    font-size: 13px;
+    color: var(--sage-deep);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .fourofour-back:hover { color: var(--sage-dark); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Marissa Joy <em>Wellness</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="how-it-works.html">How it works</a></li>
+    <li><a href="index.html#blog">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="fourofour-wrap">
+  <div class="fourofour-number">404</div>
+  <div class="fourofour-tag">Page not found</div>
+  <h1 class="fourofour-title">It looks like you've<br><em>wandered off the path</em></h1>
+  <p class="fourofour-body">The page you're looking for doesn't exist or may have moved. Let's get you back to somewhere familiar.</p>
+  <div class="fourofour-links">
+    <a href="index.html" class="btn btn-sage">Back to home</a>
+    <a href="index.html#contact" class="fourofour-back">Contact Marissa →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Marissa Joy <em>Wellness</em></div>
+  <p class="footer-copy">&copy; 2025 Marissa Joy Wellness · Denver, CO</p>
+</footer>
+
+</body>
+</html>

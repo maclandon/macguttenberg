@@ -1,0 +1,146 @@
+
+<style>
+  @keyframes breathPulse {
+    0%,100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.88); }
+  }
+  @keyframes pelvisDown {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+  @keyframes pelvisUp {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  @keyframes bellySwell {
+    0%,100% { transform: scaleX(1); }
+    50% { transform: scaleX(1.055); }
+  }
+  @keyframes fadeLabel {
+    0%,100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+  @keyframes arrowPulse {
+    0%,100% { opacity: 0.3; stroke-dashoffset: 0; }
+    50% { opacity: 1; stroke-dashoffset: 18; }
+  }
+  .anim-diaphragm { animation: breathPulse 4s ease-in-out infinite; transform-origin: 340px 218px; }
+  .anim-belly     { animation: bellySwell 4s ease-in-out infinite; transform-origin: 340px 280px; }
+  .anim-pelvic-inhale { animation: pelvisDown 4s ease-in-out infinite; transform-origin: 340px 370px; }
+  .anim-arr-down { stroke-dasharray: 6 4; animation: arrowPulse 4s ease-in-out infinite; }
+  .anim-arr-up   { stroke-dasharray: 6 4; animation: arrowPulse 4s ease-in-out 2s infinite; }
+  .phase-inhale { animation: fadeLabel 4s ease-in-out infinite; }
+  .phase-exhale { animation: fadeLabel 4s ease-in-out 2s infinite; }
+  .paused * { animation-play-state: paused !important; }
+</style>
+
+<svg id="breathSvg" width="100%" viewBox="0 0 680 490" role="img">
+  <title>The pelvic-breath connection</title>
+  <desc>An animated cross-section showing how the diaphragm descends and the pelvic floor gently drops on inhale, and both recoil on exhale.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- ── TORSO OUTLINE ── -->
+  <g class="anim-belly">
+    <path d="M230,130 Q192,140 182,200 Q172,270 178,330 Q182,375 240,395 L340,400 L440,395 Q498,375 502,330 Q508,270 498,200 Q488,140 450,130 Z"
+          fill="none" stroke="var(--color-border-secondary)" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ── RIB CAGE HINT ── (static, structural) -->
+  <path d="M240,132 Q222,160 220,195 Q240,185 260,190 Q280,180 300,185 Q320,178 340,182 Q360,178 380,185 Q400,180 420,190 Q440,185 460,195 Q458,160 440,132"
+        fill="var(--color-background-secondary)" stroke="var(--color-border-tertiary)" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- ── LUNG REGIONS ── (left + right, subtle) -->
+  <ellipse cx="285" cy="185" rx="48" ry="52" fill="var(--color-background-info)" opacity="0.18" class="anim-belly"/>
+  <ellipse cx="395" cy="185" rx="48" ry="52" fill="var(--color-background-info)" opacity="0.18" class="anim-belly"/>
+
+  <!-- ── DIAPHRAGM (dome) ── -->
+  <g class="anim-diaphragm">
+    <path d="M208,218 Q250,195 310,210 Q340,217 370,210 Q430,195 472,218"
+          fill="none" stroke="#5A8F60" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M340,217 Q340,235 340,250" fill="none" stroke="#5A8F60" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+  </g>
+
+  <!-- ── BELLY WALL ── (swells on inhale) -->
+  <g class="anim-belly">
+    <path d="M182,200 Q172,270 178,330" fill="none" stroke="#9A9990" stroke-width="1" opacity="0.3"/>
+    <path d="M498,200 Q508,270 502,330" fill="none" stroke="#9A9990" stroke-width="1" opacity="0.3"/>
+  </g>
+
+  <!-- ── PELVIC FLOOR ── -->
+  <g class="anim-pelvic-inhale">
+    <path d="M240,370 Q290,385 340,388 Q390,385 440,370"
+          fill="none" stroke="#7A9E7E" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Small hammock support suggestion -->
+    <path d="M240,370 Q290,395 340,398 Q390,395 440,370"
+          fill="rgba(122,158,126,0.08)" stroke="none"/>
+  </g>
+
+  <!-- ── ARROWS: pressure direction on INHALE ── -->
+  <!-- Down arrow: diaphragm descends -->
+  <line class="anim-arr-down" x1="340" y1="255" x2="340" y2="310"
+        stroke="#5A8F60" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Down-out arrows: belly expands -->
+  <line class="anim-arr-down" x1="186" y1="270" x2="162" y2="270"
+        stroke="#9A9990" stroke-width="1.2" marker-end="url(#arrow)" fill="none" opacity="0.6"/>
+  <line class="anim-arr-down" x1="494" y1="270" x2="518" y2="270"
+        stroke="#9A9990" stroke-width="1.2" marker-end="url(#arrow)" fill="none" opacity="0.6"/>
+
+  <!-- Down arrow: pelvic floor drops -->
+  <line class="anim-arr-down" x1="340" y1="312" x2="340" y2="354"
+        stroke="#7A9E7E" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- ── LABELS (right side) ── -->
+  <!-- Diaphragm -->
+  <line x1="475" y1="218" x2="518" y2="192" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text class="th" x="524" y="188" font-size="13" fill="var(--color-text-primary)">Diaphragm</text>
+  <text class="ts" x="524" y="204" font-size="11" fill="var(--color-text-secondary)">descends on inhale</text>
+
+  <!-- Pelvic floor -->
+  <line x1="442" y1="378" x2="518" y2="380" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text class="th" x="524" y="376" font-size="13" fill="var(--color-text-primary)">Pelvic floor</text>
+  <text class="ts" x="524" y="392" font-size="11" fill="var(--color-text-secondary)">gently drops</text>
+
+  <!-- Belly -->
+  <line x1="162" y1="270" x2="136" y2="290" stroke="var(--color-border-tertiary)" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text class="ts" x="52" y="288" font-size="11" fill="var(--color-text-secondary)" text-anchor="middle">belly</text>
+  <text class="ts" x="52" y="302" font-size="11" fill="var(--color-text-secondary)" text-anchor="middle">expands</text>
+
+  <!-- ── PHASE LABELS ── -->
+  <g class="phase-inhale">
+    <rect x="286" y="62" width="108" height="30" rx="15"
+          fill="rgba(90,143,96,0.12)" stroke="rgba(90,143,96,0.35)" stroke-width="0.5"/>
+    <text x="340" y="82" text-anchor="middle" font-size="13" font-weight="500" fill="#3B6B42" font-family="var(--font-sans)">inhale ↓</text>
+  </g>
+
+  <!-- ── RECOIL NOTE ── -->
+  <text class="ts" x="340" y="440" text-anchor="middle" font-size="12" fill="var(--color-text-secondary)">
+    On exhale, both recoil upward — restoring resting tone.
+  </text>
+
+</svg>
+
+<!-- Play / Pause control -->
+<div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:4px 0 0">
+  <button id="playBtn" onclick="toggleAnim()" style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-secondary);background:none;border:0.5px solid var(--color-border-secondary);border-radius:20px;padding:6px 16px;cursor:pointer">
+    <svg id="playIcon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/></svg>
+    <span id="playLabel">Pause</span>
+  </button>
+  <span style="font-size:12px;color:var(--color-text-tertiary)">4 s breath cycle</span>
+</div>
+
+<script>
+let playing = true;
+function toggleAnim() {
+  playing = !playing;
+  document.getElementById('breathSvg').classList.toggle('paused', !playing);
+  document.getElementById('playLabel').textContent = playing ? 'Pause' : 'Play';
+  document.getElementById('playIcon').innerHTML = playing
+    ? '<rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/>'
+    : '<path d="M2 1L11 6L2 11Z" rx="1"/>';
+}
+</script>
