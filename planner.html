@@ -419,11 +419,7 @@ function initAuth() {
       await fetchAll();
     }
   });
-  if (localStorage.getItem('dash-authed')) {
-    tokenClient.requestAccessToken({ prompt: '' });
-  } else {
-    demo();
-  }
+  demo();
 }
 
 // ── FETCH ─────────────────────────────────────────────
@@ -431,9 +427,13 @@ async function fetchAll() {
   try {
     const h = { Authorization: `Bearer ${token}` };
     if (new URLSearchParams(location.search).get('debug') === '1') console.log('token:', token);
+    const wUrl = `https://sheets.googleapis.com/v4/spreadsheets/${CFG.WEEKLY_SHEET_ID}/values/${encodeURIComponent(W_RANGE)}`;
+    const mUrl = `https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${encodeURIComponent(M_RANGE)}`;
+    console.log('GET', wUrl);
+    console.log('GET', mUrl);
     const [wr, mr] = await Promise.all([
-      fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.WEEKLY_SHEET_ID}/values/${encodeURIComponent(W_RANGE)}`, {headers:h}),
-      fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${encodeURIComponent(M_RANGE)}`, {headers:h})
+      fetch(wUrl, {headers:h}),
+      fetch(mUrl, {headers:h})
     ]);
     const wd = await wr.json(), md = await mr.json();
     tasks = (wd.values||[]).filter(r=>r[0]).map((r,i)=>({
@@ -455,7 +455,9 @@ async function writeCell(sheetId, range, rowIdx, colIdx, val) {
   const col = String.fromCharCode(65 + colIdx);
   const row = rowIdx + 4;
   const ref = `${range.split('!')[0]}!${col}${row}`;
-  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(ref)}?valueInputOption=RAW`, {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(ref)}?valueInputOption=RAW`;
+  console.log('PUT', url);
+  await fetch(url, {
     method:'PUT', headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
     body: JSON.stringify({values:[[val]]})
   });
@@ -463,7 +465,9 @@ async function writeCell(sheetId, range, rowIdx, colIdx, val) {
 
 async function appendRow(sheetId, range, row) {
   if (!connected) { alert('Connect Google Sheets to persist data. Added locally for now.'); return; }
-  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+  console.log('POST', url);
+  await fetch(url, {
     method:'POST', headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
     body: JSON.stringify({values:[row]})
   });
