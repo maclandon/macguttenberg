@@ -332,7 +332,7 @@ const CFG = {
   MONTHLY_SHEET_ID: '1wP4hSaonIO1kRztR2WLYNJfz-2gazI6K',
 };
 // Sheet tab name + data range (adjust to match your actual sheet)
-const W_RANGE = 'Weekly Planner!A4:F200';  // cols: Task, Day, Priority, Time, Notes, Done
+const W_RANGE = 'Weekly Planner!A4:G200';  // cols: #, Task, Day, Priority, Time, Notes, Done
 const M_RANGE = 'Monthly Goals!A4:F100';   // cols: #, Goal, Category, Due, Notes, Done
 // ══════════════════════════════════════════════════════
 
@@ -410,21 +410,14 @@ function initAuth() {
     client_id: CFG.CLIENT_ID,
     scope: 'https://www.googleapis.com/auth/spreadsheets',
     callback: async r => {
-      if (r.error) { console.error(r); demo(); return; }
+      if (r.error) { console.error(r); return; }
       token = r.access_token; connected = true;
-      localStorage.setItem('dash-authed', '1');
       document.getElementById('auth-btn').textContent = 'Connected ✓';
       document.getElementById('auth-btn').classList.add('connected');
       setStatus('Syncing...', true);
       await fetchAll();
     }
   });
-  // auto-reconnect silently if user has connected before
-  if (localStorage.getItem('dash-authed')) {
-    tokenClient.requestAccessToken({ prompt: '' });
-  } else {
-    demo();
-  }
 }
 
 // ── FETCH ─────────────────────────────────────────────
@@ -436,9 +429,9 @@ async function fetchAll() {
       fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${M_RANGE}`, {headers:h})
     ]);
     const wd = await wr.json(), md = await mr.json();
-    tasks = (wd.values||[]).filter(r=>r[0]).map((r,i)=>({
-      id:i+1, name:r[0]||'', day:r[1]||'', p:r[2]||'MED', time:r[3]||'', notes:r[4]||'',
-      done:(r[5]||'').trim().toLowerCase()==='✓'
+    tasks = (wd.values||[]).filter(r=>r[1]).map((r,i)=>({
+      id:i+1, name:r[1]||'', day:r[2]||'', p:r[3]||'MED', time:r[4]||'', notes:r[5]||'',
+      done:(r[6]||'').trim().toLowerCase()==='✓'
     }));
     goals = (md.values||[]).filter(r=>r[1]).map((r,i)=>({
       id:i+1, name:r[1]||'', cat:r[2]||'', due:r[3]||'', notes:r[4]||'',
@@ -587,7 +580,7 @@ async function toggle(id, type) {
     const t = tasks.find(x=>x.id===id); if(!t) return;
     t.done = !t.done;
     const idx = tasks.indexOf(t);
-    await writeCell(CFG.WEEKLY_SHEET_ID, W_RANGE, idx, 5, t.done?'✓':'');
+    await writeCell(CFG.WEEKLY_SHEET_ID, W_RANGE, idx, 6, t.done?'✓':'');
   } else {
     const g = goals.find(x=>x.id===id); if(!g) return;
     g.done = !g.done;
@@ -620,7 +613,7 @@ async function saveTask() {
       p:document.getElementById('f-priority').value, time:document.getElementById('f-time').value,
       notes:document.getElementById('f-notes').value, done:false};
     tasks.push(t);
-    await appendRow(CFG.WEEKLY_SHEET_ID, W_RANGE, [t.name,t.day,t.p,t.time,t.notes,'']);
+    await appendRow(CFG.WEEKLY_SHEET_ID, W_RANGE, [t.id,t.name,t.day,t.p,t.time,t.notes,'']);
   } else {
     const g = {id:goals.length+1, name, cat:document.getElementById('f-cat').value,
       due:document.getElementById('f-due').value, notes:document.getElementById('f-mnotes').value, done:false};
