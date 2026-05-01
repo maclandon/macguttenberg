@@ -423,12 +423,17 @@ function initAuth() {
 }
 
 // ── FETCH ─────────────────────────────────────────────
+function encodeRange(range) {
+  const i = range.indexOf('!');
+  return i === -1 ? encodeURIComponent(range) : encodeURIComponent(range.slice(0, i)) + '!' + range.slice(i + 1);
+}
+
 async function fetchAll() {
   try {
     const h = { Authorization: `Bearer ${token}` };
     if (new URLSearchParams(location.search).get('debug') === '1') console.log('token:', token);
-    const wUrl = `https://sheets.googleapis.com/v4/spreadsheets/${CFG.WEEKLY_SHEET_ID}/values/${encodeURIComponent(W_RANGE)}`;
-    const mUrl = `https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${encodeURIComponent(M_RANGE)}`;
+    const wUrl = `https://sheets.googleapis.com/v4/spreadsheets/${CFG.WEEKLY_SHEET_ID}/values/${encodeRange(W_RANGE)}`;
+    const mUrl = `https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${encodeRange(M_RANGE)}`;
     console.log('GET', wUrl);
     console.log('GET', mUrl);
     const [wr, mr] = await Promise.all([
@@ -455,7 +460,7 @@ async function writeCell(sheetId, range, rowIdx, colIdx, val) {
   const col = String.fromCharCode(65 + colIdx);
   const row = rowIdx + 4;
   const ref = `${range.split('!')[0]}!${col}${row}`;
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(ref)}?valueInputOption=RAW`;
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeRange(ref)}?valueInputOption=RAW`;
   console.log('PUT', url);
   await fetch(url, {
     method:'PUT', headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
@@ -465,7 +470,7 @@ async function writeCell(sheetId, range, rowIdx, colIdx, val) {
 
 async function appendRow(sheetId, range, row) {
   if (!connected) { alert('Connect Google Sheets to persist data. Added locally for now.'); return; }
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeRange(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
   console.log('POST', url);
   await fetch(url, {
     method:'POST', headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
