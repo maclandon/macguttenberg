@@ -410,14 +410,21 @@ function initAuth() {
     client_id: CFG.CLIENT_ID,
     scope: 'https://www.googleapis.com/auth/spreadsheets',
     callback: async r => {
-      if (r.error) { console.error(r); return; }
+      if (r.error) { console.error(r); demo(); return; }
       token = r.access_token; connected = true;
+      localStorage.setItem('dash-authed', '1');
       document.getElementById('auth-btn').textContent = 'Connected ✓';
       document.getElementById('auth-btn').classList.add('connected');
       setStatus('Syncing...', true);
       await fetchAll();
     }
   });
+  // auto-reconnect silently if user has connected before
+  if (localStorage.getItem('dash-authed')) {
+    tokenClient.requestAccessToken({ prompt: '' });
+  } else {
+    demo();
+  }
 }
 
 // ── FETCH ─────────────────────────────────────────────
