@@ -432,8 +432,8 @@ async function fetchAll() {
     const h = { Authorization: `Bearer ${token}` };
     if (new URLSearchParams(location.search).get('debug') === '1') console.log('token:', token);
     const [wr, mr] = await Promise.all([
-      fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.WEEKLY_SHEET_ID}/values/${W_RANGE}`, {headers:h}),
-      fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${M_RANGE}`, {headers:h})
+      fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.WEEKLY_SHEET_ID}/values/${encodeURIComponent(W_RANGE)}`, {headers:h}),
+      fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${encodeURIComponent(M_RANGE)}`, {headers:h})
     ]);
     const wd = await wr.json(), md = await mr.json();
     tasks = (wd.values||[]).filter(r=>r[0]).map((r,i)=>({
@@ -455,7 +455,7 @@ async function writeCell(sheetId, range, rowIdx, colIdx, val) {
   const col = String.fromCharCode(65 + colIdx);
   const row = rowIdx + 4;
   const ref = `${range.split('!')[0]}!${col}${row}`;
-  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${ref}?valueInputOption=RAW`, {
+  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(ref)}?valueInputOption=RAW`, {
     method:'PUT', headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
     body: JSON.stringify({values:[[val]]})
   });
@@ -463,7 +463,7 @@ async function writeCell(sheetId, range, rowIdx, colIdx, val) {
 
 async function appendRow(sheetId, range, row) {
   if (!connected) { alert('Connect Google Sheets to persist data. Added locally for now.'); return; }
-  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
+  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
     method:'POST', headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
     body: JSON.stringify({values:[row]})
   });
