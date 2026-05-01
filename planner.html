@@ -430,7 +430,7 @@ function initAuth() {
 async function fetchAll() {
   try {
     const h = { Authorization: `Bearer ${token}` };
-    console.log('token:', token);
+    if (new URLSearchParams(location.search).get('debug') === '1') console.log('token:', token);
     const [wr, mr] = await Promise.all([
       fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.WEEKLY_SHEET_ID}/values/${W_RANGE}`, {headers:h}),
       fetch(`https://sheets.googleapis.com/v4/spreadsheets/${CFG.MONTHLY_SHEET_ID}/values/${M_RANGE}`, {headers:h})
